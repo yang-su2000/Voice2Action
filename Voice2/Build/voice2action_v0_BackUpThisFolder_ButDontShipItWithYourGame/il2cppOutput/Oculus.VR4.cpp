@@ -744,6 +744,7 @@ IL2CPP_EXTERN_C String_t* _stringLiteral83F7325406C26EABB74F53C853EF630635DDEF8E
 IL2CPP_EXTERN_C String_t* _stringLiteral846A63A3D8AB7EFB87280ADEBBEAA269EA330CB3;
 IL2CPP_EXTERN_C String_t* _stringLiteral8527477538A58C4D0BEFF1E314F25DFC679B1257;
 IL2CPP_EXTERN_C String_t* _stringLiteral855DDA5969660E9E7E4D4A9E7CC478625EC2CF50;
+IL2CPP_EXTERN_C String_t* _stringLiteral857A189C6121945B0A34E25354F80D8AD4510F00;
 IL2CPP_EXTERN_C String_t* _stringLiteral86BBAACC00198DBB3046818AD3FC2AA10AE48DE1;
 IL2CPP_EXTERN_C String_t* _stringLiteral8710C54FF3C1DCA32EB78CE6FCEE779BB0E73108;
 IL2CPP_EXTERN_C String_t* _stringLiteral88E2CB4B07DFE1388FDA64B3E02817A682D6C055;
@@ -829,6 +830,7 @@ IL2CPP_EXTERN_C String_t* _stringLiteralF4F0283C19A2F7B4BECC683DED97812714AC8589
 IL2CPP_EXTERN_C String_t* _stringLiteralF52FB64659CBDBE75326119E4FA87DDC42455E76;
 IL2CPP_EXTERN_C String_t* _stringLiteralF57952D7922E2538C221F98FBC65352E6DEF8AB3;
 IL2CPP_EXTERN_C String_t* _stringLiteralF62139C40AE9FF2663197C1F7637AA777DF2F6B9;
+IL2CPP_EXTERN_C String_t* _stringLiteralF7D68742C14CB7CCDAA78DAD77CF874786C7B036;
 IL2CPP_EXTERN_C String_t* _stringLiteralF88D019D310EFCC979975957D01E97BE7C0390BC;
 IL2CPP_EXTERN_C String_t* _stringLiteralFAB6506B7C8F6734F46C14E29E796C90AB92AEB7;
 IL2CPP_EXTERN_C String_t* _stringLiteralFBA5ADEA08A8958332ED2BC70EC48D3A8987BAED;
@@ -6853,6 +6855,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool OVRInput_GetUp_m744B92CAFECBDE18143C1622
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool String_op_Inequality_m0FBE5AC4931D312E5B347BAA603755676E6DA2FE (String_t* ___a0, String_t* ___b1, const RuntimeMethod* method) ;
 // System.Void OVRCubemapCapture::TriggerCubemapCapture(UnityEngine.Vector3,System.Int32,System.String)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void OVRCubemapCapture_TriggerCubemapCapture_m5029A601C6327B35B885279E74C88863D2B56EC6 (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___capturePos0, int32_t ___cubemapSize1, String_t* ___pathName2, const RuntimeMethod* method) ;
+// System.Boolean UnityEngine.Input::GetKeyDown(UnityEngine.KeyCode)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Input_GetKeyDown_m0D59B7EBC3A782C9FBBF107FBCD4B72B38D993B3 (int32_t ___key0, const RuntimeMethod* method) ;
 // System.Type System.Type::GetTypeFromHandle(System.RuntimeTypeHandle)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Type_t* Type_GetTypeFromHandle_m2570A2A5B32A5E9D9F0F38B37459DA18736C823E (RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B ___handle0, const RuntimeMethod* method) ;
 // System.Void UnityEngine.GameObject::.ctor(System.String,System.Type[])
@@ -7290,6 +7294,8 @@ inline void Dictionary_2__ctor_mE346B986A184A0AA7484B36FC794073AFCBAEAFA (Dictio
 }
 // System.Void OVRGridCube::UpdateCubeGrid()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void OVRGridCube_UpdateCubeGrid_m016D8349EDB9FBB6CDB3B48D44C18EF4C0A7BD9B (OVRGridCube_tFE8F792286A2BC747DB19455AF4878AF5EBD55E6* __this, const RuntimeMethod* method) ;
+// System.Void OVRGridCube::CreateCubeGrid()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void OVRGridCube_CreateCubeGrid_m24944530781C718BCAFF562B857D2B35582FE10E (OVRGridCube_tFE8F792286A2BC747DB19455AF4878AF5EBD55E6* __this, const RuntimeMethod* method) ;
 // OVRTracker OVRManager::get_tracker()
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR OVRTracker_t5E60EE08D82308F2F8206AD43AE8CC4925938154* OVRManager_get_tracker_m92FF34E61792669ACF77ABF0B43F6FD64BFE72F5_inline (const RuntimeMethod* method) ;
 // System.Boolean OVRTracker::get_isPositionTracked()
@@ -17937,6 +17943,29 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void OVRCubemapCapture_Update_m7B7D2356846F1E
 
 IL_004b:
 	{
+		// if ( Input.GetKeyDown( triggeredByKey ) )
+		int32_t L_9 = __this->___triggeredByKey_7;
+		bool L_10;
+		L_10 = Input_GetKeyDown_m0D59B7EBC3A782C9FBBF107FBCD4B72B38D993B3(L_9, NULL);
+		if (!L_10)
+		{
+			goto IL_0074;
+		}
+	}
+	{
+		// TriggerCubemapCapture(transform.position, cubemapSize, pathName);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_11;
+		L_11 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(__this, NULL);
+		NullCheck(L_11);
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_12;
+		L_12 = Transform_get_position_m69CD5FA214FDAE7BB701552943674846C220FDE1(L_11, NULL);
+		int32_t L_13 = __this->___cubemapSize_9;
+		String_t* L_14 = __this->___pathName_8;
+		OVRCubemapCapture_TriggerCubemapCapture_m5029A601C6327B35B885279E74C88863D2B56EC6(L_12, L_13, L_14, NULL);
+	}
+
+IL_0074:
+	{
 		// }
 		return;
 	}
@@ -19121,20 +19150,45 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void OVRDebugInfo_Update_m51262DA85C348863F91
 
 IL_0016:
 	{
+		// if (Input.GetKeyDown(KeyCode.Space) && riftPresentTimeout < 0.0f)
+		bool L_2;
+		L_2 = Input_GetKeyDown_m0D59B7EBC3A782C9FBBF107FBCD4B72B38D993B3(((int32_t)32), NULL);
+		if (!L_2)
+		{
+			goto IL_0042;
+		}
+	}
+	{
+		float L_3 = __this->___riftPresentTimeout_30;
+		if ((!(((float)L_3) < ((float)(0.0f)))))
+		{
+			goto IL_0042;
+		}
+	}
+	{
+		// initUIComponent = true;
+		__this->___initUIComponent_27 = (bool)1;
+		// showVRVars ^= true;
+		bool L_4 = __this->___showVRVars_31;
+		__this->___showVRVars_31 = (bool)((((int32_t)L_4) == ((int32_t)0))? 1 : 0);
+	}
+
+IL_0042:
+	{
 		// UpdateDeviceDetection();
 		OVRDebugInfo_UpdateDeviceDetection_m368015D54CB420379064331A7A5EA2188C1D2F2B(__this, NULL);
 		// if (showVRVars)
-		bool L_2 = __this->___showVRVars_31;
-		if (!L_2)
+		bool L_5 = __this->___showVRVars_31;
+		if (!L_5)
 		{
-			goto IL_003d;
+			goto IL_0069;
 		}
 	}
 	{
 		// debugUIManager.SetActive(true);
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_3 = __this->___debugUIManager_4;
-		NullCheck(L_3);
-		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_3, (bool)1, NULL);
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_6 = __this->___debugUIManager_4;
+		NullCheck(L_6);
+		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_6, (bool)1, NULL);
 		// UpdateVariable();
 		OVRDebugInfo_UpdateVariable_m3ECF34B65A465CCFC39BCC013250BE5198E81361(__this, NULL);
 		// UpdateStrings();
@@ -19142,12 +19196,12 @@ IL_0016:
 		return;
 	}
 
-IL_003d:
+IL_0069:
 	{
 		// debugUIManager.SetActive(false);
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_4 = __this->___debugUIManager_4;
-		NullCheck(L_4);
-		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_4, (bool)0, NULL);
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_7 = __this->___debugUIManager_4;
+		NullCheck(L_7);
+		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_7, (bool)0, NULL);
 		// }
 		return;
 	}
@@ -23104,52 +23158,129 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void OVRGridCube_UpdateCubeGrid_m016D8349EDB9
 	static bool s_Il2CppMethodInitialized;
 	if (!s_Il2CppMethodInitialized)
 	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&OVRManager_t21429E69CA88C5E9C6EE3AAB75EAFBE6E1B129D4_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral857A189C6121945B0A34E25354F80D8AD4510F00);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralF7D68742C14CB7CCDAA78DAD77CF874786C7B036);
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		// if (CubeGrid != null)
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = __this->___CubeGrid_5;
-		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
+		// if(Input.GetKeyDown(GridKey))
+		int32_t L_0 = __this->___GridKey_4;
 		bool L_1;
-		L_1 = Object_op_Inequality_m4D656395C27694A7F33F5AA8DE80A7AAF9E20BA7(L_0, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
+		L_1 = Input_GetKeyDown_m0D59B7EBC3A782C9FBBF107FBCD4B72B38D993B3(L_0, NULL);
 		if (!L_1)
 		{
-			goto IL_0047;
+			goto IL_0075;
+		}
+	}
+	{
+		// if(CubeGridOn == false)
+		bool L_2 = __this->___CubeGridOn_6;
+		if (L_2)
+		{
+			goto IL_004a;
+		}
+	}
+	{
+		// CubeGridOn = true;
+		__this->___CubeGridOn_6 = (bool)1;
+		// Debug.LogWarning("CubeGrid ON");
+		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
+		Debug_LogWarning_mEF15C6B17CE4E1FA7E379CDB82CE40FCD89A3F28(_stringLiteralF7D68742C14CB7CCDAA78DAD77CF874786C7B036, NULL);
+		// if(CubeGrid != null)
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_3 = __this->___CubeGrid_5;
+		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
+		bool L_4;
+		L_4 = Object_op_Inequality_m4D656395C27694A7F33F5AA8DE80A7AAF9E20BA7(L_3, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
+		if (!L_4)
+		{
+			goto IL_0042;
+		}
+	}
+	{
+		// CubeGrid.SetActive(true);
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_5 = __this->___CubeGrid_5;
+		NullCheck(L_5);
+		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_5, (bool)1, NULL);
+		goto IL_0075;
+	}
+
+IL_0042:
+	{
+		// CreateCubeGrid();
+		OVRGridCube_CreateCubeGrid_m24944530781C718BCAFF562B857D2B35582FE10E(__this, NULL);
+		goto IL_0075;
+	}
+
+IL_004a:
+	{
+		// CubeGridOn = false;
+		__this->___CubeGridOn_6 = (bool)0;
+		// Debug.LogWarning("CubeGrid OFF");
+		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
+		Debug_LogWarning_mEF15C6B17CE4E1FA7E379CDB82CE40FCD89A3F28(_stringLiteral857A189C6121945B0A34E25354F80D8AD4510F00, NULL);
+		// if(CubeGrid != null)
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_6 = __this->___CubeGrid_5;
+		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
+		bool L_7;
+		L_7 = Object_op_Inequality_m4D656395C27694A7F33F5AA8DE80A7AAF9E20BA7(L_6, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
+		if (!L_7)
+		{
+			goto IL_0075;
+		}
+	}
+	{
+		// CubeGrid.SetActive(false);
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_8 = __this->___CubeGrid_5;
+		NullCheck(L_8);
+		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_8, (bool)0, NULL);
+	}
+
+IL_0075:
+	{
+		// if (CubeGrid != null)
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_9 = __this->___CubeGrid_5;
+		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
+		bool L_10;
+		L_10 = Object_op_Inequality_m4D656395C27694A7F33F5AA8DE80A7AAF9E20BA7(L_9, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
+		if (!L_10)
+		{
+			goto IL_00bc;
 		}
 	}
 	{
 		// CubeSwitchColor = !OVRManager.tracker.isPositionTracked;
 		il2cpp_codegen_runtime_class_init_inline(OVRManager_t21429E69CA88C5E9C6EE3AAB75EAFBE6E1B129D4_il2cpp_TypeInfo_var);
-		OVRTracker_t5E60EE08D82308F2F8206AD43AE8CC4925938154* L_2;
-		L_2 = OVRManager_get_tracker_m92FF34E61792669ACF77ABF0B43F6FD64BFE72F5_inline(NULL);
-		NullCheck(L_2);
-		bool L_3;
-		L_3 = OVRTracker_get_isPositionTracked_mE9A6204989140E34AB187178E6A268C9A1F492C0(L_2, NULL);
-		__this->___CubeSwitchColor_8 = (bool)((((int32_t)L_3) == ((int32_t)0))? 1 : 0);
+		OVRTracker_t5E60EE08D82308F2F8206AD43AE8CC4925938154* L_11;
+		L_11 = OVRManager_get_tracker_m92FF34E61792669ACF77ABF0B43F6FD64BFE72F5_inline(NULL);
+		NullCheck(L_11);
+		bool L_12;
+		L_12 = OVRTracker_get_isPositionTracked_mE9A6204989140E34AB187178E6A268C9A1F492C0(L_11, NULL);
+		__this->___CubeSwitchColor_8 = (bool)((((int32_t)L_12) == ((int32_t)0))? 1 : 0);
 		// if(CubeSwitchColor != CubeSwitchColorOld)
-		bool L_4 = __this->___CubeSwitchColor_8;
-		bool L_5 = __this->___CubeSwitchColorOld_7;
-		if ((((int32_t)L_4) == ((int32_t)L_5)))
+		bool L_13 = __this->___CubeSwitchColor_8;
+		bool L_14 = __this->___CubeSwitchColorOld_7;
+		if ((((int32_t)L_13) == ((int32_t)L_14)))
 		{
-			goto IL_003b;
+			goto IL_00b0;
 		}
 	}
 	{
 		// CubeGridSwitchColor(CubeSwitchColor);
-		bool L_6 = __this->___CubeSwitchColor_8;
-		OVRGridCube_CubeGridSwitchColor_mB3329ABEF3DC6BCC544A0167FB6F6CAAC910F948(__this, L_6, NULL);
+		bool L_15 = __this->___CubeSwitchColor_8;
+		OVRGridCube_CubeGridSwitchColor_mB3329ABEF3DC6BCC544A0167FB6F6CAAC910F948(__this, L_15, NULL);
 	}
 
-IL_003b:
+IL_00b0:
 	{
 		// CubeSwitchColorOld = CubeSwitchColor;
-		bool L_7 = __this->___CubeSwitchColor_8;
-		__this->___CubeSwitchColorOld_7 = L_7;
+		bool L_16 = __this->___CubeSwitchColor_8;
+		__this->___CubeSwitchColorOld_7 = L_16;
 	}
 
-IL_0047:
+IL_00bc:
 	{
 		// }
 		return;

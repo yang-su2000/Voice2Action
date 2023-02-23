@@ -1,14 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Oculus.Platform;
 using UnityEngine;
 
 public class ShapeController : MonoBehaviour
 {
-    public const float RotateSpeed = 1.0f;
-
-    public Shapes Shape;
+    public Shapes shapes;
 
     public void SetColor(Color color)
     {
@@ -17,14 +11,15 @@ public class ShapeController : MonoBehaviour
 
     public void RotateTo(float targetRotation)
     {
+        Debug.Log("targetRotation " + targetRotation);
         Vector3 targetDirection = new Vector3(targetRotation, 0, 0);
-        float singleStep = RotateSpeed * Time.deltaTime;
-        Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0);
-        transform.rotation = Quaternion.LookRotation(newDirection);
+        Quaternion new_rotation = Quaternion.Euler(targetDirection);
+        transform.rotation = new_rotation;
     }
 
     public void MoveDirection(Direction direction)
     {
+        Debug.Log("shape: " + shapes + ", direction: " + direction);
         switch (direction)
         {
             case Direction.Up:

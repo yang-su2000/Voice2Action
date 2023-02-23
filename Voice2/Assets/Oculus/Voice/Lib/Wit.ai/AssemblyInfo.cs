@@ -15,7 +15,7 @@ public enum Shapes
     Sphere,
     Capsule,
     Cylinder,
-    Plane,
+    All,
 }
 
 public enum Direction
