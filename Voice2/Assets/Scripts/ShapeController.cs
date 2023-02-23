@@ -11,7 +11,6 @@ public class ShapeController : MonoBehaviour
 
     public void RotateTo(float targetRotation)
     {
-        Debug.Log("targetRotation " + targetRotation);
         Vector3 targetDirection = new Vector3(targetRotation, 0, 0);
         Quaternion new_rotation = Quaternion.Euler(targetDirection);
         transform.rotation = new_rotation;
@@ -19,7 +18,6 @@ public class ShapeController : MonoBehaviour
 
     public void MoveDirection(Direction direction)
     {
-        Debug.Log("shape: " + shapes + ", direction: " + direction);
         switch (direction)
         {
             case Direction.Up:

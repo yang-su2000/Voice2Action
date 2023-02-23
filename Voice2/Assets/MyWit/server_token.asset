@@ -81,6 +81,9 @@ MonoBehaviour:
     - keyword: backward
       synonyms:
       - backward
+    - keyword: down
+      synonyms:
+      - down
     - keyword: forward
       synonyms:
       - forward
@@ -90,6 +93,9 @@ MonoBehaviour:
     - keyword: right
       synonyms:
       - right
+    - keyword: up
+      synonyms:
+      - up
   - witConfiguration: {fileID: 11400000}
     id: 1208472369812639
     name: rotation
@@ -103,6 +109,22 @@ MonoBehaviour:
     - keyword: 20
       synonyms:
       - 20
+    - keyword: 30
+      synonyms:
+      - 30
+    - keyword: 40
+      synonyms:
+      - 40
+    - keyword: 100
+      synonyms:
+      - 100
+    - keyword: 364
+      synonyms:
+      - 3
+      - 364
+    - keyword: 800
+      synonyms:
+      - 800
   - witConfiguration: {fileID: 11400000}
     id: 6043727252355536
     name: shape
@@ -113,12 +135,23 @@ MonoBehaviour:
     - id: 949446336224898
       name: shape
     keywords:
+    - keyword: all
+      synonyms:
+      - all
     - keyword: capsule
       synonyms:
       - capsule
     - keyword: cube
       synonyms:
       - cube
+      - cupe
+    - keyword: cylinder
+      synonyms:
+      - cylinder
+      - sylinder
+    - keyword: sphere
+      synonyms:
+      - sphere
     - keyword: sylinder
       synonyms:
       - sylinder
@@ -140,7 +173,7 @@ MonoBehaviour:
       roles: []
       keywords: []
   - witConfiguration: {fileID: 11400000}
-    id: 924841652199957
+    id: 580618703957393
     name: set_color
     entities:
     - witConfiguration: {fileID: 11400000}
@@ -149,13 +182,25 @@ MonoBehaviour:
       lookups: []
       roles: []
       keywords: []
+    - witConfiguration: {fileID: 11400000}
+      id: 949446336224898
+      name: shape:shape
+      lookups: []
+      roles: []
+      keywords: []
   - witConfiguration: {fileID: 11400000}
-    id: 852748042459124
+    id: 901582720981378
     name: set_rotation
     entities:
     - witConfiguration: {fileID: 11400000}
       id: 1264216684167121
       name: rotation:rotation
+      lookups: []
+      roles: []
+      keywords: []
+    - witConfiguration: {fileID: 11400000}
+      id: 949446336224898
+      name: shape:shape
       lookups: []
       roles: []
       keywords: []

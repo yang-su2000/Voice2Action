@@ -48,12 +48,9 @@ public class VoiceIntentController : MonoBehaviour
     private void Update()
     {
         // Keyboard.current.spaceKey.wasPressedThisFrame
-        if (!appVoiceActive)
-        {
-            // activate voice experience
-            appVoiceExperience.Activate();
-            Debug.Log("activated");
-        }
+        // appVoiceActive
+        // activate voice experience
+        appVoiceExperience.Activate();
     }
 
     public void SetColor(String[] info)
