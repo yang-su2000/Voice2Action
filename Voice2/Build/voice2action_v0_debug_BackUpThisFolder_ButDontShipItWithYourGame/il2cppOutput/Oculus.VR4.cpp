@@ -8572,7 +8572,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool OVRKeyboard_GetSystemKeyboardInfo_mD3BB8
 		ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_7 = L_6.___Name_0;
 		NullCheck(L_5);
 		String_t* L_8;
-		L_8 = VirtualFuncInvoker1< String_t*, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* >::Invoke(33 /* System.String System.Text.Encoding::GetString(System.Byte[]) */, L_5, L_7);
+		L_8 = VirtualFuncInvoker1< String_t*, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* >::Invoke(36 /* System.String System.Text.Encoding::GetString(System.Byte[]) */, L_5, L_7);
 		NullCheck(L_8);
 		String_t* L_9;
 		L_9 = String_TrimEnd_mDB4D96F8312F563656D4115A9F280062E05D2EE8(L_8, 0, NULL);

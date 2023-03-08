@@ -5920,7 +5920,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CustomDebugUI_RemoveFromCanvas_m5AE6422C
 		L_2 = Type_GetTypeFromHandle_m2570A2A5B32A5E9D9F0F38B37459DA18736C823E(L_1, NULL);
 		NullCheck(L_2);
 		FieldInfo_t* L_3;
-		L_3 = VirtualFuncInvoker2< FieldInfo_t*, String_t*, int32_t >::Invoke(83 /* System.Reflection.FieldInfo System.Type::GetField(System.String,System.Reflection.BindingFlags) */, L_2, _stringLiteral97B32B0F8F3C747D08C033F87B49A035D544D89F, ((int32_t)36));
+		L_3 = VirtualFuncInvoker2< FieldInfo_t*, String_t*, int32_t >::Invoke(87 /* System.Reflection.FieldInfo System.Type::GetField(System.String,System.Reflection.BindingFlags) */, L_2, _stringLiteral97B32B0F8F3C747D08C033F87B49A035D544D89F, ((int32_t)36));
 		V_1 = L_3;
 		// var relayout = typeof(DebugUIBuilder).GetMethod("Relayout", privateFlags);
 		RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B L_4 = { reinterpret_cast<intptr_t> (DebugUIBuilder_tC18B19AE08445BA1378C7DABB0E4858217E02E71_0_0_0_var) };
@@ -5935,7 +5935,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CustomDebugUI_RemoveFromCanvas_m5AE6422C
 		DebugUIBuilder_tC18B19AE08445BA1378C7DABB0E4858217E02E71* L_8 = V_0;
 		NullCheck(L_7);
 		RuntimeObject* L_9;
-		L_9 = VirtualFuncInvoker1< RuntimeObject*, RuntimeObject* >::Invoke(21 /* System.Object System.Reflection.FieldInfo::GetValue(System.Object) */, L_7, L_8);
+		L_9 = VirtualFuncInvoker1< RuntimeObject*, RuntimeObject* >::Invoke(25 /* System.Object System.Reflection.FieldInfo::GetValue(System.Object) */, L_7, L_8);
 		V_3 = ((List_1U5BU5D_t826337C0A88A91A3DE75521974962C2C682A3865*)Castclass((RuntimeObject*)L_9, List_1U5BU5D_t826337C0A88A91A3DE75521974962C2C682A3865_il2cpp_TypeInfo_var));
 		// if(targetCanvas > -1 && targetCanvas < elements.Length-1)
 		int32_t L_10 = ___targetCanvas1;

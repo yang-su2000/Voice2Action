@@ -31273,7 +31273,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR SceneInfo_t4A31E10C6A4D3097DE5EEE9F197F0D5793
 			StreamReader_t81027449065C1B0C339DB46241D8001A6F61130B* L_2 = V_1;
 			NullCheck(L_2);
 			String_t* L_3;
-			L_3 = VirtualFuncInvoker0< String_t* >::Invoke(12 /* System.String System.IO.TextReader::ReadLine() */, L_2);
+			L_3 = VirtualFuncInvoker0< String_t* >::Invoke(14 /* System.String System.IO.TextReader::ReadLine() */, L_2);
 			il2cpp_codegen_runtime_class_init_inline(Convert_t7097FF336D592F7C06D88A98349A44646F91EFFC_il2cpp_TypeInfo_var);
 			int64_t L_4;
 			L_4 = Convert_ToInt64_m3B175EE996295999BF9495C4DB2CCD81680F1F49(L_3, NULL);
@@ -31293,7 +31293,7 @@ IL_0030_1:
 			StreamReader_t81027449065C1B0C339DB46241D8001A6F61130B* L_7 = V_1;
 			NullCheck(L_7);
 			String_t* L_8;
-			L_8 = VirtualFuncInvoker0< String_t* >::Invoke(12 /* System.String System.IO.TextReader::ReadLine() */, L_7);
+			L_8 = VirtualFuncInvoker0< String_t* >::Invoke(14 /* System.String System.IO.TextReader::ReadLine() */, L_7);
 			NullCheck(L_6);
 			List_1_Add_mF10DB1D3CBB0B14215F0E4F8AB4934A1955E5351_inline(L_6, L_8, List_1_Add_mF10DB1D3CBB0B14215F0E4F8AB4934A1955E5351_RuntimeMethod_var);
 		}

@@ -16117,7 +16117,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* VisualElement_ToString_m7AAFC4A2F81
 		L_2 = Object_GetType_mE10A8FC1E57F3DF29972CCBC026C2DC3942263B3(__this, NULL);
 		NullCheck(L_2);
 		String_t* L_3;
-		L_3 = VirtualFuncInvoker0< String_t* >::Invoke(7 /* System.String System.Reflection.MemberInfo::get_Name() */, L_2);
+		L_3 = VirtualFuncInvoker0< String_t* >::Invoke(8 /* System.String System.Reflection.MemberInfo::get_Name() */, L_2);
 		NullCheck(L_1);
 		ArrayElementTypeCheck (L_1, L_3);
 		(L_1)->SetAt(static_cast<il2cpp_array_size_t>(0), (String_t*)L_3);
@@ -27030,7 +27030,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* TypeData_get_fullTypeName_m213B31C3
 		L_3 = TypeData_get_type_m19385722AD487765EADAE8F2DCAF294D8251D1DB_inline(__this, NULL);
 		NullCheck(L_3);
 		String_t* L_4;
-		L_4 = VirtualFuncInvoker0< String_t* >::Invoke(25 /* System.String System.Type::get_FullName() */, L_3);
+		L_4 = VirtualFuncInvoker0< String_t* >::Invoke(26 /* System.String System.Type::get_FullName() */, L_3);
 		__this->___m_FullTypeName_1 = L_4;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_FullTypeName_1), (void*)L_4);
 	}
@@ -27073,13 +27073,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* TypeData_get_typeName_m558CC2350257
 		L_3 = TypeData_get_type_m19385722AD487765EADAE8F2DCAF294D8251D1DB_inline(__this, NULL);
 		NullCheck(L_3);
 		bool L_4;
-		L_4 = VirtualFuncInvoker0< bool >::Invoke(39 /* System.Boolean System.Type::get_IsGenericType() */, L_3);
+		L_4 = VirtualFuncInvoker0< bool >::Invoke(40 /* System.Boolean System.Type::get_IsGenericType() */, L_3);
 		V_1 = L_4;
 		Type_t* L_5;
 		L_5 = TypeData_get_type_m19385722AD487765EADAE8F2DCAF294D8251D1DB_inline(__this, NULL);
 		NullCheck(L_5);
 		String_t* L_6;
-		L_6 = VirtualFuncInvoker0< String_t* >::Invoke(7 /* System.String System.Reflection.MemberInfo::get_Name() */, L_5);
+		L_6 = VirtualFuncInvoker0< String_t* >::Invoke(8 /* System.String System.Reflection.MemberInfo::get_Name() */, L_5);
 		__this->___m_TypeName_2 = L_6;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_TypeName_2), (void*)L_6);
 		bool L_7 = V_1;

@@ -5266,7 +5266,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* TTSService_GetSha256Hash_mF63CF282E
 		String_t* L_2 = ___input1;
 		NullCheck(L_1);
 		ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_3;
-		L_3 = VirtualFuncInvoker1< ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, String_t* >::Invoke(16 /* System.Byte[] System.Text.Encoding::GetBytes(System.String) */, L_1, L_2);
+		L_3 = VirtualFuncInvoker1< ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, String_t* >::Invoke(19 /* System.Byte[] System.Text.Encoding::GetBytes(System.String) */, L_1, L_2);
 		NullCheck(L_0);
 		ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_4;
 		L_4 = HashAlgorithm_ComputeHash_mC9CD24714D75A8D61F12509BF952A26347FF22FB(L_0, L_3, NULL);
@@ -13469,7 +13469,7 @@ IL_0133:
 		String_t* L_51 = V_3;
 		NullCheck(L_50);
 		ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_52;
-		L_52 = VirtualFuncInvoker1< ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, String_t* >::Invoke(16 /* System.Byte[] System.Text.Encoding::GetBytes(System.String) */, L_50, L_51);
+		L_52 = VirtualFuncInvoker1< ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, String_t* >::Invoke(19 /* System.Byte[] System.Text.Encoding::GetBytes(System.String) */, L_50, L_51);
 		V_4 = L_52;
 		// UnityWebRequest request = new UnityWebRequest(ttsUri, UnityWebRequest.kHttpVerbPOST);
 		Uri_t1500A52B5F71A04F5D05C0852D0F2A0941842A0E* L_53 = V_2;
@@ -18138,7 +18138,7 @@ IL_0027:
 		FieldInfo_t* L_10 = V_4;
 		NullCheck(L_10);
 		String_t* L_11;
-		L_11 = VirtualFuncInvoker0< String_t* >::Invoke(7 /* System.String System.Reflection.MemberInfo::get_Name() */, L_10);
+		L_11 = VirtualFuncInvoker0< String_t* >::Invoke(8 /* System.String System.Reflection.MemberInfo::get_Name() */, L_10);
 		bool L_12;
 		L_12 = String_Equals_m80124ECC809968E69F952E2A49EBC03F81A23E43(L_11, _stringLiteralB453B10781B936A70E8C08FCADC575965E7C5B21, 1, NULL);
 		V_5 = (bool)((((int32_t)L_12) == ((int32_t)0))? 1 : 0);
@@ -18154,7 +18154,7 @@ IL_0027:
 		TTSVoiceSettings_tDDB57D2B757AFE51188759CB14536163C2AF3104* L_15 = ___voiceSettings0;
 		NullCheck(L_14);
 		RuntimeObject* L_16;
-		L_16 = VirtualFuncInvoker1< RuntimeObject*, RuntimeObject* >::Invoke(21 /* System.Object System.Reflection.FieldInfo::GetValue(System.Object) */, L_14, L_15);
+		L_16 = VirtualFuncInvoker1< RuntimeObject*, RuntimeObject* >::Invoke(25 /* System.Object System.Reflection.FieldInfo::GetValue(System.Object) */, L_14, L_15);
 		V_6 = L_16;
 		// RangeAttribute range = field.GetCustomAttribute<RangeAttribute>();
 		FieldInfo_t* L_17 = V_4;
@@ -18172,7 +18172,7 @@ IL_0027:
 		FieldInfo_t* L_20 = V_4;
 		NullCheck(L_20);
 		Type_t* L_21;
-		L_21 = VirtualFuncInvoker0< Type_t* >::Invoke(16 /* System.Type System.Reflection.FieldInfo::get_FieldType() */, L_20);
+		L_21 = VirtualFuncInvoker0< Type_t* >::Invoke(17 /* System.Type System.Reflection.FieldInfo::get_FieldType() */, L_20);
 		RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B L_22 = { reinterpret_cast<intptr_t> (Int32_t680FF22E76F6EFAD4375103CBBFFA0421349384C_0_0_0_var) };
 		il2cpp_codegen_runtime_class_init_inline(Type_t_il2cpp_TypeInfo_var);
 		Type_t* L_23;
@@ -18241,7 +18241,7 @@ IL_00c0:
 		FieldInfo_t* L_40 = V_4;
 		NullCheck(L_40);
 		String_t* L_41;
-		L_41 = VirtualFuncInvoker0< String_t* >::Invoke(7 /* System.String System.Reflection.MemberInfo::get_Name() */, L_40);
+		L_41 = VirtualFuncInvoker0< String_t* >::Invoke(8 /* System.String System.Reflection.MemberInfo::get_Name() */, L_40);
 		RuntimeObject* L_42 = V_6;
 		NullCheck(L_42);
 		String_t* L_43;

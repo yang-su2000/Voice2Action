@@ -14750,7 +14750,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void OVRNetworkTcpServer_DoAcceptTcpClientCal
 		RuntimeObject* L_0 = ___ar0;
 		NullCheck(L_0);
 		RuntimeObject* L_1;
-		L_1 = InterfaceFuncInvoker0< RuntimeObject* >::Invoke(1 /* System.Object System.IAsyncResult::get_AsyncState() */, IAsyncResult_t7B9B5A0ECB35DCEC31B8A8122C37D687369253B5_il2cpp_TypeInfo_var, L_0);
+		L_1 = InterfaceFuncInvoker0< RuntimeObject* >::Invoke(2 /* System.Object System.IAsyncResult::get_AsyncState() */, IAsyncResult_t7B9B5A0ECB35DCEC31B8A8122C37D687369253B5_il2cpp_TypeInfo_var, L_0);
 		V_0 = ((TcpListener_t306B041DAC7763F1A05DAA9FA9F4BAADEF94EF82*)IsInstClass((RuntimeObject*)L_1, TcpListener_t306B041DAC7763F1A05DAA9FA9F4BAADEF94EF82_il2cpp_TypeInfo_var));
 	}
 	try
@@ -15251,7 +15251,7 @@ IL_00a2_2:
 						L_34 = TcpClient_GetStream_mDD54336B17D1267BD593E0A1EB9EDF3E9506AEBA(L_33, NULL);
 						NullCheck(L_29);
 						RuntimeObject* L_35;
-						L_35 = VirtualFuncInvoker5< RuntimeObject*, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, int32_t, int32_t, AsyncCallback_t7FEF460CBDCFB9C5FA2EF776984778B9A4145F4C*, RuntimeObject* >::Invoke(25 /* System.IAsyncResult System.IO.Stream::BeginWrite(System.Byte[],System.Int32,System.Int32,System.AsyncCallback,System.Object) */, L_29, L_30, 0, ((int32_t)(((RuntimeArray*)L_31)->max_length)), L_32, L_34);
+						L_35 = VirtualFuncInvoker5< RuntimeObject*, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, int32_t, int32_t, AsyncCallback_t7FEF460CBDCFB9C5FA2EF776984778B9A4145F4C*, RuntimeObject* >::Invoke(28 /* System.IAsyncResult System.IO.Stream::BeginWrite(System.Byte[],System.Int32,System.Int32,System.AsyncCallback,System.Object) */, L_29, L_30, 0, ((int32_t)(((RuntimeArray*)L_31)->max_length)), L_32, L_34);
 						goto IL_0119_2;
 					}// end try (depth: 3)
 					catch(Il2CppExceptionWrapper& e)
@@ -15286,7 +15286,7 @@ CATCH_00e3_2:
 						NetworkStream_tF39C3684B6D572BF47F518AD1DB1F4B12CEE4AE0* L_41;
 						L_41 = TcpClient_GetStream_mDD54336B17D1267BD593E0A1EB9EDF3E9506AEBA(L_40, NULL);
 						NullCheck(L_41);
-						VirtualActionInvoker0::Invoke(18 /* System.Void System.IO.Stream::Close() */, L_41);
+						VirtualActionInvoker0::Invoke(20 /* System.Void System.IO.Stream::Close() */, L_41);
 						// client.Close();
 						TcpClient_t753B702EE06B59897564F75CEBFB6C8AFF10BD58* L_42 = V_7;
 						NullCheck(L_42);
@@ -15356,13 +15356,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void OVRNetworkTcpServer_DoWriteDataCallback_
 		RuntimeObject* L_0 = ___ar0;
 		NullCheck(L_0);
 		RuntimeObject* L_1;
-		L_1 = InterfaceFuncInvoker0< RuntimeObject* >::Invoke(1 /* System.Object System.IAsyncResult::get_AsyncState() */, IAsyncResult_t7B9B5A0ECB35DCEC31B8A8122C37D687369253B5_il2cpp_TypeInfo_var, L_0);
+		L_1 = InterfaceFuncInvoker0< RuntimeObject* >::Invoke(2 /* System.Object System.IAsyncResult::get_AsyncState() */, IAsyncResult_t7B9B5A0ECB35DCEC31B8A8122C37D687369253B5_il2cpp_TypeInfo_var, L_0);
 		V_0 = ((NetworkStream_tF39C3684B6D572BF47F518AD1DB1F4B12CEE4AE0*)IsInstClass((RuntimeObject*)L_1, NetworkStream_tF39C3684B6D572BF47F518AD1DB1F4B12CEE4AE0_il2cpp_TypeInfo_var));
 		// stream.EndWrite(ar);
 		NetworkStream_tF39C3684B6D572BF47F518AD1DB1F4B12CEE4AE0* L_2 = V_0;
 		RuntimeObject* L_3 = ___ar0;
 		NullCheck(L_2);
-		VirtualActionInvoker1< RuntimeObject* >::Invoke(26 /* System.Void System.IO.Stream::EndWrite(System.IAsyncResult) */, L_2, L_3);
+		VirtualActionInvoker1< RuntimeObject* >::Invoke(29 /* System.Void System.IO.Stream::EndWrite(System.IAsyncResult) */, L_2, L_3);
 		// }
 		return;
 	}
@@ -15596,7 +15596,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void OVRNetworkTcpClient_ConnectCallback_mE2C
 		RuntimeObject* L_0 = ___ar0;
 		NullCheck(L_0);
 		RuntimeObject* L_1;
-		L_1 = InterfaceFuncInvoker0< RuntimeObject* >::Invoke(1 /* System.Object System.IAsyncResult::get_AsyncState() */, IAsyncResult_t7B9B5A0ECB35DCEC31B8A8122C37D687369253B5_il2cpp_TypeInfo_var, L_0);
+		L_1 = InterfaceFuncInvoker0< RuntimeObject* >::Invoke(2 /* System.Object System.IAsyncResult::get_AsyncState() */, IAsyncResult_t7B9B5A0ECB35DCEC31B8A8122C37D687369253B5_il2cpp_TypeInfo_var, L_0);
 		V_0 = ((TcpClient_t753B702EE06B59897564F75CEBFB6C8AFF10BD58*)IsInstClass((RuntimeObject*)L_1, TcpClient_t753B702EE06B59897564F75CEBFB6C8AFF10BD58_il2cpp_TypeInfo_var));
 		// client.EndConnect(ar);
 		TcpClient_t753B702EE06B59897564F75CEBFB6C8AFF10BD58* L_2 = V_0;
@@ -15731,7 +15731,7 @@ IL_0032:
 		NetworkStream_tF39C3684B6D572BF47F518AD1DB1F4B12CEE4AE0* L_6;
 		L_6 = TcpClient_GetStream_mDD54336B17D1267BD593E0A1EB9EDF3E9506AEBA(L_5, NULL);
 		NullCheck(L_6);
-		VirtualActionInvoker0::Invoke(18 /* System.Void System.IO.Stream::Close() */, L_6);
+		VirtualActionInvoker0::Invoke(20 /* System.Void System.IO.Stream::Close() */, L_6);
 		// tcpClient.Close();
 		TcpClient_t753B702EE06B59897564F75CEBFB6C8AFF10BD58* L_7 = __this->___tcpClient_2;
 		NullCheck(L_7);
@@ -15883,7 +15883,7 @@ IL_0024:
 		L_9 = TcpClient_GetStream_mDD54336B17D1267BD593E0A1EB9EDF3E9506AEBA(L_8, NULL);
 		NullCheck(L_9);
 		bool L_10;
-		L_10 = VirtualFuncInvoker0< bool >::Invoke(36 /* System.Boolean System.Net.Sockets.NetworkStream::get_DataAvailable() */, L_9);
+		L_10 = VirtualFuncInvoker0< bool >::Invoke(40 /* System.Boolean System.Net.Sockets.NetworkStream::get_DataAvailable() */, L_9);
 		V_2 = L_10;
 		bool L_11 = V_2;
 		if (!L_11)
@@ -15942,7 +15942,7 @@ IL_007f:
 		L_27 = TcpClient_GetStream_mDD54336B17D1267BD593E0A1EB9EDF3E9506AEBA(L_26, NULL);
 		NullCheck(L_18);
 		RuntimeObject* L_28;
-		L_28 = VirtualFuncInvoker5< RuntimeObject*, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, int32_t, int32_t, AsyncCallback_t7FEF460CBDCFB9C5FA2EF776984778B9A4145F4C*, RuntimeObject* >::Invoke(21 /* System.IAsyncResult System.IO.Stream::BeginRead(System.Byte[],System.Int32,System.Int32,System.AsyncCallback,System.Object) */, L_18, L_22, L_23, L_24, L_25, L_27);
+		L_28 = VirtualFuncInvoker5< RuntimeObject*, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, int32_t, int32_t, AsyncCallback_t7FEF460CBDCFB9C5FA2EF776984778B9A4145F4C*, RuntimeObject* >::Invoke(24 /* System.IAsyncResult System.IO.Stream::BeginRead(System.Byte[],System.Int32,System.Int32,System.AsyncCallback,System.Object) */, L_18, L_22, L_23, L_24, L_25, L_27);
 	}
 
 IL_00d5:
@@ -15990,7 +15990,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void OVRNetworkTcpClient_OnReadDataCallback_m
 		RuntimeObject* L_0 = ___ar0;
 		NullCheck(L_0);
 		RuntimeObject* L_1;
-		L_1 = InterfaceFuncInvoker0< RuntimeObject* >::Invoke(1 /* System.Object System.IAsyncResult::get_AsyncState() */, IAsyncResult_t7B9B5A0ECB35DCEC31B8A8122C37D687369253B5_il2cpp_TypeInfo_var, L_0);
+		L_1 = InterfaceFuncInvoker0< RuntimeObject* >::Invoke(2 /* System.Object System.IAsyncResult::get_AsyncState() */, IAsyncResult_t7B9B5A0ECB35DCEC31B8A8122C37D687369253B5_il2cpp_TypeInfo_var, L_0);
 		V_0 = ((NetworkStream_tF39C3684B6D572BF47F518AD1DB1F4B12CEE4AE0*)IsInstClass((RuntimeObject*)L_1, NetworkStream_tF39C3684B6D572BF47F518AD1DB1F4B12CEE4AE0_il2cpp_TypeInfo_var));
 	}
 	try
@@ -16001,7 +16001,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void OVRNetworkTcpClient_OnReadDataCallback_m
 			RuntimeObject* L_3 = ___ar0;
 			NullCheck(L_2);
 			int32_t L_4;
-			L_4 = VirtualFuncInvoker1< int32_t, RuntimeObject* >::Invoke(22 /* System.Int32 System.IO.Stream::EndRead(System.IAsyncResult) */, L_2, L_3);
+			L_4 = VirtualFuncInvoker1< int32_t, RuntimeObject* >::Invoke(25 /* System.Int32 System.IO.Stream::EndRead(System.IAsyncResult) */, L_2, L_3);
 			V_1 = L_4;
 			// receivedBufferDataSize += numBytes;
 			int32_t L_5 = __this->___receivedBufferDataSize_5;

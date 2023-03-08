@@ -15611,7 +15611,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void OpenCloseStateBuilder__ctor_mAB0F90185AD
 		int32_t L_3 = __this->____fingerFeature_1;
 		NullCheck(L_2);
 		FeatureDescription_t8FF400243BDD3D1212B4BE0678426ADD02EBCE02* L_4;
-		L_4 = InterfaceFuncInvoker1< FeatureDescription_t8FF400243BDD3D1212B4BE0678426ADD02EBCE02*, int32_t >::Invoke(1 /* TValue System.Collections.Generic.IReadOnlyDictionary`2<Oculus.Interaction.PoseDetection.FingerFeature,Oculus.Interaction.PoseDetection.FeatureDescription>::get_Item(TKey) */, IReadOnlyDictionary_2_tDBEDDB3C706A71057C78ED712625FF0C07F43EB4_il2cpp_TypeInfo_var, L_2, L_3);
+		L_4 = InterfaceFuncInvoker1< FeatureDescription_t8FF400243BDD3D1212B4BE0678426ADD02EBCE02*, int32_t >::Invoke(2 /* TValue System.Collections.Generic.IReadOnlyDictionary`2<Oculus.Interaction.PoseDetection.FingerFeature,Oculus.Interaction.PoseDetection.FeatureDescription>::get_Item(TKey) */, IReadOnlyDictionary_2_tDBEDDB3C706A71057C78ED712625FF0C07F43EB4_il2cpp_TypeInfo_var, L_2, L_3);
 		NullCheck(L_4);
 		FeatureStateDescriptionU5BU5D_t9E59F8181F6573B081F443C115351608B525183C* L_5;
 		L_5 = FeatureDescription_get_FeatureStates_mDC30D3E98102B4CCAA82C439EBF5C667DC39DED8_inline(L_4, NULL);
@@ -16429,7 +16429,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrueFalseStateBuilder__ctor_m4E8D404212F
 		int32_t L_3 = __this->____transformFeature_1;
 		NullCheck(L_2);
 		FeatureDescription_t8FF400243BDD3D1212B4BE0678426ADD02EBCE02* L_4;
-		L_4 = InterfaceFuncInvoker1< FeatureDescription_t8FF400243BDD3D1212B4BE0678426ADD02EBCE02*, int32_t >::Invoke(1 /* TValue System.Collections.Generic.IReadOnlyDictionary`2<Oculus.Interaction.PoseDetection.TransformFeature,Oculus.Interaction.PoseDetection.FeatureDescription>::get_Item(TKey) */, IReadOnlyDictionary_2_t7AEA088251267779522229886D06EDBDAB08DCF9_il2cpp_TypeInfo_var, L_2, L_3);
+		L_4 = InterfaceFuncInvoker1< FeatureDescription_t8FF400243BDD3D1212B4BE0678426ADD02EBCE02*, int32_t >::Invoke(2 /* TValue System.Collections.Generic.IReadOnlyDictionary`2<Oculus.Interaction.PoseDetection.TransformFeature,Oculus.Interaction.PoseDetection.FeatureDescription>::get_Item(TKey) */, IReadOnlyDictionary_2_t7AEA088251267779522229886D06EDBDAB08DCF9_il2cpp_TypeInfo_var, L_2, L_3);
 		NullCheck(L_4);
 		FeatureStateDescriptionU5BU5D_t9E59F8181F6573B081F443C115351608B525183C* L_5;
 		L_5 = FeatureDescription_get_FeatureStates_mDC30D3E98102B4CCAA82C439EBF5C667DC39DED8_inline(L_4, NULL);
@@ -26266,7 +26266,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR FingerFeatureConfigList_t0EE1BB85B55BD7045F88
 		int32_t L_2 = ___finger0;
 		NullCheck(L_1);
 		bool L_3;
-		L_3 = InterfaceFuncInvoker2< bool, int32_t, FingerFeatureConfigU5BU5D_tCAACD85F21F10B140260488530E5C5A00A60BA8F** >::Invoke(6 /* System.Boolean System.Collections.Generic.IDictionary`2<Oculus.Interaction.Input.HandFinger,Oculus.Interaction.PoseDetection.ShapeRecognizer/FingerFeatureConfig[]>::TryGetValue(TKey,TValue&) */, IDictionary_2_t804AE5CC8741CB78B8079CFD7C716CFFF6D6393D_il2cpp_TypeInfo_var, L_1, L_2, (&V_0));
+		L_3 = InterfaceFuncInvoker2< bool, int32_t, FingerFeatureConfigU5BU5D_tCAACD85F21F10B140260488530E5C5A00A60BA8F** >::Invoke(7 /* System.Boolean System.Collections.Generic.IDictionary`2<Oculus.Interaction.Input.HandFinger,Oculus.Interaction.PoseDetection.ShapeRecognizer/FingerFeatureConfig[]>::TryGetValue(TKey,TValue&) */, IDictionary_2_t804AE5CC8741CB78B8079CFD7C716CFFF6D6393D_il2cpp_TypeInfo_var, L_1, L_2, (&V_0));
 		V_1 = (bool)((((int32_t)L_3) == ((int32_t)0))? 1 : 0);
 		bool L_4 = V_1;
 		if (!L_4)

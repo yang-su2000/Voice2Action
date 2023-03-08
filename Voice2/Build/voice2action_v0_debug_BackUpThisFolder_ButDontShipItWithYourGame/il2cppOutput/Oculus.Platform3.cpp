@@ -2145,7 +2145,7 @@ IL_0040_2:
 						int32_t L_13;
 						L_13 = chatPacket_get_packetID_m9287C52E89E08D523A5F784439133015BDAA2ADB_inline(__this, NULL);
 						NullCheck(L_12);
-						VirtualActionInvoker1< int32_t >::Invoke(16 /* System.Void System.IO.BinaryWriter::Write(System.Int32) */, L_12, L_13);
+						VirtualActionInvoker1< int32_t >::Invoke(20 /* System.Void System.IO.BinaryWriter::Write(System.Int32) */, L_12, L_13);
 						// writer.Write(textString.ToCharArray());
 						BinaryWriter_tFB94D67EDFA3F6A34744A163BDABE287FDF2ED1E* L_14 = V_1;
 						String_t* L_15;
@@ -2154,11 +2154,11 @@ IL_0040_2:
 						CharU5BU5D_t799905CF001DD5F13F7DBB310181FC4D8B7D0AAB* L_16;
 						L_16 = String_ToCharArray_m0699A92AA3E744229EF29CB9D943C47DF4FE5B46(L_15, NULL);
 						NullCheck(L_14);
-						VirtualActionInvoker1< CharU5BU5D_t799905CF001DD5F13F7DBB310181FC4D8B7D0AAB* >::Invoke(12 /* System.Void System.IO.BinaryWriter::Write(System.Char[]) */, L_14, L_16);
+						VirtualActionInvoker1< CharU5BU5D_t799905CF001DD5F13F7DBB310181FC4D8B7D0AAB* >::Invoke(16 /* System.Void System.IO.BinaryWriter::Write(System.Char[]) */, L_14, L_16);
 						// writer.Write('\0');
 						BinaryWriter_tFB94D67EDFA3F6A34744A163BDABE287FDF2ED1E* L_17 = V_1;
 						NullCheck(L_17);
-						VirtualActionInvoker1< Il2CppChar >::Invoke(11 /* System.Void System.IO.BinaryWriter::Write(System.Char) */, L_17, 0);
+						VirtualActionInvoker1< Il2CppChar >::Invoke(15 /* System.Void System.IO.BinaryWriter::Write(System.Char) */, L_17, 0);
 						goto IL_0075_1;
 					}
 				}// end try (depth: 2)
@@ -2174,7 +2174,7 @@ IL_0075_1:
 				MemoryStream_tAAED1B42172E3390584E4194308AB878E786AAC2* L_18 = V_0;
 				NullCheck(L_18);
 				ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_19;
-				L_19 = VirtualFuncInvoker0< ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* >::Invoke(39 /* System.Byte[] System.IO.MemoryStream::ToArray() */, L_18);
+				L_19 = VirtualFuncInvoker0< ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* >::Invoke(43 /* System.Byte[] System.IO.MemoryStream::ToArray() */, L_18);
 				V_3 = L_19;
 				goto IL_0089;
 			}
@@ -2301,7 +2301,7 @@ IL_004d_1:
 					L_15 = VirtualFuncInvoker1< ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, int32_t >::Invoke(25 /* System.Byte[] System.IO.BinaryReader::ReadBytes(System.Int32) */, L_14, ((int32_t)512));
 					NullCheck(L_13);
 					String_t* L_16;
-					L_16 = VirtualFuncInvoker1< String_t*, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* >::Invoke(33 /* System.String System.Text.Encoding::GetString(System.Byte[]) */, L_13, L_15);
+					L_16 = VirtualFuncInvoker1< String_t*, ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* >::Invoke(36 /* System.String System.Text.Encoding::GetString(System.Byte[]) */, L_13, L_15);
 					NullCheck(L_12);
 					chatPacket_set_textString_mEBA4AC9D0705ED5BCD06AF1C85C40224BEE3B257_inline(L_12, L_16, NULL);
 					goto IL_004e_1;

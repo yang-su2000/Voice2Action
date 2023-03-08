@@ -12285,7 +12285,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void OVRSystemPerfMetricsTcpServer_Update_m1D
 		String_t* L_7 = V_2;
 		NullCheck(L_6);
 		ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_8;
-		L_8 = VirtualFuncInvoker1< ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, String_t* >::Invoke(16 /* System.Byte[] System.Text.Encoding::GetBytes(System.String) */, L_6, L_7);
+		L_8 = VirtualFuncInvoker1< ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*, String_t* >::Invoke(19 /* System.Byte[] System.Text.Encoding::GetBytes(System.String) */, L_6, L_7);
 		V_3 = L_8;
 		// tcpServer.Broadcast(OVRSystemPerfMetrics.PayloadTypeMetrics, bytes);
 		OVRNetworkTcpServer_t8ED20F58D0A2F70B6A84AA3B06787D540A5964C0* L_9 = __this->___tcpServer_5;

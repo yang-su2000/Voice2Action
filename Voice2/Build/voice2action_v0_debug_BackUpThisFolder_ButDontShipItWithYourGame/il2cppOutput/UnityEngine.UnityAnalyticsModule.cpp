@@ -1213,7 +1213,7 @@ IL2CPP_EXTERN_C IL2CPP_NO_INLINE IL2CPP_METHOD_ATTR int32_t Analytics_RegisterEv
 		L_1 = Assembly_GetCallingAssembly_m3B86EDC6FF27D6C33F54CA1C90F56D7875A53864(NULL);
 		NullCheck(L_1);
 		String_t* L_2;
-		L_2 = VirtualFuncInvoker0< String_t* >::Invoke(8 /* System.String System.Reflection.Assembly::get_FullName() */, L_1);
+		L_2 = VirtualFuncInvoker0< String_t* >::Invoke(9 /* System.String System.Reflection.Assembly::get_FullName() */, L_1);
 		V_0 = L_2;
 		String_t* L_3 = ___eventName0;
 		int32_t L_4 = ___maxEventPerHour1;

@@ -12081,7 +12081,7 @@ IL_007b:
 		Type_t* L_21 = V_0;
 		NullCheck(L_20);
 		bool L_22;
-		L_22 = VirtualFuncInvoker1< bool, Type_t* >::Invoke(21 /* System.Boolean System.Type::IsAssignableFrom(System.Type) */, L_20, L_21);
+		L_22 = VirtualFuncInvoker1< bool, Type_t* >::Invoke(22 /* System.Boolean System.Type::IsAssignableFrom(System.Type) */, L_20, L_21);
 		V_4 = (bool)((((int32_t)L_22) == ((int32_t)0))? 1 : 0);
 		bool L_23 = V_4;
 		if (!L_23)
@@ -12730,7 +12730,7 @@ IL_002a:
 	{
 		NullCheck(G_B2_0);
 		String_t* L_6;
-		L_6 = VirtualFuncInvoker0< String_t* >::Invoke(24 /* System.String System.Type::get_AssemblyQualifiedName() */, G_B2_0);
+		L_6 = VirtualFuncInvoker0< String_t* >::Invoke(25 /* System.String System.Type::get_AssemblyQualifiedName() */, G_B2_0);
 		G_B3_0 = L_6;
 		G_B3_1 = G_B2_1;
 	}
@@ -15846,7 +15846,7 @@ IL_003b:
 		Type_t* L_13 = V_1;
 		NullCheck(L_12);
 		bool L_14;
-		L_14 = VirtualFuncInvoker1< bool, Type_t* >::Invoke(21 /* System.Boolean System.Type::IsAssignableFrom(System.Type) */, L_12, L_13);
+		L_14 = VirtualFuncInvoker1< bool, Type_t* >::Invoke(22 /* System.Boolean System.Type::IsAssignableFrom(System.Type) */, L_12, L_13);
 		V_3 = L_14;
 		goto IL_0045;
 	}
@@ -17638,7 +17638,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR InputControl_t74F06B623518F992BF8E38656A5E085
 		L_10 = InputControlLayout_get_type_mB36B8AAE50EB013820BFB388233F4BCC6AD419B3_inline(L_9, NULL);
 		NullCheck(L_10);
 		String_t* L_11;
-		L_11 = VirtualFuncInvoker0< String_t* >::Invoke(7 /* System.String System.Reflection.MemberInfo::get_Name() */, L_10);
+		L_11 = VirtualFuncInvoker0< String_t* >::Invoke(8 /* System.String System.Reflection.MemberInfo::get_Name() */, L_10);
 		InputControlLayout_t46A40BE4C976BE33E85F61E63EB34323FED9831D* L_12 = ___layout0;
 		NullCheck(L_12);
 		InternedString_t8D62A48CB7D85AAE9CFCCCFB0A77AC2844905735 L_13;

@@ -1,21 +1,47 @@
 using System;
 using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
 using Oculus.Voice;
 using UnityEngine.UI;
+using OpenAI;
+using OpenAI.Chat;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class VoiceIntentController : MonoBehaviour
 {
+    [Header("Controller")] 
+    [SerializeField] 
+    private ActionBasedController leftController;
+
+    [SerializeField] 
+    private ActionBasedController rightController;
+    
     // add AppVoiceExperience reference
-    [Header("Voice")] [SerializeField] private AppVoiceExperience appVoiceExperience;
+    [Header("Voice")] 
+    [SerializeField] 
+    private AppVoiceExperience appVoiceExperience;
     
-    [Header("UI")] [SerializeField] private Text fullTranscriptText;
+    [Header("UI")] 
+    [SerializeField] 
+    private Text fullTranscriptText;
     
-    [SerializeField] private Text partialTranscriptText;
+    [SerializeField] 
+    private Text partialTranscriptText;
     
     private ShapeController[] controllers;
 
     private bool appVoiceActive;
+
+    private OpenAIClient openAIClient;
+
+    private bool hasChat;
+
+    private List<ChatPrompt> chatPrompts;
+
+    private string openAIMessage;
+
+    private string fullMessage;
 
     private void Awake()
     {
@@ -29,7 +55,15 @@ public class VoiceIntentController : MonoBehaviour
         
         appVoiceExperience.events.onPartialTranscription.AddListener((transcription) =>
         {
-            partialTranscriptText.text = transcription;
+            if (leftController.isActiveAndEnabled)
+            {
+                partialTranscriptText.text = "listening";
+            }
+            else
+            {
+                partialTranscriptText.text = "not listening";
+            }
+            // partialTranscriptText.text = transcription;
         });
         
         appVoiceExperience.events.OnRequestCreated.AddListener((request) =>
@@ -43,6 +77,8 @@ public class VoiceIntentController : MonoBehaviour
             appVoiceActive = false;
             Debug.Log("OnRequestCompleted Active");
         });
+
+        openAIClient = new OpenAIClient(OpenAIAuthentication.LoadFromEnv());
     }
 
     private void Update()
@@ -51,6 +87,26 @@ public class VoiceIntentController : MonoBehaviour
         // appVoiceActive
         // activate voice experience
         appVoiceExperience.Activate();
+        if (!hasChat)
+        {
+            hasChat = true;
+            OpenAIChat("this is a test");
+        }
+    }
+
+    private async void OpenAIChat(string prompt)
+    {
+        chatPrompts = new List<ChatPrompt>
+        {
+            new ChatPrompt("system", "You are a helpful assistant."),
+            new ChatPrompt("user", prompt),
+        };
+        fullMessage += "User: " + prompt + "\n";
+        var chatRequest = new ChatRequest(chatPrompts);
+        var result = await openAIClient.ChatEndpoint.GetCompletionAsync(chatRequest);
+        openAIMessage = result.FirstChoice.ToString();
+        fullMessage += "Assistant: " + openAIMessage + "\n";
+        Debug.Log(fullMessage);
     }
 
     public void SetColor(String[] info)
