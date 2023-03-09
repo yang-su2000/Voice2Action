@@ -28,6 +28,12 @@ public class VoiceIntentController : MonoBehaviour
     
     [SerializeField] 
     private Text partialTranscriptText;
+
+    [SerializeField]
+    private Text MessageText;
+
+    [SerializeField]
+    private GUIStyle MessageGUI;
     
     private ShapeController[] controllers;
 
@@ -35,13 +41,17 @@ public class VoiceIntentController : MonoBehaviour
 
     private OpenAIClient openAIClient;
 
-    private bool hasChat;
+    private bool activateChat;
 
     private List<ChatPrompt> chatPrompts;
 
+    private string userMessage;
+
     private string openAIMessage;
 
-    private string fullMessage;
+    private string formattedMessage;
+
+    private List<string> historyMessages;
 
     private void Awake()
     {
@@ -50,35 +60,41 @@ public class VoiceIntentController : MonoBehaviour
         // bind transcriptions and activate state
         appVoiceExperience.events.onFullTranscription.AddListener((transcription) =>
         {
+            userMessage = transcription;
             fullTranscriptText.text = transcription;
         });
         
         appVoiceExperience.events.onPartialTranscription.AddListener((transcription) =>
         {
-            if (leftController.isActiveAndEnabled)
-            {
-                partialTranscriptText.text = "listening";
-            }
-            else
-            {
-                partialTranscriptText.text = "not listening";
-            }
-            // partialTranscriptText.text = transcription;
+            partialTranscriptText.text = transcription;
         });
         
         appVoiceExperience.events.OnRequestCreated.AddListener((request) =>
         {
-            appVoiceActive = true;
-            Debug.Log("OnRequestCreated Active");
+            appVoiceActive = true; // do this before everything
+            Debug.Log("OnRequest Created");
         });
         
         appVoiceExperience.events.OnRequestCompleted.AddListener(() =>
         {
-            appVoiceActive = false;
-            Debug.Log("OnRequestCompleted Active");
+            Debug.Log("OnRequest Completed");
+            OpenAIChat(userMessage);
+            appVoiceActive = false; // do this after everything
         });
 
         openAIClient = new OpenAIClient(OpenAIAuthentication.LoadFromEnv());
+
+        chatPrompts = new List<ChatPrompt>
+        {
+            new ChatPrompt("system", "Your are a helpful, creative, clever, and very friendly assistant"),
+        };
+
+        historyMessages = new List<string>();
+        MessageGUI = new GUIStyle
+        {
+            richText = true
+        };
+        formattedMessage = "This is the beginning of the conversation.";
     }
 
     private void Update()
@@ -87,26 +103,44 @@ public class VoiceIntentController : MonoBehaviour
         // appVoiceActive
         // activate voice experience
         appVoiceExperience.Activate();
-        if (!hasChat)
+    }
+
+    private void OnGUI()
+    {
+        GUILayout.Label(formattedMessage, MessageGUI);
+    }
+
+    private string PrintHistory(List<String> formattedMessages, int tail = 6)
+    {
+        string ret = "";
+        for (int i = Math.Max(0, formattedMessages.Count - tail); i < formattedMessages.Count; i++)
         {
-            hasChat = true;
-            OpenAIChat("this is a test");
+            ret += formattedMessages[i];
         }
+        return ret;
     }
 
     private async void OpenAIChat(string prompt)
     {
-        chatPrompts = new List<ChatPrompt>
+        try
         {
-            new ChatPrompt("system", "You are a helpful assistant."),
-            new ChatPrompt("user", prompt),
-        };
-        fullMessage += "User: " + prompt + "\n";
-        var chatRequest = new ChatRequest(chatPrompts);
-        var result = await openAIClient.ChatEndpoint.GetCompletionAsync(chatRequest);
-        openAIMessage = result.FirstChoice.ToString();
-        fullMessage += "Assistant: " + openAIMessage + "\n";
-        Debug.Log(fullMessage);
+            chatPrompts.Add(new ChatPrompt("user", prompt));
+            historyMessages.Add("<color=blue>User: " + prompt + "</color>\n");
+            var chatRequest = new ChatRequest(chatPrompts);
+            var result = await openAIClient.ChatEndpoint.GetCompletionAsync(chatRequest);
+            openAIMessage = result.FirstChoice.ToString();
+            historyMessages.Add("<color=green>AI:" + openAIMessage + "</color>\n");
+            chatPrompts.Add(new ChatPrompt("assistant", openAIMessage));
+        }
+        catch (Exception e)
+        {
+            Debug.Log("exception in OpenAI:" + e);
+            historyMessages.Add("<color=yellow>User: " + prompt + "</color>\n");
+            historyMessages.Add("<color=red>System: Sorry, can you say that one more time to the assistant?</color>\n");
+        }
+        formattedMessage = PrintHistory(historyMessages);
+        MessageText.text = formattedMessage;
+        Debug.Log(formattedMessage);
     }
 
     public void SetColor(String[] info)
@@ -177,9 +211,9 @@ public class VoiceIntentController : MonoBehaviour
 
     private static void DisplayValues(string prefix, string[] info)
     {
-        foreach (var i in info)
-        {
-            Debug.Log($"{prefix} {i}");
-        }
+        // foreach (var i in info)
+        // {
+        //     Debug.Log($"{prefix} {i}");
+        // }
     }
 }

@@ -1,2 +1,2 @@
-OpenAI Key: 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
+OpenAI Key: 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
 Organization ID: org-NfSvZ1VlMpsbyLmftDM29fDd

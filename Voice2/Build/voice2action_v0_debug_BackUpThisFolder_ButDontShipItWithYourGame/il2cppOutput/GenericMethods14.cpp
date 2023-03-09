@@ -1460,7 +1460,6 @@ IL2CPP_EXTERN_C const RuntimeMethod* Enumerable_Any_TisInt32_t680FF22E76F6EFAD43
 IL2CPP_EXTERN_C const RuntimeMethod* Enumerable_Any_TisRuntimeObject_m7A8464D749B64BD550FDDF2C92C8D1844986CA86_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* Enumerable_Any_TisRuntimeObject_mDCE2755EF33EFD51A60E9238A1537E3B41351058_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* Enumerable_Any_TisUInt64_t8F12534CC8FC4B5860F2A2CD1EE79D322E7A41AF_m107A204C12EA0030F70C94008776C48A45B237C0_RuntimeMethod_var;
-IL2CPP_EXTERN_C const RuntimeMethod* Enumerable_Append_TisRuntimeObject_m87C32654471B8904D3D44417AB4A6B5A448ED5E8_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* Enumerable_Cast_TisDictionaryEntry_t171080F37B311C25AA9E75888F9C9D703FA721BB_m8A850CABE66554429820BA00115FAD5A01CBE0AE_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* Enumerable_Cast_TisRuntimeObject_m2A5A4081E63E9C54E004DDD58B93C44866FE1330_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* Enumerable_Contains_TisHIDPageUsage_t13808EE79B93302D9F7E841A0DEEAA6671BA591F_mAA993E338A08FB50CED0D022456832F65B7D0C75_RuntimeMethod_var;
@@ -2150,27 +2149,6 @@ struct U3CU3Ec__DisplayClass7_0_3_t27B449D61933A3E324100F2F8085A923E7EABB65  : p
 	Func_2_tACBF5A1656250800CE861707354491F0611F6624* ___selector2_0;
 	// System.Func`2<TSource,TMiddle> System.Linq.Enumerable/<>c__DisplayClass7_0`3::selector1
 	Func_2_t9D6D0636D7EE282D3C55AA455C0B6CAC61A117F0* ___selector1_1;
-};
-
-// System.Linq.Enumerable/<AppendIterator>d__61`1<System.Object>
-struct U3CAppendIteratorU3Ed__61_1_t161D17A0A454B29B002A302D6CABDFC5A5F9C0A5  : public RuntimeObject
-{
-	// System.Int32 System.Linq.Enumerable/<AppendIterator>d__61`1::<>1__state
-	int32_t ___U3CU3E1__state_0;
-	// TSource System.Linq.Enumerable/<AppendIterator>d__61`1::<>2__current
-	RuntimeObject* ___U3CU3E2__current_1;
-	// System.Int32 System.Linq.Enumerable/<AppendIterator>d__61`1::<>l__initialThreadId
-	int32_t ___U3CU3El__initialThreadId_2;
-	// System.Collections.Generic.IEnumerable`1<TSource> System.Linq.Enumerable/<AppendIterator>d__61`1::source
-	RuntimeObject* ___source_3;
-	// System.Collections.Generic.IEnumerable`1<TSource> System.Linq.Enumerable/<AppendIterator>d__61`1::<>3__source
-	RuntimeObject* ___U3CU3E3__source_4;
-	// TSource System.Linq.Enumerable/<AppendIterator>d__61`1::element
-	RuntimeObject* ___element_5;
-	// TSource System.Linq.Enumerable/<AppendIterator>d__61`1::<>3__element
-	RuntimeObject* ___U3CU3E3__element_6;
-	// System.Collections.Generic.IEnumerator`1<TSource> System.Linq.Enumerable/<AppendIterator>d__61`1::<>7__wrap1
-	RuntimeObject* ___U3CU3E7__wrap1_7;
 };
 
 // System.Linq.Enumerable/<CastIterator>d__99`1<System.Object>
@@ -37146,51 +37124,6 @@ IL_004f:
 	{
 		bool L_15 = V_2;
 		return L_15;
-	}
-}
-// System.Collections.Generic.IEnumerable`1<TSource> System.Linq.Enumerable::Append<System.Object>(System.Collections.Generic.IEnumerable`1<TSource>,TSource)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* Enumerable_Append_TisRuntimeObject_m87C32654471B8904D3D44417AB4A6B5A448ED5E8_gshared (RuntimeObject* ___source0, RuntimeObject* ___element1, const RuntimeMethod* method) 
-{
-	{
-		RuntimeObject* L_0 = ___source0;
-		if (L_0)
-		{
-			goto IL_000e;
-		}
-	}
-	{
-		Exception_t* L_1;
-		L_1 = Error_ArgumentNull_m9157523765DB73FC9F7B984F2F740F2B5EDB7337(((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral66F9618FDA792CAB23AF2D7FFB50AB2D3E393DC5)), NULL);
-		IL2CPP_RAISE_MANAGED_EXCEPTION(L_1, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Enumerable_Append_TisRuntimeObject_m87C32654471B8904D3D44417AB4A6B5A448ED5E8_RuntimeMethod_var)));
-	}
-
-IL_000e:
-	{
-		RuntimeObject* L_2 = ___source0;
-		RuntimeObject* L_3 = ___element1;
-		RuntimeObject* L_4;
-		L_4 = ((  RuntimeObject* (*) (RuntimeObject*, RuntimeObject*, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->rgctx_data, 0)))(L_2, L_3, il2cpp_rgctx_method(method->rgctx_data, 0));
-		return L_4;
-	}
-}
-// System.Collections.Generic.IEnumerable`1<TSource> System.Linq.Enumerable::AppendIterator<System.Object>(System.Collections.Generic.IEnumerable`1<TSource>,TSource)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* Enumerable_AppendIterator_TisRuntimeObject_m78B6698F3CBDDAC001B168ACB402DAC53A42EE4B_gshared (RuntimeObject* ___source0, RuntimeObject* ___element1, const RuntimeMethod* method) 
-{
-	{
-		U3CAppendIteratorU3Ed__61_1_t161D17A0A454B29B002A302D6CABDFC5A5F9C0A5* L_0 = (U3CAppendIteratorU3Ed__61_1_t161D17A0A454B29B002A302D6CABDFC5A5F9C0A5*)il2cpp_codegen_object_new(il2cpp_rgctx_data(method->rgctx_data, 0));
-		NullCheck(L_0);
-		((  void (*) (U3CAppendIteratorU3Ed__61_1_t161D17A0A454B29B002A302D6CABDFC5A5F9C0A5*, int32_t, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->rgctx_data, 1)))(L_0, ((int32_t)-2), il2cpp_rgctx_method(method->rgctx_data, 1));
-		U3CAppendIteratorU3Ed__61_1_t161D17A0A454B29B002A302D6CABDFC5A5F9C0A5* L_1 = L_0;
-		RuntimeObject* L_2 = ___source0;
-		NullCheck(L_1);
-		L_1->___U3CU3E3__source_4 = L_2;
-		Il2CppCodeGenWriteBarrier((void**)(&L_1->___U3CU3E3__source_4), (void*)L_2);
-		U3CAppendIteratorU3Ed__61_1_t161D17A0A454B29B002A302D6CABDFC5A5F9C0A5* L_3 = L_1;
-		RuntimeObject* L_4 = ___element1;
-		NullCheck(L_3);
-		L_3->___U3CU3E3__element_6 = L_4;
-		Il2CppCodeGenWriteBarrier((void**)(&L_3->___U3CU3E3__element_6), (void*)L_4);
-		return (RuntimeObject*)L_3;
 	}
 }
 // System.Collections.Generic.IEnumerable`1<TResult> System.Linq.Enumerable::Cast<System.Collections.DictionaryEntry>(System.Collections.IEnumerable)
