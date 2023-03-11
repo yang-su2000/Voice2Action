@@ -19,7 +19,7 @@ public class InteractableTarget : MonoBehaviour
     
     private Vector3 targetPosition;
     private Vector3 originalPosition;
-    private int lerpFrames = 45;
+    private int lerpFrames = 1000;
     private int currentFrame = 0;
 
     // private bool isExpanded = false;
@@ -71,6 +71,7 @@ public class InteractableTarget : MonoBehaviour
         if ((transform.position - interactable_activated.position).magnitude < 1)
         {
             GameObject voodoo = Instantiate(gameObject);
+            voodoo.transform.position = transform.position;
             SceneManager.add_Expanding_and_Voodoo(gameObject, voodoo);
         }
     }

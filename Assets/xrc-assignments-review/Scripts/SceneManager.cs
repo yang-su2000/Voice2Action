@@ -47,7 +47,6 @@ public class SceneManager : MonoBehaviour
             GameObject original = orig_voodoo_pair.Item1;
             GameObject voodoo = orig_voodoo_pair.Item2;
             Vector3 target_position = m_Camera.transform.position;
-            Debug.Log(target_position);
             target_position += camera_transform.forward * front_dist;
             int x_index = i % 3;
             int y_index = i / 3;
