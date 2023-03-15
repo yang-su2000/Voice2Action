@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8066317080979489657}
   - component: {fileID: 7300066647982415292}
   - component: {fileID: 3764654926810180680}
+  - component: {fileID: 215900071962341637}
   m_Layer: 0
   m_Name: Grab Interactable
   m_TagString: Untagged
@@ -288,6 +289,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 5843497292548984443, guid: c116b7497ab8ca34c9188965d4295e27, type: 3}
   rotateSpeed: 10
+--- !u!114 &215900071962341637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3791188047468704832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 991c69b8a1b6a444a9177914f77cf7d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TintColor: {r: 0.32156357, g: 1, b: 0.2216981, a: 1}
+  m_TintOnHover: 1
+  m_TintOnSelection: 1
+  m_TintRenderers: []
 --- !u!1001 &3604590288434887575
 PrefabInstance:
   m_ObjectHideFlags: 0

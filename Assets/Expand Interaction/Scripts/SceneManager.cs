@@ -9,14 +9,14 @@ using UnityEngine.XR.Interaction.Toolkit.Inputs;
 
 public class SceneManager : MonoBehaviour
 {
-    public static event Action<Transform> Activate;
-    public static event Action Select;
-    public static event Action DeSelect;
-    
-    public static Camera m_Camera;
+    public static event Action<Transform> ActivateInteractable;
+    public static event Action<Vector3> ActivateUI;
+
+    private static Camera m_Camera;
     private static Transform camera_transform;
 
     private static List<(GameObject,GameObject)> m_List_Expand_Object;
+    private static GameObject parentExpandedObjects;
 
 
     public float front_dist = 0.3f;
@@ -28,6 +28,8 @@ public class SceneManager : MonoBehaviour
         m_Camera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
         m_List_Expand_Object = new List<(GameObject,GameObject)>();
         camera_transform = m_Camera.transform;
+        parentExpandedObjects = new GameObject();
+        parentExpandedObjects.name = "Voodoo Objects";
     }
 
     // Update is called once per frame
@@ -52,7 +54,10 @@ public class SceneManager : MonoBehaviour
             int y_index = i / 3;
             target_position = target_position + camera_transform.up * (up_left_dist * (y_index - 1)) +
                               camera_transform.right * ((x_index - 1) * up_left_dist);
+            target_position.z += 0.4f;
             voodoo.GetComponent<InteractableTarget>().lerp_to_target_positon(target_position);
+            voodoo.transform.parent = parentExpandedObjects.transform;
+
         }
         m_List_Expand_Object.Clear();
     }
@@ -63,6 +68,7 @@ public class SceneManager : MonoBehaviour
     }
     public static void notify_activated(Transform transform)
     {
-        Activate?.Invoke(transform);
+        ActivateInteractable?.Invoke(transform);
+        ActivateUI?.Invoke(transform.TransformPoint(parentExpandedObjects.transform.position));
     }
 }

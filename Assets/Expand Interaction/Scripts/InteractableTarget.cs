@@ -12,16 +12,15 @@ public class InteractableTarget : MonoBehaviour
 {
     // Start is called before the first frame update
     private XRGrabInteractable interactable;
-    public GameObject player;
-    public float rotateSpeed = 100000.0f;
-    // private Transform targetTransform = null;
-    
-    
     private Vector3 targetPosition;
     private Vector3 originalPosition;
     private int lerpFrames = 1000;
     private int currentFrame = 0;
 
+    //public float rotateSpeed = 100000.0f;
+    // private Transform targetTransform = null;
+    // public GameObject player;
+    
     // private bool isExpanded = false;
     // private GameObject my_duplicate = null;
     private bool isLerping;
@@ -31,7 +30,7 @@ public class InteractableTarget : MonoBehaviour
         interactable.activated.AddListener(OnActivated);
         // interactable.selectEntered.AddListener(OnInteractorSelect);
         // interactable.selectExited.AddListener(OnInteractorDeSelect);
-        SceneManager.Activate += expand_response;
+        SceneManager.ActivateInteractable += expand_response;
         //
         // m_Camera = Camera.main;
     }
