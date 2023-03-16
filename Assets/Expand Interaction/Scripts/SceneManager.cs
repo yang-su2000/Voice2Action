@@ -17,6 +17,8 @@ public class SceneManager : MonoBehaviour
 
     private static List<(GameObject,GameObject)> m_List_Expand_Object;
     private static GameObject parentExpandedObjects;
+    private static Vector3 centralPosition;
+
 
 
     public float front_dist = 0.3f;
@@ -43,6 +45,7 @@ public class SceneManager : MonoBehaviour
 
     private void update_position()
     {
+        
         for (int i = 0; i < m_List_Expand_Object.Count; i++)
         {
             (GameObject,GameObject) orig_voodoo_pair = m_List_Expand_Object[i];
@@ -52,13 +55,16 @@ public class SceneManager : MonoBehaviour
             target_position += camera_transform.forward * front_dist;
             int x_index = i % 3;
             int y_index = i / 3;
+            Debug.Log("TargetPosition of " + i + " " + target_position);
             target_position = target_position + camera_transform.up * (up_left_dist * (y_index - 1)) +
                               camera_transform.right * ((x_index - 1) * up_left_dist);
-            target_position.z += 0.4f;
+            target_position.z += 0.8f;
+            Debug.Log("TargetPosition of " + i + " " + target_position);
             voodoo.GetComponent<InteractableTarget>().lerp_to_target_positon(target_position);
             voodoo.transform.parent = parentExpandedObjects.transform;
-
         }
+        calculateCentroid(m_List_Expand_Object);
+        ActivateUI?.Invoke(new Vector3(m_Camera.transform.position.x, m_Camera.transform.position.y, m_Camera.transform.position.z +2.3f));
         m_List_Expand_Object.Clear();
     }
     
@@ -69,6 +75,20 @@ public class SceneManager : MonoBehaviour
     public static void notify_activated(Transform transform)
     {
         ActivateInteractable?.Invoke(transform);
-        ActivateUI?.Invoke(transform.TransformPoint(parentExpandedObjects.transform.position));
     }
+    
+    static void calculateCentroid(List<(GameObject,GameObject)> expandedObjects)
+    {
+         Vector3 centroid = new Vector3(0,0,0);
+         for (int i = 0; i < m_List_Expand_Object.Count; i++)
+         { (GameObject,GameObject) orig_voodoo_pair = m_List_Expand_Object[i];
+             GameObject voodoo = orig_voodoo_pair.Item2;
+            centroid += voodoo.transform.position;
+        }
+        centroid /= (  m_List_Expand_Object.Count+1 );
+        
+ 
+        centralPosition = centroid;
+    }
+
 }

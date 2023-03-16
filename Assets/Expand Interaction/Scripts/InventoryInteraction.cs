@@ -19,10 +19,10 @@ public class InventoryInteraction : MonoBehaviour
         
     }
 
-    void SetActiveInactive(Vector3 VoodooParent)
+    void SetActiveInactive(Vector3 inventoryPosition)
     {
         ExpandUI.SetActive(true);
-        transform.position = VoodooParent;
+        transform.position = inventoryPosition;
         Debug.Log(transform.position);
     }
 }
