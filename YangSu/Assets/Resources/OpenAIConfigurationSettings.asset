@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d7ca99533264e939ed60ffc81f03d20, type: 3}
   m_Name: OpenAIConfigurationSettings
   m_EditorClassIdentifier: 
-  apiKey: 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
+  apiKey: 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
   organizationId: org-NfSvZ1VlMpsbyLmftDM29fDd

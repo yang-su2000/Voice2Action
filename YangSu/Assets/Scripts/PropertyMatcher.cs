@@ -16,8 +16,8 @@ public static class PropertyMatcher
     // property, example usage
     private static Dictionary<string, string> matchTuples = new Dictionary<string, string>
     {
-        {"position", "Extract the starting and ending range of the given phrase.\nInput => from negative eleven to eighteen meters\nOutput => -11, 18\n" +
-                     "Input => four meters\nOutput => 4, 4\nInput => "},
+        {"position", "Extract the starting and ending range of the given phrase.\nInput => from negative eleven point five to eighteen meters\nOutput => -11.5, 18\n" +
+                     "Input => four, three, five point five m\nOutput => 4, 3, 5.5\nInput => "},
     };
 
     public static async Task MatchProperty(List<(string, List<string>)> propertyTuples, ShapeController[] controllers, List<string> historyMessages)
@@ -46,8 +46,14 @@ public static class PropertyMatcher
             string[] tuple = openAIMessage.Split(", ");
             if (tuple.Length > 1)
             {
-                if (int.TryParse(tuple[0], out int start) && (int.TryParse(tuple[1], out int end) && (start <= end)))
+                if (float.TryParse(tuple[0], out float start) && (float.TryParse(tuple[1], out float end)))
                 {
+                    if (start > end)
+                    {
+                        float tmp = end;
+                        end = start;
+                        start = tmp;
+                    }
                     Color curColor = new Color(
                         Random.Range(0f, 1f),
                         Random.Range(0f, 1f),
@@ -59,6 +65,10 @@ public static class PropertyMatcher
                         if (start <= controller.transform.position.x && controller.transform.position.x <= end)
                         {
                             controller.SetColor(curColor);
+                        }
+                        else
+                        {
+                            controller.SetColor(Color.white);
                         }
                     }
                 }
