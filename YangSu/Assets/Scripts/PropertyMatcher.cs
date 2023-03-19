@@ -12,6 +12,8 @@ public static class PropertyMatcher
     private static OpenAIClient openAIClient = new OpenAIClient(OpenAIAuthentication.LoadFromEnv());
         
     private static string openAIMessage;
+
+    private static List<ShapeController> validControllers;
     
     // property, example usage
     private static Dictionary<string, string> matchTuples = new Dictionary<string, string>
@@ -22,20 +24,31 @@ public static class PropertyMatcher
 
     public static async Task MatchProperty(List<(string, List<string>)> propertyTuples, ShapeController[] controllers, List<string> historyMessages)
     {
+        foreach (var controller in controllers)
+        {
+            validControllers.Add(controller);
+        }
         foreach ((string property, List<string> features) in propertyTuples)
         {
             if (property == "position")
             {
                 foreach (string feature in features)
                 {
-                    await MatchPosition(feature, controllers, historyMessages);
+                    await MatchPosition(feature, historyMessages);
+                }
+            } else if (property == "color")
+            {
+                foreach (string feature in features)
+                {
+                    await MatchColor(feature, historyMessages);
                 }
             }
         }
     }
 
-    private static async Task MatchPosition(string feature, ShapeController[] controllers, List<string> historyMessages)
+    private static async Task MatchPosition(string feature, List<string> historyMessages)
     {
+        List<ShapeController> matchedControllers = new List<ShapeController>();
         string userPrompt = matchTuples["position"] + feature + "\nOutput => ";
         try
         {
@@ -60,11 +73,12 @@ public static class PropertyMatcher
                         Random.Range(0f, 1f)
                     );
                     Debug.Log("\"position\" start: [" + start + "] end: [" + end + "]");
-                    foreach (var controller in controllers)
+                    foreach (var controller in validControllers)
                     {
                         if (start <= controller.transform.position.x && controller.transform.position.x <= end)
                         {
-                            controller.SetColor(curColor);
+                            matchedControllers.Add(controller);
+                            // controller.SetColor(curColor);
                         }
                         else
                         {
@@ -78,5 +92,10 @@ public static class PropertyMatcher
         {
             Debug.Log("\"position\" matcher get exception in OpenAIChat:\n" + e);
         }
+    }
+
+    private static async Task MatchColor(string feature, List<string> historyMessages)
+    {
+        
     }
 }

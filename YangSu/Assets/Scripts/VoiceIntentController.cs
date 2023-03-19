@@ -23,6 +23,13 @@ public class VoiceIntentController : MonoBehaviour
     [SerializeField] 
     private AppVoiceExperience appVoiceExperience;
     
+    [Header("Interactable")] 
+    [SerializeField]
+    private GameObject Interactable;
+
+    [SerializeField]
+    private int spawnCount;
+    
     [Header("UI")] 
     [SerializeField] 
     private Text fullTranscriptText;
@@ -93,6 +100,8 @@ public class VoiceIntentController : MonoBehaviour
             richText = true
         };
         formattedMessage = "This is the beginning of the conversation.";
+
+        Utils.InitBuildings(Interactable, spawnCount);
     }
 
     private void Update()

@@ -16,10 +16,10 @@ public static class PropertyExtractor
     // property, example usage
     private static List<(string, string)> selectTuples = new List<(string, string)>
     {
-        // ("shape", "Input => Select the tallest red cube from four to eight meters, and the closest green cylinder five meters away\n
-        // Output => object1: cube, object2: cylinder\nInput => "),
-        // ("color", "Input => Grab the tallest red cube from four to eight meters, and the closest green cylinder five meters away\n
-        // Output => object1: red, object2: green\nInput => "),
+        // ("shape", "Input => Select the tallest red cube from four to eight meters, and the closest green cylinder five meters away\n" +
+        // "Output => object1: cube, object2: cylinder\nInput => "),
+        ("color", "Input => Grab the tallest red cube from four to eight meters, and the closest green cylinder five meters away\n" +
+        "Output => object1: red, object2: green\nInput => "),
         ("position", "Input => Give me the tallest red cube from four to eight meters, and the closest green cylinder five meters away\n" +
                      "Output => object1: from four to eight meters, object2: five meters away\nInput => "),
         // ("superlative degree", "Input => \"Get the tallest red cube from four to eight meters, and the closest green cylinder five meters away\"\n
