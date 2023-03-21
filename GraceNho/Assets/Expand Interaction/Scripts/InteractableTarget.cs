@@ -70,6 +70,7 @@ public class InteractableTarget : MonoBehaviour
         if ((transform.position - interactable_activated.position).magnitude < 1)
         {
             GameObject voodoo = Instantiate(gameObject);
+            voodoo.transform.localScale *= 0.5f; 
             voodoo.transform.position = transform.position;
             SceneManager.add_Expanding_and_Voodoo(gameObject, voodoo);
         }

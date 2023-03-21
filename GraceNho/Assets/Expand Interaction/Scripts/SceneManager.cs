@@ -14,15 +14,14 @@ public class SceneManager : MonoBehaviour
 
     private static Camera m_Camera;
     private static Transform camera_transform;
-
     private static List<(GameObject,GameObject)> m_List_Expand_Object;
     private static GameObject parentExpandedObjects;
-    private static Vector3 centralPosition;
 
 
 
     public float front_dist = 0.3f;
-    public float up_left_dist = 0.2f;
+    public float up_left_dist = 0.01f;
+    public GameObject expandPanel;
     
     // Start is called before the first frame update
     void Start()
@@ -45,26 +44,21 @@ public class SceneManager : MonoBehaviour
 
     private void update_position()
     {
-        
+        ActivateUI?.Invoke(new Vector3(m_Camera.transform.position.x, m_Camera.transform.position.y, m_Camera.transform.position.z +1.0f));
         for (int i = 0; i < m_List_Expand_Object.Count; i++)
         {
             (GameObject,GameObject) orig_voodoo_pair = m_List_Expand_Object[i];
             GameObject original = orig_voodoo_pair.Item1;
             GameObject voodoo = orig_voodoo_pair.Item2;
-            Vector3 target_position = m_Camera.transform.position;
-            target_position += camera_transform.forward * front_dist;
-            int x_index = i % 3;
+            Vector3 target_position = expandPanel.transform.position;
+           // target_position += expandPanel.transform.forward * front_dist;
+           int x_index = i % 3;
             int y_index = i / 3;
-            Debug.Log("TargetPosition of " + i + " " + target_position);
-            target_position = target_position + camera_transform.up * (up_left_dist * (y_index - 1)) +
-                              camera_transform.right * ((x_index - 1) * up_left_dist);
-            target_position.z += 0.8f;
-            Debug.Log("TargetPosition of " + i + " " + target_position);
+            target_position = target_position + expandPanel.transform.up * (up_left_dist * (y_index - 1)) +
+                              expandPanel.transform.right * ((x_index - 1) * up_left_dist);
             voodoo.GetComponent<InteractableTarget>().lerp_to_target_positon(target_position);
             voodoo.transform.parent = parentExpandedObjects.transform;
         }
-        calculateCentroid(m_List_Expand_Object);
-        ActivateUI?.Invoke(new Vector3(m_Camera.transform.position.x, m_Camera.transform.position.y, m_Camera.transform.position.z +2.3f));
         m_List_Expand_Object.Clear();
     }
     
@@ -77,18 +71,5 @@ public class SceneManager : MonoBehaviour
         ActivateInteractable?.Invoke(transform);
     }
     
-    static void calculateCentroid(List<(GameObject,GameObject)> expandedObjects)
-    {
-         Vector3 centroid = new Vector3(0,0,0);
-         for (int i = 0; i < m_List_Expand_Object.Count; i++)
-         { (GameObject,GameObject) orig_voodoo_pair = m_List_Expand_Object[i];
-             GameObject voodoo = orig_voodoo_pair.Item2;
-            centroid += voodoo.transform.position;
-        }
-        centroid /= (  m_List_Expand_Object.Count+1 );
-        
- 
-        centralPosition = centroid;
-    }
 
 }

@@ -23,6 +23,5 @@ public class InventoryInteraction : MonoBehaviour
     {
         ExpandUI.SetActive(true);
         transform.position = inventoryPosition;
-        Debug.Log(transform.position);
     }
 }
