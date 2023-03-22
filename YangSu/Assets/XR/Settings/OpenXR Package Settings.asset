@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056125dd64c0ed540b40a4af74f7b495, type: 3}
   m_Name: RuntimeDebuggerOpenXRFeature Android
   m_EditorClassIdentifier: 
-  m_enabled: 0
+  m_enabled: 1
   nameUi: Runtime Debugger
   version: 1
   featureIdInternal: com.unity.openxr.features.runtimedebugger
@@ -188,12 +188,10 @@ MonoBehaviour:
   - {fileID: -3815977385926882668}
   - {fileID: 7092141279601562749}
   - {fileID: 2557806747198240973}
-  - {fileID: 3135224516323221969}
   - {fileID: 1844006475185619911}
   - {fileID: 9066630411146425106}
   - {fileID: 8332768198477967802}
   - {fileID: 1603221732679882763}
-  - {fileID: 5263121658424989536}
   - {fileID: 6065721898711646144}
   - {fileID: 6925136590800208168}
   m_renderMode: 1
@@ -307,11 +305,9 @@ MonoBehaviour:
   - {fileID: -6630288191516609266}
   - {fileID: -7070767470315513287}
   - {fileID: 4357902539625090481}
-  - {fileID: 900213116108757057}
   - {fileID: -1157715213901703432}
   - {fileID: 5145053394435114606}
   - {fileID: -3328164826607167220}
-  - {fileID: -3785578363665996122}
   - {fileID: -4436825501094975773}
   m_renderMode: 1
   m_depthSubmissionMode: 0

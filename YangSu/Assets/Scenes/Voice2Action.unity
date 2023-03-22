@@ -6487,7 +6487,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6598815579406187026, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
       propertyPath: m_RootOrder
@@ -6539,7 +6539,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
@@ -11236,7 +11236,7 @@ MonoBehaviour:
   rightController: {fileID: 921770044}
   appVoiceExperience: {fileID: 626814775}
   Interactable: {fileID: 1726589855}
-  spawnCount: 50
+  spawnCount: 100
   fullTranscriptText: {fileID: 291771911}
   partialTranscriptText: {fileID: 1684606884}
   MessageText: {fileID: 85820626}

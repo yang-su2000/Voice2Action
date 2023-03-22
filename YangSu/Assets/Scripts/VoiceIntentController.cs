@@ -65,6 +65,7 @@ public class VoiceIntentController : MonoBehaviour
 
     private void Awake()
     {
+        Utils.InitBuildings(Interactable, spawnCount);
         controllers = FindObjectsOfType<ShapeController>();
 
         // bind transcriptions and activate state
@@ -100,8 +101,6 @@ public class VoiceIntentController : MonoBehaviour
             richText = true
         };
         formattedMessage = "This is the beginning of the conversation.";
-
-        Utils.InitBuildings(Interactable, spawnCount);
     }
 
     private void Update()
@@ -117,7 +116,7 @@ public class VoiceIntentController : MonoBehaviour
         GUILayout.Label(formattedMessage, MessageGUI);
     }
 
-    private string PrintHistory(List<String> formattedMessages, int tail = 6)
+    private string PrintHistory(List<String> formattedMessages, int tail = 10)
     {
         string ret = "";
         for (int i = Math.Max(0, formattedMessages.Count - tail); i < formattedMessages.Count; i++)
@@ -138,7 +137,7 @@ public class VoiceIntentController : MonoBehaviour
     {
         historyMessages.Add("<color=blue>User: " + prompt + "</color>\n");
         await PropertyExtractor.SelectProperty(prompt, historyMessages);
-        if (PropertyExtractor.propertyTuples.Count == 0)
+        if (PropertyExtractor.propertyPreds.Count == 0)
         {
             openAIStatus = false;
             historyMessages.Add("<color=red>System: Sorry, can you say that one more time to the assistant?</color>\n");
@@ -147,7 +146,9 @@ public class VoiceIntentController : MonoBehaviour
             return;
         }
         openAIStatus = true;
-        await PropertyMatcher.MatchProperty(PropertyExtractor.propertyTuples, controllers, historyMessages);
+        await PropertyMatcher.MatchProperty(PropertyExtractor.propertyPreds, controllers, historyMessages);
+        historyMessages.Add("<color=green>System finished</color>\n");
+        // PropertyMatcher.MatchHighlight(controllers);
         formattedMessage = PrintHistory(historyMessages);
         MessageText.text = formattedMessage;
         // OpenAIChat(prompt);
