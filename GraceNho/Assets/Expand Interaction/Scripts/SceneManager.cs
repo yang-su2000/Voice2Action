@@ -10,25 +10,18 @@ using UnityEngine.XR.Interaction.Toolkit.Inputs;
 public class SceneManager : MonoBehaviour
 {
     public static event Action<Transform> ActivateInteractable;
-    public static event Action<Vector3> ActivateUI;
+    public static event Action<int> ActivateUI;
 
-    private static Camera m_Camera;
-    private static Transform camera_transform;
     private static List<(GameObject,GameObject)> m_List_Expand_Object;
     private static GameObject parentExpandedObjects;
-
-
-
-    public float front_dist = 0.3f;
-    public float up_left_dist = 0.01f;
-    public GameObject expandPanel;
+    private float up_left_dist = 0.1f;
+    private GameObject expandPanel;
     
     // Start is called before the first frame update
     void Start()
     {
-        m_Camera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
+        expandPanel = GameObject.FindGameObjectWithTag("ExpandPanel");
         m_List_Expand_Object = new List<(GameObject,GameObject)>();
-        camera_transform = m_Camera.transform;
         parentExpandedObjects = new GameObject();
         parentExpandedObjects.name = "Voodoo Objects";
     }
@@ -44,18 +37,39 @@ public class SceneManager : MonoBehaviour
 
     private void update_position()
     {
-        ActivateUI?.Invoke(new Vector3(m_Camera.transform.position.x, m_Camera.transform.position.y, m_Camera.transform.position.z +1.0f));
+        ActivateUI?.Invoke(m_List_Expand_Object.Count);
         for (int i = 0; i < m_List_Expand_Object.Count; i++)
         {
             (GameObject,GameObject) orig_voodoo_pair = m_List_Expand_Object[i];
             GameObject original = orig_voodoo_pair.Item1;
             GameObject voodoo = orig_voodoo_pair.Item2;
+            voodoo.transform.parent = parentExpandedObjects.transform;
+            
+            
+            //change size of the object so that it fits within the canvas
+            MeshRenderer renderer = original.GetComponent<MeshRenderer>();
+            float scale = 0.0f;
+            if (renderer.bounds.size.x >= renderer.bounds.size.y)
+            {
+                scale =  0.04f/ renderer.bounds.size.x;
+                voodoo.transform.localScale = new Vector3(0.04f, renderer.bounds.size.y * scale, renderer.bounds.size.z * scale);
+           
+            }
+            else
+            {
+                scale =  0.04f/ renderer.bounds.size.y;
+                voodoo.transform.localScale = new Vector3(renderer.bounds.size.x * scale, 0.04f, renderer.bounds.size.z * scale);
+            }
+
+
+            //change position of voodoo object
             Vector3 target_position = expandPanel.transform.position;
             int x_index = i % 3;
             int y_index = i / 3;
             target_position = target_position + expandPanel.transform.up * (up_left_dist * (y_index - 1))+expandPanel.transform.right * ((x_index - 1) * up_left_dist);
+           
+            //lerp voodoo to expand panel
             voodoo.GetComponent<InteractableTarget>().lerp_to_target_positon(target_position);
-            voodoo.transform.parent = parentExpandedObjects.transform;
         }
         m_List_Expand_Object.Clear();
     }

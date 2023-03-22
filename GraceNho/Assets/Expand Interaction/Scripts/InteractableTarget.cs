@@ -16,23 +16,12 @@ public class InteractableTarget : MonoBehaviour
     private Vector3 originalPosition;
     private int lerpFrames = 1000;
     private int currentFrame = 0;
-
-    //public float rotateSpeed = 100000.0f;
-    // private Transform targetTransform = null;
-    // public GameObject player;
-    
-    // private bool isExpanded = false;
-    // private GameObject my_duplicate = null;
     private bool isLerping;
     void Start()
     {
         interactable = this.gameObject.GetComponent<XRGrabInteractable>();
         interactable.activated.AddListener(OnActivated);
-        // interactable.selectEntered.AddListener(OnInteractorSelect);
-        // interactable.selectExited.AddListener(OnInteractorDeSelect);
         SceneManager.ActivateInteractable += expand_response;
-        //
-        // m_Camera = Camera.main;
     }
 
     // Update is called once per frame
@@ -69,8 +58,10 @@ public class InteractableTarget : MonoBehaviour
     {
         if ((transform.position - interactable_activated.position).magnitude < 1)
         {
+          
             GameObject voodoo = Instantiate(gameObject);
-            voodoo.transform.localScale *= 0.5f; 
+            
+            //change the position of the voodoo to the transform position. 
             voodoo.transform.position = transform.position;
             SceneManager.add_Expanding_and_Voodoo(gameObject, voodoo);
         }
