@@ -17,7 +17,7 @@ public class SceneManager : MonoBehaviour
     private static GameObject parentExpandedObjects;
     private float up_left_dist = 0.1f;
     private GameObject expandPanel;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -72,6 +72,7 @@ public class SceneManager : MonoBehaviour
             //lerp voodoo to expand panel
             voodoo.GetComponent<InteractableTarget>().lerp_to_target_positon(target_position);
         }
+        
         m_List_Expand_Object.Clear();
     }
     
