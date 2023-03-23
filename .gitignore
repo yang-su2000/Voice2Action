@@ -72,4 +72,4 @@ crashlytics-build.properties
 */[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # (Added by Yang Su) OpenAI Secret Key
-*/OpenAIConfigurationSettings*
+*/*/*/OpenAIConfigurationSettings.asset*
