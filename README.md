@@ -8,9 +8,15 @@ XR provides a clear value proposition for 3D design applications, such as indust
 
 ### Interact with [Arkio](https://www.arkio.is/)
 
+![arkio](fig/arkio.png)
+
 ### Inventory System
 
+![inventory](fig/inventory.png)
+
 ### MRTK3 with Figma
+
+![mrtk-figma](fig/mrtk-figma.png)
 
 ## Voice2Action
 
