@@ -82,10 +82,10 @@ public class VoiceIntentController : MonoBehaviour
         
         appVoiceExperience.events.OnRequestCreated.AddListener((request) =>
         {
-            appVoiceActive = true; // do this before everything
+            appVoiceActive = true;
             Debug.Log("OnRequest Created");
         });
-        
+
         appVoiceExperience.events.OnRequestCompleted.AddListener(OnVoiceEnd);
 
         openAIClient = new OpenAIClient(OpenAIAuthentication.LoadFromEnv());
@@ -108,7 +108,10 @@ public class VoiceIntentController : MonoBehaviour
         // Keyboard.current.spaceKey.wasPressedThisFrame
         // appVoiceActive
         // activate voice experience
-        appVoiceExperience.Activate();
+        if (!appVoiceActive)
+        {
+            appVoiceExperience.Activate();
+        }
     }
 
     private void OnGUI()
@@ -128,9 +131,9 @@ public class VoiceIntentController : MonoBehaviour
 
     private async void OnVoiceEnd()
     {
+        appVoiceActive = false;
         Debug.Log("OnRequest Completed");
         await CallOpenAI(userMessage);
-        appVoiceActive = false; // do this after everything finishes
     }
 
     private async Task CallOpenAI(string prompt)
@@ -147,8 +150,7 @@ public class VoiceIntentController : MonoBehaviour
         }
         openAIStatus = true;
         await PropertyMatcher.MatchProperty(PropertyExtractor.propertyPreds, controllers, historyMessages);
-        historyMessages.Add("<color=green>System finished</color>\n");
-        // PropertyMatcher.MatchHighlight(controllers);
+        PropertyMatcher.MatchHighlight(controllers);
         formattedMessage = PrintHistory(historyMessages);
         MessageText.text = formattedMessage;
         // OpenAIChat(prompt);
@@ -244,9 +246,9 @@ public class VoiceIntentController : MonoBehaviour
 
     private static void DisplayValues(string prefix, string[] info)
     {
-        // foreach (var i in info)
-        // {
-        //     Debug.Log($"{prefix} {i}");
-        // }
+        foreach (var i in info)
+        {
+            Debug.Log($"{prefix} {i}");
+        }
     }
 }

@@ -63,7 +63,7 @@ public static class PropertyExtractor
     private static List<(string, string)> selectExamples = new List<(string, string)>
     {
         (
-            "Select the tallest red cube from four to eight m, and the green cylinder five m away on my left.", 
+            "select the tallest red cube from four to eight m, and the green cylinder five m away on my left.", 
             "object1: " +
             "shape -> cube, " +
             "color -> red, " +
@@ -122,7 +122,7 @@ public static class PropertyExtractor
             ret += "Output => " + outputExample + "\n";
         }
         ret += "Input => " + userPrompt + "\n";
-        ret += "Output => ";
+        ret += "Output =>";
         return ret;
     }
 
@@ -152,9 +152,8 @@ public static class PropertyExtractor
         {
             var result = await openAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt);
             openAIMessage = result.ToString();
-            Debug.Log("property selector: " + userPrompt + openAIMessage);
-            historyMessages.Add("<color=green>property selector: " + openAIMessage + "</color>\n");
-            foreach (string objectMessage in openAIMessage.Split("; "))
+            Debug.Log("property selector:" + openAIMessage);
+            foreach (string objectMessage in openAIMessage.TrimStart().Split("; "))
             {
                 string[] objectTuple = objectMessage.Split(": "); // ideally this should be (object1, properties)
                 if (objectTuple.Length > 1)
@@ -170,16 +169,13 @@ public static class PropertyExtractor
                             string targetFeature = propertyTuple[1];
                             if (propertyTragets.ContainsKey(targetProperty))
                             {
-                                historyMessages.Add("<color=green>[" + targetProperty + "] -> [" + targetFeature + "]</color>\n");
+                                historyMessages.Add("<color=green>select: [" + targetProperty + "] -> " +
+                                                    "[" + targetFeature + "]</color>\n");
                                 propertyMap.Add(targetProperty, targetFeature);
                             }
                         }
                     }
-                    if (propertyMap.Count > 0)
-                    {
-                        historyMessages.Add("<color=green>propertyMap length = " + propertyMap.Count + "</color>\n");
-                        propertyPreds.Add(propertyMap);
-                    }
+                    if (propertyMap.Count > 0) propertyPreds.Add(propertyMap);
                 }
             }
         }
@@ -187,35 +183,6 @@ public static class PropertyExtractor
         {
             Debug.Log("select property extractor gets exception in OpenAICompletion:\n" + e);
         }
-        // foreach ((string property, string example) in propertyTragets)
-        // {
-        //     string userPrompt = selectPrompt(property, example, prompt);
-        //     try
-        //     {
-        //         var result = await openAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt);
-        //         openAIMessage = result.ToString();
-        //         Debug.Log("\"" + property + "\" selector: " + userPrompt + openAIMessage);
-        //         historyMessages.Add("<color=green>\"" + property + "\" selector: " + openAIMessage + "</color>\n");
-        //         List<string> properties = new List<string>();
-        //         foreach (string entityFeature in openAIMessage.Split(", "))
-        //         {
-        //             string[] tuple = entityFeature.Split(": ");
-        //             if (tuple.Length > 1)
-        //             {
-        //                 properties.Add(tuple[1]);
-        //                 Debug.Log(property + " [" + tuple[0] + "] [" + tuple[1] + "]");
-        //             }
-        //         }
-        //         if (properties.Count > 0)
-        //         {
-        //             propertyTuples.Add((property, properties));
-        //         }
-        //     }
-        //     catch (Exception e)
-        //     {
-        //         Debug.Log("property \"" + property + "\" get exception in OpenAIChat:\n" + e);
-        //     }
-        // }
     }
     
     // public static async Task ModifyProperty(string prompt, List<string> historyMessages)

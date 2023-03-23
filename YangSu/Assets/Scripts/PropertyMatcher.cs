@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 using OpenAI;
@@ -9,7 +10,9 @@ using Random = UnityEngine.Random;
 
 public static class PropertyMatcher
 {
-    public static List<ShapeController> matchedControllers;
+    public static List<ShapeController> matchedControllers = new List<ShapeController>();
+    
+    private static float confidence = 0.5f;
 
     private static OpenAIClient openAIClient = new OpenAIClient(OpenAIAuthentication.LoadFromEnv());
         
@@ -24,53 +27,100 @@ public static class PropertyMatcher
 
     public static void MatchHighlight(ShapeController[] controllers)
     {
-        Color hightlightColor = new Color(
-            Random.Range(0f, 1f),
-            Random.Range(0f, 1f),
-            Random.Range(0f, 1f)
-        );
-        foreach (var controller in controllers) controller.SetColor(Color.white);
+        Color hightlightColor = Utils.AllColors[Random.Range(0, Utils.AllColors.Count)];
+        // foreach (var controller in controllers) controller.SetColor(Color.white);
         foreach (var controller in matchedControllers) controller.SetColor(hightlightColor);
     }
     
     public static async Task MatchProperty(List<Dictionary<string, string>> propertyPreds,
         ShapeController[] controllers, List<string> historyMessages)
     {
-        historyMessages.Add("out of " + controllers.Length + " controllers and " + propertyPreds.Count + " properties\n");
         matchedControllers.Clear();
         foreach (var controller in controllers) matchedControllers.Add(controller);
         foreach (Dictionary<string, string> propertyMap in propertyPreds)
         {
-            historyMessages.Add("Property Matcher get propertyMap\n");
             foreach ((string property, string feature) in propertyMap)
             {
-                historyMessages.Add("Property Matcher get property: [" + property + "] feature: [" + feature + "]\n");
-                if (property == "position")
+                if (property == "shape")
+                {
+                    MatchShape(feature, historyMessages);
+                }
+                else if (property == "color")
+                {
+                    MatchColor(feature, historyMessages);
+                }
+                else if (property == "position")
                 {
                     await MatchPosition(feature, historyMessages);
                 }
                 else
                 {
-                    historyMessages.Add("Property Matcher get property: [" + property + "] feature: [" + feature + "]\n");
-                    await MatchPosition(feature, historyMessages);
+                    
                 }
             }
-            historyMessages.Add(matchedControllers.Count + " controllers are filtered\n");
         }
-        MatchHighlight(controllers);
+    }
+    
+    private static void MatchShape(string feature, List<string> historyMessages)
+    {
+        List<ShapeController> filteredControllers = new List<ShapeController>();
+        Debug.Log("shape matcher: " + feature);
+        if (Enum.TryParse(feature, true, out Shapes shape))
+        {
+            historyMessages.Add("<color=purple>shape: [" + shape.ToString() + "]</color>\n");
+            foreach (var controller in matchedControllers)
+            {
+                if (controller.shapes == shape)
+                {
+                    filteredControllers.Add(controller);
+                }
+            }
+        }
+        else
+        {
+            filteredControllers = matchedControllers;
+        }
+        matchedControllers = filteredControllers;
+    }
+
+    private static void MatchColor(string feature, List<string> historyMessages)
+    {
+        List<ShapeController> filteredControllers = new List<ShapeController>();
+        Debug.Log("color matcher: " + feature);
+        if (ColorUtility.TryParseHtmlString(feature, out Color color))
+        {
+            historyMessages.Add("<color=purple>color: [" + color.ToString() + "]</color>\n");
+            foreach (var controller in matchedControllers)
+            {
+                var renderer = controller.GetComponent<Renderer>();
+                if (renderer == null) continue;
+                if (renderer.material.color == color)
+                {
+                    filteredControllers.Add(controller);
+                }
+                // if (Utils.IsColorClose(renderer.material.color, color, confidence))
+                // {
+                //     filteredControllers.Add(controller);
+                // }
+            }
+        }
+        else
+        {
+            filteredControllers = matchedControllers;
+        }
+        matchedControllers = filteredControllers;
     }
 
     private static async Task MatchPosition(string feature, List<string> historyMessages)
     {
         List<ShapeController> filteredControllers = new List<ShapeController>();
-        string userPrompt = matchTuples["position"] + feature + "\nOutput => ";
+        string userPrompt = matchTuples["position"] + feature + "\nOutput =>";
         try
         {
             var result = await openAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt);
             openAIMessage = result.ToString();
-            Debug.Log("position matcher: " + userPrompt + openAIMessage);
-            historyMessages.Add("<color=purple>position matcher: " + openAIMessage + "</color>\n");
-            string[] tuple = openAIMessage.Split(", ");
+            Debug.Log("position matcher: " + openAIMessage);
+            string[] tuple = openAIMessage.TrimStart().Split(", ");
             if (tuple.Length > 1 && int.TryParse(tuple[0], out int start) && int.TryParse(tuple[1], out int end)) 
             {
                 if (start > end)
@@ -94,13 +144,7 @@ public static class PropertyMatcher
         catch (Exception e)
         {
             Debug.Log("position matcher get exception in OpenAICompletion:\n" + e);
-            historyMessages.Add("position matcher get exception in OpenAICompletion:\n" + e);
         }
         matchedControllers = filteredControllers;
     }
-
-    // private static async Task<List<ShapeController>> MatchColor(string feature, List<ShapeController> validControllers, List<string> historyMessages)
-    // {
-    //     
-    // }
 }
