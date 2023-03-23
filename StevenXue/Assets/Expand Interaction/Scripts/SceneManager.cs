@@ -11,6 +11,7 @@ public class SceneManager : MonoBehaviour
 {
     public static event Action<Transform> ActivateInteractable;
     public static event Action<int> ActivateUI;
+    public static event Action<Transform> destory_object_not_grabbed;
 
     private static List<(GameObject,GameObject)> m_List_Expand_Object;
     private static GameObject parentExpandedObjects;
@@ -82,6 +83,10 @@ public class SceneManager : MonoBehaviour
     {
         ActivateInteractable?.Invoke(transform);
     }
-    
+
+    public static void notify_Voodoo_selected(Transform grabbed_voodoo_object)
+    {
+        destory_object_not_grabbed?.Invoke(grabbed_voodoo_object);
+    }
 
 }

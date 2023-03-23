@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using Unity.VisualScripting;
 using Unity.XR.CoreUtils;
 using UnityEngine;
@@ -14,14 +15,21 @@ public class InteractableTarget : MonoBehaviour
     private XRGrabInteractable interactable;
     private Vector3 targetPosition;
     private Vector3 originalPosition;
-    private int lerpFrames = 1000;
+    private int lerpFrames = 200;
     private int currentFrame = 0;
     private bool isLerping;
+    private bool isVoodoo = false;
+    private Transform originObject = null;
+    private LineRenderer connecting_line = null;
     void Start()
     {
-        interactable = this.gameObject.GetComponent<XRGrabInteractable>();
+        interactable = gameObject.GetComponent<XRGrabInteractable>();
         interactable.activated.AddListener(OnActivated);
+        interactable.selectEntered.AddListener(voodoo_on_selected);
+        interactable.hoverEntered.AddListener(draw_connecting_lines);
+        interactable.hoverExited.AddListener(remove_connecting_lines);
         SceneManager.ActivateInteractable += expand_response;
+        SceneManager.destory_object_not_grabbed += destory_not_grabbed;
     }
 
     // Update is called once per frame
@@ -40,8 +48,36 @@ public class InteractableTarget : MonoBehaviour
                 isLerping = false;
             }
         }
+
+        if (isVoodoo)
+        {
+            originObject.transform.rotation = transform.rotation;
+        }
     }
 
+    void draw_connecting_lines(HoverEnterEventArgs args)
+    {
+        if (!isVoodoo)
+        {
+            return;
+        }
+        connecting_line = gameObject.AddComponent<LineRenderer>();
+        connecting_line.useWorldSpace = true;
+        connecting_line.startColor = Color.magenta;
+        connecting_line.endColor = Color.magenta;
+        connecting_line.startWidth = 0.01f;
+        connecting_line.endWidth = 0.01f;
+        connecting_line.SetPosition(0, transform.position);
+        connecting_line.SetPosition(1, originalPosition);
+        
+    }
+
+    void remove_connecting_lines(HoverExitEventArgs args)
+    {
+        Destroy(connecting_line);
+        connecting_line = null;
+    }
+    
     void OnActivated(ActivateEventArgs args)
     {
         SceneManager.notify_activated(transform);
@@ -63,8 +99,23 @@ public class InteractableTarget : MonoBehaviour
             
             //change the position of the voodoo to the transform position. 
             voodoo.transform.position = transform.position;
+            voodoo.GetComponent<InteractableTarget>().isVoodoo = true;
+            voodoo.GetComponent<InteractableTarget>().originObject = transform;
             SceneManager.add_Expanding_and_Voodoo(gameObject, voodoo);
         }
     }
-    
+
+    private void voodoo_on_selected(SelectEnterEventArgs args)
+    {
+        Destroy(connecting_line);
+        connecting_line = null;
+        SceneManager.notify_Voodoo_selected(transform);
+    }
+    void destory_not_grabbed(Transform grabbed_voodoo_transform)
+    {
+        if (isVoodoo & (grabbed_voodoo_transform != transform))
+        {
+            Destroy(gameObject);
+        }
+    }
 }
