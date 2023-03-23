@@ -151,6 +151,7 @@ public class VoiceIntentController : MonoBehaviour
         openAIStatus = true;
         await PropertyMatcher.MatchProperty(PropertyExtractor.propertyPreds, controllers, historyMessages);
         PropertyMatcher.MatchHighlight(controllers);
+        historyMessages.Add("<color=black>Assistant: " + PropertyMatcher.matchedControllers.Count + " objects selected</color>\n");
         formattedMessage = PrintHistory(historyMessages);
         MessageText.text = formattedMessage;
         // OpenAIChat(prompt);

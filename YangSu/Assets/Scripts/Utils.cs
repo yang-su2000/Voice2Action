@@ -7,7 +7,7 @@ public static class Utils
     [Header("Example Properties")]
     public static List<Color> AllColors = new List<Color>
     {
-        Color.black, Color.blue, Color.cyan, Color.gray, Color.green, Color.green, Color.magenta, Color.red,
+        Color.black, Color.blue, Color.grey, Color.green, Color.red,
         Color.white, Color.yellow,
     };
 
@@ -16,7 +16,6 @@ public static class Utils
         (PrimitiveType.Capsule, Shapes.Capsule), 
         (PrimitiveType.Cube, Shapes.Cube), 
         (PrimitiveType.Cylinder, Shapes.Cylinder), 
-        (PrimitiveType.Sphere, Shapes.Sphere),
     };
     
     public static void InitBuildings(GameObject parentInteractable, int spawnCount)
@@ -30,7 +29,7 @@ public static class Utils
             shapeController.shapes = shapePair.Item2;
             cube.transform.localScale =
                 new Vector3(Random.Range(0.25f, 1f), Random.Range(0.25f, 2f), Random.Range(0.25f, 1f));
-            cube.GetComponent<Renderer>().material.color = AllColors[Random.Range(0, AllColors.Count)];
+            shapeController.GetComponent<Renderer>().material.color = AllColors[Random.Range(0, AllColors.Count)];
             if (Random.Range(0f, 1f) < 0.5f)
             {
                 if (Random.Range(0f, 1f) < 0.5f)

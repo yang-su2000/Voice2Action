@@ -16,6 +16,8 @@ public enum Shapes
     Capsule,
     Cylinder,
     All,
+    Object,
+    Objects,
 }
 
 public enum Direction

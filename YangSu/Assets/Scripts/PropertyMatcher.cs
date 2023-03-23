@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using UnityEngine;
 using OpenAI;
 using Unity.Mathematics;
+using Unity.VisualScripting;
+using ColorUtility = UnityEngine.ColorUtility;
 using Random = UnityEngine.Random;
 
 public static class PropertyMatcher
@@ -27,9 +29,20 @@ public static class PropertyMatcher
 
     public static void MatchHighlight(ShapeController[] controllers)
     {
-        Color hightlightColor = Utils.AllColors[Random.Range(0, Utils.AllColors.Count)];
-        // foreach (var controller in controllers) controller.SetColor(Color.white);
-        foreach (var controller in matchedControllers) controller.SetColor(hightlightColor);
+        // Color hightlightColor = Utils.AllColors[Random.Range(0, Utils.AllColors.Count)];
+        // // foreach (var controller in controllers) controller.SetColor(Color.white);
+        // foreach (var controller in matchedControllers) controller.SetColor(hightlightColor);
+        foreach (var controller in matchedControllers)
+        {
+            // if (controller.GetComponent<Rigidbody>() == null)
+            // {
+            //     Rigidbody body = controller.AddComponent<Rigidbody>();
+            //     body.useGravity = false;
+            // }
+            Vector3 position = controller.transform.position;
+            position.y += 2;
+            controller.transform.position = position;
+        }
     }
     
     public static async Task MatchProperty(List<Dictionary<string, string>> propertyPreds,
@@ -74,6 +87,10 @@ public static class PropertyMatcher
                 {
                     filteredControllers.Add(controller);
                 }
+                else if (shape == Shapes.All || shape == Shapes.Object || shape == Shapes.Objects)
+                {
+                    filteredControllers.Add(controller);
+                }
             }
         }
         else
@@ -93,8 +110,7 @@ public static class PropertyMatcher
             foreach (var controller in matchedControllers)
             {
                 var renderer = controller.GetComponent<Renderer>();
-                if (renderer == null) continue;
-                if (renderer.material.color == color)
+                if (renderer.material.color.Equals(color))
                 {
                     filteredControllers.Add(controller);
                 }
