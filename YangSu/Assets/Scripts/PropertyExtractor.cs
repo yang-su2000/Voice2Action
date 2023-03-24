@@ -36,14 +36,14 @@ public static class PropertyExtractor
         },
         {
             // need two entities, one for the target instance, the other for the decorator instance (need recursive PropertyExtractor)
-            "direction", new List<string>
+            "position", new List<string>
             {
                 // "left", "right", "north", "south", "west", "east", "top", "bottom",
             }
         },
         {
             // need two numbers denoting the range of the position
-            "position", new List<string>
+            "distance", new List<string>
             {
                 // pass
             }
@@ -63,17 +63,9 @@ public static class PropertyExtractor
     private static List<(string, string)> selectExamples = new List<(string, string)>
     {
         (
-            "select the tallest red cube from four to eight m, and the green cylinder five m away on my left.", 
-            "object1: " +
-            "shape -> cube, " +
-            "color -> red, " +
-            "position -> from four to eight m, " +
-            "superlative degree -> tallest; " +
-            "object2: " +
-            "shape -> cylinder, " +
-            "color -> green, " +
-            "direction -> on my left, " +
-            "position -> five m away"
+            "select the tallest red cube from four to eight m behind the wall and the cylinder five m away on my left.",
+            "shape: cube, color: red, position: behind the wall, distance: four to eight m, superlative degree: tallest\n" +
+            "shape: cylinder, position: on my left, distance: five m away"
         ),
     };
     
@@ -94,20 +86,24 @@ public static class PropertyExtractor
     };
     
     // A wrapper for the full selection prompt
-    // Example:
-    // "Extract all objects from the given sentence with the feature tokens corresponding to the following properties \
-    // {"shape", "color", "direction", "position", "superlative degree"}. If they do not exist, skip them.
-    // Input => Select the tallest red cube from four to eight meters, and the green cylinder five meters away on my left.
-    // Output => object1: shape -> cube, color -> red, position: four to eight meters, superlative degree -> tallest; \
-    // object2: shape -> cylinder, color -> green, direction: on my left, position: five meters away
-    // Input => {more input examples}
-    // Output => {more output examples}
+    // Extract the properties {"shape", "color", "position", "distance", "superlative degree"} belong to each object, separate by newline.
+    // Input:
+    // select the tallest red cube from four to eight m behind the wall and the cylinder five m away on my left.
+    // Output:
+    // shape: cube, color: red, position: behind the wall, distance: four to eight m, superlative degree: tallest
+    // shape: cylinder, position: on my left, distance: five m away
+    // Input:
+    // {more input examples}
+    // Output:
+    // {more output examples}
     // ... {add some more if we have money}
-    // Input => {userPrompt}
-    // Output => "
+    // Input:
+    // {userPrompt}
+    // Output:
+    // 
     private static string selectPrompt(string userPrompt)
     {
-        string ret = "Extract all objects from the given sentence with the feature tokens corresponding to the following properties {";
+        string ret = "Extract the properties {";
         bool isFirstFlag = true;
         foreach (string property in propertyTragets.Keys)
         {
@@ -115,14 +111,14 @@ public static class PropertyExtractor
             else ret += ", ";
             ret += "\"" + property + "\"";
         }
-        ret += "}. If they do not exist, skip them.\n";
+        ret += "} belong to each object, separate by newline.\n";
         foreach ((string inputExample, string outputExample) in selectExamples)
         {
-            ret += "Input => " + inputExample + "\n";
-            ret += "Output => " + outputExample + "\n";
+            ret += "Input:\n" + inputExample + "\n";
+            ret += "Output:\n" + outputExample + "\n";
         }
-        ret += "Input => " + userPrompt + "\n";
-        ret += "Output =>";
+        ret += "Input:\n" + userPrompt + "\n";
+        ret += "Output:\n";
         return ret;
     }
 
@@ -137,8 +133,6 @@ public static class PropertyExtractor
     }
 
     private static string openAIMessage;
-
-    private static OpenAIClient openAIClient = new OpenAIClient(OpenAIAuthentication.LoadFromEnv());
     
     // Select properties from user prompt (instruction)
     // Output is stored in {propertyPreds}, which is a list of dictionary of pairs (targetProperty, targetFeatures)
@@ -150,33 +144,28 @@ public static class PropertyExtractor
         propertyPreds.Clear();
         try
         {
-            var result = await openAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt);
+            var result = await Utils.OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt);
             openAIMessage = result.ToString();
-            Debug.Log("property selector:" + openAIMessage);
-            foreach (string objectMessage in openAIMessage.TrimStart().Split("; "))
+            Debug.Log("property selector: " + openAIMessage);
+            foreach (string properties in openAIMessage.Split("\n"))
             {
-                string[] objectTuple = objectMessage.Split(": "); // ideally this should be (object1, properties)
-                if (objectTuple.Length > 1)
+                Dictionary<string, string> propertyMap = new Dictionary<string, string>();
+                foreach (string propertyMessage in properties.Split(", "))
                 {
-                    string properties = objectTuple[1];
-                    Dictionary<string, string> propertyMap = new Dictionary<string, string>();
-                    foreach (string propertyMessage in properties.Split(", "))
+                    string[] propertyTuple = propertyMessage.Split(": ");
+                    if (propertyTuple.Length > 1)
                     {
-                        string[] propertyTuple = propertyMessage.Split(" -> ");
-                        if (propertyTuple.Length > 1)
+                        string targetProperty = propertyTuple[0];
+                        string targetFeature = propertyTuple[1];
+                        if (propertyTragets.ContainsKey(targetProperty))
                         {
-                            string targetProperty = propertyTuple[0];
-                            string targetFeature = propertyTuple[1];
-                            if (propertyTragets.ContainsKey(targetProperty))
-                            {
-                                historyMessages.Add("<color=green>select: [" + targetProperty + "] -> " +
-                                                    "[" + targetFeature + "]</color>\n");
-                                propertyMap.Add(targetProperty, targetFeature);
-                            }
+                            historyMessages.Add("<color=green>select: [" + targetProperty + "] -> " +
+                                                "[" + targetFeature + "]</color>\n");
+                            propertyMap.Add(targetProperty, targetFeature);
                         }
                     }
-                    if (propertyMap.Count > 0) propertyPreds.Add(propertyMap);
                 }
+                if (propertyMap.Count > 0) propertyPreds.Add(propertyMap);
             }
         }
         catch (Exception e)

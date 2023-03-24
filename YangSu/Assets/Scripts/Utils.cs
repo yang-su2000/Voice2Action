@@ -1,17 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using OpenAI;
 
 public static class Utils
 {
+    [Header("OpenAI API")]
+    public static readonly OpenAIClient OpenAIClient = new OpenAIClient();
+    
     [Header("Example Properties")]
-    public static List<Color> AllColors = new List<Color>
+    private static readonly List<Color> AllColors = new List<Color>
     {
         Color.black, Color.blue, Color.grey, Color.green, Color.red,
         Color.white, Color.yellow,
     };
 
-    public static List<(PrimitiveType, Shapes)> AllShapes = new List<(PrimitiveType, Shapes)>
+    private static readonly List<(PrimitiveType, Shapes)> AllShapes = new List<(PrimitiveType, Shapes)>
     {
         (PrimitiveType.Capsule, Shapes.Capsule), 
         (PrimitiveType.Cube, Shapes.Cube), 

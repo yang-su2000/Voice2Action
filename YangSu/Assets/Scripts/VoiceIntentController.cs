@@ -47,8 +47,6 @@ public class VoiceIntentController : MonoBehaviour
 
     private bool appVoiceActive;
 
-    private OpenAIClient openAIClient;
-
     private bool activateChat;
 
     private List<ChatPrompt> chatPrompts;
@@ -87,8 +85,6 @@ public class VoiceIntentController : MonoBehaviour
         });
 
         appVoiceExperience.events.OnRequestCompleted.AddListener(OnVoiceEnd);
-
-        openAIClient = new OpenAIClient(OpenAIAuthentication.LoadFromEnv());
 
         chatPrompts = new List<ChatPrompt>
         {
@@ -164,7 +160,7 @@ public class VoiceIntentController : MonoBehaviour
             chatPrompts.Add(new ChatPrompt("user", prompt));
             historyMessages.Add("<color=blue>User: " + prompt + "</color>\n");
             var chatRequest = new ChatRequest(chatPrompts);
-            var result = await openAIClient.ChatEndpoint.GetCompletionAsync(chatRequest);
+            var result = await Utils.OpenAIClient.ChatEndpoint.GetCompletionAsync(chatRequest);
             openAIMessage = result.FirstChoice.ToString();
             historyMessages.Add("<color=green>Assistant: " + openAIMessage + "</color>\n");
             chatPrompts.Add(new ChatPrompt("assistant", openAIMessage));
@@ -176,80 +172,6 @@ public class VoiceIntentController : MonoBehaviour
             Debug.Log("exception in OpenAIChat:\n" + e);
             historyMessages.Add("<color=blue>User: " + prompt + "</color>\n");
             historyMessages.Add("<color=red>System: Sorry, can you say that one more time to the assistant?</color>\n");
-        }
-    }
-
-    public void SetColor(String[] info)
-    {
-        DisplayValues("SetColor:", info);
-        // set color info based on intent response
-        if (info.Length > 1 && Enum.TryParse(info[0], true, out Shapes shape) &&
-            ColorUtility.TryParseHtmlString(info[1], out Color color))
-        {
-            if (shape == Shapes.All)
-            {
-                foreach (var controller in controllers)
-                {
-                    controller.SetColor(color);
-                }
-            }
-            else
-            {
-                var shapeController = controllers.FirstOrDefault(c => c.shapes == shape);
-                shapeController.SetColor(color);
-            }
-        }
-    }
-
-    public void SetRotation(String[] info)
-    {
-        DisplayValues("SetRotation:", info);
-        // set rotation info based on intent response
-        if (info.Length > 1 && Enum.TryParse(info[0], true, out Shapes shape) &&
-            float.TryParse(info[1], out float targetRotation))
-        {
-            if (shape == Shapes.All)
-            {
-                foreach (var controller in controllers)
-                {
-                    controller.RotateTo(targetRotation);
-                }
-            }
-            else
-            {
-                var shapeController = controllers.FirstOrDefault(c => c.shapes == shape);
-                shapeController.RotateTo(targetRotation);
-            }
-        }
-    }
-
-    public void MoveShape(String[] info)
-    {
-        DisplayValues("MoveShape: ", info);
-        // move shape info based on intent response
-        if (info.Length > 1 && Enum.TryParse(info[0], true, out Shapes shape) &&
-            Enum.TryParse(info[1], true, out Direction direction))
-        {
-            if (shape == Shapes.All)
-            {
-                foreach (var controller in controllers)
-                {
-                    controller.MoveDirection(direction);
-                }
-            }
-            else
-            {
-                var shapeController = controllers.FirstOrDefault(c => c.shapes == shape);
-                shapeController.MoveDirection(direction);
-            }
-        }
-    }
-
-    private static void DisplayValues(string prefix, string[] info)
-    {
-        foreach (var i in info)
-        {
-            Debug.Log($"{prefix} {i}");
         }
     }
 }

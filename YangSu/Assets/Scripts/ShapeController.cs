@@ -20,18 +20,6 @@ public class ShapeController : MonoBehaviour
     {
         switch (direction)
         {
-            case Direction.Up:
-                transform.position += Vector3.up;
-                break;
-            case Direction.Down:
-                transform.position += Vector3.down;
-                break;
-            case Direction.Forward:
-                transform.position += Vector3.forward;
-                break;
-            case Direction.Backward:
-                transform.position += Vector3.back;
-                break;
             case Direction.Left:
                 transform.position += Vector3.left;
                 break;
