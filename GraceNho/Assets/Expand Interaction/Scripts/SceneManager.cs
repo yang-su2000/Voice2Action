@@ -68,7 +68,8 @@ public class SceneManager : MonoBehaviour
             int x_index = i % 3;
             int y_index = i / 3;
             target_position = target_position + expandPanel.transform.up * (up_left_dist * (y_index - 1))+expandPanel.transform.right * ((x_index - 1) * up_left_dist);
-           
+
+            voodoo.transform.forward = expandPanel.transform.forward;
             //lerp voodoo to expand panel
             voodoo.GetComponent<InteractableTarget>().lerp_to_target_positon(target_position);
         }

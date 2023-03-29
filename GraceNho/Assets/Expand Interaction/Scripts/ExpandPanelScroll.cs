@@ -24,7 +24,7 @@ public class ExpandPanelScroll : MonoBehaviour, ExpandPanelInterface
     public void SetActiveInactive(int objectCount)
     {
         ExpandUI.SetActive(true);
-        transform.position = new Vector3(m_Camera.transform.position.x +1.0f, m_Camera.transform.position.y,
+        transform.position = new Vector3(m_Camera.transform.position.x , m_Camera.transform.position.y,
             m_Camera.transform.position.z + 1.0f);
     }
 }
