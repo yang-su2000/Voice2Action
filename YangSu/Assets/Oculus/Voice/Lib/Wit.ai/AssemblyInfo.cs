@@ -15,17 +15,16 @@ public enum Shapes
     Sphere,
     Capsule,
     Cylinder,
-    All,
     Object,
     Objects,
 }
 
 public enum Direction
 {
-    Up,
-    Down,
     Left,
     Right,
-    Forward,
-    Backward,
+    Front,
+    Behind,
+    On,
+    Under,
 }

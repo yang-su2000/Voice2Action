@@ -15,16 +15,22 @@ public static class PropertyMatcher
     public static List<ShapeController> matchedControllers = new List<ShapeController>();
     
     private static float confidence = 0.5f;
-
-    private static OpenAIClient openAIClient = new OpenAIClient(OpenAIAuthentication.LoadFromEnv());
         
     private static string openAIMessage;
 
     // property, example usage
     private static Dictionary<string, string> matchTuples = new Dictionary<string, string>
     {
-        {"position", "Extract the starting and ending range of the given phrase.\nInput => from negative eleven to eighteen m\nOutput => -11, 18\n" +
-                     "Input => four, two, five m\nOutput => 4, 2, 5\nInput => "},
+        {"distance", "Extract the start and end range.\n" +
+                     "Input:\n" +
+                     "from negative eleven to eighteen m\n" +
+                     "Output:\n" +
+                     "-11, 18\n" +
+                     "Input:\n" +
+                     "within five m\n" +
+                     "Output:\n" +
+                     "0, 5\n" +
+                     "Input:\n"},
     };
 
     public static void MatchHighlight(ShapeController[] controllers)
@@ -62,9 +68,9 @@ public static class PropertyMatcher
                 {
                     MatchColor(feature, historyMessages);
                 }
-                else if (property == "position")
+                else if (property == "distance")
                 {
-                    await MatchPosition(feature, historyMessages);
+                    await MatchDistance(feature, historyMessages);
                 }
                 else
                 {
@@ -87,7 +93,7 @@ public static class PropertyMatcher
                 {
                     filteredControllers.Add(controller);
                 }
-                else if (shape == Shapes.All || shape == Shapes.Object || shape == Shapes.Objects)
+                else if (shape == Shapes.Object || shape == Shapes.Objects)
                 {
                     filteredControllers.Add(controller);
                 }
@@ -110,7 +116,7 @@ public static class PropertyMatcher
             foreach (var controller in matchedControllers)
             {
                 var renderer = controller.GetComponent<Renderer>();
-                if (renderer.material.color.Equals(color))
+                if (renderer.material.color == color)
                 {
                     filteredControllers.Add(controller);
                 }
@@ -127,23 +133,23 @@ public static class PropertyMatcher
         matchedControllers = filteredControllers;
     }
 
-    private static async Task MatchPosition(string feature, List<string> historyMessages)
+    private static async Task MatchDistance(string feature, List<string> historyMessages)
     {
         List<ShapeController> filteredControllers = new List<ShapeController>();
-        string userPrompt = matchTuples["position"] + feature + "\nOutput =>";
+        string userPrompt = matchTuples["distance"] + feature + "\nOutput:\n";
         try
         {
-            var result = await openAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt);
+            var result = await Utils.OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt);
             openAIMessage = result.ToString();
-            Debug.Log("position matcher: " + openAIMessage);
-            string[] tuple = openAIMessage.TrimStart().Split(", ");
+            Debug.Log("distance matcher: " + openAIMessage);
+            string[] tuple = openAIMessage.Split(", ");
             if (tuple.Length > 1 && int.TryParse(tuple[0], out int start) && int.TryParse(tuple[1], out int end)) 
             {
                 if (start > end)
                 {
                     (start, end) = (end, start);
                 }
-                historyMessages.Add("<color=purple>position start: [" + start + "] end: [" + end + "]</color>");
+                historyMessages.Add("<color=purple>distance start: [" + start + "] end: [" + end + "]</color>");
                 foreach (var controller in matchedControllers)
                 {
                     if (start <= controller.transform.position.x && controller.transform.position.x <= end)
@@ -159,7 +165,7 @@ public static class PropertyMatcher
         }
         catch (Exception e)
         {
-            Debug.Log("position matcher get exception in OpenAICompletion:\n" + e);
+            Debug.Log("distance matcher get exception in OpenAICompletion:\n" + e);
         }
         matchedControllers = filteredControllers;
     }
