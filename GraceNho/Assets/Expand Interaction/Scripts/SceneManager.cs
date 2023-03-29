@@ -23,8 +23,6 @@ public class SceneManager : MonoBehaviour
     {
         expandPanel = GameObject.FindGameObjectWithTag("ExpandPanel");
         m_List_Expand_Object = new List<(GameObject,GameObject)>();
-        parentExpandedObjects = new GameObject();
-        parentExpandedObjects.name = "Voodoo Objects";
     }
 
     // Update is called once per frame
@@ -44,6 +42,18 @@ public class SceneManager : MonoBehaviour
             (GameObject,GameObject) orig_voodoo_pair = m_List_Expand_Object[i];
             GameObject original = orig_voodoo_pair.Item1;
             GameObject voodoo = orig_voodoo_pair.Item2;
+            
+            if (expandPanel.gameObject.name == "ExpandInventoryScroll")
+            {
+                parentExpandedObjects = GameObject.Find("InteractableContentPanel/Interactables");
+
+            }
+            else
+            {
+                parentExpandedObjects = new GameObject();
+                parentExpandedObjects.name = "ProxyObjects";
+            }
+
             voodoo.transform.parent = parentExpandedObjects.transform;
             
             
