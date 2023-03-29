@@ -26,8 +26,7 @@ public class ExpandPanelScale : MonoBehaviour, ExpandPanelInterface
        
         ExpandUI.SetActive(true);
         var rect = ExpandUI.GetComponentInChildren<RectTransform>();
-        
-        rect.sizeDelta = new Vector2(Mathf.Max(75 * objectCount / 3, 100), rect.rect.height);
+        rect.sizeDelta = new Vector2(75 * objectCount / 3, rect.rect.height);
         transform.position = new Vector3(m_Camera.transform.position.x, m_Camera.transform.position.y,
             m_Camera.transform.position.z + 1.0f);
 
