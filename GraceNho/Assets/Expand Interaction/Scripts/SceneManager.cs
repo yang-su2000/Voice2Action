@@ -23,6 +23,8 @@ public class SceneManager : MonoBehaviour
     {
         expandPanel = GameObject.FindGameObjectWithTag("ExpandPanel");
         m_List_Expand_Object = new List<(GameObject,GameObject)>();
+        parentExpandedObjects = new GameObject();
+        parentExpandedObjects.name = "Voodoo Objects";
     }
 
     // Update is called once per frame
@@ -37,17 +39,6 @@ public class SceneManager : MonoBehaviour
     private void update_position()
     {
         ActivateUI?.Invoke(m_List_Expand_Object.Count);
-        if (expandPanel.gameObject.name == "ExpandInventoryScroll")
-        {
-            parentExpandedObjects = GameObject.Find("InteractableContentPanel/Interactables");
-
-        }
-        else
-        {
-            parentExpandedObjects = new GameObject();
-            parentExpandedObjects.name = "ProxyObjects";
-        }
-
         for (int i = 0; i < m_List_Expand_Object.Count; i++)
         {
             (GameObject,GameObject) orig_voodoo_pair = m_List_Expand_Object[i];
@@ -82,8 +73,7 @@ public class SceneManager : MonoBehaviour
             //lerp voodoo to expand panel
             voodoo.GetComponent<InteractableTarget>().lerp_to_target_positon(target_position);
         }
-
-       
+        
         m_List_Expand_Object.Clear();
     }
     
