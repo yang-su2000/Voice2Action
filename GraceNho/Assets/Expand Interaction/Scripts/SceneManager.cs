@@ -37,29 +37,31 @@ public class SceneManager : MonoBehaviour
     private void update_position()
     {
         ActivateUI?.Invoke(m_List_Expand_Object.Count);
+        
+        if (expandPanel.gameObject.name == "ExpandInventoryScroll")
+        {
+            parentExpandedObjects = GameObject.Find("InteractableContentPanel/Interactables");
+            parentExpandedObjects.transform.parent.GetComponent<RectTransform>().sizeDelta = new Vector2(13, Mathf.Max(13, (m_List_Expand_Object.Count/3)*5) );
+        }
+        else
+        {
+            parentExpandedObjects = new GameObject();
+            parentExpandedObjects.name = "ProxyObjects";
+        }
+        
         for (int i = 0; i < m_List_Expand_Object.Count; i++)
         {
             (GameObject,GameObject) orig_voodoo_pair = m_List_Expand_Object[i];
             GameObject original = orig_voodoo_pair.Item1;
             GameObject voodoo = orig_voodoo_pair.Item2;
             
-            if (expandPanel.gameObject.name == "ExpandInventoryScroll")
-            {
-                parentExpandedObjects = GameObject.Find("InteractableContentPanel/Interactables");
-
-            }
-            else
-            {
-                parentExpandedObjects = new GameObject();
-                parentExpandedObjects.name = "ProxyObjects";
-            }
-
             voodoo.transform.parent = parentExpandedObjects.transform;
             
             
             //change size of the object so that it fits within the canvas
             MeshRenderer renderer = original.GetComponent<MeshRenderer>();
             float scale = 0.0f;
+            
             if (renderer.bounds.size.x >= renderer.bounds.size.y)
             {
                 scale =  0.04f/ renderer.bounds.size.x;
