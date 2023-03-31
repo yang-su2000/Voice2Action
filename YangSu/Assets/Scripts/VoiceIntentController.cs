@@ -43,14 +43,7 @@ public class VoiceIntentController : MonoBehaviour
     [SerializeField]
     private GUIStyle MessageGUI;
     
-    private ShapeController[] controllers;
-
-    private bool appVoiceActive;
-
-    private bool activateChat;
-
-    private List<ChatPrompt> chatPrompts;
-
+    [Header("Private Messages")]
     private string userMessage;
 
     private string openAIMessage;
@@ -59,12 +52,31 @@ public class VoiceIntentController : MonoBehaviour
 
     private List<string> historyMessages;
 
+    [Header("Private Fade In Fade Out")] 
+    private bool fadeActive;
+
+    private float fadeDuration = 2f;
+
+    private float fadeTimer = 0f;
+    
+    [Header("Private Others")]
+    private ShapeController[] controllers;
+
+    private HashSet<ShapeController> matchedControllers;
+
+    private bool appVoiceActive;
+
+    private bool activateChat;
+
+    private List<ChatPrompt> chatPrompts;
+
     private bool openAIStatus;
 
     private void Awake()
     {
         Utils.InitBuildings(Interactable, spawnCount);
         controllers = FindObjectsOfType<ShapeController>();
+        matchedControllers = new HashSet<ShapeController>();
 
         // bind transcriptions and activate state
         appVoiceExperience.events.onFullTranscription.AddListener((transcription) =>
@@ -108,6 +120,29 @@ public class VoiceIntentController : MonoBehaviour
         {
             appVoiceExperience.Activate();
         }
+
+        if (fadeActive)
+        {
+            float deltaTime = Time.deltaTime;
+            fadeTimer += deltaTime;
+            if (fadeTimer >= fadeDuration)
+            {
+                fadeActive = false;
+                fadeTimer = 0f;
+            }
+            float deltaAlpha = deltaTime / fadeDuration;
+            foreach (var controller in controllers)
+            {
+                if (matchedControllers.Contains(controller))
+                {
+                    controller.AddTransparency(deltaAlpha);
+                }
+                else
+                {
+                    controller.AddTransparency(-deltaAlpha);
+                }
+            }
+        }
     }
 
     private void OnGUI()
@@ -146,7 +181,12 @@ public class VoiceIntentController : MonoBehaviour
         }
         openAIStatus = true;
         await PropertyMatcher.MatchProperty(PropertyExtractor.propertyPreds, controllers, historyMessages);
-        PropertyMatcher.MatchHighlight(controllers);
+        fadeActive = true;
+        matchedControllers.Clear();
+        foreach (var controller in PropertyMatcher.matchedControllers)
+        {
+            matchedControllers.Add(controller);
+        }
         historyMessages.Add("<color=black>Assistant: " + PropertyMatcher.matchedControllers.Count + " objects selected</color>\n");
         formattedMessage = PrintHistory(historyMessages);
         MessageText.text = formattedMessage;

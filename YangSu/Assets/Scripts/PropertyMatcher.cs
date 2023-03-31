@@ -33,24 +33,6 @@ public static class PropertyMatcher
                      "Input:\n"},
     };
 
-    public static void MatchHighlight(ShapeController[] controllers)
-    {
-        // Color hightlightColor = Utils.AllColors[Random.Range(0, Utils.AllColors.Count)];
-        // // foreach (var controller in controllers) controller.SetColor(Color.white);
-        // foreach (var controller in matchedControllers) controller.SetColor(hightlightColor);
-        foreach (var controller in matchedControllers)
-        {
-            // if (controller.GetComponent<Rigidbody>() == null)
-            // {
-            //     Rigidbody body = controller.AddComponent<Rigidbody>();
-            //     body.useGravity = false;
-            // }
-            Vector3 position = controller.transform.position;
-            position.y += 2;
-            controller.transform.position = position;
-        }
-    }
-    
     public static async Task MatchProperty(List<Dictionary<string, string>> propertyPreds,
         ShapeController[] controllers, List<string> historyMessages)
     {

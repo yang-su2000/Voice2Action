@@ -887,7 +887,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f1069ff89bfe8414394ed03d61967ce8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1947,6 +1947,7 @@ GameObject:
   - component: {fileID: 1093037043}
   - component: {fileID: 1093037042}
   - component: {fileID: 1093037045}
+  - component: {fileID: 1093037046}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -2045,6 +2046,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shapes: 0
+--- !u!114 &1093037046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093037040}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 1.41
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &1185336304
 GameObject:
   m_ObjectHideFlags: 0
