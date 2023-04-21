@@ -7,6 +7,7 @@ using Oculus.Voice;
 using UnityEngine.UI;
 using OpenAI;
 using OpenAI.Chat;
+using OpenAI.Audio;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class VoiceIntentController : MonoBehaviour
@@ -22,6 +23,8 @@ public class VoiceIntentController : MonoBehaviour
     [Header("Voice")] 
     [SerializeField] 
     private AppVoiceExperience appVoiceExperience;
+
+    private AudioSource audioSource;
     
     [Header("Interactable")] 
     [SerializeField]
@@ -68,7 +71,7 @@ public class VoiceIntentController : MonoBehaviour
 
     private bool activateChat;
 
-    private List<ChatPrompt> chatPrompts;
+    private List<Message> chatPrompts;
 
     private bool openAIStatus;
 
@@ -94,13 +97,20 @@ public class VoiceIntentController : MonoBehaviour
         {
             appVoiceActive = true;
             Debug.Log("OnRequest Created");
+            // audioSource.clip = Microphone.Start(Microphone.devices[0], false, 10, 44100);
+            // if (audioSource == null)
+            // {
+            //     Debug.Log("cannot record audio");
+            // }
         });
 
         appVoiceExperience.events.OnRequestCompleted.AddListener(OnVoiceEnd);
 
-        chatPrompts = new List<ChatPrompt>
+        audioSource = GetComponent<AudioSource>();
+
+        chatPrompts = new List<Message>
         {
-            new ChatPrompt("system", "You are a helpful, creative, clever, and very friendly assistant"),
+            new Message(Role.System, "You are a helpful, creative, clever, and very friendly assistant"),
         };
 
         historyMessages = new List<string>();
@@ -162,48 +172,73 @@ public class VoiceIntentController : MonoBehaviour
 
     private async void OnVoiceEnd()
     {
+        // Microphone.End(Microphone.devices[0]);
+        // userMessage = await CallWhisper(audioSource.clip);
+        // Debug.Log("userMessage: " + userMessage);
+        // fullTranscriptText.text = userMessage;
+        // if (userMessage != "N/A") await CallGPT(userMessage);
+        await CallGPT(userMessage);
         appVoiceActive = false;
         Debug.Log("OnRequest Completed");
-        await CallOpenAI(userMessage);
     }
 
-    private async Task CallOpenAI(string prompt)
+    private async Task<string> CallWhisper(AudioClip audioClip)
+    {
+        var request = new AudioTranscriptionRequest(audioClip, language: "en");
+        try
+        {
+            var result = await Utils.OpenAIClient.AudioEndpoint.CreateTranscriptionAsync(request);
+            return result;
+        }
+        catch (Exception e)
+        {
+            openAIStatus = false;
+            Debug.Log("exception in Whisper:\n" + e);
+            historyMessages.Add("<color=red>System: Sorry, can you say that one more time to the assistant?</color>\n");
+            return "N/A";
+        }
+    }
+
+    private async Task CallGPT(string prompt)
     {
         historyMessages.Add("<color=blue>User: " + prompt + "</color>\n");
         await PropertyExtractor.SelectProperty(prompt, historyMessages);
         if (PropertyExtractor.propertyPreds.Count == 0)
         {
             openAIStatus = false;
-            historyMessages.Add("<color=red>System: Sorry, can you say that one more time to the assistant?</color>\n");
+            historyMessages.Add("<color=black>Assistant: " + PropertyMatcher.matchedControllers.Count + " objects selected</color>\n");
             formattedMessage = PrintHistory(historyMessages);
             MessageText.text = formattedMessage;
-            return;
         }
-        openAIStatus = true;
-        await PropertyMatcher.MatchProperty(PropertyExtractor.propertyPreds, controllers, historyMessages);
-        fadeActive = true;
-        matchedControllers.Clear();
-        foreach (var controller in PropertyMatcher.matchedControllers)
+        else
         {
-            matchedControllers.Add(controller);
+            openAIStatus = true;
+            await PropertyMatcher.MatchProperty(PropertyExtractor.propertyPreds, controllers, historyMessages);
+            fadeActive = true;
+            matchedControllers.Clear();
+            foreach (ShapeController controller in PropertyMatcher.matchedControllers)
+            {
+                SceneManager.add_Expanding_and_Voodoo(controller.gameObject, Instantiate(controller.gameObject));
+                matchedControllers.Add(controller);
+            }
+            historyMessages.Add("<color=black>Assistant: " + PropertyMatcher.matchedControllers.Count + " objects selected</color>\n");
+            formattedMessage = PrintHistory(historyMessages);
+            MessageText.text = formattedMessage;
+            // OpenAIChat(prompt);
         }
-        historyMessages.Add("<color=black>Assistant: " + PropertyMatcher.matchedControllers.Count + " objects selected</color>\n");
-        formattedMessage = PrintHistory(historyMessages);
-        MessageText.text = formattedMessage;
-        // OpenAIChat(prompt);
     }
 
     private async void OpenAIChat(string prompt)
     {
         try
         {
-            chatPrompts.Add(new ChatPrompt("user", prompt));
+            chatPrompts.Add(new Message(Role.User, prompt));
             historyMessages.Add("<color=blue>User: " + prompt + "</color>\n");
             var chatRequest = new ChatRequest(chatPrompts);
             var result = await Utils.OpenAIClient.ChatEndpoint.GetCompletionAsync(chatRequest);
             openAIMessage = result.FirstChoice.ToString();
             historyMessages.Add("<color=green>Assistant: " + openAIMessage + "</color>\n");
-            chatPrompts.Add(new ChatPrompt("assistant", openAIMessage));
+            chatPrompts.Add(new Message(Role.Assistant, openAIMessage));
             openAIStatus = true;
         }
         catch (Exception e)

@@ -111,7 +111,7 @@ public static class PropertyExtractor
             else ret += ", ";
             ret += "\"" + property + "\"";
         }
-        ret += "} belong to each object, separate by newline.\n";
+        ret += "} belong to each object, separate by newline. If the property does not exist, do not print anything.\n";
         foreach ((string inputExample, string outputExample) in selectExamples)
         {
             ret += "Input:\n" + inputExample + "\n";
@@ -141,10 +141,11 @@ public static class PropertyExtractor
     public static async Task SelectProperty(string prompt, List<string> historyMessages)
     {
         string userPrompt = selectPrompt(prompt);
+        Debug.Log("userPrompt: " + userPrompt);
         propertyPreds.Clear();
         try
         {
-            var result = await Utils.OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt);
+            var result = await Utils.OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt, temperature: 0.1);
             openAIMessage = result.ToString();
             Debug.Log("property selector: " + openAIMessage);
             foreach (string properties in openAIMessage.Split("\n"))
@@ -157,7 +158,7 @@ public static class PropertyExtractor
                     {
                         string targetProperty = propertyTuple[0];
                         string targetFeature = propertyTuple[1];
-                        if (propertyTragets.ContainsKey(targetProperty))
+                        if (propertyTragets.ContainsKey(targetProperty) && targetFeature != "N/A")
                         {
                             historyMessages.Add("<color=green>select: [" + targetProperty + "] -> " +
                                                 "[" + targetFeature + "]</color>\n");
