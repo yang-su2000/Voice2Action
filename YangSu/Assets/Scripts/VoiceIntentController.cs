@@ -178,7 +178,7 @@ public class VoiceIntentController : MonoBehaviour
         // fullTranscriptText.text = userMessage;
         // if (userMessage != "N/A") await CallGPT(userMessage);
         await CallGPT(userMessage);
-        appVoiceActive = false;
+        // appVoiceActive = false;
         Debug.Log("OnRequest Completed");
     }
 
