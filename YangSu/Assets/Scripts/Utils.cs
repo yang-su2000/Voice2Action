@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using OpenAI;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public static class Utils
 {
@@ -28,6 +29,15 @@ public static class Utils
         {
             var shapePair = AllShapes[Random.Range(0, AllShapes.Count)];
             GameObject cube = GameObject.CreatePrimitive(shapePair.Item1);
+            XRGrabInteractable interactable = cube.AddComponent<XRGrabInteractable>();
+            InteractableTarget interactableTarget = cube.AddComponent<InteractableTarget>();
+            interactable.useDynamicAttach = true;
+            interactable.matchAttachPosition = true;
+            interactable.matchAttachRotation = true;
+            interactable.snapToColliderVolume = true;
+            interactable.reinitializeDynamicAttachEverySingleGrab = true;
+            cube.GetComponent<Rigidbody>().useGravity = false;
+            cube.GetComponent<Rigidbody>().isKinematic = true;
             cube.transform.parent = parentInteractable.transform;
             ShapeController shapeController = cube.AddComponent<ShapeController>();
             shapeController.shapes = shapePair.Item2;

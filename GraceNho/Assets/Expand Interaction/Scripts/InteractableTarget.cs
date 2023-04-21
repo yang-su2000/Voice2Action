@@ -21,8 +21,10 @@ public class InteractableTarget : MonoBehaviour
     private bool isVoodoo = false;
     private Transform originObject = null;
     private LineRenderer connecting_line = null;
+    private GameObject expandPanel;
     void Start()
     {
+        expandPanel = GameObject.Find("ExpandInventoryScroll");
         interactable = gameObject.GetComponent<XRGrabInteractable>();
         interactable.activated.AddListener(OnActivated);
         interactable.selectEntered.AddListener(voodoo_on_selected);
@@ -99,6 +101,7 @@ public class InteractableTarget : MonoBehaviour
             
             //change the position of the voodoo to the transform position. 
             voodoo.transform.position = transform.position;
+            voodoo.transform.rotation = expandPanel.transform.rotation;
             voodoo.GetComponent<InteractableTarget>().isVoodoo = true;
             voodoo.GetComponent<InteractableTarget>().originObject = transform;
             SceneManager.add_Expanding_and_Voodoo(gameObject, voodoo);
@@ -117,5 +120,7 @@ public class InteractableTarget : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
+        //expandPanel.SetActive(false);
     }
 }

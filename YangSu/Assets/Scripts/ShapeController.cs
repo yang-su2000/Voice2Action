@@ -1,8 +1,16 @@
+using System;
 using UnityEngine;
 
 public class ShapeController : MonoBehaviour
 {
     public Shapes shapes;
+
+    public Material material;
+
+    public void Start()
+    {
+        material = transform.GetComponent<Renderer>().material;
+    }
 
     public void SetColor(Color color)
     {
@@ -11,7 +19,6 @@ public class ShapeController : MonoBehaviour
 
     public void AddTransparency(float alpha)
     {
-        Material material = transform.GetComponent<Renderer>().material;
         Color color = material.color;
         material.SetFloat("_Mode", 3);
         material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);

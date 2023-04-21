@@ -12,7 +12,7 @@ public class ExpandPanelScale : MonoBehaviour, ExpandPanelInterface
     {
         ExpandUI.SetActive(false);
         m_Camera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
-        SceneManager.ActivateUI += SetActiveInactive;
+        SceneManager.ActivateUI += SetActive;
     }
 
     // Update is called once per frame
@@ -21,7 +21,7 @@ public class ExpandPanelScale : MonoBehaviour, ExpandPanelInterface
         
     }
 
-    public void SetActiveInactive(int objectCount)
+    public void SetActive(int objectCount)
     {
        
         ExpandUI.SetActive(true);
