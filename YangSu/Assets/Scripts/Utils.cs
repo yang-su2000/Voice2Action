@@ -22,8 +22,6 @@ public static class Utils
         (PrimitiveType.Cylinder, Shapes.Cylinder), 
     };
 
-    private static readonly Material myMaterial = Resources.Load<Material>("Materials/myMaterial");
-    
     public static void InitBuildings(GameObject parentInteractable, int spawnCount)
     {
         for (int i = 0; i < spawnCount; i++)
