@@ -68,7 +68,7 @@ public static class PropertyMatcher
         Debug.Log("shape matcher: " + feature);
         if (Enum.TryParse(feature, true, out Shapes shape))
         {
-            historyMessages.Add("<color=purple>shape: [" + shape.ToString() + "]</color>\n");
+            historyMessages.Add("<color=purple>shape: [" + shape + "]</color>\n");
             foreach (var controller in matchedControllers)
             {
                 if (controller.shapes == shape)
@@ -94,7 +94,7 @@ public static class PropertyMatcher
         Debug.Log("color matcher: " + feature);
         if (ColorUtility.TryParseHtmlString(feature, out Color color))
         {
-            historyMessages.Add("<color=purple>color: [" + color.ToString() + "]</color>\n");
+            historyMessages.Add("<color=purple>color: [" + color + "]</color>\n");
             foreach (var controller in matchedControllers)
             {
                 var renderer = controller.GetComponent<Renderer>();
