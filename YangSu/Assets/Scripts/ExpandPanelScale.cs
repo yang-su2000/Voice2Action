@@ -12,7 +12,7 @@ public class ExpandPanelScale : MonoBehaviour, ExpandPanelInterface
     {
         ExpandUI.SetActive(false);
         m_Camera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
-        SceneManager.ActivateUI += SetActiveInactive;
+        SceneManager.ActivateUI += SetActive;
     }
 
     // Update is called once per frame
@@ -21,14 +21,14 @@ public class ExpandPanelScale : MonoBehaviour, ExpandPanelInterface
         
     }
 
-    public void SetActiveInactive(int objectCount)
+    public void SetActive(int objectCount)
     {
        
         ExpandUI.SetActive(true);
         var rect = ExpandUI.GetComponentInChildren<RectTransform>();
         rect.sizeDelta = new Vector2(75 * objectCount / 3, rect.rect.height);
         transform.position = new Vector3(m_Camera.transform.position.x, m_Camera.transform.position.y,
-            m_Camera.transform.position.z + 1.0f);
+            m_Camera.transform.position.z + 2.0f);
 
     }
 }

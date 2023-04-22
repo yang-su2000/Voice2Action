@@ -16,7 +16,7 @@ public class SceneManager : MonoBehaviour
     private static List<(GameObject,GameObject)> m_List_Expand_Object;
     private static GameObject parentExpandedObjects;
     private float up_left_dist = 0.1f;
-    private GameObject expandPanel;
+    private static GameObject expandPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +37,7 @@ public class SceneManager : MonoBehaviour
     private void update_position()
     {
         ActivateUI?.Invoke(m_List_Expand_Object.Count);
-        
+        expandPanel.SetActive(true);
         if (expandPanel.gameObject.name == "ExpandInventoryScroll")
         {
             parentExpandedObjects = GameObject.Find("InteractableContentPanel/Interactables");
@@ -99,6 +99,7 @@ public class SceneManager : MonoBehaviour
 
     public static void notify_Voodoo_selected(Transform grabbed_voodoo_object)
     {
+        expandPanel.SetActive(false);
         destory_object_not_grabbed?.Invoke(grabbed_voodoo_object);
     }
 

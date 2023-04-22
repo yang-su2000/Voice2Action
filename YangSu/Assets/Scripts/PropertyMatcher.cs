@@ -1,12 +1,7 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
-using OpenAI;
-using Unity.Mathematics;
-using Unity.VisualScripting;
 using ColorUtility = UnityEngine.ColorUtility;
 using Random = UnityEngine.Random;
 

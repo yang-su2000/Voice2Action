@@ -1,11 +1,9 @@
 using System;
-using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using Oculus.Voice;
 using UnityEngine.UI;
-using OpenAI;
 using OpenAI.Chat;
 using OpenAI.Audio;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -78,6 +76,7 @@ public class VoiceIntentController : MonoBehaviour
     private void Awake()
     {
         Utils.InitBuildings(Interactable, spawnCount);
+        // InitController(Interactable);
         controllers = FindObjectsOfType<ShapeController>();
         matchedControllers = new HashSet<ShapeController>();
 
@@ -133,25 +132,50 @@ public class VoiceIntentController : MonoBehaviour
 
         if (fadeActive)
         {
-            float deltaTime = Time.deltaTime;
-            fadeTimer += deltaTime;
-            if (fadeTimer >= fadeDuration)
-            {
-                fadeActive = false;
-                fadeTimer = 0f;
-            }
-            float deltaAlpha = deltaTime / fadeDuration;
             foreach (var controller in controllers)
             {
                 if (matchedControllers.Contains(controller))
                 {
-                    controller.AddTransparency(deltaAlpha);
+                    controller.enabled = true;
                 }
                 else
                 {
-                    controller.AddTransparency(-deltaAlpha);
+                    controller.enabled = false;
                 }
+                fadeActive = false;
             }
+        }
+            // float deltaTime = Time.deltaTime;
+            // fadeTimer += deltaTime;
+            // if (fadeTimer >= fadeDuration)
+            // {
+            //     fadeActive = false;
+            //     fadeTimer = 0f;
+            // }
+            // float deltaAlpha = deltaTime / fadeDuration;
+            // foreach (var controller in controllers)
+            // {
+            //     if (matchedControllers.Contains(controller))
+            //     {
+            //         controller.AddTransparency(deltaAlpha);
+            //     }
+            //     else
+            //     {
+            //         controller.AddTransparency(-deltaAlpha);
+            //     }
+            // }
+    }
+
+    private void InitController(GameObject interactable)
+    {
+        foreach (Transform transform in interactable.transform)
+        {
+            ShapeController shapeController = transform.gameObject.AddComponent<ShapeController>();
+            shapeController.shapes = Shapes.Object;
+            // Renderer renderer = shapeController.GetComponent<Renderer>();
+            // renderer.material = Resources.Load<Material>("Materials/myMaterial");
+            // renderer.material.SetFloat("_Mode", 2);
+            InitController(transform.gameObject);
         }
     }
 

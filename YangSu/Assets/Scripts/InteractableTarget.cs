@@ -21,8 +21,10 @@ public class InteractableTarget : MonoBehaviour
     private bool isVoodoo = false;
     private Transform originObject = null;
     private LineRenderer connecting_line = null;
+    private GameObject expandPanel;
     void Start()
     {
+        expandPanel = GameObject.Find("ExpandInventoryScroll");
         interactable = gameObject.GetComponent<XRGrabInteractable>();
         interactable.activated.AddListener(OnActivated);
         interactable.selectEntered.AddListener(voodoo_on_selected);
@@ -53,6 +55,12 @@ public class InteractableTarget : MonoBehaviour
         {
             originObject.transform.rotation = transform.rotation;
         }
+
+        if (connecting_line)
+        {
+            connecting_line.SetPosition(0, transform.position);
+            connecting_line.SetPosition(1, originalPosition);
+        }
     }
 
     void draw_connecting_lines(HoverEnterEventArgs args)
@@ -80,6 +88,7 @@ public class InteractableTarget : MonoBehaviour
     
     void OnActivated(ActivateEventArgs args)
     {
+        if (isVoodoo) return;
         SceneManager.notify_activated(transform);
     }
 
@@ -92,6 +101,11 @@ public class InteractableTarget : MonoBehaviour
 
     void expand_response(Transform interactable_activated)
     {
+        if (isVoodoo)
+        {
+            Destroy(gameObject);
+        }
+        
         if ((transform.position - interactable_activated.position).magnitude < 1)
         {
           
@@ -99,6 +113,7 @@ public class InteractableTarget : MonoBehaviour
             
             //change the position of the voodoo to the transform position. 
             voodoo.transform.position = transform.position;
+            voodoo.transform.rotation = expandPanel.transform.rotation;
             voodoo.GetComponent<InteractableTarget>().isVoodoo = true;
             voodoo.GetComponent<InteractableTarget>().originObject = transform;
             SceneManager.add_Expanding_and_Voodoo(gameObject, voodoo);
@@ -107,6 +122,8 @@ public class InteractableTarget : MonoBehaviour
 
     private void voodoo_on_selected(SelectEnterEventArgs args)
     {
+        if(!isVoodoo) return;
+
         Destroy(connecting_line);
         connecting_line = null;
         SceneManager.notify_Voodoo_selected(transform);
@@ -117,5 +134,15 @@ public class InteractableTarget : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void OnDestroy()
+    {
+        interactable.activated.RemoveListener(OnActivated);
+        interactable.selectEntered.RemoveListener(voodoo_on_selected);
+        interactable.hoverEntered.RemoveListener(draw_connecting_lines);
+        interactable.hoverExited.RemoveListener(remove_connecting_lines);
+        SceneManager.ActivateInteractable -= expand_response;
+        SceneManager.destory_object_not_grabbed -= destory_not_grabbed;
     }
 }

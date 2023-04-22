@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface ExpandPanelInterface
 {
-    public void SetActiveInactive(int objectCount);
+    public void SetActive(int objectCount);
 }
