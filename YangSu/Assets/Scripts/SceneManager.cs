@@ -16,6 +16,7 @@ public class SceneManager : MonoBehaviour
     private static List<(GameObject,GameObject)> m_List_Expand_Object;
     private static GameObject parentExpandedObjects;
     private float up_left_dist = 0.1f;
+    public float objectScale;
     private static GameObject expandPanel;
 
     // Start is called before the first frame update
@@ -64,14 +65,14 @@ public class SceneManager : MonoBehaviour
             
             if (renderer.bounds.size.x >= renderer.bounds.size.y)
             {
-                scale =  0.04f/ renderer.bounds.size.x;
-                voodoo.transform.localScale = new Vector3(0.04f, renderer.bounds.size.y * scale, renderer.bounds.size.z * scale);
+                scale =  objectScale/ renderer.bounds.size.x;
+                voodoo.transform.localScale = new Vector3(objectScale, renderer.bounds.size.y * scale, renderer.bounds.size.z * scale);
            
             }
             else
             {
-                scale =  0.04f/ renderer.bounds.size.y;
-                voodoo.transform.localScale = new Vector3(renderer.bounds.size.x * scale, 0.04f, renderer.bounds.size.z * scale);
+                scale =  objectScale/ renderer.bounds.size.y;
+                voodoo.transform.localScale = new Vector3(renderer.bounds.size.x * scale, objectScale, renderer.bounds.size.z * scale);
             }
 
 

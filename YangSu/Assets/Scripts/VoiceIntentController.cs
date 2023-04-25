@@ -75,8 +75,8 @@ public class VoiceIntentController : MonoBehaviour
 
     private void Awake()
     {
-        Utils.InitBuildings(Interactable, spawnCount);
-        // InitController(Interactable);
+        // Utils.InitBuildings(Interactable, spawnCount);
+        InitController(Interactable);
         controllers = FindObjectsOfType<ShapeController>();
         matchedControllers = new HashSet<ShapeController>();
 
@@ -132,38 +132,40 @@ public class VoiceIntentController : MonoBehaviour
 
         if (fadeActive)
         {
+            //     foreach (var controller in controllers)
+            //     {
+            //         if (matchedControllers.Contains(controller))
+            //         {
+            //             controller.enabled = true;
+            //         }
+            //         else
+            //         {
+            //             controller.enabled = false;
+            //         }
+            //         fadeActive = false;
+            //     }
+            // }
+            float deltaTime = Time.deltaTime;
+            fadeTimer += deltaTime;
+            if (fadeTimer >= fadeDuration)
+            {
+                fadeActive = false;
+                fadeTimer = 0f;
+            }
+
+            float deltaAlpha = deltaTime / fadeDuration;
             foreach (var controller in controllers)
             {
                 if (matchedControllers.Contains(controller))
                 {
-                    controller.enabled = true;
+                    controller.AddTransparency(deltaAlpha);
                 }
                 else
                 {
-                    controller.enabled = false;
+                    controller.AddTransparency(-deltaAlpha);
                 }
-                fadeActive = false;
             }
         }
-            // float deltaTime = Time.deltaTime;
-            // fadeTimer += deltaTime;
-            // if (fadeTimer >= fadeDuration)
-            // {
-            //     fadeActive = false;
-            //     fadeTimer = 0f;
-            // }
-            // float deltaAlpha = deltaTime / fadeDuration;
-            // foreach (var controller in controllers)
-            // {
-            //     if (matchedControllers.Contains(controller))
-            //     {
-            //         controller.AddTransparency(deltaAlpha);
-            //     }
-            //     else
-            //     {
-            //         controller.AddTransparency(-deltaAlpha);
-            //     }
-            // }
     }
 
     private void InitController(GameObject interactable)
@@ -172,9 +174,9 @@ public class VoiceIntentController : MonoBehaviour
         {
             ShapeController shapeController = transform.gameObject.AddComponent<ShapeController>();
             shapeController.shapes = Shapes.Object;
-            // Renderer renderer = shapeController.GetComponent<Renderer>();
-            // renderer.material = Resources.Load<Material>("Materials/myMaterial");
-            // renderer.material.SetFloat("_Mode", 2);
+            Renderer renderer = shapeController.GetComponent<Renderer>();
+            renderer.material = Resources.Load<Material>("Materials/myMaterial");
+            renderer.material.SetFloat("_Mode", 2);
             InitController(transform.gameObject);
         }
     }
@@ -202,7 +204,7 @@ public class VoiceIntentController : MonoBehaviour
         // fullTranscriptText.text = userMessage;
         // if (userMessage != "N/A") await CallGPT(userMessage);
         await CallGPT(userMessage);
-        // appVoiceActive = false;
+        appVoiceActive = false;
         Debug.Log("OnRequest Completed");
     }
 

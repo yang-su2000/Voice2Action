@@ -650,6 +650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8f52a90317384c4c8f0c14b50fd0758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectScale: 5
 --- !u!4 &364627069
 Transform:
   m_ObjectHideFlags: 0
@@ -2662,7 +2663,7 @@ MonoBehaviour:
   leftController: {fileID: 1491285152}
   rightController: {fileID: 921770044}
   appVoiceExperience: {fileID: 626814775}
-  Interactable: {fileID: 1726589855}
+  Interactable: {fileID: 919132149264048600}
   spawnCount: 100
   fullTranscriptText: {fileID: 291771911}
   partialTranscriptText: {fileID: 1684606884}
@@ -4923,7 +4924,7 @@ GameObject:
   m_Component:
   - component: {fileID: 543450653456218978}
   m_Layer: 0
-  m_Name: untitled
+  m_Name: City
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
