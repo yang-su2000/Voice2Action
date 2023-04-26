@@ -29,16 +29,9 @@ public static class PropertyExtractor
             // embeddings should suffice
             "color", new List<string>
             {
-                // "red", "green", "blue", "yellow", "black", "white", "orange", "purple", "pink",
+                // "red", "green", "blue", "yellow", "black", "white", "orange", "purple",
             }
         },
-        // {
-        //     // embeddings + 2d container by x and y
-        //     "address", new List<string>
-        //     {
-        //         // "XXX Street", "YYY Ave",
-        //     }
-        // },
         {
             // need two entities, one for the target instance, the other for the decorator instance (need recursive PropertyExtractor)
             "position", new List<string>
@@ -67,15 +60,10 @@ public static class PropertyExtractor
     // The more accurate these examples are, the better GPT will generate its answers
     private static List<(string, string)> selectExamples = new List<(string, string)>
     {
-        // (
-        //     "select the tallest red cube from four to eight m behind the wall and the cylinder five m away on my left.",
-        //     "shape: cube, color: red, position: behind the wall, distance: four to eight m, superlative degree: tallest\n" +
-        //     "shape: cylinder, position: on my left, distance: five m away"
-        // ),
         (
-            "select the tallest building on albert street, and all the blue signs five m away on my left", 
-            "shape: building, address: albert street, superlative degree: tallest\n" +
-            "shape: sign, color: blue, position: on my left, distance: five m away"
+            "select the tallest red cube from four to eight m behind the wall and the cylinder five m away on my left.",
+            "shape: cube, color: red, position: behind the wall, distance: four to eight m, superlative degree: tallest\n" +
+            "shape: cylinder, position: on my left, distance: five m away"
         ),
     };
     
@@ -140,21 +128,6 @@ public static class PropertyExtractor
     private static string interactionPrompt(string userPrompt)
     {
         return "";
-    }
-
-    // 
-    private static string embeddingPrompt(string userPrompt, string propertyType, List<string> targets)
-    {
-        string ret = "Extract the most similar " + propertyType + " to \"" + userPrompt + "\" from: ";
-        bool isFirstFlag = true;
-        foreach (string candidate in targets)
-        {
-            if (isFirstFlag) isFirstFlag = false;
-            else ret += ", ";
-            ret += "\"" + candidate + "\"";
-        }
-        ret += "\nOnly do the extraction, no explanation needed.\n";
-        return ret;
     }
 
     private static string openAIMessage;

@@ -6,7 +6,6 @@ using Oculus.Voice;
 using UnityEngine.UI;
 using OpenAI.Chat;
 using OpenAI.Audio;
-using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class VoiceIntentController : MonoBehaviour
@@ -17,9 +16,6 @@ public class VoiceIntentController : MonoBehaviour
 
     [SerializeField] 
     private ActionBasedController rightController;
-
-    [SerializeField] 
-    private InputActionProperty VoiceActivateAction;
     
     // add AppVoiceExperience reference
     [Header("Voice")] 
@@ -31,9 +27,6 @@ public class VoiceIntentController : MonoBehaviour
     [Header("Interactable")] 
     [SerializeField]
     private GameObject Interactable;
-    
-    [SerializeField]
-    private GameObject PositionMarker;
 
     [SerializeField]
     private int spawnCount;
@@ -101,7 +94,7 @@ public class VoiceIntentController : MonoBehaviour
         
         appVoiceExperience.events.OnRequestCreated.AddListener((request) =>
         {
-            // appVoiceActive = true;
+            appVoiceActive = true;
             Debug.Log("OnRequest Created");
             // audioSource.clip = Microphone.Start(Microphone.devices[0], false, 10, 44100);
             // if (audioSource == null)
@@ -125,17 +118,6 @@ public class VoiceIntentController : MonoBehaviour
             richText = true
         };
         formattedMessage = "This is the beginning of the conversation.";
-
-        VoiceActivateAction.action.started += _ =>
-        {
-            appVoiceActive = true;
-            appVoiceExperience.Activate();
-        };
-
-        VoiceActivateAction.action.canceled += _ =>
-        {
-            appVoiceActive = false;
-        };
     }
 
     private void Update()
@@ -143,10 +125,10 @@ public class VoiceIntentController : MonoBehaviour
         // Keyboard.current.spaceKey.wasPressedThisFrame
         // appVoiceActive
         // activate voice experience
-        // if (!appVoiceActive)
-        // {
-        //     appVoiceExperience.Activate();
-        // }
+        if (!appVoiceActive)
+        {
+            appVoiceExperience.Activate();
+        }
 
         if (fadeActive)
         {
@@ -222,7 +204,7 @@ public class VoiceIntentController : MonoBehaviour
         // fullTranscriptText.text = userMessage;
         // if (userMessage != "N/A") await CallGPT(userMessage);
         await CallGPT(userMessage);
-        // appVoiceActive = false;
+        appVoiceActive = false;
         Debug.Log("OnRequest Completed");
     }
 
@@ -262,9 +244,7 @@ public class VoiceIntentController : MonoBehaviour
             matchedControllers.Clear();
             foreach (ShapeController controller in PropertyMatcher.matchedControllers)
             {
-                GameObject realObject = controller.gameObject;
-                GameObject proxyObject = realObject.GetComponent<InteractableTarget>().makeVoodoo();
-                SceneManager.add_Expanding_and_Voodoo(realObject, proxyObject);
+                SceneManager.add_Expanding_and_Voodoo(controller.gameObject, Instantiate(controller.gameObject));
                 matchedControllers.Add(controller);
             }
             historyMessages.Add("<color=black>Assistant: " + PropertyMatcher.matchedControllers.Count + " objects selected</color>\n");
