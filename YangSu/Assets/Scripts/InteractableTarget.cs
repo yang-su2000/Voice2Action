@@ -18,7 +18,7 @@ public class InteractableTarget : MonoBehaviour
     private int lerpFrames = 200;
     private int currentFrame = 0;
     private bool isLerping;
-    private bool isVoodoo = false;
+    public bool isVoodoo = false;
     private Transform originObject = null;
     private LineRenderer connecting_line = null;
     private GameObject expandPanel;
@@ -51,10 +51,10 @@ public class InteractableTarget : MonoBehaviour
             }
         }
 
-        if (isVoodoo)
-        {
-            originObject.transform.rotation = transform.rotation;
-        }
+        // if (isVoodoo)
+        // {
+        //     originObject.transform.rotation = transform.rotation;
+        // }
 
         if (connecting_line)
         {
@@ -99,6 +99,18 @@ public class InteractableTarget : MonoBehaviour
         isLerping = true;
     }
 
+    public GameObject makeVoodoo()
+    {
+        GameObject voodoo = Instantiate(gameObject);
+            
+        //change the position of the voodoo to the transform position. 
+        voodoo.transform.position = transform.position;
+        // voodoo.transform.rotation = expandPanel.transform.rotation;
+        voodoo.GetComponent<InteractableTarget>().isVoodoo = true;
+        voodoo.GetComponent<InteractableTarget>().originObject = transform;
+        return voodoo;
+    }
+    
     void expand_response(Transform interactable_activated)
     {
         if (isVoodoo)
@@ -108,14 +120,8 @@ public class InteractableTarget : MonoBehaviour
         
         if ((transform.position - interactable_activated.position).magnitude < 1)
         {
-          
-            GameObject voodoo = Instantiate(gameObject);
-            
-            //change the position of the voodoo to the transform position. 
-            voodoo.transform.position = transform.position;
-            voodoo.transform.rotation = expandPanel.transform.rotation;
-            voodoo.GetComponent<InteractableTarget>().isVoodoo = true;
-            voodoo.GetComponent<InteractableTarget>().originObject = transform;
+
+            GameObject voodoo = makeVoodoo();
             SceneManager.add_Expanding_and_Voodoo(gameObject, voodoo);
         }
     }

@@ -71,6 +71,11 @@ public static class Utils
         }
     }
 
+    public static void InitPositionMarker(GameObject parentMarker)
+    {
+        
+    }
+
     public static bool IsColorClose(Color color1, Color color2, float confidence)
     {
         float aDist = color1.a - color2.a;

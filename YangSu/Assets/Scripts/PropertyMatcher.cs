@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using ColorUtility = UnityEngine.ColorUtility;
-using Random = UnityEngine.Random;
 
 public static class PropertyMatcher
 {
@@ -27,6 +26,20 @@ public static class PropertyMatcher
                      "0, 5\n" +
                      "Input:\n"},
     };
+    
+    // property, entities
+    private static Dictionary<string, List<string>> matchEmbeddings = new Dictionary<string, List<string>>()
+    {
+        {
+            "color", new List<string>
+            {
+                "red", "green", "blue", "yellow", "black", "white", "orange", "purple", "pink",
+            }
+        },
+        {
+            "address", new List<string>()
+        },
+    };
 
     public static async Task MatchProperty(List<Dictionary<string, string>> propertyPreds,
         ShapeController[] controllers, List<string> historyMessages)
@@ -48,6 +61,10 @@ public static class PropertyMatcher
                 else if (property == "distance")
                 {
                     await MatchDistance(feature, historyMessages);
+                }
+                else if (property == "address")
+                {
+                    await MatchAddress(feature, historyMessages);
                 }
                 else
                 {
@@ -106,6 +123,43 @@ public static class PropertyMatcher
         else
         {
             filteredControllers = matchedControllers;
+        }
+        matchedControllers = filteredControllers;
+    }
+
+    private static async Task MatchAddress(string feature, List<string> historyMessages)
+    {
+        List<ShapeController> filteredControllers = new List<ShapeController>();
+        string userPrompt = matchTuples["address"] + feature + "\nOutput:\n";
+        try
+        {
+            var result = await Utils.OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt);
+            openAIMessage = result.ToString();
+            Debug.Log("distance matcher: " + openAIMessage);
+            string[] tuple = openAIMessage.Split(", ");
+            if (tuple.Length > 1 && int.TryParse(tuple[0], out int start) && int.TryParse(tuple[1], out int end)) 
+            {
+                if (start > end)
+                {
+                    (start, end) = (end, start);
+                }
+                historyMessages.Add("<color=purple>distance start: [" + start + "] end: [" + end + "]</color>");
+                foreach (var controller in matchedControllers)
+                {
+                    if (start <= controller.transform.position.x && controller.transform.position.x <= end)
+                    {
+                        filteredControllers.Add(controller);
+                    }
+                }
+            }
+            else
+            {
+                filteredControllers = matchedControllers;
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.Log("address matcher get exception in OpenAICompletion:\n" + e);
         }
         matchedControllers = filteredControllers;
     }
