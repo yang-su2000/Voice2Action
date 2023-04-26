@@ -83,6 +83,7 @@ public class VoiceIntentController : MonoBehaviour
     private void Awake()
     {
         // Utils.InitBuildings(Interactable, spawnCount);
+        Utils.InitPositionMarker(PositionMarker);
         InitController(Interactable);
         controllers = FindObjectsOfType<ShapeController>();
         matchedControllers = new HashSet<ShapeController>();
@@ -101,7 +102,6 @@ public class VoiceIntentController : MonoBehaviour
         
         appVoiceExperience.events.OnRequestCreated.AddListener((request) =>
         {
-            // appVoiceActive = true;
             Debug.Log("OnRequest Created");
             // audioSource.clip = Microphone.Start(Microphone.devices[0], false, 10, 44100);
             // if (audioSource == null)
@@ -140,29 +140,8 @@ public class VoiceIntentController : MonoBehaviour
 
     private void Update()
     {
-        // Keyboard.current.spaceKey.wasPressedThisFrame
-        // appVoiceActive
-        // activate voice experience
-        // if (!appVoiceActive)
-        // {
-        //     appVoiceExperience.Activate();
-        // }
-
         if (fadeActive)
         {
-            //     foreach (var controller in controllers)
-            //     {
-            //         if (matchedControllers.Contains(controller))
-            //         {
-            //             controller.enabled = true;
-            //         }
-            //         else
-            //         {
-            //             controller.enabled = false;
-            //         }
-            //         fadeActive = false;
-            //     }
-            // }
             float deltaTime = Time.deltaTime;
             fadeTimer += deltaTime;
             if (fadeTimer >= fadeDuration)
@@ -195,6 +174,7 @@ public class VoiceIntentController : MonoBehaviour
             Renderer renderer = shapeController.GetComponent<Renderer>();
             renderer.material = Resources.Load<Material>("Materials/myMaterial");
             renderer.material.SetFloat("_Mode", 2);
+            renderer.material.color = Utils.AllColors[UnityEngine.Random.Range(0, Utils.AllColors.Count)];
             InitController(transform.gameObject);
         }
     }
@@ -222,7 +202,6 @@ public class VoiceIntentController : MonoBehaviour
         // fullTranscriptText.text = userMessage;
         // if (userMessage != "N/A") await CallGPT(userMessage);
         await CallGPT(userMessage);
-        // appVoiceActive = false;
         Debug.Log("OnRequest Completed");
     }
 
@@ -270,7 +249,6 @@ public class VoiceIntentController : MonoBehaviour
             historyMessages.Add("<color=black>Assistant: " + PropertyMatcher.matchedControllers.Count + " objects selected</color>\n");
             formattedMessage = PrintHistory(historyMessages);
             MessageText.text = formattedMessage;
-            // OpenAIChat(prompt);
         }
     }
 

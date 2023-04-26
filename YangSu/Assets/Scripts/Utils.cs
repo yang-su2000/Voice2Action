@@ -9,13 +9,13 @@ public static class Utils
     public static readonly OpenAIClient OpenAIClient = new OpenAIClient();
     
     [Header("Example Properties")]
-    private static readonly List<Color> AllColors = new List<Color>
+    public static readonly List<Color> AllColors = new List<Color>
     {
-        Color.black, Color.blue, Color.grey, Color.green, Color.red,
+        Color.black, Color.blue, Color.cyan, Color.grey, Color.green, Color.magenta, Color.red,
         Color.white, Color.yellow,
     };
 
-    private static readonly List<(PrimitiveType, Shapes)> AllShapes = new List<(PrimitiveType, Shapes)>
+    public static readonly List<(PrimitiveType, Shapes)> AllShapes = new List<(PrimitiveType, Shapes)>
     {
         (PrimitiveType.Capsule, Shapes.Capsule), 
         (PrimitiveType.Cube, Shapes.Cube), 
@@ -73,7 +73,10 @@ public static class Utils
 
     public static void InitPositionMarker(GameObject parentMarker)
     {
-        
+        foreach (Transform markerTransform in parentMarker.transform)
+        {
+            Embeddings.AddAddress(markerTransform.name, markerTransform.gameObject);
+        }
     }
 
     public static bool IsColorClose(Color color1, Color color2, float confidence)

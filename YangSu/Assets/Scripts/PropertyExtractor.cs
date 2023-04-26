@@ -22,23 +22,23 @@ public static class PropertyExtractor
             // embeddings should suffice
             "shape", new List<string>
             {
-                // "cube", "cylinder",
+                // "capsule", "cube", "cylinder",
             }
         },
         {
             // embeddings should suffice
             "color", new List<string>
             {
-                // "red", "green", "blue", "yellow", "black", "white", "orange", "purple", "pink",
+                // "red", "green", "blue", "cyan", "yellow", "black", "white", "yellow",
             }
         },
-        // {
-        //     // embeddings + 2d container by x and y
-        //     "address", new List<string>
-        //     {
-        //         // "XXX Street", "YYY Ave",
-        //     }
-        // },
+        {
+            // embeddings + 2d container by x and y
+            "address", new List<string>
+            {
+                // "XXX Street", "YYY Ave",
+            }
+        },
         {
             // need two entities, one for the target instance, the other for the decorator instance (need recursive PropertyExtractor)
             "position", new List<string>
@@ -140,21 +140,6 @@ public static class PropertyExtractor
     private static string interactionPrompt(string userPrompt)
     {
         return "";
-    }
-
-    // 
-    private static string embeddingPrompt(string userPrompt, string propertyType, List<string> targets)
-    {
-        string ret = "Extract the most similar " + propertyType + " to \"" + userPrompt + "\" from: ";
-        bool isFirstFlag = true;
-        foreach (string candidate in targets)
-        {
-            if (isFirstFlag) isFirstFlag = false;
-            else ret += ", ";
-            ret += "\"" + candidate + "\"";
-        }
-        ret += "\nOnly do the extraction, no explanation needed.\n";
-        return ret;
     }
 
     private static string openAIMessage;

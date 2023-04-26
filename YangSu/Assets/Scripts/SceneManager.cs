@@ -42,7 +42,7 @@ public class SceneManager : MonoBehaviour
         if (expandPanel.gameObject.name == "ExpandInventoryScroll")
         {
             parentExpandedObjects = GameObject.Find("InteractableContentPanel/Interactables");
-            parentExpandedObjects.transform.parent.GetComponent<RectTransform>().sizeDelta = new Vector2(13, Mathf.Max(13, (m_List_Expand_Object.Count/3)*5) );
+            parentExpandedObjects.transform.parent.GetComponent<RectTransform>().sizeDelta = new Vector2(13, Mathf.Max(13, (m_List_Expand_Object.Count / 3) * 5));
         }
         else
         {
@@ -58,7 +58,6 @@ public class SceneManager : MonoBehaviour
             
             voodoo.transform.parent = parentExpandedObjects.transform;
             
-            
             //change size of the object so that it fits within the canvas
             MeshRenderer renderer = original.GetComponent<MeshRenderer>();
             float scale = 0.0f;
@@ -67,15 +66,13 @@ public class SceneManager : MonoBehaviour
             {
                 scale =  objectScale/ renderer.bounds.size.x;
                 voodoo.transform.localScale = new Vector3(objectScale, renderer.bounds.size.y * scale, renderer.bounds.size.z * scale);
-           
             }
             else
             {
                 scale =  objectScale/ renderer.bounds.size.y;
                 voodoo.transform.localScale = new Vector3(renderer.bounds.size.x * scale, objectScale, renderer.bounds.size.z * scale);
             }
-
-
+            
             //change position of voodoo object
             Vector3 target_position = expandPanel.transform.position;
             int x_index = i % 5;
@@ -85,7 +82,6 @@ public class SceneManager : MonoBehaviour
             //lerp voodoo to expand panel
             voodoo.GetComponent<InteractableTarget>().lerp_to_target_positon(target_position);
         }
-        
         m_List_Expand_Object.Clear();
     }
     

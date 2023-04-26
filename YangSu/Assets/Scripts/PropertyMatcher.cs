@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using UnityEngine;
 using ColorUtility = UnityEngine.ColorUtility;
@@ -7,8 +8,6 @@ using ColorUtility = UnityEngine.ColorUtility;
 public static class PropertyMatcher
 {
     public static List<ShapeController> matchedControllers = new List<ShapeController>();
-    
-    private static float confidence = 0.5f;
         
     private static string openAIMessage;
 
@@ -26,20 +25,19 @@ public static class PropertyMatcher
                      "0, 5\n" +
                      "Input:\n"},
     };
-    
-    // property, entities
-    private static Dictionary<string, List<string>> matchEmbeddings = new Dictionary<string, List<string>>()
+
+    // prompt word, property, list of entities, top-k most similar items to extract
+    private static string embeddingPrompt(string userPrompt, string propertyType, List<string> targets, int topk)
     {
+        string ret = "Rank the top-" + (topk + 1) + " most similar " + propertyType + " to the word \"" + userPrompt + "\", from 0% to 100%. " +
+                     "No explanation needed.\nInput:\n1. " + userPrompt + "\n";
+        for (int i=0; i<targets.Count; i++)
         {
-            "color", new List<string>
-            {
-                "red", "green", "blue", "yellow", "black", "white", "orange", "purple", "pink",
-            }
-        },
-        {
-            "address", new List<string>()
-        },
-    };
+            ret += (i + 2) + "-" + targets[i] + "\n";
+        }
+        ret += "Output:\n" + "1-" + userPrompt + "-100%\n";
+        return ret;
+    }
 
     public static async Task MatchProperty(List<Dictionary<string, string>> propertyPreds,
         ShapeController[] controllers, List<string> historyMessages)
@@ -100,29 +98,60 @@ public static class PropertyMatcher
         matchedControllers = filteredControllers;
     }
 
-    private static void MatchColor(string feature, List<string> historyMessages)
+    private static async Task MatchColor(string feature, List<string> historyMessages)
     {
         List<ShapeController> filteredControllers = new List<ShapeController>();
-        Debug.Log("color matcher: " + feature);
-        if (ColorUtility.TryParseHtmlString(feature, out Color color))
+        string userPrompt = embeddingPrompt(feature, "color", new List<string>(Embeddings.ColorMap.Keys), 1);
+        Debug.Log("ColorPrompt:\n" + userPrompt);
+        try
         {
-            historyMessages.Add("<color=purple>color: [" + color + "]</color>\n");
-            foreach (var controller in matchedControllers)
+            var result = await Utils.OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt);
+            openAIMessage = result.ToString();
+            Debug.Log("color matcher: " + openAIMessage);
+            string[] tuple = openAIMessage.Split("-");
+            if (tuple.Length > 2 && Embeddings.AddressMap.ContainsKey(tuple[1]))
             {
-                var renderer = controller.GetComponent<Renderer>();
-                if (renderer.material.color == color)
+                string colorName = tuple[1];
+                Color color = Embeddings.ColorMap[colorName];
+                historyMessages.Add("<color=purple>color: [" + colorName + " " + Embeddings.AddressMap[colorName] + "]\n");
+                foreach (var controller in matchedControllers)
                 {
-                    filteredControllers.Add(controller);
+                    var renderer = controller.GetComponent<Renderer>();
+                    if (renderer.material.color == color)
+                    {
+                        filteredControllers.Add(controller);
+                    }
                 }
-                // if (Utils.IsColorClose(renderer.material.color, color, confidence))
-                // {
-                //     filteredControllers.Add(controller);
-                // }
+            }
+            else
+            {
+                filteredControllers = matchedControllers;
             }
         }
-        else
+        // Debug.Log("color matcher: " + feature);
+        // if (ColorUtility.TryParseHtmlString(feature, out Color color))
+        // {
+        //     historyMessages.Add("<color=purple>color: [" + color + "]</color>\n");
+        //     foreach (var controller in matchedControllers)
+        //     {
+        //         var renderer = controller.GetComponent<Renderer>();
+        //         if (renderer.material.color == color)
+        //         {
+        //             filteredControllers.Add(controller);
+        //         }
+        //         // if (Utils.IsColorClose(renderer.material.color, color, confidence))
+        //         // {
+        //         //     filteredControllers.Add(controller);
+        //         // }
+        //     }
+        // }
+        // else
+        // {
+        //     filteredControllers = matchedControllers;
+        // }
+        catch (Exception e)
         {
-            filteredControllers = matchedControllers;
+            Debug.Log("color matcher get exception in OpenAICompletion:\n" + e);
         }
         matchedControllers = filteredControllers;
     }
@@ -130,23 +159,23 @@ public static class PropertyMatcher
     private static async Task MatchAddress(string feature, List<string> historyMessages)
     {
         List<ShapeController> filteredControllers = new List<ShapeController>();
-        string userPrompt = matchTuples["address"] + feature + "\nOutput:\n";
+        string userPrompt = embeddingPrompt(feature, "address", new List<string>(Embeddings.AddressMap.Keys), 1);
+        Debug.Log("AddressPrompt:\n" + userPrompt);
         try
         {
             var result = await Utils.OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt);
             openAIMessage = result.ToString();
-            Debug.Log("distance matcher: " + openAIMessage);
-            string[] tuple = openAIMessage.Split(", ");
-            if (tuple.Length > 1 && int.TryParse(tuple[0], out int start) && int.TryParse(tuple[1], out int end)) 
+            Debug.Log("address matcher: " + openAIMessage);
+            string[] tuple = openAIMessage.Split("-");
+            if (tuple.Length > 2 && Embeddings.AddressMap.ContainsKey(tuple[1]))
             {
-                if (start > end)
-                {
-                    (start, end) = (end, start);
-                }
-                historyMessages.Add("<color=purple>distance start: [" + start + "] end: [" + end + "]</color>");
+                string address = tuple[1];
+                (float x1, float x2, float z1, float z2) = Embeddings.AddressMap[address];
+                historyMessages.Add("<color=purple>address: [" + address + " " + Embeddings.AddressMap[address] + "]\n");
                 foreach (var controller in matchedControllers)
                 {
-                    if (start <= controller.transform.position.x && controller.transform.position.x <= end)
+                    Vector3 position = controller.transform.position;
+                    if (x1 <= position.x && position.x <= x2 && z1 <= position.z && position.z <= z2)
                     {
                         filteredControllers.Add(controller);
                     }
@@ -168,6 +197,7 @@ public static class PropertyMatcher
     {
         List<ShapeController> filteredControllers = new List<ShapeController>();
         string userPrompt = matchTuples["distance"] + feature + "\nOutput:\n";
+        Debug.Log("distancePrompt:\n" + userPrompt);
         try
         {
             var result = await Utils.OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt);
