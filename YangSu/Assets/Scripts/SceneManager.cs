@@ -78,8 +78,8 @@ public class SceneManager : MonoBehaviour
 
             //change position of voodoo object
             Vector3 target_position = expandPanel.transform.position;
-            int x_index = i % 3;
-            int y_index = i / 3;
+            int x_index = i % 5;
+            int y_index = i / 5;
             target_position = target_position + expandPanel.transform.up * (up_left_dist * (y_index - 1))+expandPanel.transform.right * ((x_index - 1) * up_left_dist);
            
             //lerp voodoo to expand panel
