@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using UnityEngine;
-using ColorUtility = UnityEngine.ColorUtility;
 
 public static class PropertyMatcher
 {
@@ -14,29 +12,48 @@ public static class PropertyMatcher
     // property, example usage
     private static Dictionary<string, string> matchTuples = new Dictionary<string, string>
     {
-        {"distance", "Extract the start and end range.\n" +
-                     "Input:\n" +
-                     "from negative eleven to eighteen m\n" +
-                     "Output:\n" +
-                     "-11, 18\n" +
-                     "Input:\n" +
+        {"distance", "extract the start and end range. min = 0, max = 100.\n" +
+                     "input:\n" +
+                     "at least eighteen m\n" +
+                     "output:\n" +
+                     "18, 100\n" +
+                     "input:\n" +
                      "within five m\n" +
-                     "Output:\n" +
+                     "output:\n" +
                      "0, 5\n" +
-                     "Input:\n"},
+                     "input:\n"},
     };
 
     // prompt word, property, list of entities, top-k most similar items to extract
-    private static string embeddingPrompt(string userPrompt, string propertyType, List<string> targets, int topk)
+    private static string EmbeddingPrompt(string userPrompt, string propertyType, List<string> targets, int topK)
     {
-        string ret = "Rank the top-" + topk + " most similar " + propertyType + " to the word \"" + userPrompt + "\", with confidence from 0% to 100%. " +
-                     "No explanation needed. Output Format: rank-color-x%.\nInput:\n";
+        string ret = "rank the top-" + topK + " most similar " + propertyType + " to the word \"" + userPrompt + "\", with confidence from 0% to 100%. " +
+                     "no explanation needed. output format: rank, color, x%\ninput:\n";
         for (int i=0; i<targets.Count; i++)
         {
-            ret += (i + 1) + "-" + targets[i] + "\n";
+            ret += (i + 1) + ", " + targets[i] + "\n";
         }
-        ret += "Output:\n";
+        ret += "output:\n";
         return ret;
+    }
+
+    private static List<string> TokenizeMessage(string message, int topK)
+    {
+        if (topK > 1)
+        {
+            // TODO
+            return new List<string>();
+        }
+        string[] tuple = message.Split("\n");
+        string[] candidateTuple = tuple[0].Split(", ");
+        if (candidateTuple.Length == 3 && int.TryParse(candidateTuple[2].Remove(candidateTuple[2].Length-1), out int confidence))
+        {
+            if (confidence >= Utils.MinConfidenceToProceed)
+            {
+                return new List<string> { candidateTuple[1] };
+            }
+        }
+        return new List<string>();
     }
 
     public static async Task MatchProperty(List<Dictionary<string, string>> propertyPreds,
@@ -63,6 +80,10 @@ public static class PropertyMatcher
                 else if (property == "address")
                 {
                     await MatchAddress(feature, historyMessages);
+                }
+                else if (property == "direction")
+                {
+                    await MatchDirection(feature, historyMessages);
                 }
                 else
                 {
@@ -101,19 +122,19 @@ public static class PropertyMatcher
     private static async Task MatchColor(string feature, List<string> historyMessages)
     {
         List<ShapeController> filteredControllers = new List<ShapeController>();
-        string userPrompt = embeddingPrompt(feature, "color", new List<string>(Embeddings.ColorMap.Keys), 1);
+        string userPrompt = EmbeddingPrompt(feature, "color", new List<string>(Embeddings.ColorMap.Keys), 1);
         Debug.Log("ColorPrompt:\n" + userPrompt);
         try
         {
-            var result = await Utils.OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt);
+            var result = await Utils.OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt, temperature: Utils.CompletionTemperature);
             openAIMessage = result.ToString();
             Debug.Log("color matcher: " + openAIMessage);
-            string[] tuple = openAIMessage.Split("-");
-            if (tuple.Length > 2 && Embeddings.ColorMap.ContainsKey(tuple[1]))
+            List<string> response = TokenizeMessage(openAIMessage, topK: 1);
+            if (response.Count > 0 && Embeddings.ColorMap.ContainsKey(response[0]))
             {
-                string colorName = tuple[1];
+                string colorName = response[0];
                 Color color = Embeddings.ColorMap[colorName];
-                historyMessages.Add("<color=purple>color: [" + colorName + ": " + color + "]</color>\n");
+                historyMessages.Add("<color=purple>color: [" + colorName + " " + color + "]</color>\n");
                 foreach (var controller in matchedControllers)
                 {
                     var renderer = controller.GetComponent<Renderer>();
@@ -139,23 +160,23 @@ public static class PropertyMatcher
     private static async Task MatchAddress(string feature, List<string> historyMessages)
     {
         List<ShapeController> filteredControllers = new List<ShapeController>();
-        string userPrompt = embeddingPrompt(feature, "address", new List<string>(Embeddings.AddressMap.Keys), 1);
+        string userPrompt = EmbeddingPrompt(feature, "address", new List<string>(Embeddings.AddressMap.Keys), 1);
         Debug.Log("AddressPrompt:\n" + userPrompt);
         try
         {
-            var result = await Utils.OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt);
+            var result = await Utils.OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt, temperature: Utils.CompletionTemperature);
             openAIMessage = result.ToString();
             Debug.Log("address matcher: " + openAIMessage);
-            string[] tuple = openAIMessage.Split("-");
-            if (tuple.Length > 2 && Embeddings.AddressMap.ContainsKey(tuple[1]))
+            List<string> response = TokenizeMessage(openAIMessage, topK: 1);
+            if (response.Count > 0 && Embeddings.AddressMap.ContainsKey(response[0]))
             {
-                string address = tuple[1];
+                string address = response[0];
                 (float x1, float x2, float z1, float z2) = Embeddings.AddressMap[address];
                 historyMessages.Add("<color=purple>address: [" + address + " " + Embeddings.AddressMap[address] + "]</color>\n");
                 foreach (var controller in matchedControllers)
                 {
-                    Vector3 position = controller.transform.position;
-                    if (x1 <= position.x && position.x <= x2 && z1 <= position.z && position.z <= z2)
+                    Vector3 controllerPosition = controller.transform.position;
+                    if (x1 <= controllerPosition.x && controllerPosition.x <= x2 && z1 <= controllerPosition.z && controllerPosition.z <= z2)
                     {
                         filteredControllers.Add(controller);
                     }
@@ -180,20 +201,23 @@ public static class PropertyMatcher
         Debug.Log("distancePrompt:\n" + userPrompt);
         try
         {
-            var result = await Utils.OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt);
+            var result = await Utils.OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt, temperature: Utils.CompletionTemperature);
             openAIMessage = result.ToString();
             Debug.Log("distance matcher: " + openAIMessage);
             string[] tuple = openAIMessage.Split(", ");
-            if (tuple.Length > 1 && int.TryParse(tuple[0], out int start) && int.TryParse(tuple[1], out int end)) 
+            if (tuple.Length == 3 && int.TryParse(tuple[0], out int start) && int.TryParse(tuple[1], out int end))
             {
                 if (start > end)
                 {
                     (start, end) = (end, start);
                 }
                 historyMessages.Add("<color=purple>distance start: [" + start + "] end: [" + end + "]</color>");
+                Vector3 playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
                 foreach (var controller in matchedControllers)
                 {
-                    if (start <= controller.transform.position.x && controller.transform.position.x <= end)
+                    Vector3 controllerPosition = controller.transform.position;
+                    float diff = Mathf.Sqrt(Mathf.Pow(controllerPosition.x - playerPosition.x, 2) + Mathf.Pow(controllerPosition.z - playerPosition.z, 2));
+                    if (start <= diff && diff <= end)
                     {
                         filteredControllers.Add(controller);
                     }
@@ -207,6 +231,45 @@ public static class PropertyMatcher
         catch (Exception e)
         {
             Debug.Log("distance matcher get exception in OpenAICompletion:\n" + e);
+        }
+        matchedControllers = filteredControllers;
+    }
+
+    private static async Task MatchDirection(string feature, List<string> historyMessages)
+    {
+        List<ShapeController> filteredControllers = new List<ShapeController>();
+        string userPrompt = EmbeddingPrompt(feature, "direction", new List<string>(Embeddings.DirectionMap.Keys), 1);
+        Debug.Log("DirectionPrompt:\n" + userPrompt);
+        try
+        {
+            var result = await Utils.OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt, temperature: Utils.CompletionTemperature);
+            openAIMessage = result.ToString();
+            Debug.Log("direction matcher: " + openAIMessage);
+            List<string> response = TokenizeMessage(openAIMessage, topK: 1);
+            if (response.Count > 0 && Embeddings.DirectionMap.ContainsKey(response[0]))
+            {
+                string directionName = response[0];
+                Vector3 direction = Embeddings.DirectionMap[directionName];
+                historyMessages.Add("<color=purple>direction: [" + directionName + " " + direction + "]</color>\n");
+                Vector3 playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
+                foreach (var controller in matchedControllers)
+                {
+                    Vector3 controllerPosition = controller.transform.position;
+                    Vector3 diffPosition = controllerPosition - playerPosition;
+                    if (Vector3.Dot(diffPosition, direction) > 0f)
+                    {
+                        filteredControllers.Add(controller);
+                    }
+                }
+            }
+            else
+            {
+                filteredControllers = matchedControllers;
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.Log("direction matcher get exception in OpenAICompletion:\n" + e);
         }
         matchedControllers = filteredControllers;
     }

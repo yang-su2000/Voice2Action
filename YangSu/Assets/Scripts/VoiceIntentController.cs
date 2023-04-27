@@ -116,7 +116,7 @@ public class VoiceIntentController : MonoBehaviour
 
         chatPrompts = new List<Message>
         {
-            new Message(Role.System, "You are a helpful, creative, clever, and very friendly assistant"),
+            new Message(Role.System, "you are a helpful, creative, clever, and very friendly assistant."),
         };
 
         historyMessages = new List<string>();
@@ -124,7 +124,7 @@ public class VoiceIntentController : MonoBehaviour
         {
             richText = true
         };
-        formattedMessage = "This is the beginning of the conversation.";
+        formattedMessage = "this is the beginning of the conversation.";
 
         VoiceActivateAction.action.started += _ =>
         {
@@ -196,13 +196,13 @@ public class VoiceIntentController : MonoBehaviour
 
     private async void OnVoiceEnd()
     {
+        Debug.Log("OnRequest Completed");
         // Microphone.End(Microphone.devices[0]);
         // userMessage = await CallWhisper(audioSource.clip);
         // Debug.Log("userMessage: " + userMessage);
         // fullTranscriptText.text = userMessage;
         // if (userMessage != "N/A") await CallGPT(userMessage);
         await CallGPT(userMessage);
-        Debug.Log("OnRequest Completed");
     }
 
     private async Task<string> CallWhisper(AudioClip audioClip)
@@ -252,7 +252,7 @@ public class VoiceIntentController : MonoBehaviour
         }
     }
 
-    private async void OpenAIChat(string prompt)
+    private async void CallChat(string prompt)
     {
         try
         {

@@ -25,7 +25,17 @@ public static class Embeddings
     public static Dictionary<string, (float, float, float, float)> AddressMap =
         new Dictionary<string, (float, float, float, float)>();
 
-    public static Dictionary<string, Mesh> ShapesMap = new Dictionary<string, Mesh>();
+    public static Dictionary<string, Shapes> ShapesMap = new Dictionary<string, Shapes>();
+
+    public static Dictionary<string, Vector3> DirectionMap = new Dictionary<string, Vector3>
+    {
+        { "left", Vector3.left },
+        { "right", Vector3.right },
+        { "up", Vector3.up },
+        { "down", Vector3.down },
+        { "front", Vector3.forward },
+        { "behind", Vector3.back },
+    };
 
     public static void AddColor(string name, Color color)
     {
@@ -40,8 +50,8 @@ public static class Embeddings
         AddressMap[name] = (bottomLeft.x, upperRight.x, bottomLeft.z, upperRight.z);
     }
 
-    public static void AddShapes(string name, Mesh mesh)
+    public static void AddShapes(string name, Shapes shapes)
     {
-        ShapesMap[name] = mesh;
+        ShapesMap[name] = shapes;
     }
 }

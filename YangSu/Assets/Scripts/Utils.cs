@@ -3,11 +3,29 @@ using UnityEngine;
 using OpenAI;
 using UnityEngine.XR.Interaction.Toolkit;
 
+public enum Shapes
+{
+    Cube,
+    Sphere,
+    Capsule,
+    Cylinder,
+    Object,
+    Objects,
+    Building,
+    Buildings,
+}
+
 public static class Utils
 {
     [Header("OpenAI API")]
     public static readonly OpenAIClient OpenAIClient = new OpenAIClient();
     
+    [Header("OpenAI Parameters")]
+    public static readonly float CompletionTemperature = 0.1f;
+
+    // out of 100
+    public static readonly int MinConfidenceToProceed = 50;
+
     [Header("Example Properties")]
     public static readonly List<Color> AllColors = new List<Color>
     {
@@ -19,6 +37,7 @@ public static class Utils
     {
         (PrimitiveType.Capsule, Shapes.Capsule), 
         (PrimitiveType.Cube, Shapes.Cube), 
+        (PrimitiveType.Sphere, Shapes.Sphere),
         (PrimitiveType.Cylinder, Shapes.Cylinder), 
     };
 
@@ -43,7 +62,7 @@ public static class Utils
             cube.transform.localScale =
                 new Vector3(Random.Range(0.25f, 1f), Random.Range(0.25f, 2f), Random.Range(0.25f, 1f));
             Renderer renderer = shapeController.GetComponent<Renderer>();
-            renderer.material = Resources.Load<Material>("Materials/myMaterial");
+            renderer.material = Resources.Load<Material>("Materials/BuildingMaterial");
             renderer.material.SetFloat("_Mode", 2);
             renderer.material.color = AllColors[Random.Range(0, AllColors.Count)];
             if (Random.Range(0f, 1f) < 0.5f)

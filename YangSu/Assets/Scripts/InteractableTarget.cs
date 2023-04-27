@@ -1,13 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
-using Unity.VisualScripting;
-using Unity.XR.CoreUtils;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.XR.Interaction.Toolkit;
-using Random = System.Random;
 
 public class InteractableTarget : MonoBehaviour
 {
@@ -70,9 +62,11 @@ public class InteractableTarget : MonoBehaviour
             return;
         }
         connecting_line = gameObject.AddComponent<LineRenderer>();
+        connecting_line.material = Resources.Load<Material>("Materials/LineMaterial");
+        // connecting_line.material.SetColor("_Color", Color.yellow);
         connecting_line.useWorldSpace = true;
-        connecting_line.startColor = Color.magenta;
-        connecting_line.endColor = Color.magenta;
+        // connecting_line.startColor = Color.yellow;
+        // connecting_line.endColor = Color.yellow;
         connecting_line.startWidth = 0.01f;
         connecting_line.endWidth = 0.01f;
         connecting_line.SetPosition(0, transform.position);

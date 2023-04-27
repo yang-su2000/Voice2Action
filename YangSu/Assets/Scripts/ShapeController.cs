@@ -38,17 +38,4 @@ public class ShapeController : MonoBehaviour
         Quaternion new_rotation = Quaternion.Euler(targetDirection);
         transform.rotation = new_rotation;
     }
-
-    public void MoveDirection(Direction direction)
-    {
-        switch (direction)
-        {
-            case Direction.Left:
-                transform.position += Vector3.left;
-                break;
-            case Direction.Right:
-                transform.position += Vector3.right;
-                break;
-        }
-    }
 }

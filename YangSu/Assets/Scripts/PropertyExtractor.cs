@@ -41,7 +41,7 @@ public static class PropertyExtractor
         },
         {
             // need two entities, one for the target instance, the other for the decorator instance (need recursive PropertyExtractor)
-            "position", new List<string>
+            "direction", new List<string>
             {
                 // "left", "right", "north", "south", "west", "east", "top", "bottom",
             }
@@ -50,7 +50,7 @@ public static class PropertyExtractor
             // need two numbers denoting the range of the position
             "distance", new List<string>
             {
-                // pass
+                // "x meters",
             }
         },
         {
@@ -75,7 +75,7 @@ public static class PropertyExtractor
         (
             "select the tallest building on albert street, and all the blue signs five m away on my left", 
             "shape: building, address: albert street, superlative degree: tallest\n" +
-            "shape: sign, color: blue, position: on my left, distance: five m away"
+            "shape: sign, color: blue, direction: on my left, distance: five m away"
         ),
     };
     
@@ -113,7 +113,7 @@ public static class PropertyExtractor
     // 
     private static string selectPrompt(string userPrompt)
     {
-        string ret = "Extract the properties {";
+        string ret = "extract the properties {";
         bool isFirstFlag = true;
         foreach (string property in propertyTragets.Keys)
         {
@@ -121,14 +121,14 @@ public static class PropertyExtractor
             else ret += ", ";
             ret += "\"" + property + "\"";
         }
-        ret += "} belong to each object, separate by newline. If the property does not exist, do not print anything.\n";
+        ret += "} belong to each object, separate by newline. if the property does not exist, do not print anything.\n";
         foreach ((string inputExample, string outputExample) in selectExamples)
         {
-            ret += "Input:\n" + inputExample + "\n";
-            ret += "Output:\n" + outputExample + "\n";
+            ret += "input:\n" + inputExample + "\n";
+            ret += "output:\n" + outputExample + "\n";
         }
-        ret += "Input:\n" + userPrompt + "\n";
-        ret += "Output:\n";
+        ret += "input:\n" + userPrompt + "\n";
+        ret += "output:\n";
         return ret;
     }
 
@@ -155,7 +155,7 @@ public static class PropertyExtractor
         propertyPreds.Clear();
         try
         {
-            var result = await Utils.OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt, temperature: 0.1);
+            var result = await Utils.OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt, temperature: Utils.CompletionTemperature);
             openAIMessage = result.ToString();
             Debug.Log("property selector: " + openAIMessage);
             foreach (string properties in openAIMessage.Split("\n"))
