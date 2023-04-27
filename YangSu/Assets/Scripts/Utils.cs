@@ -11,7 +11,7 @@ public static class Utils
     [Header("Example Properties")]
     public static readonly List<Color> AllColors = new List<Color>
     {
-        Color.black, Color.blue, Color.cyan, Color.grey, Color.green, Color.magenta, Color.red,
+        Color.black, Color.blue, Color.cyan, Color.grey, Color.green, Color.red,
         Color.white, Color.yellow,
     };
 

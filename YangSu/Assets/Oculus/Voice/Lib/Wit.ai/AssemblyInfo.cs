@@ -17,6 +17,8 @@ public enum Shapes
     Cylinder,
     Object,
     Objects,
+    Building,
+    Buildings,
 }
 
 public enum Direction

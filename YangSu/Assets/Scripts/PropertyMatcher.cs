@@ -29,13 +29,13 @@ public static class PropertyMatcher
     // prompt word, property, list of entities, top-k most similar items to extract
     private static string embeddingPrompt(string userPrompt, string propertyType, List<string> targets, int topk)
     {
-        string ret = "Rank the top-" + (topk + 1) + " most similar " + propertyType + " to the word \"" + userPrompt + "\", from 0% to 100%. " +
-                     "No explanation needed.\nInput:\n1. " + userPrompt + "\n";
+        string ret = "Rank the top-" + topk + " most similar " + propertyType + " to the word \"" + userPrompt + "\", with confidence from 0% to 100%. " +
+                     "No explanation needed. Output Format: rank-color-x%.\nInput:\n";
         for (int i=0; i<targets.Count; i++)
         {
-            ret += (i + 2) + "-" + targets[i] + "\n";
+            ret += (i + 1) + "-" + targets[i] + "\n";
         }
-        ret += "Output:\n" + "1-" + userPrompt + "-100%\n";
+        ret += "Output:\n";
         return ret;
     }
 
@@ -54,7 +54,7 @@ public static class PropertyMatcher
                 }
                 else if (property == "color")
                 {
-                    MatchColor(feature, historyMessages);
+                    await MatchColor(feature, historyMessages);
                 }
                 else if (property == "distance")
                 {
@@ -81,7 +81,7 @@ public static class PropertyMatcher
             historyMessages.Add("<color=purple>shape: [" + shape + "]</color>\n");
             foreach (var controller in matchedControllers)
             {
-                if (controller.shapes == shape)
+                if (controller.shapes == shape || controller.shapes == Shapes.Object || controller.shapes == Shapes.Objects)
                 {
                     filteredControllers.Add(controller);
                 }
@@ -109,15 +109,16 @@ public static class PropertyMatcher
             openAIMessage = result.ToString();
             Debug.Log("color matcher: " + openAIMessage);
             string[] tuple = openAIMessage.Split("-");
-            if (tuple.Length > 2 && Embeddings.AddressMap.ContainsKey(tuple[1]))
+            if (tuple.Length > 2 && Embeddings.ColorMap.ContainsKey(tuple[1]))
             {
                 string colorName = tuple[1];
                 Color color = Embeddings.ColorMap[colorName];
-                historyMessages.Add("<color=purple>color: [" + colorName + " " + Embeddings.AddressMap[colorName] + "]\n");
+                historyMessages.Add("<color=purple>color: [" + colorName + ": " + color + "]</color>\n");
                 foreach (var controller in matchedControllers)
                 {
                     var renderer = controller.GetComponent<Renderer>();
-                    if (renderer.material.color == color)
+                    Color controllerColor = renderer.material.color;
+                    if (controllerColor.r == color.r && controllerColor.g == color.g && controllerColor.b == color.b)
                     {
                         filteredControllers.Add(controller);
                     }
@@ -128,27 +129,6 @@ public static class PropertyMatcher
                 filteredControllers = matchedControllers;
             }
         }
-        // Debug.Log("color matcher: " + feature);
-        // if (ColorUtility.TryParseHtmlString(feature, out Color color))
-        // {
-        //     historyMessages.Add("<color=purple>color: [" + color + "]</color>\n");
-        //     foreach (var controller in matchedControllers)
-        //     {
-        //         var renderer = controller.GetComponent<Renderer>();
-        //         if (renderer.material.color == color)
-        //         {
-        //             filteredControllers.Add(controller);
-        //         }
-        //         // if (Utils.IsColorClose(renderer.material.color, color, confidence))
-        //         // {
-        //         //     filteredControllers.Add(controller);
-        //         // }
-        //     }
-        // }
-        // else
-        // {
-        //     filteredControllers = matchedControllers;
-        // }
         catch (Exception e)
         {
             Debug.Log("color matcher get exception in OpenAICompletion:\n" + e);
@@ -171,7 +151,7 @@ public static class PropertyMatcher
             {
                 string address = tuple[1];
                 (float x1, float x2, float z1, float z2) = Embeddings.AddressMap[address];
-                historyMessages.Add("<color=purple>address: [" + address + " " + Embeddings.AddressMap[address] + "]\n");
+                historyMessages.Add("<color=purple>address: [" + address + " " + Embeddings.AddressMap[address] + "]</color>\n");
                 foreach (var controller in matchedControllers)
                 {
                     Vector3 position = controller.transform.position;

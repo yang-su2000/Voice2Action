@@ -108,6 +108,7 @@ public class InteractableTarget : MonoBehaviour
         // voodoo.transform.rotation = expandPanel.transform.rotation;
         voodoo.GetComponent<InteractableTarget>().isVoodoo = true;
         voodoo.GetComponent<InteractableTarget>().originObject = transform;
+        voodoo.GetComponent<Renderer>().material.SetFloat("_Mode", 2);
         return voodoo;
     }
     

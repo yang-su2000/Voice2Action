@@ -16,7 +16,7 @@ public static class Embeddings
         { "grey", Color.grey }, 
         { "green", Color.green }, 
         { "pink", Color.magenta }, 
-        { "purple", Color.red },
+        { "red", Color.red },
         { "white", Color.white }, 
         { "yellow", Color.yellow },
     };
