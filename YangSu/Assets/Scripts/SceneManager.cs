@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using System;
 using Unity.VisualScripting;
+using Unity.XR.CoreUtils;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Inputs;
 
@@ -39,17 +40,8 @@ public class SceneManager : MonoBehaviour
     {
         ActivateUI?.Invoke(m_List_Expand_Object.Count);
         expandPanel.SetActive(true);
-        if (expandPanel.gameObject.name == "ExpandInventoryScroll")
-        {
-            parentExpandedObjects = GameObject.Find("InteractableContentPanel/Interactables");
-            parentExpandedObjects.transform.parent.GetComponent<RectTransform>().sizeDelta = new Vector2(13, Mathf.Max(13, (m_List_Expand_Object.Count / 3) * 5));
-        }
-        else
-        {
-            parentExpandedObjects = new GameObject();
-            parentExpandedObjects.name = "ProxyObjects";
-        }
-        
+        parentExpandedObjects = expandPanel.GetNamedChild("Interactables");
+
         for (int i = 0; i < m_List_Expand_Object.Count; i++)
         {
             (GameObject,GameObject) orig_voodoo_pair = m_List_Expand_Object[i];
@@ -78,7 +70,7 @@ public class SceneManager : MonoBehaviour
             int x_index = i % 5;
             int y_index = i / 5;
             target_position = target_position + expandPanel.transform.up * (up_left_dist * (y_index - 1))+expandPanel.transform.right * ((x_index - 1) * up_left_dist);
-           
+            target_position = new Vector3(target_position.x, target_position.y, target_position.z -0.5f);
             //lerp voodoo to expand panel
             voodoo.GetComponent<InteractableTarget>().lerp_to_target_positon(target_position);
         }
