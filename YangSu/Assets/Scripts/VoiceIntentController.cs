@@ -228,13 +228,18 @@ public class VoiceIntentController : MonoBehaviour
             fadeActive = true;
             matchedControllers.Clear();
             SceneManager.clearProxys();
+            int countProxy = 0;
             foreach (ShapeController controller in PropertyMatcher.matchedControllers)
             {
                 GameObject realObject = controller.gameObject;
                 InteractableTarget interactableTarget = realObject.GetComponent<InteractableTarget>();
-                GameObject proxyObject = interactableTarget.makeVoodoo();
-                SceneManager.add_Expanding_and_Voodoo(realObject, proxyObject);
-                matchedControllers.Add(controller);
+                if (countProxy < SceneManager.maxExpandNum)
+                {
+                    GameObject proxyObject = interactableTarget.makeVoodoo();
+                    SceneManager.add_Expanding_and_Voodoo(realObject, proxyObject);
+                    matchedControllers.Add(controller);
+                    countProxy += 1;
+                }
             }
             historyMessages.Add("<color=black>Assistant: " + PropertyMatcher.matchedControllers.Count + " objects selected</color>\n");
             formattedMessage = PrintHistory(historyMessages);

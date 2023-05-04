@@ -72,7 +72,6 @@ public class InteractableTarget : MonoBehaviour
         connecting_line.endWidth = 0.01f;
         connecting_line.SetPosition(0, transform.position);
         connecting_line.SetPosition(1, originalPosition);
-        
     }
 
     void remove_connecting_lines(HoverExitEventArgs args)
@@ -97,7 +96,7 @@ public class InteractableTarget : MonoBehaviour
     public GameObject makeVoodoo()
     {
         GameObject voodoo = Instantiate(gameObject);
-            
+        Destroy(voodoo.GetComponent<ShapeController>());
         //change the position of the voodoo to the transform position. 
         voodoo.transform.position = transform.position;
         voodoo.transform.rotation = expandPanel.transform.rotation;
@@ -105,7 +104,11 @@ public class InteractableTarget : MonoBehaviour
         voodoo.GetComponent<InteractableTarget>().originObject = transform;
         if (voodoo.GetComponent<Renderer>() != null)
         {
-            voodoo.GetComponent<Renderer>().material.SetFloat("_Mode", 2);
+            Material material = voodoo.GetComponent<Renderer>().material;
+            material.SetFloat("_Mode", 2);
+            Color color = material.color;
+            color.a = 1;
+            material.color = color;
         }
         return voodoo;
     }
@@ -141,7 +144,7 @@ public class InteractableTarget : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         interactable.activated.RemoveListener(OnActivated);
         interactable.selectEntered.RemoveListener(voodoo_on_selected);

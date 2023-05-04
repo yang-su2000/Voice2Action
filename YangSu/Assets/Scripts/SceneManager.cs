@@ -25,6 +25,8 @@ public class SceneManager : MonoBehaviour
     public static event Action<Transform> ActivateInteractable;
     public static event Action<int> ActivateUI;
     public static event Action<Transform> destory_object_not_grabbed;
+    
+    public static int maxExpandNum = 8;
 
     private static List<(GameObject,GameObject)> m_List_Expand_Object;
     private static GameObject parentExpandedObjects;
@@ -33,7 +35,6 @@ public class SceneManager : MonoBehaviour
     private static GameObject expandPanel;
     private float panelWidth;
     private float panelHeight;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -75,7 +76,7 @@ public class SceneManager : MonoBehaviour
         expandPanel.transform.up = (xrOriginCamera.transform.position - expandPanel.transform.position).normalized;
         expandPanel.transform.Rotate(expandPanel.transform.right, 90);
 
-        for (int i = 0; i < Mathf.Min(m_List_Expand_Object.Count, 8); i++)
+        for (int i = 0; i < Mathf.Min(m_List_Expand_Object.Count, maxExpandNum); i++)
         {
             (GameObject,GameObject) orig_voodoo_pair = m_List_Expand_Object[i];
             GameObject original = orig_voodoo_pair.Item1;
@@ -105,7 +106,14 @@ public class SceneManager : MonoBehaviour
     
     public static void add_Expanding_and_Voodoo(GameObject original, GameObject voodoo)
     {
-        m_List_Expand_Object.Add((original, voodoo));
+        if (m_List_Expand_Object.Count < maxExpandNum)
+        {
+            m_List_Expand_Object.Add((original, voodoo));
+        }
+        else
+        {
+            Destroy(voodoo);
+        }
     }
 
     public static void clearProxys()
