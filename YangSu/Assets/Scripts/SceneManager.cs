@@ -84,7 +84,7 @@ public class SceneManager : MonoBehaviour
             voodoo.transform.parent = parentExpandedObjects.transform;
             
             //change size of the object so that it fits within the canvas
-            BoxCollider collider = original.GetComponent<BoxCollider>();
+            Collider collider = original.GetComponent<Collider>();
             float expandWidthRatio = collider.bounds.size.x / panelWidth;
             float expandHeightRatio = collider.bounds.size.y / panelHeight;
             float expandLengthRatio = collider.bounds.size.z / Mathf.Min(panelWidth, panelHeight);

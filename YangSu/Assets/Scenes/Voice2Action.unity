@@ -3113,7 +3113,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Autobus_Mesh (4)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3997860734507913577, guid: 2c0d5c8bfd21b684b917062a0c56c4ef, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2c0d5c8bfd21b684b917062a0c56c4ef, type: 3}
 --- !u!4 &124000727 stripped
 Transform:
@@ -4310,7 +4311,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Autobus_Mesh
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3997860734507913577, guid: 2c0d5c8bfd21b684b917062a0c56c4ef, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2c0d5c8bfd21b684b917062a0c56c4ef, type: 3}
 --- !u!4 &156738090 stripped
 Transform:
@@ -18149,7 +18151,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Autobus_Mesh (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3997860734507913577, guid: 2c0d5c8bfd21b684b917062a0c56c4ef, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2c0d5c8bfd21b684b917062a0c56c4ef, type: 3}
 --- !u!4 &703020809 stripped
 Transform:
@@ -19979,7 +19982,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Autobus_Mesh (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3997860734507913577, guid: 2c0d5c8bfd21b684b917062a0c56c4ef, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2c0d5c8bfd21b684b917062a0c56c4ef, type: 3}
 --- !u!4 &786085006 stripped
 Transform:
@@ -26955,7 +26959,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Autobus_Mesh (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3997860734507913577, guid: 2c0d5c8bfd21b684b917062a0c56c4ef, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2c0d5c8bfd21b684b917062a0c56c4ef, type: 3}
 --- !u!4 &1041937981 stripped
 Transform:
@@ -28055,7 +28060,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}

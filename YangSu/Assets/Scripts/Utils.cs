@@ -107,7 +107,7 @@ public static class Utils
         foreach (Transform category in interactables.transform)
         {
             Shapes categoryType = Shapes.Object;
-            Debug.Log("category " + category.name);
+            // Debug.Log("category " + category.name);
             foreach (Shapes shapeType in Enum.GetValues(typeof(Shapes)))
             {
                 if (category.name.Contains(shapeType.ToString()))
