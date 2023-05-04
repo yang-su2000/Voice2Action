@@ -6,6 +6,7 @@ using Oculus.Voice;
 using UnityEngine.UI;
 using OpenAI.Chat;
 using OpenAI.Audio;
+using TMPro;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -40,13 +41,13 @@ public class VoiceIntentController : MonoBehaviour
     
     [Header("UI")] 
     [SerializeField] 
-    private Text fullTranscriptText;
+    private TextMeshProUGUI fullTranscriptText;
     
     [SerializeField] 
-    private Text partialTranscriptText;
+    private TextMeshProUGUI partialTranscriptText;
 
     [SerializeField]
-    private Text MessageText;
+    private TextMeshProUGUI MessageText;
 
     [SerializeField]
     private GUIStyle MessageGUI;
