@@ -9,7 +9,7 @@ public class ShapeController : MonoBehaviour
 
     public void Start()
     {
-        material = transform.GetComponent<Renderer>().material;
+        // material = transform.GetComponent<Renderer>().material;
     }
 
     public void SetColor(Color color)

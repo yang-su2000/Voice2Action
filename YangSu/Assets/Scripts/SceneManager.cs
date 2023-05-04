@@ -159,7 +159,7 @@ public class SceneManager : MonoBehaviour
         if (m_Interactable is XRGrabInteractable)
         {
            Outline hoveredOutline =  (m_Interactable as XRGrabInteractable).gameObject.GetComponent<Outline>();
-           hoveredOutline.OutlineWidth = 5;
+           if (hoveredOutline != null) hoveredOutline.OutlineWidth = 5;
 
         }
             
@@ -172,7 +172,7 @@ public class SceneManager : MonoBehaviour
         if (m_Interactable is XRGrabInteractable)
         {
             Outline hoveredOutline =  (m_Interactable as XRGrabInteractable).gameObject.GetComponent<Outline>();
-            hoveredOutline.OutlineWidth = 0;
+            if (hoveredOutline != null) hoveredOutline.OutlineWidth = 0;
         }
 
   

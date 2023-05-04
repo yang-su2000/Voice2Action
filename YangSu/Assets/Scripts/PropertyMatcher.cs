@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public static class PropertyMatcher
 {
@@ -27,7 +28,7 @@ public static class PropertyMatcher
     // prompt word, property, list of entities, top-k most similar items to extract
     private static string EmbeddingPrompt(string userPrompt, string propertyType, List<string> targets, int topK)
     {
-        string ret = "rank the top-" + topK + " most similar " + propertyType + " to the word \"" + userPrompt + "\", with confidence from 0% to 100%. " +
+        string ret = "rank the top-" + topK + " most similar " + propertyType + " to the word \"" + userPrompt + "\" by their pronunciation, with confidence from 0% to 100%. " +
                      "no explanation needed. output format: rank, color, x%\ninput:\n";
         for (int i=0; i<targets.Count; i++)
         {
@@ -67,7 +68,7 @@ public static class PropertyMatcher
             {
                 if (property == "shape")
                 {
-                    MatchShape(feature, historyMessages);
+                    await MatchShape(feature, historyMessages);
                 }
                 else if (property == "color")
                 {
@@ -91,30 +92,54 @@ public static class PropertyMatcher
                 }
             }
         }
-    }
-    
-    private static void MatchShape(string feature, List<string> historyMessages)
-    {
-        List<ShapeController> filteredControllers = new List<ShapeController>();
-        Debug.Log("shape matcher: " + feature);
-        if (Enum.TryParse(feature, true, out Shapes shape))
+        foreach (var controller in controllers)
         {
-            historyMessages.Add("<color=purple>shape: [" + shape + "]</color>\n");
-            foreach (var controller in matchedControllers)
+            XRGrabInteractable xrGrabInteractable = controller.GetComponent<XRGrabInteractable>();
+            if (xrGrabInteractable == null) continue;
+            if (matchedControllers.Contains(controller))
             {
-                if (controller.shapes == shape || controller.shapes == Shapes.Object || controller.shapes == Shapes.Objects)
-                {
-                    filteredControllers.Add(controller);
-                }
-                else if (shape == Shapes.Object || shape == Shapes.Objects)
-                {
-                    filteredControllers.Add(controller);
-                }
+                xrGrabInteractable.enabled = true;
+            }
+            else
+            {
+                xrGrabInteractable.enabled = false;
             }
         }
-        else
+    }
+    
+    private static async Task MatchShape(string feature, List<string> historyMessages)
+    {
+        List<ShapeController> filteredControllers = new List<ShapeController>();
+        string userPrompt = EmbeddingPrompt(feature, "shape", new List<string>(Embeddings.ShapesMap.Keys), 1);
+        Debug.Log("ShapesPrompt:\n" + userPrompt);
+        try
         {
-            filteredControllers = matchedControllers;
+            var result = await Utils.OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt, temperature: Utils.CompletionTemperature);
+            openAIMessage = result.ToString();
+            Debug.Log("shape matcher: " + openAIMessage);
+            List<string> response = TokenizeMessage(openAIMessage, topK: 1);
+            if (response.Count > 0 && Embeddings.ShapesMap.ContainsKey(response[0]))
+            {
+                string shapeName = response[0];
+                Shapes shape = Embeddings.ShapesMap[shapeName];
+                // historyMessages.Add("<color=purple>shape: [" + shapeName + " " + shape + "]</color>\n");
+                Debug.Log("<color=purple>shape: [" + shapeName + " " + shape + "]</color>\n");
+                foreach (var controller in matchedControllers)
+                {
+                    if (shape == Shapes.Object || shape == controller.shapes)
+                    {
+                        filteredControllers.Add(controller);
+                    }
+                }
+            }
+            else
+            {
+                filteredControllers = matchedControllers;
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.Log("shape matcher get exception in OpenAICompletion:\n" + e);
         }
         matchedControllers = filteredControllers;
     }
@@ -134,7 +159,8 @@ public static class PropertyMatcher
             {
                 string colorName = response[0];
                 Color color = Embeddings.ColorMap[colorName];
-                historyMessages.Add("<color=purple>color: [" + colorName + " " + color + "]</color>\n");
+                // historyMessages.Add("<color=purple>color: [" + colorName + " " + color + "]</color>\n");
+                Debug.Log("<color=purple>color: [" + colorName + " " + color + "]</color>\n");
                 foreach (var controller in matchedControllers)
                 {
                     var renderer = controller.GetComponent<Renderer>();
@@ -172,7 +198,8 @@ public static class PropertyMatcher
             {
                 string address = response[0];
                 (float x1, float x2, float z1, float z2) = Embeddings.AddressMap[address];
-                historyMessages.Add("<color=purple>address: [" + address + " " + Embeddings.AddressMap[address] + "]</color>\n");
+                // historyMessages.Add("<color=purple>address: [" + address + " " + Embeddings.AddressMap[address] + "]</color>\n");
+                Debug.Log("<color=purple>address: [" + address + " " + Embeddings.AddressMap[address] + "]</color>\n");
                 foreach (var controller in matchedControllers)
                 {
                     Vector3 controllerPosition = controller.transform.position;
@@ -211,7 +238,8 @@ public static class PropertyMatcher
                 {
                     (start, end) = (end, start);
                 }
-                historyMessages.Add("<color=purple>distance start: [" + start + "] end: [" + end + "]</color>");
+                // historyMessages.Add("<color=purple>distance start: [" + start + "] end: [" + end + "]</color>\n");
+                Debug.Log("<color=purple>distance start: [" + start + "] end: [" + end + "]</color>\n");
                 Vector3 playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
                 foreach (var controller in matchedControllers)
                 {
@@ -250,7 +278,8 @@ public static class PropertyMatcher
             {
                 string directionName = response[0];
                 Vector3 direction = Embeddings.DirectionMap[directionName];
-                historyMessages.Add("<color=purple>direction: [" + directionName + " " + direction + "]</color>\n");
+                // historyMessages.Add("<color=purple>direction: [" + directionName + " " + direction + "]</color>\n");
+                Debug.Log("<color=purple>direction: [" + directionName + " " + direction + "]</color>\n");
                 Vector3 playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
                 foreach (var controller in matchedControllers)
                 {

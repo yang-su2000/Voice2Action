@@ -1,18 +1,22 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using OpenAI;
 using UnityEngine.XR.Interaction.Toolkit;
+using Random = UnityEngine.Random;
 
 public enum Shapes
 {
+    Object, // default shape - it is called every time
     Cube,
     Sphere,
     Capsule,
     Cylinder,
-    Object,
-    Objects,
     Building,
-    Buildings,
+    Car,
+    MiniBus,
+    SchoolBus,
+    Tree,
 }
 
 public static class Utils
@@ -29,7 +33,7 @@ public static class Utils
     [Header("Example Properties")]
     public static readonly List<Color> AllColors = new List<Color>
     {
-        Color.black, Color.blue, Color.cyan, Color.grey, Color.green, Color.red,
+        Color.black, Color.blue, Color.cyan, Color.grey, Color.green, Color.magenta, Color.red,
         Color.white, Color.yellow,
     };
 
@@ -95,6 +99,73 @@ public static class Utils
         foreach (Transform markerTransform in parentMarker.transform)
         {
             Embeddings.AddAddress(markerTransform.name, markerTransform.gameObject);
+        }
+    }
+    
+    public static void InitInteractables(GameObject interactables)
+    {
+        foreach (Transform category in interactables.transform)
+        {
+            Shapes categoryType = Shapes.Object;
+            Debug.Log("category " + category.name);
+            foreach (Shapes shapeType in Enum.GetValues(typeof(Shapes)))
+            {
+                if (category.name.Contains(shapeType.ToString()))
+                {
+                    categoryType = shapeType;
+                    if (!Embeddings.ShapesMap.ContainsKey(shapeType.ToString()))
+                    {
+                        Embeddings.ShapesMap.Add(shapeType.ToString(), shapeType);
+                    }
+                    break; // one category can only have one shape
+                }
+            }
+            if (categoryType == Shapes.Object) continue; // not a valid shape
+            foreach (Transform instance in category)
+            {
+                InitInstance(instance.gameObject, categoryType, 0);
+            }
+        }
+    }
+
+    private static void InitInstance(GameObject instance, Shapes shapeType, int level)
+    {
+        if (level == 0)
+        {
+            XRGrabInteractable xrGrabInteractable = instance.AddComponent<XRGrabInteractable>();
+            InteractableTarget interactableTarget = instance.AddComponent<InteractableTarget>();
+            interactableTarget.isVoodoo = false;
+            Outline outline = instance.AddComponent<Outline>();
+            outline.OutlineWidth = 0;
+            outline.OutlineColor = new Color(255, 128, 0, 1); // orange
+        }
+        if (shapeType == Shapes.Car) // TODO: temporary for demo, all car components should have the same color
+        {
+            Color colorGroup = Utils.AllColors[UnityEngine.Random.Range(0, Utils.AllColors.Count)];
+            foreach (Transform childInstance in instance.transform)
+            {
+                Renderer childRenderer = childInstance.GetComponent<Renderer>();
+                childRenderer.material = Resources.Load<Material>("Materials/CarMaterial");
+                childRenderer.material.color = colorGroup;
+            }
+        }
+        Renderer renderer = instance.GetComponent<Renderer>();
+        if (renderer != null)
+        {
+            // Debug.Log("+" + instance.name);
+            ShapeController shapeController = instance.AddComponent<ShapeController>();
+            shapeController.shapes = shapeType;
+            if (shapeType == Shapes.Building)
+            {
+                renderer.material = Resources.Load<Material>("Materials/BuildingMaterial");
+                renderer.material.color = Utils.AllColors[UnityEngine.Random.Range(0, Utils.AllColors.Count)];
+            }
+            renderer.material.SetFloat("_Mode", 2);
+            shapeController.material = renderer.material;
+        }
+        foreach (Transform childInstance in instance.transform)
+        {
+            InitInstance(childInstance.gameObject, shapeType, level + 1);
         }
     }
 

@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using OpenAI.Chat;
 using OpenAI.Audio;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -29,9 +30,9 @@ public class VoiceIntentController : MonoBehaviour
 
     private AudioSource audioSource;
     
-    [Header("Interactable")] 
+    [Header("Interactables")] 
     [SerializeField]
-    private GameObject Interactable;
+    private GameObject Interactables;
     
     [SerializeField]
     private GameObject PositionMarker;
@@ -85,7 +86,7 @@ public class VoiceIntentController : MonoBehaviour
     {
         // Utils.InitBuildings(Interactable, spawnCount);
         Utils.InitPositionMarker(PositionMarker);
-        InitController(Interactable);
+        Utils.InitInteractables(Interactables);
         controllers = FindObjectsOfType<ShapeController>();
         matchedControllers = new HashSet<ShapeController>();
 
@@ -166,20 +167,6 @@ public class VoiceIntentController : MonoBehaviour
         }
     }
 
-    private void InitController(GameObject interactable)
-    {
-        foreach (Transform transform in interactable.transform)
-        {
-            ShapeController shapeController = transform.gameObject.AddComponent<ShapeController>();
-            shapeController.shapes = Shapes.Object;
-            Renderer renderer = shapeController.GetComponent<Renderer>();
-            renderer.material = Resources.Load<Material>("Materials/myMaterial");
-            renderer.material.SetFloat("_Mode", 2);
-            renderer.material.color = Utils.AllColors[UnityEngine.Random.Range(0, Utils.AllColors.Count)];
-            InitController(transform.gameObject);
-        }
-    }
-
     private void OnGUI()
     {
         GUILayout.Label(formattedMessage, MessageGUI);
@@ -243,8 +230,12 @@ public class VoiceIntentController : MonoBehaviour
             foreach (ShapeController controller in PropertyMatcher.matchedControllers)
             {
                 GameObject realObject = controller.gameObject;
-                GameObject proxyObject = realObject.GetComponent<InteractableTarget>().makeVoodoo();
-                SceneManager.add_Expanding_and_Voodoo(realObject, proxyObject);
+                InteractableTarget interactableTarget = realObject.GetComponent<InteractableTarget>();
+                if (interactableTarget != null)
+                {
+                    GameObject proxyObject = interactableTarget.makeVoodoo();
+                    SceneManager.add_Expanding_and_Voodoo(realObject, proxyObject);
+                }
                 matchedControllers.Add(controller);
             }
             historyMessages.Add("<color=black>Assistant: " + PropertyMatcher.matchedControllers.Count + " objects selected</color>\n");
