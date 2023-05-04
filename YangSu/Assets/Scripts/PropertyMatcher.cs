@@ -122,8 +122,8 @@ public static class PropertyMatcher
             {
                 string shapeName = response[0];
                 Shapes shape = Embeddings.ShapesMap[shapeName];
-                // historyMessages.Add("<color=purple>shape: [" + shapeName + " " + shape + "]</color>\n");
-                Debug.Log("<color=purple>shape: [" + shapeName + " " + shape + "]</color>\n");
+                historyMessages.Add("<color=purple>shape: [" + shapeName + "]</color>\n");
+                Debug.Log("<color=purple>shape: [" + shapeName + "]</color>\n");
                 foreach (var controller in matchedControllers)
                 {
                     if (shape == Shapes.Object || shape == controller.shapes)
@@ -159,8 +159,8 @@ public static class PropertyMatcher
             {
                 string colorName = response[0];
                 Color color = Embeddings.ColorMap[colorName];
-                // historyMessages.Add("<color=purple>color: [" + colorName + " " + color + "]</color>\n");
-                Debug.Log("<color=purple>color: [" + colorName + " " + color + "]</color>\n");
+                historyMessages.Add("<color=purple>color: [" + colorName + "]</color>\n");
+                Debug.Log("<color=purple>color: [" + colorName + "]</color>\n");
                 foreach (var controller in matchedControllers)
                 {
                     var renderer = controller.GetComponent<Renderer>();
@@ -198,8 +198,8 @@ public static class PropertyMatcher
             {
                 string address = response[0];
                 (float x1, float x2, float z1, float z2) = Embeddings.AddressMap[address];
-                // historyMessages.Add("<color=purple>address: [" + address + " " + Embeddings.AddressMap[address] + "]</color>\n");
-                Debug.Log("<color=purple>address: [" + address + " " + Embeddings.AddressMap[address] + "]</color>\n");
+                historyMessages.Add("<color=purple>address: [" + address + "]</color>\n");
+                Debug.Log("<color=purple>address: [" + address + "]</color>\n");
                 foreach (var controller in matchedControllers)
                 {
                     Vector3 controllerPosition = controller.transform.position;
@@ -238,7 +238,7 @@ public static class PropertyMatcher
                 {
                     (start, end) = (end, start);
                 }
-                // historyMessages.Add("<color=purple>distance start: [" + start + "] end: [" + end + "]</color>\n");
+                historyMessages.Add("<color=purple>distance start: [" + start + "] end: [" + end + "]</color>\n");
                 Debug.Log("<color=purple>distance start: [" + start + "] end: [" + end + "]</color>\n");
                 Vector3 playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
                 foreach (var controller in matchedControllers)
@@ -278,8 +278,8 @@ public static class PropertyMatcher
             {
                 string directionName = response[0];
                 Vector3 direction = Embeddings.DirectionMap[directionName];
-                // historyMessages.Add("<color=purple>direction: [" + directionName + " " + direction + "]</color>\n");
-                Debug.Log("<color=purple>direction: [" + directionName + " " + direction + "]</color>\n");
+                historyMessages.Add("<color=purple>direction: [" + directionName + "]</color>\n");
+                Debug.Log("<color=purple>direction: [" + directionName + "]</color>\n");
                 Vector3 playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
                 foreach (var controller in matchedControllers)
                 {

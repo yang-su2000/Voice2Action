@@ -5,7 +5,7 @@ public class ShapeController : MonoBehaviour
 {
     public Shapes shapes;
 
-    public Material material;
+    // public Material material;
 
     public void Start()
     {
@@ -17,19 +17,28 @@ public class ShapeController : MonoBehaviour
         transform.GetComponent<Renderer>().material.color = color;
     }
 
-    public void AddTransparency(float alpha)
+    public static void AddTransparency(Transform myTransform, float alpha)
     {
-        Color color = material.color;
-        material.SetFloat("_Mode", 3);
-        material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
-        material.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
-        material.SetInt("_ZWrite", 0);
-        color.a = Mathf.Clamp(color.a + alpha, 0, 1);
-        material.SetColor("_Color", color);
-        material.DisableKeyword("_ALPHATEST_ON");
-        material.DisableKeyword("_ALPHABLEND_ON");
-        material.EnableKeyword("_ALPHAPREMULTIPLY_ON");
-        material.renderQueue = 3000;
+        Renderer renderer = myTransform.GetComponent<Renderer>();
+        if (renderer != null)
+        {
+            Material material = renderer.material;
+            Color color = material.color;
+            material.SetFloat("_Mode", 3);
+            material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
+            material.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+            material.SetInt("_ZWrite", 0);
+            color.a = Mathf.Clamp(color.a + alpha, 0, 1);
+            material.SetColor("_Color", color);
+            material.DisableKeyword("_ALPHATEST_ON");
+            material.DisableKeyword("_ALPHABLEND_ON");
+            material.EnableKeyword("_ALPHAPREMULTIPLY_ON");
+            material.renderQueue = 3000;
+        }
+        foreach (Transform childTransform in myTransform)
+        {
+            AddTransparency(childTransform, alpha);
+        }
     }
 
     public void RotateTo(float targetRotation)

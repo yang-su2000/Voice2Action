@@ -33,7 +33,7 @@ public static class Utils
     [Header("Example Properties")]
     public static readonly List<Color> AllColors = new List<Color>
     {
-        Color.black, Color.blue, Color.cyan, Color.grey, Color.green, Color.magenta, Color.red,
+        Color.black, Color.blue, Color.cyan, Color.grey, Color.green, Color.red,
         Color.white, Color.yellow,
     };
 
@@ -123,21 +123,39 @@ public static class Utils
             if (categoryType == Shapes.Object) continue; // not a valid shape
             foreach (Transform instance in category)
             {
-                InitInstance(instance.gameObject, categoryType, 0);
+                InitInstance(instance.gameObject, categoryType);
             }
         }
     }
 
-    private static void InitInstance(GameObject instance, Shapes shapeType, int level)
+    private static void InitInstance(GameObject instance, Shapes shapeType)
     {
-        if (level == 0)
+        XRGrabInteractable xrGrabInteractable = instance.AddComponent<XRGrabInteractable>();
+        InteractableTarget interactableTarget = instance.AddComponent<InteractableTarget>();
+        interactableTarget.isVoodoo = false;
+        Outline outline = instance.AddComponent<Outline>();
+        outline.OutlineWidth = 0;
+        outline.OutlineColor = new Color(255, 128, 0, 1); // orange
+        xrGrabInteractable.useDynamicAttach = true;
+        // xrGrabInteractable.matchAttachPosition = true;
+        // xrGrabInteractable.matchAttachRotation = true;
+        // xrGrabInteractable.snapToColliderVolume = true;
+        // xrGrabInteractable.reinitializeDynamicAttachEverySingleGrab = true;
+        instance.GetComponent<Rigidbody>().useGravity = false;
+        instance.GetComponent<Rigidbody>().isKinematic = true;
+        ShapeController shapeController = instance.AddComponent<ShapeController>();
+        shapeController.shapes = shapeType;
+        Renderer renderer = instance.GetComponent<Renderer>();
+        if (renderer != null)
         {
-            XRGrabInteractable xrGrabInteractable = instance.AddComponent<XRGrabInteractable>();
-            InteractableTarget interactableTarget = instance.AddComponent<InteractableTarget>();
-            interactableTarget.isVoodoo = false;
-            Outline outline = instance.AddComponent<Outline>();
-            outline.OutlineWidth = 0;
-            outline.OutlineColor = new Color(255, 128, 0, 1); // orange
+            // Debug.Log("+" + instance.name);
+            if (shapeType == Shapes.Building)
+            {
+                renderer.material = Resources.Load<Material>("Materials/BuildingMaterial");
+                renderer.material.color = Utils.AllColors[UnityEngine.Random.Range(0, Utils.AllColors.Count)];
+            }
+            renderer.material.SetFloat("_Mode", 2);
+            // shapeController.material = renderer.material;
         }
         if (shapeType == Shapes.Car) // TODO: temporary for demo, all car components should have the same color
         {
@@ -148,24 +166,6 @@ public static class Utils
                 childRenderer.material = Resources.Load<Material>("Materials/CarMaterial");
                 childRenderer.material.color = colorGroup;
             }
-        }
-        Renderer renderer = instance.GetComponent<Renderer>();
-        if (renderer != null)
-        {
-            // Debug.Log("+" + instance.name);
-            ShapeController shapeController = instance.AddComponent<ShapeController>();
-            shapeController.shapes = shapeType;
-            if (shapeType == Shapes.Building)
-            {
-                renderer.material = Resources.Load<Material>("Materials/BuildingMaterial");
-                renderer.material.color = Utils.AllColors[UnityEngine.Random.Range(0, Utils.AllColors.Count)];
-            }
-            renderer.material.SetFloat("_Mode", 2);
-            shapeController.material = renderer.material;
-        }
-        foreach (Transform childInstance in instance.transform)
-        {
-            InitInstance(childInstance.gameObject, shapeType, level + 1);
         }
     }
 

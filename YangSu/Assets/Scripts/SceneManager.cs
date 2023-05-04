@@ -31,12 +31,18 @@ public class SceneManager : MonoBehaviour
     private float up_left_dist = 0.1f;
     public float objectScale;
     private static GameObject expandPanel;
+    private float panelWidth;
+    private float panelHeight;
 
     // Start is called before the first frame update
     void Start()
     {
+        
         expandPanel = GameObject.FindGameObjectWithTag("ExpandPanel");
+        panelWidth = expandPanel.GetComponent<MeshRenderer>().bounds.size.x / 8f;
+        panelHeight = expandPanel.GetComponent<MeshRenderer>().bounds.size.z / 4f;
         m_List_Expand_Object = new List<(GameObject,GameObject)>();
+        parentExpandedObjects = expandPanel.GetNamedChild("Interactables");
         SetupInteractorEvents();
     }
     private void OnEnable()
@@ -69,9 +75,6 @@ public class SceneManager : MonoBehaviour
         expandPanel.transform.up = (xrOriginCamera.transform.position - expandPanel.transform.position).normalized;
         expandPanel.transform.Rotate(expandPanel.transform.right, 90);
 
-
-        parentExpandedObjects = expandPanel.GetNamedChild("Interactables");
-
         for (int i = 0; i < Mathf.Min(m_List_Expand_Object.Count, 8); i++)
         {
             (GameObject,GameObject) orig_voodoo_pair = m_List_Expand_Object[i];
@@ -81,20 +84,12 @@ public class SceneManager : MonoBehaviour
             voodoo.transform.parent = parentExpandedObjects.transform;
             
             //change size of the object so that it fits within the canvas
-            MeshRenderer renderer = original.GetComponent<MeshRenderer>();
-            float scale = 0.0f;
-            
-            if (renderer.bounds.size.x >= renderer.bounds.size.y)
-            {
-                scale =  objectScale/ renderer.bounds.size.x;
-                voodoo.transform.localScale = new Vector3(objectScale, renderer.bounds.size.y * scale, renderer.bounds.size.z * scale);
-            }
-            else
-            {
-                scale =  objectScale/ renderer.bounds.size.y;
-                voodoo.transform.localScale = new Vector3(renderer.bounds.size.x * scale, objectScale, renderer.bounds.size.z * scale);
-            }
-            
+            BoxCollider collider = original.GetComponent<BoxCollider>();
+            float expandWidthRatio = collider.bounds.size.x / panelWidth;
+            float expandHeightRatio = collider.bounds.size.y / panelHeight;
+            float expandLengthRatio = collider.bounds.size.z / Mathf.Min(panelWidth, panelHeight);
+            voodoo.transform.localScale /= Mathf.Max(expandHeightRatio, expandWidthRatio, expandLengthRatio);
+
             //change position of voodoo object
             Vector3 target_position = expandPanel.transform.position;
             int x_index = i % 4;
@@ -112,11 +107,19 @@ public class SceneManager : MonoBehaviour
     {
         m_List_Expand_Object.Add((original, voodoo));
     }
+
+    public static void clearProxys()
+    {
+        for (int i = parentExpandedObjects.transform.childCount - 1; i >= 0; i--)
+        {
+            Destroy(parentExpandedObjects.transform.GetChild(i).gameObject);
+        }
+    }
+    
     public static void notify_activated(Transform transform)
     {
         ActivateInteractable?.Invoke(transform);
     }
-
     public static void notify_Voodoo_selected(Transform grabbed_voodoo_object)
     {
         expandPanel.SetActive(false);

@@ -780,6 +780,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3644620754540402278}
   - component: {fileID: 3997860734507913577}
+  - component: {fileID: 860224977592756636}
   m_Layer: 0
   m_Name: Autobus_Mesh
   m_TagString: Untagged
@@ -824,11 +825,24 @@ MeshCollider:
   m_GameObject: {fileID: 4170223203887992028}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!65 &860224977592756636
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4170223203887992028}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.9170456, y: 3.8108838, z: 12.532385}
+  m_Center: {x: 0.20392779, y: 1.3, z: 1.2669578}
 --- !u!1 &4190151927299859333
 GameObject:
   m_ObjectHideFlags: 0

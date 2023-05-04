@@ -170,8 +170,8 @@ public static class PropertyExtractor
                         string targetFeature = propertyTuple[1];
                         if (propertyTragets.ContainsKey(targetProperty) && targetFeature != "N/A")
                         {
-                            historyMessages.Add("<color=green>select: [" + targetProperty + "] -> " +
-                                                "[" + targetFeature + "]</color>\n");
+                            // historyMessages.Add("<color=green>select: [" + targetProperty + "] -> " + "[" + targetFeature + "]</color>\n");
+                            Debug.Log("<color=green>select: [" + targetProperty + "] -> " + "[" + targetFeature + "]</color>\n"); 
                             propertyMap.Add(targetProperty, targetFeature);
                         }
                     }

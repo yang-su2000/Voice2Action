@@ -157,11 +157,11 @@ public class VoiceIntentController : MonoBehaviour
             {
                 if (matchedControllers.Contains(controller))
                 {
-                    controller.AddTransparency(deltaAlpha);
+                    ShapeController.AddTransparency(controller.transform, deltaAlpha);
                 }
                 else
                 {
-                    controller.AddTransparency(-deltaAlpha);
+                    ShapeController.AddTransparency(controller.transform, -deltaAlpha);
                 }
             }
         }
@@ -227,15 +227,13 @@ public class VoiceIntentController : MonoBehaviour
             await PropertyMatcher.MatchProperty(PropertyExtractor.propertyPreds, controllers, historyMessages);
             fadeActive = true;
             matchedControllers.Clear();
+            SceneManager.clearProxys();
             foreach (ShapeController controller in PropertyMatcher.matchedControllers)
             {
                 GameObject realObject = controller.gameObject;
                 InteractableTarget interactableTarget = realObject.GetComponent<InteractableTarget>();
-                if (interactableTarget != null)
-                {
-                    GameObject proxyObject = interactableTarget.makeVoodoo();
-                    SceneManager.add_Expanding_and_Voodoo(realObject, proxyObject);
-                }
+                GameObject proxyObject = interactableTarget.makeVoodoo();
+                SceneManager.add_Expanding_and_Voodoo(realObject, proxyObject);
                 matchedControllers.Add(controller);
             }
             historyMessages.Add("<color=black>Assistant: " + PropertyMatcher.matchedControllers.Count + " objects selected</color>\n");

@@ -61,7 +61,8 @@ public class InteractableTarget : MonoBehaviour
         {
             return;
         }
-        connecting_line = gameObject.AddComponent<LineRenderer>();
+        connecting_line = gameObject.GetComponent<LineRenderer>();
+        if (connecting_line == null) connecting_line = gameObject.AddComponent<LineRenderer>();
         connecting_line.material = Resources.Load<Material>("Materials/LineMaterial");
         // connecting_line.material.SetColor("_Color", Color.yellow);
         connecting_line.useWorldSpace = true;
@@ -102,7 +103,10 @@ public class InteractableTarget : MonoBehaviour
         voodoo.transform.rotation = expandPanel.transform.rotation;
         voodoo.GetComponent<InteractableTarget>().isVoodoo = true;
         voodoo.GetComponent<InteractableTarget>().originObject = transform;
-        voodoo.GetComponent<Renderer>().material.SetFloat("_Mode", 2);
+        if (voodoo.GetComponent<Renderer>() != null)
+        {
+            voodoo.GetComponent<Renderer>().material.SetFloat("_Mode", 2);
+        }
         return voodoo;
     }
     
