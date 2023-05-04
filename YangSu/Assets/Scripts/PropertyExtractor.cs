@@ -73,9 +73,9 @@ public static class PropertyExtractor
         //     "shape: cylinder, position: on my left, distance: five m away"
         // ),
         (
-            "select the tallest building on albert street, and all the blue signs five m away on my left", 
+            "select the tallest building on albert street, and all the blue signs at least five m on my left", 
             "shape: building, address: albert street, superlative degree: tallest\n" +
-            "shape: sign, color: blue, direction: on my left, distance: five m away"
+            "shape: sign, color: blue, direction: on my left, distance: at least five m "
         ),
     };
     

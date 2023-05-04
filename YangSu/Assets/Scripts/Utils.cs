@@ -21,7 +21,7 @@ public static class Utils
     public static readonly OpenAIClient OpenAIClient = new OpenAIClient();
     
     [Header("OpenAI Parameters")]
-    public static readonly float CompletionTemperature = 0.1f;
+    public static readonly float CompletionTemperature = 0.0f;
 
     // out of 100
     public static readonly int MinConfidenceToProceed = 50;
