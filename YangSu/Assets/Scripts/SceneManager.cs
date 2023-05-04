@@ -15,6 +15,9 @@ public class SceneManager : MonoBehaviour
 
     [SerializeField]
     private XRBaseInteractor m_RightRayInteractor;
+    
+    [SerializeField]
+    private Camera xrOriginCamera;
     /// <summary>
     /// The currently hovered interactable
     /// </summary>
@@ -61,6 +64,8 @@ public class SceneManager : MonoBehaviour
     {
         ActivateUI?.Invoke(m_List_Expand_Object.Count);
         expandPanel.SetActive(true);
+        expandPanel.transform.position = new Vector3(xrOriginCamera.transform.position.x, xrOriginCamera.transform.position.y, xrOriginCamera.transform.position.z + 0.5f);
+        
         parentExpandedObjects = expandPanel.GetNamedChild("Interactables");
 
         for (int i = 0; i < m_List_Expand_Object.Count; i++)
@@ -91,7 +96,7 @@ public class SceneManager : MonoBehaviour
             int x_index = i % 5;
             int y_index = i / 5;
             target_position = target_position + expandPanel.transform.up * (up_left_dist * (y_index - 1))+expandPanel.transform.right * ((x_index - 1) * up_left_dist);
-            target_position = new Vector3(target_position.x, target_position.y, target_position.z -0.5f);
+            target_position = new Vector3(target_position.x, target_position.y, target_position.z -0.1f);
             //lerp voodoo to expand panel
             voodoo.GetComponent<InteractableTarget>().lerp_to_target_positon(target_position);
         }
@@ -149,7 +154,6 @@ public class SceneManager : MonoBehaviour
     private void OnHoverEntered(HoverEnterEventArgs args)
     {
         m_Interactable = args.interactableObject;
-      
         if (m_Interactable == null)
         {
             return;
