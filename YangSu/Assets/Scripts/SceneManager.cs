@@ -10,6 +10,15 @@ using UnityEngine.XR.Interaction.Toolkit.Inputs;
 
 public class SceneManager : MonoBehaviour
 {
+    [SerializeField]
+    private XRBaseInteractor m_LeftRayInteractor;
+
+    [SerializeField]
+    private XRBaseInteractor m_RightRayInteractor;
+    /// <summary>
+    /// The currently hovered interactable
+    /// </summary>
+    private IXRHoverInteractable m_Interactable;
     public static event Action<Transform> ActivateInteractable;
     public static event Action<int> ActivateUI;
     public static event Action<Transform> destory_object_not_grabbed;
@@ -25,6 +34,18 @@ public class SceneManager : MonoBehaviour
     {
         expandPanel = GameObject.FindGameObjectWithTag("ExpandPanel");
         m_List_Expand_Object = new List<(GameObject,GameObject)>();
+        SetupInteractorEvents();
+    }
+    private void OnEnable()
+    {
+       
+        SetupInteractorEvents();
+    }
+
+    private void OnDisable()
+    {
+    
+        TeardownInteractorEvents();
     }
 
     // Update is called once per frame
@@ -90,6 +111,71 @@ public class SceneManager : MonoBehaviour
     {
         expandPanel.SetActive(false);
         destory_object_not_grabbed?.Invoke(grabbed_voodoo_object);
+    }
+    private void SetupInteractorEvents()
+    {
+        if (m_LeftRayInteractor != null)
+        {
+            m_LeftRayInteractor.hoverEntered.AddListener(OnHoverEntered);
+            m_LeftRayInteractor.hoverExited.AddListener(OnHoverExited);
+         
+        }
+
+        if (m_RightRayInteractor != null)
+        {
+            m_RightRayInteractor.hoverEntered.AddListener(OnHoverEntered);
+            m_RightRayInteractor.hoverExited.AddListener(OnHoverExited);
+       
+        }
+    }
+
+    private void TeardownInteractorEvents()
+    {
+        if (m_LeftRayInteractor != null)
+        {
+            m_LeftRayInteractor.hoverEntered.RemoveListener(OnHoverEntered);
+            m_LeftRayInteractor.hoverExited.RemoveListener(OnHoverExited);
+
+        }
+
+        if (m_RightRayInteractor != null)
+        {
+            m_RightRayInteractor.hoverEntered.RemoveListener(OnHoverEntered);
+            m_RightRayInteractor.hoverExited.RemoveListener(OnHoverExited);
+
+        }
+    }
+    
+    private void OnHoverEntered(HoverEnterEventArgs args)
+    {
+        m_Interactable = args.interactableObject;
+      
+        if (m_Interactable == null)
+        {
+            return;
+        }
+
+
+        if (m_Interactable is XRGrabInteractable)
+        {
+           Outline hoveredOutline =  (m_Interactable as XRGrabInteractable).gameObject.GetComponent<Outline>();
+           hoveredOutline.OutlineWidth = 5;
+
+        }
+            
+             
+    }
+    
+    private void OnHoverExited(HoverExitEventArgs args)
+    { 
+        m_Interactable = args.interactableObject;
+        if (m_Interactable is XRGrabInteractable)
+        {
+            Outline hoveredOutline =  (m_Interactable as XRGrabInteractable).gameObject.GetComponent<Outline>();
+            hoveredOutline.OutlineWidth = 0;
+        }
+
+  
     }
 
 }
