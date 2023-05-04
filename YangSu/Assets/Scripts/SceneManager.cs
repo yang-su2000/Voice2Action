@@ -64,11 +64,15 @@ public class SceneManager : MonoBehaviour
     {
         ActivateUI?.Invoke(m_List_Expand_Object.Count);
         expandPanel.SetActive(true);
-        expandPanel.transform.position = new Vector3(xrOriginCamera.transform.position.x, xrOriginCamera.transform.position.y, xrOriginCamera.transform.position.z + 0.5f);
-        
+        // expandPanel.transform.LookAt(xrOriginCamera.transform.position);
+        expandPanel.transform.position = new Vector3(xrOriginCamera.transform.position.x + 0.5f, xrOriginCamera.transform.position.y, xrOriginCamera.transform.position.z);
+        expandPanel.transform.up = (xrOriginCamera.transform.position - expandPanel.transform.position).normalized;
+        expandPanel.transform.Rotate(expandPanel.transform.right, 90);
+
+
         parentExpandedObjects = expandPanel.GetNamedChild("Interactables");
 
-        for (int i = 0; i < m_List_Expand_Object.Count; i++)
+        for (int i = 0; i < Mathf.Min(m_List_Expand_Object.Count, 8); i++)
         {
             (GameObject,GameObject) orig_voodoo_pair = m_List_Expand_Object[i];
             GameObject original = orig_voodoo_pair.Item1;
@@ -93,10 +97,11 @@ public class SceneManager : MonoBehaviour
             
             //change position of voodoo object
             Vector3 target_position = expandPanel.transform.position;
-            int x_index = i % 5;
-            int y_index = i / 5;
-            target_position = target_position + expandPanel.transform.up * (up_left_dist * (y_index - 1))+expandPanel.transform.right * ((x_index - 1) * up_left_dist);
-            target_position = new Vector3(target_position.x, target_position.y, target_position.z -0.1f);
+            int x_index = i % 4;
+            int y_index = i / 4;
+            target_position = target_position + expandPanel.transform.forward * (up_left_dist * (y_index - 1))+expandPanel.transform.right * ((x_index - 1) * up_left_dist);
+            // target_position = new Vector3(target_position.x + 0.01f, target_position.y + 0.05f, target_position.z  + 0.1f);
+            target_position = target_position + expandPanel.transform.up * 0.05f + expandPanel.transform.forward * 0.07f - expandPanel.transform.right * 0.02f;
             //lerp voodoo to expand panel
             voodoo.GetComponent<InteractableTarget>().lerp_to_target_positon(target_position);
         }
