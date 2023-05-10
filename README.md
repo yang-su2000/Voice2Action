@@ -6,39 +6,127 @@ XR provides a clear value proposition for 3D design applications, such as indust
 
 ### Screenshots
 
-- Interact with [Arkio](https://www.arkio.is/)
+- Multimodal Interaction in City Planning
 
-![arkio](fig/arkio.png)
+![city](fig/city.png)
 
-- Inventory System
+- 
 
-![inventory](fig/inventory.png)
+### Video
 
-- MRTK3 with Figma
+- Term 1 Final: Entity Selection and Expand in Industrial Design
 
-![mrtk-figma](fig/mrtk-figma.png)
+https://drive.google.com/file/d/124bYdC-xJdPBfnGoTMYzD3i7H-uv6LQy/view?usp=sharing
 
-### Voice2Action
-
-- v1: with [OpenAI API](https://openai.com/blog/openai-api)
+- Voice2Action v1: with [OpenAI API](https://openai.com/blog/openai-api)
 
 https://drive.google.com/file/d/1aBnFjKaf-YRXj5mlfzjCzcBiivHBB9JC/view?usp=sharing
 
-- v0: with [Wit.ai](https://wit.ai/)
+- Voice2Action v0: with [Wit.ai](https://wit.ai/)
 
 https://youtu.be/bS-PrmOSAVc
 
-### Expand
-
-- with Inventory
-
-- To Add
-
-- with Voodoo
+- Expand with Proxy
 
 https://youtu.be/txuVBk85-gA
 
+### Spring Report: Combining the “Expand” Interaction with Large Language Model to Create More Effective Means of Selection and Manipulation
+
+**Abstract**
+
+XR provides a clear value proposition for 3D design applications, such as industrial design, mechanical engineering, and urban design. Our project explores multimodal interaction techniques for improving productivity in virtual reality creator tools. We used the “expand interaction”, an interaction that expands multiple objects into the user's view, with user speech input so that the users can effectively call objects of their interest from any location into their reach. We've tried extending our project to an urban engineering setting where the user (or in this case, an urban engineer) can call up multiple buildings of interest to a panel, inspect them, and get information about the building. It can also be used to call / select objects that are far away from the user's reach. 
+
+For the Fall-Semester, we want to work on refining our user interface/user interaction/ and user experience with our multimodal interaction. In the fall, we will implement the information panel, a panel that brings up information about the object, and a locomotion technique. By the end of the Fall semester, we want to have a multi-modal interaction that is proved to be efficient and improve selection especially in the context of multiple object selection. We also want to gauge user interaction in the context of speech commands (which commands are most frequently used, what commands are the most accurate and the most faulty ? , etc.) 
+
+Our work, if carried out with success, has many merits. First off, it may be the first to implement selection with speech recognition in virtual reality. This area of research can possibly pave ideas into the combination of natural language processing and user interaction, not just in the domain of selection. (We have also experimented with ways to manipulate objects in the virtual environment by using speech recognition. Just an idea for possible future projects) 
+
+Second, we are implementing an easier mode of selection. The first implementation of expand expands every object into perspective  , which is inefficient for users who are looking for a single specific game object. With the combination of speech input, the user can filter out the objects before presenting it to view without having to redundantly select or overuse the inputs on the controllers.
+
+Third, we are providing another efficient mechanism in multiple object selection. Currently, many creative support tools can only select multiple objects that are close to them and are closely clustered around each other. With this multimodal selection mechanism, we can bring in objects that are from different locations and are out of reach. This is especially useful when you want to bring in game objects that are located at far ends and place them next to each other to compare them side by side. 
+
+We hope that our work in this field can open up more exploration and ideas into how speech input and natural language processing can be utilized inside a virtual reality context to provide efficiency and accuracy in selection. This multimodal interaction can be utilized in many different settings, but most effectively in creative support tools for virtual reality and augmented reality. Many creative support tools in VR (Gravity Sketch, Frame.io, Arkio) do not have a mechanism where you can call multiple objects from different locations. If you want to look at , edit, or manipulate an object, you need to be in physical reach of the item. This implementation can potentially impact how we can utilize and manipulate objects inside the virtual world. While it might not be an ideal situation to bring every single item in the scene into view, if the mechanism had distance regulations and restrictions, for example, only bringing and filtering objects that are 2 to 3 meters away from the user, then it would be extremely efficient. 
+
+There is an immense amount of work to do to improve user experience in the virtual reality field and our project would be a step into making VR more usable.
+
+**Background**
+
+One of the most exciting aspects of VR technology is the potential for natural and intuitive interactions with virtual objects and environments. Speech input, which allows users to interact with virtual objects and environments using spoken commands, is one of the most promising modalities for enabling such interactions. Speech input can be used to issue commands to the system, control objects, and provide feedback, creating a more immersive and intuitive experience for users.
+
+Speech input has been used in virtual environments for various applications, such as gaming, education, and therapy. In gaming, speech input has been used to enable players to  issue commands to NPCs, and navigate through environments. In education, speech input has been used to create immersive and interactive learning environments that provide a more engaging and personalized experience for students. 
+
+Despite the challenges, speech input holds great promise for the future of VR technology. As VR becomes more ubiquitous and the technology continues to evolve, it is likely that speech input will play an increasingly important role in enabling more natural, intuitive, and immersive interactions with virtual environments and objects. In our interaction, we chose to use speech input to select objects.
+
+We mostly utilized Laviola's book "3D User interfaces Theory and Practice" Second edition. This book highlighted a lot of selection interaction methods that were implemented. We also looked into many different papers (listed below) and different Unity tutorials, mostly research articles from Brendan David-John and Ken Pfeuffer.  While these two researchers mostly focused on using gaze as another mode of input, it gave as a lot of insight into how we can mold multiple modes of interaction to create an interaction for better user experience. 
+
+Previous research has been done by Koons and Sparrell in 1994, where they combined gestures and speech input to explore multimodal input in 3D graphics environments. Their two haptic gloves allowed users to arrange 3D objects in a scene. Another research that was conducted was in an augmented reality and combined 3D natural hand gesture and speech input. There have been multiple efforts to combine speech with multimodal interactions, however there have been none that have explored the regime of speech input with selection. 
+
+**Spring Learnings**
+
+Before we jumped into prototyping and implementing the expand interaction, we dove into recommended papers and literature reviews from our advisor. We also looked into the 3D User Interfaces book to explore different ideas. We initially wanted to combine gaze interaction with a selection mechanism, but with the current technology frame that we had to work with, we resorted to speech and sound input. We explored all the components in MRTK3, replicated some of its main interaction features, and wireframed a basic concept for multimodal interaction. We ended up consolidating on the idea of using “Expand” interaction with voice input and combining that to create a better accessing system that provides users a better way to visualize and filter out items. Through this we learned about existing interactions, mechanisms, and different tools (MRTK3, Procedural City Generator, Blender, etc. ) that are available to us for use.
+
+We call our prototype "Voice2Action". It lets the user use voice commands to support and facilitate interaction. Currently, the user can change the object's static properties with customized inputs, including colors, shapes, and locations. The inputs are customizable in a way that no keywords like "select A, B and C" or "change the shape of X, Y and Z" are needed.
+We came across a difficulty here because we then had to think of frequently used commands users would go to. 
+
+We later successfully implemented a function prototype of voice interaction in unity. The module can translate a user's voice input to a certain action performed on a certain object. For example, "move the leftmost cube to the right" will be translated to a movement function on the leftmost cube, and it will move it to the right. We also decided to expand this to a ceativity support tool that focuses on urban planning scenarios involving super-dense object placement and a lot of selection and manipulation. The expand interaction was then refined and extra features were added to make it more suitable for urban planning tools, including voodoo dolls, transparent voodoo objects, and UI for the voodoo objects. We encountered a lot of challenges with the Oculus integration SDK, which is messy and hard to configure on a different machine, so they can only develop SDK related content on one computer. We learned how to work around that.
+
+As all teams do, we also had our fair share of learning how to collaborate with one another. We learned a lot on how to communicate deliverables and expectations between each other and we expect this to be of great help to us in the long run of our SPEC project next semester. 
+
+**Major Milestones**
+
+The first and major milestone for us is to refine User Interaction and User Interface of the Expand + Speech Recognition Interaction. This includes, as aforementioned, creating an information panel that exemplifies what you can do with this voice input & expand multimodal interaction. The second is a locomotion action that lets you move inside of the scene.  If we deem to have enough time, we will also add an interface for a second filter that will filter out the selected objects in the expand panel after the first filter or first selection. If we decide to add the second filter, it will add one more week to our intended plan. To play it safe, we will allocate three weeks to one month of our time for this milestone. 
+
+We also need to use prep for user studies for our interaction. This includes creating prompts, creating tasks, and recruiting users for our user studies. We also want to look into potential conferences where we can showcase our interaction. This should take us at maximum two weeks. 
+
+After prepping for user studies, we must conduct multiple user studies. We first want to do it with 5 to 10 people before we actually go into studying the effectiveness of our interaction. This is so that we can aggregate user feedback from these people and reiterate on the design & implementation process. This should take us an additional 2 weeks. 
+
+After our iteration is complete, we need to finally conduct user studies. We will like to do this with potentiall 10 - 20 more people. This should take us two to three weeks. It may even take us more time depending on schedule conflicts with the users. 
+
+After conducting all of our user research, comparing results, and analyzing them, we intend to write a paper for a small conference or a poster. This should be our last remaining task and this will take up the remainder of the semester, or until paper submission. 
+
 ## Progress
+
+### April 21, 2023
+
+**Accomplishments**
+
+For the past two weeks we have two accomplishments:
+- We added fade in and fade out effects to our scene.
+- We also optimized our scene better for rendering ⇒ Current scene is too heavy to render and so we looked for alternative ways to render our scene view. 
+
+**Challenges**
+
+Yang is still working on trying to integrate it so that the project does not have any more bugs. 
+We have trouble finding good city assets that will match our needs. 
+We also have a little trouble moving our SDK into our expand project.
+
+**Going Forward**
+
+We are going to optimize the city scene so that we have better rendering and better game play. 
+We need to combine Yang’s Voice2Action with our Expand interaction. 
+We need to refine our user interaction 
+
+
+### March 31, 2023
+
+**Accomplishments**
+
+For the past two weeks, there are three major accomplishments.
+- Yang successfully implemented Voice 2 Action and now it can select any entity’s property based on their color, shape, and position. It also completely bypassed wit.ai as wit.ai is constrained by the number of properties to manipulate. 
+- Steven refined the interaction so that the panel now gets rid of duplicate objects when an object is reselected, added line-renderes so that users can now understand where the object is pointing to, and you can also manipulate the object. 
+- Grace worked on the panels and created two different ones : a scroll panel and a panel that expands and changes width dynamically. 
+
+**Challenges**
+
+Oculus integration SDK is very messy and Yang is working on trying to integrate it so that the project does not have any more bugs. 
+Our New York city asset is too big.
+
+**Going Forward**
+
+We are going to create a more defined task description so that we don’t get confused about our task ahead. 
+We are going to optimize Yang’s implementation of using NLP and debug it. 
+We are going to optimize the New York city 3D object. 
+We are also going to work on final steps on refining the expand by combining Yang’s features into our expand panel. 
+
 
 ### March 17, 2023
 
