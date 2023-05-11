@@ -10,6 +10,10 @@ XR provides a clear value proposition for 3D design applications, such as indust
 
 <img src="fig/linkedin_multimodal_xr2.jpg" width="800" height="450">
 
+- Voice2Action Hirerachy
+
+<img src="fig/voice2action.png" width="800" height="450">
+
 - Industrial Prototype Engineering
 
 <img src="fig/city.jpg" width="400" height="250">
