@@ -8,19 +8,19 @@ XR provides a clear value proposition for 3D design applications, such as indust
 
 - Multimodal Interaction in City Planning
 
-![minteract](fig/linkedin_multimodal_xr2.jpg)
+<img src="fig/linkedin_multimodal_xr2.jpg" width="800" height="500">
 
 - Industrial Prototype Engineering
 
-![city](fig/city.jpg)
+<img src="fig/city.jpg" width="400" height="250">
 
 - Interact with [Arkio](https://www.arkio.is/)
 
-![arkio](fig/arkio.png)
+<img src="fig/arkio.png" width="400" height="250">
 
 - MRTK3 with Figma
 
-![mrtk-figma](fig/mrtk-figma.png)
+<img src="fig/mrtk-figma.png" width="400" height="250">
 
 ### Video
 
