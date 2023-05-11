@@ -8,7 +8,7 @@ XR provides a clear value proposition for 3D design applications, such as indust
 
 - Multimodal Interaction in City Planning
 
-![minteract](fig/minteract.jpg)
+![minteract](fig/linkedin_multimodal_xr2.jpg)
 
 - Industrial Prototype Engineering
 
