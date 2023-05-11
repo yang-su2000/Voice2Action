@@ -8,9 +8,19 @@ XR provides a clear value proposition for 3D design applications, such as indust
 
 - Multimodal Interaction in City Planning
 
-![city](fig/city.png)
+![minteract](fig/minteract.jpg)
 
-- 
+- Industrial Prototype Engineering
+
+![city](fig/city.jpg)
+
+- Interact with [Arkio](https://www.arkio.is/)
+
+![arkio](fig/arkio.png)
+
+- MRTK3 with Figma
+
+![mrtk-figma](fig/mrtk-figma.png)
 
 ### Video
 
@@ -30,7 +40,9 @@ https://youtu.be/bS-PrmOSAVc
 
 https://youtu.be/txuVBk85-gA
 
-### Spring Report: Combining the “Expand” Interaction with Large Language Model to Create More Effective Means of Selection and Manipulation
+## Spring Report
+
+### Combining the “Expand” Interaction with Large Language Model to Create More Effective Means of Selection and Manipulation
 
 **Abstract**
 
