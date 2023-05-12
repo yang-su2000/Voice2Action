@@ -232,8 +232,8 @@ public class VoiceIntentController : MonoBehaviour
                 matchedControllers.Add(controller.name, controller);
                 if (countProxy < SceneManager.maxExpandNum)
                 {
-                    GameObject proxyObject = controller.interactableTarget.makeVoodoo();
-                    SceneManager.add_Expanding_and_Voodoo(controller.gameObject, proxyObject);
+                    ShapeController proxyController = controller.interactableTarget.makeVoodoo();
+                    SceneManager.add_Expanding_and_Voodoo(controller, proxyController);
                     countProxy += 1;
                 }
             }

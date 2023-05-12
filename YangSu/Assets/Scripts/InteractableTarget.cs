@@ -39,7 +39,6 @@ public class InteractableTarget : MonoBehaviour
         if (isLerping)
         {
             float interpolationRatio = (float)currentFrame / lerpFrames;
-
             Vector3 interpolatedPosition = Vector3.Lerp(originalPosition, targetPosition, interpolationRatio);
             transform.position = interpolatedPosition;
             currentFrame = (currentFrame + 1);
@@ -49,12 +48,10 @@ public class InteractableTarget : MonoBehaviour
                 isLerping = false;
             }
         }
-
         // if (isVoodoo)
         // {
         //     originObject.transform.rotation = transform.rotation;
         // }
-
         if (connecting_line)
         {
             connecting_line.SetPosition(0, transform.position);
@@ -100,7 +97,7 @@ public class InteractableTarget : MonoBehaviour
         isLerping = true;
     }
 
-    public GameObject makeVoodoo()
+    public ShapeController makeVoodoo()
     {
         GameObject voodoo = Instantiate(gameObject);
         shapeController = voodoo.GetComponent<ShapeController>();
@@ -127,7 +124,7 @@ public class InteractableTarget : MonoBehaviour
         //     color.a = 1;
         //     material.color = color;
         // }
-        return voodoo;
+        return shapeController;
     }
     
     void expand_response(Transform interactable_activated)
@@ -136,12 +133,10 @@ public class InteractableTarget : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
         if ((transform.position - interactable_activated.position).magnitude < 1)
         {
-
-            GameObject voodoo = makeVoodoo();
-            SceneManager.add_Expanding_and_Voodoo(gameObject, voodoo);
+            ShapeController voodooController = makeVoodoo();
+            SceneManager.add_Expanding_and_Voodoo(shapeController, voodooController);
         }
     }
 
