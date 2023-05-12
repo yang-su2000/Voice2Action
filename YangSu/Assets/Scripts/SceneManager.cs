@@ -66,7 +66,7 @@ public class SceneManager : MonoBehaviour
 
     private void update_position()
     {
-        ActivateUI?.Invoke(m_List_Expand_Object.Count);
+        // ActivateUI?.Invoke(m_List_Expand_Object.Count);
         expandPanel.SetActive(true);
         // expandPanel.transform.LookAt(xrOriginCamera.transform.position);
         expandPanel.transform.position = new Vector3(xrOriginCamera.transform.position.x + 0.5f, xrOriginCamera.transform.position.y, xrOriginCamera.transform.position.z);
