@@ -38,7 +38,6 @@ public class SceneManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
         expandPanel = GameObject.FindGameObjectWithTag("ExpandPanel");
         panelWidth = expandPanel.GetComponent<MeshRenderer>().bounds.size.x / 8f;
         panelHeight = expandPanel.GetComponent<MeshRenderer>().bounds.size.z / 4f;
@@ -48,13 +47,11 @@ public class SceneManager : MonoBehaviour
     }
     private void OnEnable()
     {
-       
         SetupInteractorEvents();
     }
 
     private void OnDisable()
     {
-    
         TeardownInteractorEvents();
     }
 
@@ -69,7 +66,7 @@ public class SceneManager : MonoBehaviour
 
     private void update_position()
     {
-        ActivateUI?.Invoke(m_List_Expand_Object.Count);
+        // ActivateUI?.Invoke(m_List_Expand_Object.Count);
         expandPanel.SetActive(true);
         // expandPanel.transform.LookAt(xrOriginCamera.transform.position);
         expandPanel.transform.position = new Vector3(xrOriginCamera.transform.position.x + 0.5f, xrOriginCamera.transform.position.y, xrOriginCamera.transform.position.z);

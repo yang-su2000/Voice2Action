@@ -14,6 +14,13 @@ public class InteractableTarget : MonoBehaviour
     private Transform originObject = null;
     private LineRenderer connecting_line = null;
     private GameObject expandPanel;
+    private ShapeController m_ShapeController;
+
+    public ShapeController shapeController
+    {
+        get => m_ShapeController;
+        set => m_ShapeController = value;
+    }
     void Start()
     {
         expandPanel = GameObject.Find("ExpandPanel");
@@ -96,20 +103,30 @@ public class InteractableTarget : MonoBehaviour
     public GameObject makeVoodoo()
     {
         GameObject voodoo = Instantiate(gameObject);
-        Destroy(voodoo.GetComponent<ShapeController>());
+        shapeController = voodoo.GetComponent<ShapeController>();
+        shapeController.InitShape();
+        // Destroy(voodoo.GetComponent<ShapeController>());
         //change the position of the voodoo to the transform position. 
         voodoo.transform.position = transform.position;
         voodoo.transform.rotation = expandPanel.transform.rotation;
-        voodoo.GetComponent<InteractableTarget>().isVoodoo = true;
-        voodoo.GetComponent<InteractableTarget>().originObject = transform;
-        if (voodoo.GetComponent<Renderer>() != null)
+        shapeController.interactableTarget.isVoodoo = true;
+        shapeController.interactableTarget.originObject = transform;
+        foreach (Renderer renderer in shapeController.renderers)
         {
-            Material material = voodoo.GetComponent<Renderer>().material;
+            Material material = renderer.material;
             material.SetFloat("_Mode", 2);
             Color color = material.color;
             color.a = 1;
             material.color = color;
         }
+        // if (voodoo.GetComponent<Renderer>() != null)
+        // {
+        //     Material material = voodoo.GetComponent<Renderer>().material;
+        //     material.SetFloat("_Mode", 2);
+        //     Color color = material.color;
+        //     color.a = 1;
+        //     material.color = color;
+        // }
         return voodoo;
     }
     

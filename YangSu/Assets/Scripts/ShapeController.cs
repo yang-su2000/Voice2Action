@@ -1,26 +1,56 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class ShapeController : MonoBehaviour
 {
     public Shapes shapes;
 
-    // public Material material;
+    private XRGrabInteractable m_GrabInteractable;
 
-    public void Start()
+    private InteractableTarget m_InteractableTarget;
+
+    private List<Renderer> m_Renderers;
+
+    private bool isInit = false;
+
+    public XRGrabInteractable grabInteractable
     {
-        // material = transform.GetComponent<Renderer>().material;
+        get => m_GrabInteractable;
+        set => m_GrabInteractable = value;
     }
 
-    public void SetColor(Color color)
+    public InteractableTarget interactableTarget
     {
-        transform.GetComponent<Renderer>().material.color = color;
+        get => m_InteractableTarget;
+        set => m_InteractableTarget = value;
     }
 
-    public static void AddTransparency(Transform myTransform, float alpha)
+    public List<Renderer> renderers
     {
-        Renderer renderer = myTransform.GetComponent<Renderer>();
-        if (renderer != null)
+        get => m_Renderers;
+        set => m_Renderers = value;
+    }
+
+    public void InitShape()
+    {
+        m_GrabInteractable = GetComponent<XRGrabInteractable>();
+        m_InteractableTarget = GetComponent<InteractableTarget>();
+        m_Renderers = new List<Renderer>(GetComponentsInChildren<Renderer>());
+        if (GetComponent<Renderer>() != null) m_Renderers.Add(GetComponent<Renderer>());
+        isInit = true;
+    }
+    
+    public void AddTransparency(float alpha)
+    {
+        if (!isInit)
+        {
+            throw new Exception("ShapeController not initialized");
+        }
+        // only fade-in fade-out for the real objects
+        if (interactableTarget.isVoodoo) return;
+        foreach (Renderer renderer in m_Renderers)
         {
             Material material = renderer.material;
             Color color = material.color;
@@ -35,9 +65,18 @@ public class ShapeController : MonoBehaviour
             material.EnableKeyword("_ALPHAPREMULTIPLY_ON");
             material.renderQueue = 3000;
         }
-        foreach (Transform childTransform in myTransform)
+    }
+
+    public void SetColor(Color color)
+    {
+        if (!isInit)
         {
-            AddTransparency(childTransform, alpha);
+            throw new Exception("ShapeController not initialized");
+        }
+
+        foreach (Renderer renderer in m_Renderers)
+        {
+            renderer.material.color = color;
         }
     }
 

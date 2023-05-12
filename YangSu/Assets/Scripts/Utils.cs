@@ -26,9 +26,10 @@ public static class Utils
     
     [Header("OpenAI Parameters")]
     public static readonly float CompletionTemperature = 0.0f;
-
     // out of 100
     public static readonly int MinConfidenceToProceed = 50;
+    
+    public static readonly int TopK = 1;
 
     [Header("Example Properties")]
     public static readonly List<Color> AllColors = new List<Color>
@@ -69,6 +70,7 @@ public static class Utils
             renderer.material = Resources.Load<Material>("Materials/BuildingMaterial");
             renderer.material.SetFloat("_Mode", 2);
             renderer.material.color = AllColors[Random.Range(0, AllColors.Count)];
+            shapeController.InitShape();
             if (Random.Range(0f, 1f) < 0.5f)
             {
                 if (Random.Range(0f, 1f) < 0.5f)
@@ -167,6 +169,7 @@ public static class Utils
                 childRenderer.material.color = colorGroup;
             }
         }
+        shapeController.InitShape();
     }
 
     public static bool IsColorClose(Color color1, Color color2, float confidence)
