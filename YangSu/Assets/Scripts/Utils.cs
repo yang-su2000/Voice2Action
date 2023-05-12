@@ -17,6 +17,7 @@ public enum Shapes
     MiniBus,
     SchoolBus,
     Tree,
+    Everything,
 }
 
 public static class Utils
@@ -69,6 +70,7 @@ public static class Utils
             renderer.material = Resources.Load<Material>("Materials/BuildingMaterial");
             renderer.material.SetFloat("_Mode", 2);
             renderer.material.color = AllColors[Random.Range(0, AllColors.Count)];
+            shapeController.InitShape();
             if (Random.Range(0f, 1f) < 0.5f)
             {
                 if (Random.Range(0f, 1f) < 0.5f)
@@ -167,6 +169,7 @@ public static class Utils
                 childRenderer.material.color = colorGroup;
             }
         }
+        shapeController.InitShape();
     }
 
     public static bool IsColorClose(Color color1, Color color2, float confidence)

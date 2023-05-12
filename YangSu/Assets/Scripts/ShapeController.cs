@@ -1,26 +1,29 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ShapeController : MonoBehaviour
 {
     public Shapes shapes;
 
-    // public Material material;
+    private List<Renderer> myRenderers;
 
-    public void Start()
+    private bool isInit = false;
+
+    public void InitShape()
     {
-        // material = transform.GetComponent<Renderer>().material;
+        myRenderers = new List<Renderer>(GetComponentsInChildren<Renderer>());
+        if (GetComponent<Renderer>() != null) myRenderers.Add(GetComponent<Renderer>());
+        isInit = true;
     }
-
-    public void SetColor(Color color)
+    
+    public void AddTransparency(float alpha)
     {
-        transform.GetComponent<Renderer>().material.color = color;
-    }
-
-    public static void AddTransparency(Transform myTransform, float alpha)
-    {
-        Renderer renderer = myTransform.GetComponent<Renderer>();
-        if (renderer != null)
+        if (!isInit)
+        {
+            throw new Exception("ShapeController not initialized");
+        }
+        foreach (Renderer renderer in myRenderers)
         {
             Material material = renderer.material;
             Color color = material.color;
@@ -35,9 +38,18 @@ public class ShapeController : MonoBehaviour
             material.EnableKeyword("_ALPHAPREMULTIPLY_ON");
             material.renderQueue = 3000;
         }
-        foreach (Transform childTransform in myTransform)
+    }
+
+    public void SetColor(Color color)
+    {
+        if (!isInit)
         {
-            AddTransparency(childTransform, alpha);
+            throw new Exception("ShapeController not initialized");
+        }
+
+        foreach (Renderer renderer in myRenderers)
+        {
+            renderer.material.color = color;
         }
     }
 

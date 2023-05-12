@@ -157,11 +157,11 @@ public class VoiceIntentController : MonoBehaviour
             {
                 if (matchedControllers.Contains(controller))
                 {
-                    ShapeController.AddTransparency(controller.transform, deltaAlpha);
+                    controller.AddTransparency(deltaAlpha);
                 }
                 else
                 {
-                    ShapeController.AddTransparency(controller.transform, -deltaAlpha);
+                   controller.AddTransparency(-deltaAlpha);
                 }
             }
         }
