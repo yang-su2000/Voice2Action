@@ -17,7 +17,6 @@ public enum Shapes
     MiniBus,
     SchoolBus,
     Tree,
-    Everything,
 }
 
 public static class Utils
@@ -27,9 +26,10 @@ public static class Utils
     
     [Header("OpenAI Parameters")]
     public static readonly float CompletionTemperature = 0.0f;
-
     // out of 100
     public static readonly int MinConfidenceToProceed = 50;
+    
+    public static readonly int TopK = 1;
 
     [Header("Example Properties")]
     public static readonly List<Color> AllColors = new List<Color>

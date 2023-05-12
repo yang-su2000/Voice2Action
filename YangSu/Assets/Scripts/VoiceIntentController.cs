@@ -70,9 +70,9 @@ public class VoiceIntentController : MonoBehaviour
     private float fadeTimer = 0f;
     
     [Header("Private Others")]
-    private ShapeController[] controllers;
+    private ShapeController[] allControllers;
 
-    private HashSet<ShapeController> matchedControllers;
+    private Dictionary<string, ShapeController> matchedControllers;
 
     private bool appVoiceActive;
 
@@ -87,8 +87,8 @@ public class VoiceIntentController : MonoBehaviour
         // Utils.InitBuildings(Interactable, spawnCount);
         Utils.InitPositionMarker(PositionMarker);
         Utils.InitInteractables(Interactables);
-        controllers = FindObjectsOfType<ShapeController>();
-        matchedControllers = new HashSet<ShapeController>();
+        allControllers = FindObjectsOfType<ShapeController>();
+        matchedControllers = new Dictionary<string, ShapeController>();
 
         // bind transcriptions and activate state
         appVoiceExperience.events.onFullTranscription.AddListener((transcription) =>
@@ -151,11 +151,10 @@ public class VoiceIntentController : MonoBehaviour
                 fadeActive = false;
                 fadeTimer = 0f;
             }
-
             float deltaAlpha = deltaTime / fadeDuration;
-            foreach (var controller in controllers)
+            foreach (var controller in allControllers)
             {
-                if (matchedControllers.Contains(controller))
+                if (matchedControllers.ContainsKey(controller.name))
                 {
                     controller.AddTransparency(deltaAlpha);
                 }
@@ -224,20 +223,17 @@ public class VoiceIntentController : MonoBehaviour
         else
         {
             openAIStatus = true;
-            await PropertyMatcher.MatchProperty(PropertyExtractor.propertyPreds, controllers, historyMessages);
+            ResetControllers();
+            await PropertyMatcher.MatchProperty(PropertyExtractor.propertyPreds, allControllers, historyMessages);
             fadeActive = true;
-            matchedControllers.Clear();
-            SceneManager.clearProxys();
             int countProxy = 0;
             foreach (ShapeController controller in PropertyMatcher.matchedControllers)
             {
-                GameObject realObject = controller.gameObject;
-                InteractableTarget interactableTarget = realObject.GetComponent<InteractableTarget>();
+                matchedControllers.Add(controller.name, controller);
                 if (countProxy < SceneManager.maxExpandNum)
                 {
-                    GameObject proxyObject = interactableTarget.makeVoodoo();
-                    SceneManager.add_Expanding_and_Voodoo(realObject, proxyObject);
-                    matchedControllers.Add(controller);
+                    GameObject proxyObject = controller.interactableTarget.makeVoodoo();
+                    SceneManager.add_Expanding_and_Voodoo(controller.gameObject, proxyObject);
                     countProxy += 1;
                 }
             }
@@ -267,5 +263,11 @@ public class VoiceIntentController : MonoBehaviour
             historyMessages.Add("<color=blue>User: " + prompt + "</color>\n");
             historyMessages.Add("<color=red>System: Sorry, can you say that one more time to the assistant?</color>\n");
         }
+    }
+
+    private void ResetControllers()
+    {
+        matchedControllers.Clear();
+        SceneManager.clearProxys();
     }
 }

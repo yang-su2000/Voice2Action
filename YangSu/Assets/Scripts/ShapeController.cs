@@ -1,19 +1,44 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class ShapeController : MonoBehaviour
 {
     public Shapes shapes;
 
-    private List<Renderer> myRenderers;
+    private XRGrabInteractable m_GrabInteractable;
+
+    private InteractableTarget m_InteractableTarget;
+
+    private List<Renderer> m_Renderers;
 
     private bool isInit = false;
 
+    public XRGrabInteractable grabInteractable
+    {
+        get => m_GrabInteractable;
+        set => m_GrabInteractable = value;
+    }
+
+    public InteractableTarget interactableTarget
+    {
+        get => m_InteractableTarget;
+        set => m_InteractableTarget = value;
+    }
+
+    public List<Renderer> renderers
+    {
+        get => m_Renderers;
+        set => m_Renderers = value;
+    }
+
     public void InitShape()
     {
-        myRenderers = new List<Renderer>(GetComponentsInChildren<Renderer>());
-        if (GetComponent<Renderer>() != null) myRenderers.Add(GetComponent<Renderer>());
+        m_GrabInteractable = GetComponent<XRGrabInteractable>();
+        m_InteractableTarget = GetComponent<InteractableTarget>();
+        m_Renderers = new List<Renderer>(GetComponentsInChildren<Renderer>());
+        if (GetComponent<Renderer>() != null) m_Renderers.Add(GetComponent<Renderer>());
         isInit = true;
     }
     
@@ -23,7 +48,9 @@ public class ShapeController : MonoBehaviour
         {
             throw new Exception("ShapeController not initialized");
         }
-        foreach (Renderer renderer in myRenderers)
+        // only fade-in fade-out for the real objects
+        if (interactableTarget.isVoodoo) return;
+        foreach (Renderer renderer in m_Renderers)
         {
             Material material = renderer.material;
             Color color = material.color;
@@ -47,7 +74,7 @@ public class ShapeController : MonoBehaviour
             throw new Exception("ShapeController not initialized");
         }
 
-        foreach (Renderer renderer in myRenderers)
+        foreach (Renderer renderer in m_Renderers)
         {
             renderer.material.color = color;
         }

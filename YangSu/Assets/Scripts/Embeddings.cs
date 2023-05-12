@@ -24,7 +24,10 @@ public static class Embeddings
     public static Dictionary<string, (float, float, float, float)> AddressMap =
         new Dictionary<string, (float, float, float, float)>();
 
-    public static Dictionary<string, Shapes> ShapesMap = new Dictionary<string, Shapes>();
+    public static Dictionary<string, Shapes> ShapesMap = new Dictionary<string, Shapes>
+    {
+        { "object", Shapes.Object },
+    };
 
     public static Dictionary<string, Vector3> DirectionMap = new Dictionary<string, Vector3>
     {
