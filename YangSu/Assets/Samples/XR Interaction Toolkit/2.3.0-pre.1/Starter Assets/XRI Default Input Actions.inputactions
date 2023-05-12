@@ -936,6 +936,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ExpandReset",
+                    "type": "Button",
+                    "id": "ef7e166f-31be-42e6-a1da-176c91d66c59",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1035,6 +1044,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "VoiceActivate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5a0c3562-6489-4cbc-969c-91245e3e1202",
+                    "path": "<XRController>{RightHand}/secondaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ExpandReset",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

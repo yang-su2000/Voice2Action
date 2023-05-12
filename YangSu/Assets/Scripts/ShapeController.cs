@@ -29,7 +29,7 @@ public class ShapeController : MonoBehaviour
         set => m_InteractableTarget = value;
     }
 
-    public Collider collider
+    public Collider shapeCollider
     {
         get => m_Collider;
         set => m_Collider = value;

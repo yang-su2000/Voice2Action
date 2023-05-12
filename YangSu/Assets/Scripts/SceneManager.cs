@@ -32,7 +32,7 @@ public class SceneManager : MonoBehaviour
     private static GameObject parentExpandedObjects;
     private float up_left_dist = 0.1f;
     public float objectScale;
-    private static GameObject expandPanel;
+    public static GameObject expandPanel;
     private float panelWidth;
     private float panelHeight;
     // Start is called before the first frame update
@@ -80,7 +80,7 @@ public class SceneManager : MonoBehaviour
             voodoo.transform.parent = parentExpandedObjects.transform;
             
             //change size of the object so that it fits within the canvas
-            Collider collider = original.collider;
+            Collider collider = original.shapeCollider;
             float expandWidthRatio = collider.bounds.size.x / panelWidth;
             float expandHeightRatio = collider.bounds.size.y / panelHeight;
             float expandLengthRatio = collider.bounds.size.z / Mathf.Min(panelWidth, panelHeight);

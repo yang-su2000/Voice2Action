@@ -20,8 +20,12 @@ public class VoiceIntentController : MonoBehaviour
     [SerializeField] 
     private ActionBasedController rightController;
 
+    [Header("InputActionProperty")]
     [SerializeField] 
     private InputActionProperty VoiceActivateAction;
+
+    [SerializeField]
+    private InputActionProperty ExpandResetAction;
     
     // add AppVoiceExperience reference
     [Header("Voice")] 
@@ -138,6 +142,8 @@ public class VoiceIntentController : MonoBehaviour
         {
             appVoiceActive = false;
         };
+
+        ExpandResetAction.action.started += _ => ResetExpand();
     }
 
     private void Update()
@@ -265,9 +271,23 @@ public class VoiceIntentController : MonoBehaviour
         }
     }
 
+    // this method is automatically called when we re-expand
     private void ResetControllers()
     {
         matchedControllers.Clear();
         SceneManager.clearProxys();
+    }
+
+    // this method is manually envoked when the user wants to reset the expand panel
+    private void ResetExpand()
+    {
+        matchedControllers.Clear();
+        SceneManager.clearProxys();
+        SceneManager.expandPanel.SetActive(false);
+        foreach (ShapeController shapeController in allControllers)
+        {
+            matchedControllers.Add(shapeController.name, shapeController);
+        }
+        fadeActive = true;
     }
 }
