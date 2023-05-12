@@ -10,6 +10,8 @@ public class ShapeController : MonoBehaviour
     private XRGrabInteractable m_GrabInteractable;
 
     private InteractableTarget m_InteractableTarget;
+    
+    private Collider m_Collider;
 
     private List<Renderer> m_Renderers;
 
@@ -27,6 +29,12 @@ public class ShapeController : MonoBehaviour
         set => m_InteractableTarget = value;
     }
 
+    public Collider collider
+    {
+        get => m_Collider;
+        set => m_Collider = value;
+    }
+
     public List<Renderer> renderers
     {
         get => m_Renderers;
@@ -37,6 +45,7 @@ public class ShapeController : MonoBehaviour
     {
         m_GrabInteractable = GetComponent<XRGrabInteractable>();
         m_InteractableTarget = GetComponent<InteractableTarget>();
+        m_Collider = GetComponent<Collider>();
         m_Renderers = new List<Renderer>(GetComponentsInChildren<Renderer>());
         if (GetComponent<Renderer>() != null) m_Renderers.Add(GetComponent<Renderer>());
         isInit = true;

@@ -28,7 +28,7 @@ public class SceneManager : MonoBehaviour
     
     public static int maxExpandNum = 8;
 
-    private static List<(GameObject,GameObject)> m_List_Expand_Object;
+    private static List<(ShapeController, ShapeController)> m_List_Expand_Object;
     private static GameObject parentExpandedObjects;
     private float up_left_dist = 0.1f;
     public float objectScale;
@@ -41,7 +41,7 @@ public class SceneManager : MonoBehaviour
         expandPanel = GameObject.FindGameObjectWithTag("ExpandPanel");
         panelWidth = expandPanel.GetComponent<MeshRenderer>().bounds.size.x / 8f;
         panelHeight = expandPanel.GetComponent<MeshRenderer>().bounds.size.z / 4f;
-        m_List_Expand_Object = new List<(GameObject,GameObject)>();
+        m_List_Expand_Object = new List<(ShapeController, ShapeController)>();
         parentExpandedObjects = expandPanel.GetNamedChild("Interactables");
         SetupInteractorEvents();
     }
@@ -75,14 +75,12 @@ public class SceneManager : MonoBehaviour
 
         for (int i = 0; i < Mathf.Min(m_List_Expand_Object.Count, maxExpandNum); i++)
         {
-            (GameObject,GameObject) orig_voodoo_pair = m_List_Expand_Object[i];
-            GameObject original = orig_voodoo_pair.Item1;
-            GameObject voodoo = orig_voodoo_pair.Item2;
+            (ShapeController original, ShapeController voodoo) = m_List_Expand_Object[i];
             
             voodoo.transform.parent = parentExpandedObjects.transform;
             
             //change size of the object so that it fits within the canvas
-            Collider collider = original.GetComponent<Collider>();
+            Collider collider = original.collider;
             float expandWidthRatio = collider.bounds.size.x / panelWidth;
             float expandHeightRatio = collider.bounds.size.y / panelHeight;
             float expandLengthRatio = collider.bounds.size.z / Mathf.Min(panelWidth, panelHeight);
@@ -92,16 +90,16 @@ public class SceneManager : MonoBehaviour
             Vector3 target_position = expandPanel.transform.position;
             int x_index = i % 4;
             int y_index = i / 4;
-            target_position = target_position + expandPanel.transform.forward * (up_left_dist * (y_index - 1))+expandPanel.transform.right * ((x_index - 1) * up_left_dist);
+            target_position = target_position + expandPanel.transform.forward * (up_left_dist * (y_index - 1)) + expandPanel.transform.right * ((x_index - 1) * up_left_dist);
             // target_position = new Vector3(target_position.x + 0.01f, target_position.y + 0.05f, target_position.z  + 0.1f);
             target_position = target_position + expandPanel.transform.up * 0.05f + expandPanel.transform.forward * 0.07f - expandPanel.transform.right * 0.02f;
             //lerp voodoo to expand panel
-            voodoo.GetComponent<InteractableTarget>().lerp_to_target_positon(target_position);
+            voodoo.interactableTarget.lerp_to_target_positon(target_position);
         }
         m_List_Expand_Object.Clear();
     }
     
-    public static void add_Expanding_and_Voodoo(GameObject original, GameObject voodoo)
+    public static void add_Expanding_and_Voodoo(ShapeController original, ShapeController voodoo)
     {
         if (m_List_Expand_Object.Count < maxExpandNum)
         {
@@ -109,7 +107,7 @@ public class SceneManager : MonoBehaviour
         }
         else
         {
-            Destroy(voodoo);
+            Destroy(voodoo.gameObject);
         }
     }
 
@@ -136,14 +134,12 @@ public class SceneManager : MonoBehaviour
         {
             m_LeftRayInteractor.hoverEntered.AddListener(OnHoverEntered);
             m_LeftRayInteractor.hoverExited.AddListener(OnHoverExited);
-         
         }
 
         if (m_RightRayInteractor != null)
         {
             m_RightRayInteractor.hoverEntered.AddListener(OnHoverEntered);
             m_RightRayInteractor.hoverExited.AddListener(OnHoverExited);
-       
         }
     }
 
@@ -153,14 +149,12 @@ public class SceneManager : MonoBehaviour
         {
             m_LeftRayInteractor.hoverEntered.RemoveListener(OnHoverEntered);
             m_LeftRayInteractor.hoverExited.RemoveListener(OnHoverExited);
-
         }
 
         if (m_RightRayInteractor != null)
         {
             m_RightRayInteractor.hoverEntered.RemoveListener(OnHoverEntered);
             m_RightRayInteractor.hoverExited.RemoveListener(OnHoverExited);
-
         }
     }
     
@@ -171,16 +165,11 @@ public class SceneManager : MonoBehaviour
         {
             return;
         }
-
-
         if (m_Interactable is XRGrabInteractable)
         {
            Outline hoveredOutline =  (m_Interactable as XRGrabInteractable).gameObject.GetComponent<Outline>();
            if (hoveredOutline != null) hoveredOutline.OutlineWidth = 5;
-
         }
-            
-             
     }
     
     private void OnHoverExited(HoverExitEventArgs args)
@@ -191,8 +180,5 @@ public class SceneManager : MonoBehaviour
             Outline hoveredOutline =  (m_Interactable as XRGrabInteractable).gameObject.GetComponent<Outline>();
             if (hoveredOutline != null) hoveredOutline.OutlineWidth = 0;
         }
-
-  
     }
-
 }
