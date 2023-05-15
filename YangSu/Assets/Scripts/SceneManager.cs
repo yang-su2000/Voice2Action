@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using System;
+using TMPro;
 using Unity.VisualScripting;
 using Unity.XR.CoreUtils;
+using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Inputs;
 
@@ -18,6 +20,9 @@ public class SceneManager : MonoBehaviour
     
     [SerializeField]
     private Camera xrOriginCamera;
+
+    [SerializeField]
+    private GameObject shapeInfoPanel;
     /// <summary>
     /// The currently hovered interactable
     /// </summary>
@@ -170,6 +175,7 @@ public class SceneManager : MonoBehaviour
         {
            Outline hoveredOutline =  (m_Interactable as XRGrabInteractable).gameObject.GetComponent<Outline>();
            if (hoveredOutline != null) hoveredOutline.OutlineWidth = 5;
+           SetShapeInfo(m_Interactable as XRGrabInteractable, true);
         }
     }
     
@@ -180,6 +186,39 @@ public class SceneManager : MonoBehaviour
         {
             Outline hoveredOutline =  (m_Interactable as XRGrabInteractable).gameObject.GetComponent<Outline>();
             if (hoveredOutline != null) hoveredOutline.OutlineWidth = 0;
+            SetShapeInfo(m_Interactable as XRGrabInteractable, false);
         }
+    }
+
+    private void SetShapeInfo(XRGrabInteractable xrGrabInteractable, bool showPanel)
+    {
+        if (!showPanel)
+        {
+            shapeInfoPanel.SetActive(false);
+            return;
+        }
+        InteractableTarget interactableTarget = xrGrabInteractable.GetComponent<InteractableTarget>();
+        if (interactableTarget == null)
+        {
+            // a random grab interactable that is not an object we are interested in, probably a grabbable panel
+            shapeInfoPanel.SetActive(false);
+            return;
+        }
+        if (interactableTarget.isVoodoo == false)
+        {
+            // only show info on voodoo objects
+            shapeInfoPanel.SetActive(false);
+            return;
+        }
+        ShapeController shapeController = interactableTarget.originObject.GetComponent<ShapeController>();
+        if (shapeController == null)
+        {
+            // this could actually be bad, every interactable target should has shape controller attached to it
+            shapeInfoPanel.SetActive(false);
+            throw new Exception("hovered original object has no shape controller");
+        }
+        shapeInfoPanel.SetActive(true);
+        Text text = shapeInfoPanel.GetComponentInChildren<Text>();
+        text.text = shapeController.GetShapeInfo();
     }
 }

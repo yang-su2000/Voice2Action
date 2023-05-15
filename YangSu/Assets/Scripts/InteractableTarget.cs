@@ -13,7 +13,7 @@ public class InteractableTarget : MonoBehaviour
     private float lerpTimer = 0f;
     private bool isLerping;
     public bool isVoodoo = false;
-    private Transform originObject = null;
+    public Transform originObject = null;
     private LineRenderer connecting_line = null;
     private GameObject expandPanel;
     private ShapeController m_ShapeController;
@@ -114,15 +114,15 @@ public class InteractableTarget : MonoBehaviour
     public ShapeController makeVoodoo()
     {
         GameObject voodoo = Instantiate(gameObject);
-        shapeController = voodoo.GetComponent<ShapeController>();
-        shapeController.InitShape();
+        m_ShapeController = voodoo.GetComponent<ShapeController>();
+        m_ShapeController.InitShape();
         // Destroy(voodoo.GetComponent<ShapeController>());
         //change the position of the voodoo to the transform position. 
         voodoo.transform.position = transform.position;
         voodoo.transform.rotation = expandPanel.transform.rotation;
-        shapeController.interactableTarget.isVoodoo = true;
-        shapeController.interactableTarget.originObject = transform;
-        foreach (Renderer renderer in shapeController.renderers)
+        m_ShapeController.interactableTarget.isVoodoo = true;
+        m_ShapeController.interactableTarget.originObject = transform;
+        foreach (Renderer renderer in m_ShapeController.renderers)
         {
             Material material = renderer.material;
             material.SetFloat("_Mode", 2);
