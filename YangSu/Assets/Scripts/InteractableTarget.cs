@@ -7,8 +7,10 @@ public class InteractableTarget : MonoBehaviour
     private XRGrabInteractable interactable;
     private Vector3 targetPosition;
     private Vector3 originalPosition;
-    private int lerpFrames = 200;
-    private int currentFrame = 0;
+    // private int lerpFrames = 60 * 2;
+    // private int currentFrame = 0;
+    private float lerpDuration = 2f;
+    private float lerpTimer = 0f;
     private bool isLerping;
     public bool isVoodoo = false;
     private Transform originObject = null;
@@ -38,14 +40,26 @@ public class InteractableTarget : MonoBehaviour
     {
         if (isLerping)
         {
-            float interpolationRatio = (float)currentFrame / lerpFrames;
-            Vector3 interpolatedPosition = Vector3.Lerp(originalPosition, targetPosition, interpolationRatio);
+            // (deprecated)
+            // float interpolationRatio = (float)currentFrame / lerpFrames;
+            // Vector3 interpolatedPosition = Vector3.Lerp(originalPosition, targetPosition, interpolationRatio);
+            // transform.position = interpolatedPosition;
+            // currentFrame = (currentFrame + 1);
+            // if (currentFrame == lerpFrames)
+            // {
+            //     currentFrame = 0;
+            //     isLerping = false;
+            // }
+            // (new)
+            float deltaTime = Time.deltaTime;
+            lerpTimer += deltaTime;
+            float deltaInterpolation = Mathf.Min(lerpTimer / lerpDuration, 1f);
+            Vector3 interpolatedPosition = Vector3.Lerp(originalPosition, targetPosition, deltaInterpolation);
             transform.position = interpolatedPosition;
-            currentFrame = (currentFrame + 1);
-            if (currentFrame == lerpFrames)
+            if (lerpTimer >= lerpDuration)
             {
-                currentFrame = 0;
                 isLerping = false;
+                lerpTimer = 0f;
             }
         }
         // if (isVoodoo)

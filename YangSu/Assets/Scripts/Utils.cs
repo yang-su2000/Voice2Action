@@ -55,10 +55,11 @@ public static class Utils
             XRGrabInteractable interactable = cube.AddComponent<XRGrabInteractable>();
             InteractableTarget interactableTarget = cube.AddComponent<InteractableTarget>();
             interactable.useDynamicAttach = true;
-            interactable.matchAttachPosition = true;
-            interactable.matchAttachRotation = true;
-            interactable.snapToColliderVolume = true;
-            interactable.reinitializeDynamicAttachEverySingleGrab = true;
+            interactable.throwOnDetach = false;
+            // interactable.matchAttachPosition = true;
+            // interactable.matchAttachRotation = true;
+            // interactable.snapToColliderVolume = true;
+            // interactable.reinitializeDynamicAttachEverySingleGrab = true;
             cube.GetComponent<Rigidbody>().useGravity = false;
             cube.GetComponent<Rigidbody>().isKinematic = true;
             cube.transform.parent = parentInteractable.transform;
@@ -139,6 +140,7 @@ public static class Utils
         outline.OutlineWidth = 0;
         outline.OutlineColor = new Color(255, 128, 0, 1); // orange
         xrGrabInteractable.useDynamicAttach = true;
+        xrGrabInteractable.throwOnDetach = false;
         // xrGrabInteractable.matchAttachPosition = true;
         // xrGrabInteractable.matchAttachRotation = true;
         // xrGrabInteractable.snapToColliderVolume = true;
