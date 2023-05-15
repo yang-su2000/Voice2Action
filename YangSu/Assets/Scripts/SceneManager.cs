@@ -69,9 +69,10 @@ public class SceneManager : MonoBehaviour
         // ActivateUI?.Invoke(m_List_Expand_Object.Count);
         expandPanel.SetActive(true);
         // expandPanel.transform.LookAt(xrOriginCamera.transform.position);
-        expandPanel.transform.position = new Vector3(xrOriginCamera.transform.position.x + 0.5f, xrOriginCamera.transform.position.y, xrOriginCamera.transform.position.z);
+        expandPanel.transform.position = new Vector3(xrOriginCamera.transform.position.x , xrOriginCamera.transform.position.y, xrOriginCamera.transform.position.z + 0.5f);
         expandPanel.transform.up = (xrOriginCamera.transform.position - expandPanel.transform.position).normalized;
-        expandPanel.transform.Rotate(expandPanel.transform.right, 90);
+
+       // expandPanel.transform.Rotate(expandPanel.transform.right, 90);
 
         for (int i = 0; i < Mathf.Min(m_List_Expand_Object.Count, maxExpandNum); i++)
         {
@@ -92,7 +93,7 @@ public class SceneManager : MonoBehaviour
             int y_index = i / 4;
             target_position = target_position + expandPanel.transform.forward * (up_left_dist * (y_index - 1)) + expandPanel.transform.right * ((x_index - 1) * up_left_dist);
             // target_position = new Vector3(target_position.x + 0.01f, target_position.y + 0.05f, target_position.z  + 0.1f);
-            target_position = target_position + expandPanel.transform.up * 0.05f + expandPanel.transform.forward * 0.07f - expandPanel.transform.right * 0.02f;
+            target_position = target_position + expandPanel.transform.up * 0.05f + expandPanel.transform.forward * 0.1f - expandPanel.transform.right * 0.02f;
             //lerp voodoo to expand panel
             voodoo.interactableTarget.lerp_to_target_positon(target_position);
         }
