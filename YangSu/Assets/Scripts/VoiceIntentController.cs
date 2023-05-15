@@ -13,6 +13,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class VoiceIntentController : MonoBehaviour
 {
+    public static GameObject ScrollText;
     [Header("Controller")] 
     [SerializeField] 
     private ActionBasedController leftController;
@@ -20,8 +21,12 @@ public class VoiceIntentController : MonoBehaviour
     [SerializeField] 
     private ActionBasedController rightController;
 
+    [Header("InputActionProperty")]
     [SerializeField] 
     private InputActionProperty VoiceActivateAction;
+
+    [SerializeField]
+    private InputActionProperty ExpandResetAction;
     
     // add AppVoiceExperience reference
     [Header("Voice")] 
@@ -51,7 +56,7 @@ public class VoiceIntentController : MonoBehaviour
     private TextMeshProUGUI MessageText;
 
     [SerializeField]
-    private GUIStyle MessageGUI;
+    private GUIStyle MessageGUI; // this is for debugging only, it is displayed on the top left of the screen
     
     [Header("Private Messages")]
     private string userMessage;
@@ -84,6 +89,7 @@ public class VoiceIntentController : MonoBehaviour
 
     private void Awake()
     {
+        ScrollText = GameObject.Find("ScrollText");
         // Utils.InitBuildings(Interactable, spawnCount);
         Utils.InitPositionMarker(PositionMarker);
         Utils.InitInteractables(Interactables);
@@ -99,12 +105,13 @@ public class VoiceIntentController : MonoBehaviour
         
         appVoiceExperience.events.onPartialTranscription.AddListener((transcription) =>
         {
-            partialTranscriptText.text = transcription;
+            partialTranscriptText.text = "<color=black>Listening: </color>" + transcription;
         });
         
         appVoiceExperience.events.OnRequestCreated.AddListener((request) =>
         {
             Debug.Log("OnRequest Created");
+            partialTranscriptText.text = "<color=black>Listening: </color>";
             // audioSource.clip = Microphone.Start(Microphone.devices[0], false, 10, 44100);
             // if (audioSource == null)
             // {
@@ -138,6 +145,8 @@ public class VoiceIntentController : MonoBehaviour
         {
             appVoiceActive = false;
         };
+
+        ExpandResetAction.action.started += _ => ResetExpand();
     }
 
     private void Update()
@@ -211,12 +220,14 @@ public class VoiceIntentController : MonoBehaviour
 
     private async Task CallGPT(string prompt)
     {
-        historyMessages.Add("<color=blue>User: " + prompt + "</color>\n");
+        historyMessages.Add("User: <color=blue>" + prompt + "</color>\n");
+        UpdateMessageDisplay("User: <color=blue>" + prompt + "</color>");
         await PropertyExtractor.SelectProperty(prompt, historyMessages);
         if (PropertyExtractor.propertyPreds.Count == 0)
         {
             openAIStatus = false;
-            historyMessages.Add("<color=black>Assistant: " + PropertyMatcher.matchedControllers.Count + " objects selected</color>\n");
+            historyMessages.Add("Assistant: <color=green>" + PropertyMatcher.matchedControllers.Count + " objects selected\n</color>");
+            UpdateMessageDisplay("Assistant: <color=green>" + PropertyMatcher.matchedControllers.Count + " objects selected</color>");
             formattedMessage = PrintHistory(historyMessages);
             MessageText.text = formattedMessage;
         }
@@ -237,7 +248,8 @@ public class VoiceIntentController : MonoBehaviour
                     countProxy += 1;
                 }
             }
-            historyMessages.Add("<color=black>Assistant: " + PropertyMatcher.matchedControllers.Count + " objects selected</color>\n");
+            historyMessages.Add("Assistant: <color=green>" + PropertyMatcher.matchedControllers.Count + " objects selected\n</color>");
+            UpdateMessageDisplay("Assistant: <color=green>" + PropertyMatcher.matchedControllers.Count + " objects selected</color>");
             formattedMessage = PrintHistory(historyMessages);
             MessageText.text = formattedMessage;
         }
@@ -265,9 +277,38 @@ public class VoiceIntentController : MonoBehaviour
         }
     }
 
+    // this method is automatically called when we re-expand
     private void ResetControllers()
     {
         matchedControllers.Clear();
         SceneManager.clearProxys();
+    }
+
+    // this method is manually envoked when the user wants to reset the expand panel
+    private void ResetExpand()
+    {
+        matchedControllers.Clear();
+        SceneManager.clearProxys();
+        SceneManager.expandPanel.SetActive(false);
+        foreach (ShapeController shapeController in allControllers)
+        {
+            matchedControllers.Add(shapeController.name, shapeController);
+        }
+        fadeActive = true;
+    }
+    
+    public static void UpdateMessageDisplay(string message)
+    {
+        GameObject newText = new GameObject("newText");
+        newText.transform.SetParent(ScrollText.transform);
+        newText.transform.localPosition = Vector3.zero;
+        newText.transform.localRotation = Quaternion.identity;
+        newText.transform.localScale = Vector3.one;
+        TextMeshProUGUI textMeshProUGUI = newText.AddComponent<TextMeshProUGUI>();
+        textMeshProUGUI.text = message;
+        textMeshProUGUI.alignment = TextAlignmentOptions.Center;
+        textMeshProUGUI.fontSize = 10;
+        textMeshProUGUI.color = Color.black; // darker green
+        textMeshProUGUI.rectTransform.sizeDelta = new Vector2(200, 20);
     }
 }
