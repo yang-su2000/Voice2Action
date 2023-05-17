@@ -13764,7 +13764,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_System: {fileID: 0}
   m_EnableFreeXMovement: 1
-  m_EnableFreeYMovement: 0
+  m_EnableFreeYMovement: 1
   m_EnableFreeZMovement: 1
   m_UseGravity: 1
   m_GravityApplicationMode: 0
@@ -13774,7 +13774,7 @@ MonoBehaviour:
   m_MoveFactor: 1
   m_RequireTwoHandsForTranslation: 0
   m_EnableRotation: 1
-  m_EnableScaling: 0
+  m_EnableScaling: 1
   m_MinimumScale: 0.2
   m_MaximumScale: 100
 --- !u!1001 &507406552
@@ -23476,7 +23476,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_System: {fileID: 0}
   m_EnableFreeXMovement: 1
-  m_EnableFreeYMovement: 0
+  m_EnableFreeYMovement: 1
   m_EnableFreeZMovement: 1
   m_UseGravity: 1
   m_GravityApplicationMode: 0
@@ -40199,7 +40199,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_System: {fileID: 0}
   m_EnableFreeXMovement: 1
-  m_EnableFreeYMovement: 0
+  m_EnableFreeYMovement: 1
   m_EnableFreeZMovement: 1
   m_UseGravity: 1
   m_GravityApplicationMode: 0
