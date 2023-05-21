@@ -16,23 +16,23 @@ XR provides a clear value proposition for 3D design applications, such as indust
 
 - Voice2Action Hirerachy
 
-<img src="fig/Voice2Action_overview.png" width="800" height="450">
+<img src="fig/Voice2Action_overview.PNG" width="800" height="525">
 
 - Voice2Action Example
 
-<img src="fig/Voice2Action_example.png" width="800" height="450">
+<img src="fig/Voice2Action_example.PNG" width="800" height="375">
 
 - Industrial Prototype Engineering
 
-<img src="fig/city.jpg" width="400" height="250">
+<img src="fig/city.jpg" width="800" height="500">
 
 - Interact with [Arkio](https://www.arkio.is/)
 
-<img src="fig/arkio.png" width="400" height="250">
+<img src="fig/arkio.png" width="800" height="500">
 
 - MRTK3 with Figma
 
-<img src="fig/mrtk-figma.png" width="400" height="250">
+<img src="fig/mrtk-figma.png" width="800" height="500">
 
 ### Video
 
