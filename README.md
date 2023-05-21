@@ -22,7 +22,7 @@ XR provides a clear value proposition for 3D design applications, such as indust
 
 <img src="fig/Voice2Action_example.PNG" width="800" height="375">
 
-- Industrial Prototype Engineering
+<!-- - Industrial Prototype Engineering
 
 <img src="fig/city.jpg" width="800" height="500">
 
@@ -32,7 +32,7 @@ XR provides a clear value proposition for 3D design applications, such as indust
 
 - MRTK3 with Figma
 
-<img src="fig/mrtk-figma.png" width="800" height="500">
+<img src="fig/mrtk-figma.png" width="800" height="500"> -->
 
 ### Video
 
