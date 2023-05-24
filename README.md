@@ -4,7 +4,7 @@ XR provides a clear value proposition for 3D design applications, such as indust
 
 ## Demo
 
-[Here](https://drive.google.com/file/d/159XWeBlK_tdkoEv76xrA5s78dy4UEPfS/view?usp=sharing) (Cornell Account Required)
+[Voice2Action](https://drive.google.com/file/d/159XWeBlK_tdkoEv76xrA5s78dy4UEPfS/view?usp=sharing) (Cornell Account Required)
 
 ## Milestones
 
