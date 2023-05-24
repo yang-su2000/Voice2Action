@@ -16,7 +16,7 @@ XR provides a clear value proposition for 3D design applications, such as indust
 
 - Voice2Action Hirerachy
 
-<img src="fig/Voice2Action_overview.PNG" width="800" height="525">
+<img src="fig/Voice2Action_overview2.PNG" width="800" height="525">
 
 - Voice2Action Example
 
