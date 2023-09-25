@@ -88,7 +88,7 @@ public class SceneManager : MonoBehaviour
             Vector3 target_position = expandPanel.transform.position;
             int x_index = i % 4;
             int y_index = i / 4;
-            target_position = target_position + expandPanel.transform.forward * (up_left_dist * (y_index - 1)) + expandPanel.transform.right * ((x_index - 1) * up_left_di
+            target_position = target_position + expandPanel.transform.forward * (up_left_dist * (y_index - 1)) + expandPanel.transform.right * ((x_index - 1) * up_left_dist);
             target_position = target_position + expandPanel.transform.up * 0.05f + expandPanel.transform.forward * 0.1f - expandPanel.transform.right * 0.02f;
             //lerp voodoo to expand panel
             voodoo.interactableTarget.lerp_to_target_positon(target_position);
