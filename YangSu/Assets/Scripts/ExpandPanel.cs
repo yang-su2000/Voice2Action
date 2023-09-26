@@ -11,7 +11,7 @@ public class ExpandPanel : MonoBehaviour
     void Start()
     {
         //ExpandUI.SetActive(false);
-        SceneManager.ActivateUI += SetActive;
+        SceneManager.activateUI += SetActive;
         m_Camera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
     }
 

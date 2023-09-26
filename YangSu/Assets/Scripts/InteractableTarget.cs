@@ -31,8 +31,8 @@ public class InteractableTarget : MonoBehaviour
         interactable.selectEntered.AddListener(voodoo_on_selected);
         interactable.hoverEntered.AddListener(draw_connecting_lines);
         interactable.hoverExited.AddListener(remove_connecting_lines);
-        SceneManager.ActivateInteractable += expand_response;
-        SceneManager.destory_object_not_grabbed += destory_not_grabbed;
+        SceneManager.activateInteractable += expand_response;
+        SceneManager.destoryObjectNotGrabbed += destory_not_grabbed;
     }
 
     // Update is called once per frame
@@ -176,7 +176,7 @@ public class InteractableTarget : MonoBehaviour
         interactable.selectEntered.RemoveListener(voodoo_on_selected);
         interactable.hoverEntered.RemoveListener(draw_connecting_lines);
         interactable.hoverExited.RemoveListener(remove_connecting_lines);
-        SceneManager.ActivateInteractable -= expand_response;
-        SceneManager.destory_object_not_grabbed -= destory_not_grabbed;
+        SceneManager.activateInteractable -= expand_response;
+        SceneManager.destoryObjectNotGrabbed -= destory_not_grabbed;
     }
 }

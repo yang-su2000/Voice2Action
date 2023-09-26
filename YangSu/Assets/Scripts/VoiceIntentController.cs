@@ -241,7 +241,7 @@ public class VoiceIntentController : MonoBehaviour
             foreach (ShapeController controller in PropertyMatcher.matchedControllers)
             {
                 matchedControllers.Add(controller.name, controller);
-                if (countProxy < SceneManager.maxExpandNum)
+                if (countProxy < SceneManager.m_MaxExpandNum)
                 {
                     ShapeController proxyController = controller.interactableTarget.makeVoodoo();
                     SceneManager.add_Expanding_and_Voodoo(controller, proxyController);
@@ -289,7 +289,7 @@ public class VoiceIntentController : MonoBehaviour
     {
         matchedControllers.Clear();
         SceneManager.clearProxys();
-        SceneManager.expandPanel.SetActive(false);
+        SceneManager.m_ExpandPanel.SetActive(false);
         foreach (ShapeController shapeController in allControllers)
         {
             matchedControllers.Add(shapeController.name, shapeController);
