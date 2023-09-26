@@ -155,7 +155,7 @@ public static class PropertyExtractor
         propertyPreds.Clear();
         try
         {
-            var result = await Utils.OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt, temperature: Utils.CompletionTemperature);
+            var result = await Utils.s_OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt, temperature: Utils.s_CompletionTemperature);
             openAIMessage = result.ToString();
             Debug.Log("property selector: " + openAIMessage);
             foreach (string properties in openAIMessage.Split("\n"))

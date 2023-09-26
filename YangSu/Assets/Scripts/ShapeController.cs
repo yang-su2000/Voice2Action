@@ -106,7 +106,7 @@ public class ShapeController : MonoBehaviour
             m_Color = m_Renderers[m_Renderers.Count - 1].material.color;
         }
         string m_ColorName = "N/A";
-        foreach ((string colorName, Color color) in Embeddings.ColorMap)
+        foreach ((string colorName, Color color) in Embeddings.m_ColorMap)
         {
             if (color.r == m_Color.r && color.g == m_Color.g && color.b == m_Color.b)
             {
@@ -114,7 +114,7 @@ public class ShapeController : MonoBehaviour
             }
         }
         string m_Address = "N/A";
-        foreach ((string addressName, (float x1, float x2, float z1, float z2)) in Embeddings.AddressMap)
+        foreach ((string addressName, (float x1, float x2, float z1, float z2)) in Embeddings.m_AddressMap)
         {
             if (x1 <= transform.position.x && transform.position.x <= x2 && z1 <= transform.position.z &&
                 transform.position.z <= z2)
@@ -127,7 +127,7 @@ public class ShapeController : MonoBehaviour
         float m_Distance = Mathf.Sqrt(Mathf.Pow(transform.position.x - playerPosition.x, 2) + Mathf.Pow(transform.position.z - playerPosition.z, 2));
         string m_Direction = "N/A";
         Vector3 diffPosition = transform.position - playerPosition;
-        foreach ((string directionName, Vector3 direction) in Embeddings.DirectionMap)
+        foreach ((string directionName, Vector3 direction) in Embeddings.m_DirectionMap)
         {
             if (Vector3.Dot(diffPosition, direction) > 0f)
             {

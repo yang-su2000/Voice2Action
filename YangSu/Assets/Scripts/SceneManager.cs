@@ -100,7 +100,7 @@ public class SceneManager : MonoBehaviour
             // target_position = new Vector3(target_position.x + 0.01f, target_position.y + 0.05f, target_position.z  + 0.1f);
             target_position = target_position + expandPanel.transform.up * 0.05f + expandPanel.transform.forward * 0.1f - expandPanel.transform.right * 0.02f;
             //lerp voodoo to expand panel
-            voodoo.interactableTarget.lerp_to_target_positon(target_position);
+            voodoo.interactableTarget.LerpToTargetPosition(target_position);
         }
         m_List_Expand_Object.Clear();
     }
