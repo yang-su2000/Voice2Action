@@ -1,73 +1,54 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class ShapeController : MonoBehaviour
 {
-    public Shapes shapes;
+    public Shapes m_Shapes;
 
-    public string shapeInfo = "";
+    public string m_ShapeInfo = "";
 
-    private XRGrabInteractable m_GrabInteractable;
+    private bool m_IsInit;
 
-    private InteractableTarget m_InteractableTarget;
-    
-    private Collider m_Collider;
+    public XRGrabInteractable grabInteractable { get; private set; }
 
-    private List<Renderer> m_Renderers;
+    public InteractableTarget interactableTarget { get; private set; }
 
-    private bool isInit = false;
+    public Collider shapeCollider { get; private set; }
 
-    public XRGrabInteractable grabInteractable
-    {
-        get => m_GrabInteractable;
-        set => m_GrabInteractable = value;
-    }
+    public List<Renderer> renderers { get; private set; }
 
-    public InteractableTarget interactableTarget
-    {
-        get => m_InteractableTarget;
-        set => m_InteractableTarget = value;
-    }
-
-    public Collider shapeCollider
-    {
-        get => m_Collider;
-        set => m_Collider = value;
-    }
-
-    public List<Renderer> renderers
-    {
-        get => m_Renderers;
-        set => m_Renderers = value;
-    }
-
+    /// <summary>
+    ///     Initialize my required components for Voice2Action and Expand.
+    /// </summary>
     public void InitShape()
     {
-        m_GrabInteractable = GetComponent<XRGrabInteractable>();
-        m_InteractableTarget = GetComponent<InteractableTarget>();
-        m_Collider = GetComponent<Collider>();
-        m_Renderers = new List<Renderer>(GetComponentsInChildren<Renderer>());
-        if (GetComponent<Renderer>() != null) m_Renderers.Add(GetComponent<Renderer>());
-        isInit = true;
+        grabInteractable = GetComponent<XRGrabInteractable>();
+        interactableTarget = GetComponent<InteractableTarget>();
+        shapeCollider = GetComponent<Collider>();
+        renderers = new List<Renderer>(GetComponentsInChildren<Renderer>());
+        if (GetComponent<Renderer>() != null) renderers.Add(GetComponent<Renderer>());
+        m_IsInit = true;
     }
-    
+
+    /// <summary>
+    ///     Add Transparency to my material if they exist.
+    /// </summary>
     public void AddTransparency(float alpha)
     {
-        if (!isInit)
-        {
-            throw new Exception("ShapeController not initialized");
-        }
+        if (!m_IsInit) throw new Exception("ShapeController not initialized");
+
         // only fade-in fade-out for the real objects
         if (interactableTarget.isVoodoo) return;
-        foreach (Renderer renderer in m_Renderers)
+        foreach (var renderer1 in renderers)
         {
-            Material material = renderer.material;
-            Color color = material.color;
+            var material = renderer1.material;
+            var color = material.color;
             material.SetFloat("_Mode", 3);
-            material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
-            material.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+            material.SetInt("_SrcBlend", (int)BlendMode.One);
+            material.SetInt("_DstBlend", (int)BlendMode.OneMinusSrcAlpha);
             material.SetInt("_ZWrite", 0);
             color.a = Mathf.Clamp(color.a + alpha, 0, 1);
             material.SetColor("_Color", color);
@@ -78,73 +59,71 @@ public class ShapeController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    ///     Set color to my renderers.
+    /// </summary>
     public void SetColor(Color color)
     {
-        if (!isInit)
-        {
-            throw new Exception("ShapeController not initialized");
-        }
+        if (!m_IsInit) throw new Exception("ShapeController not initialized");
 
-        foreach (Renderer renderer in m_Renderers)
-        {
-            renderer.material.color = color;
-        }
+        foreach (var renderer1 in renderers) renderer1.material.color = color;
     }
 
+    /// <summary>
+    ///     Rotate my transform.
+    /// </summary>
     public void RotateTo(float targetRotation)
     {
-        Vector3 targetDirection = new Vector3(targetRotation, 0, 0);
-        Quaternion new_rotation = Quaternion.Euler(targetDirection);
-        transform.rotation = new_rotation;
+        var targetDirection = new Vector3(targetRotation, 0, 0);
+        var newRotation = Quaternion.Euler(targetDirection);
+        transform.rotation = newRotation;
     }
 
+    /// <summary>
+    ///     Print all my properties.
+    /// </summary>
     public string GetShapeInfo()
     {
-        Color m_Color = Color.clear;
-        if (m_Renderers.Count > 0)
-        {
-            m_Color = m_Renderers[m_Renderers.Count - 1].material.color;
-        }
-        string m_ColorName = "N/A";
-        foreach ((string colorName, Color color) in Embeddings.ColorMap)
-        {
-            if (color.r == m_Color.r && color.g == m_Color.g && color.b == m_Color.b)
-            {
-                m_ColorName = colorName;
-            }
-        }
-        string m_Address = "N/A";
-        foreach ((string addressName, (float x1, float x2, float z1, float z2)) in Embeddings.AddressMap)
-        {
+        var myColor = Color.clear;
+        if (renderers.Count > 0) myColor = renderers[renderers.Count - 1].material.color;
+
+        var myColorName = "N/A";
+        foreach (var (colorName, color) in Embeddings.ColorMap)
+            if (color.r == myColor.r && color.g == myColor.g && color.b == myColor.b)
+                myColorName = colorName;
+
+        var myAddress = "N/A";
+        foreach ((var addressName, (var x1, var x2, var z1, var z2)) in Embeddings.AddressMap)
             if (x1 <= transform.position.x && transform.position.x <= x2 && z1 <= transform.position.z &&
                 transform.position.z <= z2)
             {
-                m_Address = addressName;
+                myAddress = addressName;
                 break;
             }
-        }
-        Vector3 playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
-        float m_Distance = Mathf.Sqrt(Mathf.Pow(transform.position.x - playerPosition.x, 2) + Mathf.Pow(transform.position.z - playerPosition.z, 2));
-        string m_Direction = "N/A";
-        Vector3 diffPosition = transform.position - playerPosition;
-        foreach ((string directionName, Vector3 direction) in Embeddings.DirectionMap)
-        {
+
+        var myPosition = transform.position;
+        var playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
+        var myDistance = Mathf.Sqrt(Mathf.Pow(myPosition.x - playerPosition.x, 2) +
+                                    Mathf.Pow(myPosition.z - playerPosition.z, 2));
+        var myDirection = "N/A";
+        var diffPosition = myPosition - playerPosition;
+        foreach (var (directionName, direction) in Embeddings.DirectionMap)
             if (Vector3.Dot(diffPosition, direction) > 0f)
             {
-                m_Direction = directionName;
+                myDirection = directionName;
                 break;
             }
-        }
-        shapeInfo = "<color=blue>object properties</color>: \n" +
-                    $"<color=blue>name</color>: {name}\n" +
-                    $"<color=blue>shape</color>: {shapes}\n" +
-                    $"<color=blue>main color</color>: {m_ColorName}\n" +
-                    $"<color=blue>address</color>: {m_Address}\n" +
-                    $"<color=blue>distance (to user)</color>: {m_Distance}\n" +
-                    $"<color=blue>direction (to user)</color>: {m_Direction}\n" +
-                    $"<color=blue>position.x</color>: {transform.position.x}\n" +
-                    $"<color=blue>position.y</color>: {transform.position.y}\n" +
-                    $"<color=blue>position.z</color>: {transform.position.z}";
-        return shapeInfo;
+
+        m_ShapeInfo = "<color=blue>object properties</color>: \n" +
+                      $"<color=blue>name</color>: {name}\n" +
+                      $"<color=blue>shape</color>: {m_Shapes}\n" +
+                      $"<color=blue>main color</color>: {myColorName}\n" +
+                      $"<color=blue>address</color>: {myAddress}\n" +
+                      $"<color=blue>distance (to user)</color>: {myDistance}\n" +
+                      $"<color=blue>direction (to user)</color>: {myDirection}\n" +
+                      $"<color=blue>position.x</color>: {myPosition.x}\n" +
+                      $"<color=blue>position.y</color>: {myPosition.y}\n" +
+                      $"<color=blue>position.z</color>: {myPosition.z}";
+        return m_ShapeInfo;
     }
 }

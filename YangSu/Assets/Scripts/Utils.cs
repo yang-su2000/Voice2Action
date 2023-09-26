@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 using OpenAI;
+using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using Random = UnityEngine.Random;
 
@@ -16,173 +16,187 @@ public enum Shapes
     Car,
     MiniBus,
     SchoolBus,
-    Tree,
+    Tree
 }
 
 public static class Utils
 {
-    [Header("OpenAI API")]
-    public static readonly OpenAIClient OpenAIClient = new OpenAIClient();
-    
-    [Header("OpenAI Parameters")]
-    public static readonly float CompletionTemperature = 0.0f;
-    // out of 100
-    public static readonly int MinConfidenceToProceed = 50;
-    
-    public static readonly int TopK = 1;
+    [Header("OpenAI API")] public static readonly OpenAIClient s_OpenAIClient = new();
 
-    [Header("Example Properties")]
-    public static readonly List<Color> AllColors = new List<Color>
+    [Header("OpenAI Parameters")] public static readonly float s_CompletionTemperature = 0.0f;
+
+    // <summary>Out of 100</summary>
+    public const int k_MinConfidenceToProceed = 50;
+
+    public const int k_TopK = 1;
+
+    [Header("Example Properties")] private static readonly List<Color> s_AllColors = new()
     {
         Color.black, Color.blue, Color.cyan, Color.grey, Color.green, Color.red,
-        Color.white, Color.yellow,
+        Color.white, Color.yellow
     };
 
-    public static readonly List<(PrimitiveType, Shapes)> AllShapes = new List<(PrimitiveType, Shapes)>
+    private static readonly List<(PrimitiveType, Shapes)> s_AllShapes = new()
     {
-        (PrimitiveType.Capsule, Shapes.Capsule), 
-        (PrimitiveType.Cube, Shapes.Cube), 
+        (PrimitiveType.Capsule, Shapes.Capsule),
+        (PrimitiveType.Cube, Shapes.Cube),
         (PrimitiveType.Sphere, Shapes.Sphere),
-        (PrimitiveType.Cylinder, Shapes.Cylinder), 
+        (PrimitiveType.Cylinder, Shapes.Cylinder)
     };
 
+    /// <summary>
+    ///     The entry point for initializing sample buildings in the scene for evaluation.
+    /// </summary>
     public static void InitBuildings(GameObject parentInteractable, int spawnCount)
     {
-        for (int i = 0; i < spawnCount; i++)
+        for (var i = 0; i < spawnCount; i++)
         {
-            var shapePair = AllShapes[Random.Range(0, AllShapes.Count)];
-            GameObject cube = GameObject.CreatePrimitive(shapePair.Item1);
-            XRGrabInteractable interactable = cube.AddComponent<XRGrabInteractable>();
-            InteractableTarget interactableTarget = cube.AddComponent<InteractableTarget>();
+            var shapePair = s_AllShapes[Random.Range(0, s_AllShapes.Count)];
+            var cube = GameObject.CreatePrimitive(shapePair.Item1);
+            var interactable = cube.AddComponent<XRGrabInteractable>();
+            var interactableTarget = cube.AddComponent<InteractableTarget>();
             interactable.useDynamicAttach = true;
             interactable.throwOnDetach = false;
+            // <Debug Code>
             // interactable.matchAttachPosition = true;
             // interactable.matchAttachRotation = true;
             // interactable.snapToColliderVolume = true;
             // interactable.reinitializeDynamicAttachEverySingleGrab = true;
+            // <Debug Code>
             cube.GetComponent<Rigidbody>().useGravity = false;
             cube.GetComponent<Rigidbody>().isKinematic = true;
             cube.transform.parent = parentInteractable.transform;
-            ShapeController shapeController = cube.AddComponent<ShapeController>();
-            shapeController.shapes = shapePair.Item2;
+            var shapeController = cube.AddComponent<ShapeController>();
+            shapeController.m_Shapes = shapePair.Item2;
             cube.transform.localScale =
                 new Vector3(Random.Range(0.25f, 1f), Random.Range(0.25f, 2f), Random.Range(0.25f, 1f));
-            Renderer renderer = shapeController.GetComponent<Renderer>();
+            var renderer = shapeController.GetComponent<Renderer>();
             renderer.material = Resources.Load<Material>("Materials/BuildingMaterial");
             renderer.material.SetFloat("_Mode", 2);
-            renderer.material.color = AllColors[Random.Range(0, AllColors.Count)];
+            renderer.material.color = s_AllColors[Random.Range(0, s_AllColors.Count)];
             shapeController.InitShape();
             if (Random.Range(0f, 1f) < 0.5f)
             {
                 if (Random.Range(0f, 1f) < 0.5f)
-                {
-                    cube.transform.position = new Vector3(Random.Range(-10, -2), cube.transform.localScale.y / 2 - 2, Random.Range(-10, -2));
-                }
+                    cube.transform.position = new Vector3(Random.Range(-10, -2), cube.transform.localScale.y / 2 - 2,
+                        Random.Range(-10, -2));
                 else
-                {
-                    cube.transform.position = new Vector3(Random.Range(-10, -2), cube.transform.localScale.y / 2 - 2, Random.Range(2, 10));
-                }
+                    cube.transform.position = new Vector3(Random.Range(-10, -2), cube.transform.localScale.y / 2 - 2,
+                        Random.Range(2, 10));
             }
             else
             {
                 if (Random.Range(0f, 1f) < 0.5f)
-                {
-                    cube.transform.position = new Vector3(Random.Range(2, 10), cube.transform.localScale.y / 2 - 2, Random.Range(-10, -2));
-                }
+                    cube.transform.position = new Vector3(Random.Range(2, 10), cube.transform.localScale.y / 2 - 2,
+                        Random.Range(-10, -2));
                 else
-                {
-                    cube.transform.position = new Vector3(Random.Range(2, 10), cube.transform.localScale.y / 2 - 2, Random.Range(2, 10));
-                }
+                    cube.transform.position = new Vector3(Random.Range(2, 10), cube.transform.localScale.y / 2 - 2,
+                        Random.Range(2, 10));
             }
         }
     }
 
+    /// <summary>
+    ///     The entry point for initializing sample position markers in the scene for evaluation.
+    /// </summary>
     public static void InitPositionMarker(GameObject parentMarker)
     {
         foreach (Transform markerTransform in parentMarker.transform)
-        {
             Embeddings.AddAddress(markerTransform.name, markerTransform.gameObject);
-        }
     }
-    
-    public static void InitInteractables(GameObject interactables)
+
+    /// <summary>
+    ///     The entry point for initializing the required components for Voice2Action from the given interactable and its
+    ///     children in the scene for evaluation.
+    /// </summary>
+    public static void InitInteractable(GameObject interactable)
     {
-        foreach (Transform category in interactables.transform)
+        foreach (Transform category in interactable.transform)
         {
-            Shapes categoryType = Shapes.Object;
-            // Debug.Log("category " + category.name);
+            var categoryType = Shapes.Object;
             foreach (Shapes shapeType in Enum.GetValues(typeof(Shapes)))
-            {
                 if (category.name.Contains(shapeType.ToString()))
                 {
                     categoryType = shapeType;
                     if (!Embeddings.ShapesMap.ContainsKey(shapeType.ToString()))
-                    {
                         Embeddings.ShapesMap.Add(shapeType.ToString(), shapeType);
-                    }
+
                     break; // one category can only have one shape
                 }
-            }
+
             if (categoryType == Shapes.Object) continue; // not a valid shape
-            foreach (Transform instance in category)
-            {
-                InitInstance(instance.gameObject, categoryType);
-            }
+            foreach (Transform instance in category) InitInstance(instance.gameObject, categoryType);
         }
     }
 
+    /// <summary>
+    ///     The entry point for initializing the required components for Expand from the given interactable and its shape for
+    ///     evaluation.
+    /// </summary>
     private static void InitInstance(GameObject instance, Shapes shapeType)
     {
-        XRGrabInteractable xrGrabInteractable = instance.AddComponent<XRGrabInteractable>();
-        InteractableTarget interactableTarget = instance.AddComponent<InteractableTarget>();
+        var xrGrabInteractable = instance.AddComponent<XRGrabInteractable>();
+        var interactableTarget = instance.AddComponent<InteractableTarget>();
         interactableTarget.isVoodoo = false;
-        Outline outline = instance.AddComponent<Outline>();
+        var outline = instance.AddComponent<Outline>();
         outline.OutlineWidth = 0;
         outline.OutlineColor = new Color(255, 128, 0, 1); // orange
         xrGrabInteractable.useDynamicAttach = true;
         xrGrabInteractable.throwOnDetach = false;
+        // <Debug Code>
         // xrGrabInteractable.matchAttachPosition = true;
         // xrGrabInteractable.matchAttachRotation = true;
         // xrGrabInteractable.snapToColliderVolume = true;
         // xrGrabInteractable.reinitializeDynamicAttachEverySingleGrab = true;
+        // <Debug Code>
         instance.GetComponent<Rigidbody>().useGravity = false;
         instance.GetComponent<Rigidbody>().isKinematic = true;
-        ShapeController shapeController = instance.AddComponent<ShapeController>();
-        shapeController.shapes = shapeType;
-        Renderer renderer = instance.GetComponent<Renderer>();
+        var shapeController = instance.AddComponent<ShapeController>();
+        shapeController.m_Shapes = shapeType;
+        var renderer = instance.GetComponent<Renderer>();
         if (renderer != null)
         {
+            // <Debug Code>
             // Debug.Log("+" + instance.name);
+            // <Debug Code>
             if (shapeType == Shapes.Building)
             {
                 renderer.material = Resources.Load<Material>("Materials/BuildingMaterial");
-                renderer.material.color = Utils.AllColors[UnityEngine.Random.Range(0, Utils.AllColors.Count)];
+                renderer.material.color = s_AllColors[Random.Range(0, s_AllColors.Count)];
             }
+
             renderer.material.SetFloat("_Mode", 2);
+            // <Debug Code>
             // shapeController.material = renderer.material;
+            // <Debug Code>
         }
+
         if (shapeType == Shapes.Car) // TODO: temporary for demo, all car components should have the same color
         {
-            Color colorGroup = Utils.AllColors[UnityEngine.Random.Range(0, Utils.AllColors.Count)];
+            var colorGroup = s_AllColors[Random.Range(0, s_AllColors.Count)];
             foreach (Transform childInstance in instance.transform)
             {
-                Renderer childRenderer = childInstance.GetComponent<Renderer>();
+                var childRenderer = childInstance.GetComponent<Renderer>();
                 childRenderer.material = Resources.Load<Material>("Materials/CarMaterial");
                 childRenderer.material.color = colorGroup;
             }
         }
+
         shapeController.InitShape();
     }
 
+    /// <summary>
+    ///     Utility function to check if two colors are similar enough.
+    /// </summary>
     public static bool IsColorClose(Color color1, Color color2, float confidence)
     {
-        float aDist = color1.a - color2.a;
-        float rDist = color1.r - color2.r;
-        float gDist = color1.g - color2.g;
-        float bDist = color1.b - color2.b;
-        float dist = Mathf.Sqrt(aDist * aDist + rDist * rDist + gDist * gDist + bDist * bDist);
-        float maxDist = 2f;
-        Debug.Log(dist + color1.ToString() + color2.ToString());
+        var aDist = color1.a - color2.a;
+        var rDist = color1.r - color2.r;
+        var gDist = color1.g - color2.g;
+        var bDist = color1.b - color2.b;
+        var dist = Mathf.Sqrt(aDist * aDist + rDist * rDist + gDist * gDist + bDist * bDist);
+        var maxDist = 2f;
+        Debug.Log(dist + color1.ToString() + color2);
         return dist / maxDist <= 1f - confidence;
     }
 }
