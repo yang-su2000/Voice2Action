@@ -6,12 +6,12 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public static class PropertyMatcher
 {
-    public static List<ShapeController> matchedControllers = new List<ShapeController>();
+    public static List<ShapeController> m_MatchedControllers = new List<ShapeController>();
         
-    private static string openAIMessage;
+    private static string m_OpenAIMessage;
 
     // property, example usage
-    private static Dictionary<string, string> matchTuples = new Dictionary<string, string>
+    private static Dictionary<string, string> m_MatchTuples = new Dictionary<string, string>
     {
         {"distance", "extract the start and end range. min = 0, max = 100.\n" +
                      "input:\n" +
@@ -49,7 +49,7 @@ public static class PropertyMatcher
         string[] candidateTuple = tuple[0].Split(", ");
         if (candidateTuple.Length == 3 && int.TryParse(candidateTuple[2].Remove(candidateTuple[2].Length-1), out int confidence))
         {
-            if (confidence >= Utils.k_MinConfidenceToProceed)
+            if (confidence >= Utils.MinConfidenceToProceed)
             {
                 return new List<string> { candidateTuple[1] };
             }
@@ -60,7 +60,7 @@ public static class PropertyMatcher
     public static async Task MatchProperty(List<Dictionary<string, string>> propertyPreds,
         ShapeController[] allControllers, List<string> historyMessages)
     {
-        matchedControllers = new List<ShapeController>(allControllers);
+        m_MatchedControllers = new List<ShapeController>(allControllers);
         foreach (Dictionary<string, string> propertyMap in propertyPreds)
         {
             foreach ((string property, string feature) in propertyMap)
@@ -96,7 +96,7 @@ public static class PropertyMatcher
         {
             XRGrabInteractable xrGrabInteractable = controller.grabInteractable;
             if (xrGrabInteractable == null) continue;
-            if (matchedControllers.Contains(controller))
+            if (m_MatchedControllers.Contains(controller))
             {
                 xrGrabInteractable.enabled = true;
             }
@@ -110,22 +110,22 @@ public static class PropertyMatcher
     private static async Task<bool> MatchShape(string feature, List<string> historyMessages)
     {
         List<ShapeController> filteredControllers = new List<ShapeController>();
-        string userPrompt = EmbeddingPrompt(feature, "shape", new List<string>(Embeddings.ShapesMap.Keys), Utils.k_TopK);
+        string userPrompt = EmbeddingPrompt(feature, "shape", new List<string>(Embeddings.ShapesMap.Keys), Utils.TopK);
         Debug.Log("ShapesPrompt:\n" + userPrompt);
         bool successFlag = true;
         try
         {
-            var result = await Utils.s_OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt, temperature: Utils.s_CompletionTemperature);
-            openAIMessage = result.ToString();
-            Debug.Log("shape matcher: " + openAIMessage);
-            List<string> response = TokenizeMessage(openAIMessage, Utils.k_TopK);
-            if (response.Count > 0 && Embeddings.ShapesMap.ContainsKey(response[0]))
+            var result = await Utils.s_OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt, temperature: Utils.k_CompletionTemperature);
+            m_OpenAIMessage = result.ToString();
+            Debug.Log("shape matcher: " + m_OpenAIMessage);
+            List<string> response = TokenizeMessage(m_OpenAIMessage, Utils.s_TopK);
+            if (response.Count > 0 && Embeddings.m_ShapesMap.ContainsKey(response[0]))
             {
                 string shapeName = response[0];
-                Shapes shape = Embeddings.ShapesMap[shapeName];
+                Shapes shape = Embeddings.m_ShapesMap[shapeName];
                 historyMessages.Add("<color=purple>shape: [" + shapeName + "]</color>\n");
                 Debug.Log("<color=purple>shape: [" + shapeName + "]</color>\n");
-                foreach (var controller in matchedControllers)
+                foreach (var controller in m_MatchedControllers)
                 {
                     if (shape == Shapes.Object || shape == controller.m_Shapes)
                     {
@@ -144,29 +144,29 @@ public static class PropertyMatcher
             Debug.Log("shape matcher get exception in OpenAICompletion:\n" + e);
             successFlag = false;
         }
-        if (successFlag) matchedControllers = filteredControllers;
+        if (successFlag) m_MatchedControllers = filteredControllers;
         return successFlag;
     }
 
     private static async Task<bool> MatchColor(string feature, List<string> historyMessages)
     {
         List<ShapeController> filteredControllers = new List<ShapeController>();
-        string userPrompt = EmbeddingPrompt(feature, "color", new List<string>(Embeddings.ColorMap.Keys), Utils.k_TopK);
+        string userPrompt = EmbeddingPrompt(feature, "color", new List<string>(Embeddings.m_ColorMap.Keys), Utils.s_TopK);
         Debug.Log("ColorPrompt:\n" + userPrompt);
         bool successFlag = true;
         try
         {
-            var result = await Utils.s_OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt, temperature: Utils.s_CompletionTemperature);
-            openAIMessage = result.ToString();
-            Debug.Log("color matcher: " + openAIMessage);
-            List<string> response = TokenizeMessage(openAIMessage, Utils.k_TopK);
-            if (response.Count > 0 && Embeddings.ColorMap.ContainsKey(response[0]))
+            var result = await Utils.s_OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt, temperature: Utils.k_CompletionTemperature);
+            m_OpenAIMessage = result.ToString();
+            Debug.Log("color matcher: " + m_OpenAIMessage);
+            List<string> response = TokenizeMessage(m_OpenAIMessage, Utils.s_TopK);
+            if (response.Count > 0 && Embeddings.m_ColorMap.ContainsKey(response[0]))
             {
                 string colorName = response[0];
-                Color color = Embeddings.ColorMap[colorName];
+                Color color = Embeddings.m_ColorMap[colorName];
                 historyMessages.Add("<color=purple>color: [" + colorName + "]</color>\n");
                 Debug.Log("<color=purple>color: [" + colorName + "]</color>\n");
-                foreach (var controller in matchedControllers)
+                foreach (var controller in m_MatchedControllers)
                 {
                     foreach (Renderer renderer in controller.renderers)
                     {
@@ -191,29 +191,29 @@ public static class PropertyMatcher
             Debug.Log("color matcher get exception in OpenAICompletion:\n" + e);
             successFlag = false;
         }
-        if (successFlag) matchedControllers = filteredControllers;
+        if (successFlag) m_MatchedControllers = filteredControllers;
         return successFlag;
     }
 
     private static async Task<bool> MatchAddress(string feature, List<string> historyMessages)
     {
         List<ShapeController> filteredControllers = new List<ShapeController>();
-        string userPrompt = EmbeddingPrompt(feature, "address", new List<string>(Embeddings.AddressMap.Keys), Utils.k_TopK);
+        string userPrompt = EmbeddingPrompt(feature, "address", new List<string>(Embeddings.m_AddressMap.Keys), Utils.s_TopK);
         Debug.Log("AddressPrompt:\n" + userPrompt);
         bool successFlag = true;
         try
         {
-            var result = await Utils.s_OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt, temperature: Utils.s_CompletionTemperature);
-            openAIMessage = result.ToString();
-            Debug.Log("address matcher: " + openAIMessage);
-            List<string> response = TokenizeMessage(openAIMessage, Utils.k_TopK);
-            if (response.Count > 0 && Embeddings.AddressMap.ContainsKey(response[0]))
+            var result = await Utils.s_OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt, temperature: Utils.k_CompletionTemperature);
+            m_OpenAIMessage = result.ToString();
+            Debug.Log("address matcher: " + m_OpenAIMessage);
+            List<string> response = TokenizeMessage(m_OpenAIMessage, Utils.s_TopK);
+            if (response.Count > 0 && Embeddings.m_AddressMap.ContainsKey(response[0]))
             {
                 string address = response[0];
-                (float x1, float x2, float z1, float z2) = Embeddings.AddressMap[address];
+                (float x1, float x2, float z1, float z2) = Embeddings.m_AddressMap[address];
                 historyMessages.Add("<color=purple>address: [" + address + "]</color>\n");
                 Debug.Log("<color=purple>address: [" + address + "]</color>\n");
-                foreach (var controller in matchedControllers)
+                foreach (var controller in m_MatchedControllers)
                 {
                     Vector3 controllerPosition = controller.transform.position;
                     if (x1 <= controllerPosition.x && controllerPosition.x <= x2 && z1 <= controllerPosition.z && controllerPosition.z <= z2)
@@ -233,22 +233,22 @@ public static class PropertyMatcher
             Debug.Log("address matcher get exception in OpenAICompletion:\n" + e);
             successFlag = false;
         }
-        if (successFlag) matchedControllers = filteredControllers;
+        if (successFlag) m_MatchedControllers = filteredControllers;
         return successFlag;
     }
 
     private static async Task<bool> MatchDistance(string feature, List<string> historyMessages)
     {
         List<ShapeController> filteredControllers = new List<ShapeController>();
-        string userPrompt = matchTuples["distance"] + feature + "\nOutput:\n";
+        string userPrompt = m_MatchTuples["distance"] + feature + "\nOutput:\n";
         Debug.Log("distancePrompt:\n" + userPrompt);
         bool successFlag = true;
         try
         {
-            var result = await Utils.s_OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt, temperature: Utils.s_CompletionTemperature);
-            openAIMessage = result.ToString();
-            Debug.Log("distance matcher: " + openAIMessage);
-            string[] tuple = openAIMessage.Split(", ");
+            var result = await Utils.s_OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt, temperature: Utils.k_CompletionTemperature);
+            m_OpenAIMessage = result.ToString();
+            Debug.Log("distance matcher: " + m_OpenAIMessage);
+            string[] tuple = m_OpenAIMessage.Split(", ");
             if (tuple.Length == 2 && int.TryParse(tuple[0], out int start) && int.TryParse(tuple[1], out int end))
             {
                 if (start > end)
@@ -258,7 +258,7 @@ public static class PropertyMatcher
                 historyMessages.Add("<color=purple>distance start: [" + start + "] end: [" + end + "]</color>\n");
                 Debug.Log("<color=purple>distance start: [" + start + "] end: [" + end + "]</color>\n");
                 Vector3 playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
-                foreach (var controller in matchedControllers)
+                foreach (var controller in m_MatchedControllers)
                 {
                     Vector3 controllerPosition = controller.transform.position;
                     float diff = Mathf.Sqrt(Mathf.Pow(controllerPosition.x - playerPosition.x, 2) + Mathf.Pow(controllerPosition.z - playerPosition.z, 2));
@@ -279,30 +279,30 @@ public static class PropertyMatcher
             Debug.Log("distance matcher get exception in OpenAICompletion:\n" + e);
             successFlag = false;
         }
-        if (successFlag) matchedControllers = filteredControllers;
+        if (successFlag) m_MatchedControllers = filteredControllers;
         return successFlag;
     }
 
     private static async Task<bool> MatchDirection(string feature, List<string> historyMessages)
     {
         List<ShapeController> filteredControllers = new List<ShapeController>();
-        string userPrompt = EmbeddingPrompt(feature, "direction", new List<string>(Embeddings.DirectionMap.Keys), Utils.k_TopK);
+        string userPrompt = EmbeddingPrompt(feature, "direction", new List<string>(Embeddings.m_DirectionMap.Keys), Utils.s_TopK);
         Debug.Log("DirectionPrompt:\n" + userPrompt);
         bool successFlag = true;
         try
         {
-            var result = await Utils.s_OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt, temperature: Utils.s_CompletionTemperature);
-            openAIMessage = result.ToString();
-            Debug.Log("direction matcher: " + openAIMessage);
-            List<string> response = TokenizeMessage(openAIMessage, Utils.k_TopK);
-            if (response.Count > 0 && Embeddings.DirectionMap.ContainsKey(response[0]))
+            var result = await Utils.s_OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt, temperature: Utils.k_CompletionTemperature);
+            m_OpenAIMessage = result.ToString();
+            Debug.Log("direction matcher: " + m_OpenAIMessage);
+            List<string> response = TokenizeMessage(m_OpenAIMessage, Utils.s_TopK);
+            if (response.Count > 0 && Embeddings.m_DirectionMap.ContainsKey(response[0]))
             {
                 string directionName = response[0];
-                Vector3 direction = Embeddings.DirectionMap[directionName];
+                Vector3 direction = Embeddings.m_DirectionMap[directionName];
                 historyMessages.Add("<color=purple>direction: [" + directionName + "]</color>\n");
                 Debug.Log("<color=purple>direction: [" + directionName + "]</color>\n");
                 Vector3 playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
-                foreach (var controller in matchedControllers)
+                foreach (var controller in m_MatchedControllers)
                 {
                     Vector3 controllerPosition = controller.transform.position;
                     Vector3 diffPosition = controllerPosition - playerPosition;
@@ -323,7 +323,7 @@ public static class PropertyMatcher
             Debug.Log("direction matcher get exception in OpenAICompletion:\n" + e);
             successFlag = false;
         }
-        if (successFlag) matchedControllers = filteredControllers;
+        if (successFlag) m_MatchedControllers = filteredControllers;
         return successFlag;
     }
 }

@@ -10,13 +10,13 @@ public static class PropertyExtractor
     // Each list is a dictionary of (property, feature) pair
     // Each feature is an instance of the property
     // The feature does NOT need to match the ground truth features, they are used for later rankings (see PropertyMatcher)
-    public static List<Dictionary<string, string>> propertyPreds = new List<Dictionary<string, string>>();
+    public static List<Dictionary<string, string>> m_PropertyPreds = new List<Dictionary<string, string>>();
     
     // [Change this when adding new properties]
     // The ground truth
     // A dictionary of (property, features) pairs
     // Each feature is an instance of the property
-    public static Dictionary<string, List<string>> propertyTragets = new Dictionary<string, List<string>>()
+    public static Dictionary<string, List<string>> m_PropertyTragets = new Dictionary<string, List<string>>()
     {
         {
             // embeddings should suffice
@@ -115,7 +115,7 @@ public static class PropertyExtractor
     {
         string ret = "extract the properties {";
         bool isFirstFlag = true;
-        foreach (string property in propertyTragets.Keys)
+        foreach (string property in m_PropertyTragets.Keys)
         {
             if (isFirstFlag) isFirstFlag = false;
             else ret += ", ";
@@ -152,10 +152,10 @@ public static class PropertyExtractor
     {
         string userPrompt = selectPrompt(prompt);
         Debug.Log("userPrompt: " + userPrompt);
-        propertyPreds.Clear();
+        m_PropertyPreds.Clear();
         try
         {
-            var result = await Utils.s_OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt, temperature: Utils.s_CompletionTemperature);
+            var result = await Utils.s_OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt, temperature: Utils.k_CompletionTemperature);
             openAIMessage = result.ToString();
             Debug.Log("property selector: " + openAIMessage);
             foreach (string properties in openAIMessage.Split("\n"))
@@ -168,7 +168,7 @@ public static class PropertyExtractor
                     {
                         string targetProperty = propertyTuple[0];
                         string targetFeature = propertyTuple[1];
-                        if (propertyTragets.ContainsKey(targetProperty) && targetFeature != "N/A")
+                        if (m_PropertyTragets.ContainsKey(targetProperty) && targetFeature != "N/A")
                         {
                             // historyMessages.Add("<color=green>select: [" + targetProperty + "] -> " + "[" + targetFeature + "]</color>\n");
                             Debug.Log("<color=green>select: [" + targetProperty + "] -> " + "[" + targetFeature + "]</color>\n"); 
@@ -176,7 +176,7 @@ public static class PropertyExtractor
                         }
                     }
                 }
-                if (propertyMap.Count > 0) propertyPreds.Add(propertyMap);
+                if (propertyMap.Count > 0) m_PropertyPreds.Add(propertyMap);
             }
         }
         catch (Exception e)
