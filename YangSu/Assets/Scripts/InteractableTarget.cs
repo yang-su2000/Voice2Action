@@ -97,14 +97,20 @@ public class InteractableTarget : MonoBehaviour
         if (isVoodoo) return;
         SceneManager.notify_activated(transform);
     }
-
-    public void LerpToTargetPosition(Vector3 position)
+    /// <summary>
+    /// Sets the variables (original position, target position, and isLerping) for calculation of Vector for Lerping
+    /// </summary>
+    /// <param name="position">Target position the Voodoo object should Lerp to</param>
+    public void SetVariablesForLerping(Vector3 position)
     {
         m_OriginalPosition = transform.position;
         m_TargetPosition = position;
         m_IsLerping = true;
     }
 
+    /// <summary>
+    /// Creates a voodoo object of the Interactable Target
+    /// </summary>
     public ShapeController MakeVoodoo()
     {
         GameObject voodoo = Instantiate(gameObject);
