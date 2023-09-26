@@ -34,7 +34,7 @@ public class SceneManager : MonoBehaviour
     /// </summary>
     public static event Action<Transform> activateInteractable;
     public static event Action<int> activateUI;
-    public static event Action<Transform> destoryObjectNotGrabbed;
+    public static event Action<Transform> destroyObjectNotGrabbed;
     public static int m_MaxExpandNum = 8;
 
     private static List<(ShapeController, ShapeController)> m_ListExpandObject;
@@ -104,7 +104,7 @@ public class SceneManager : MonoBehaviour
             // target_position = new Vector3(target_position.x + 0.01f, target_position.y + 0.05f, target_position.z  + 0.1f);
             target_position = target_position + m_ExpandPanel.transform.up * 0.05f + m_ExpandPanel.transform.forward * 0.1f - m_ExpandPanel.transform.right * 0.02f;
             //lerp voodoo to expand panel
-            voodoo.interactableTarget.lerp_to_target_positon(target_position);
+            voodoo.interactableTarget.SetVariablesForLerping(target_position);
         }
         m_ListExpandObject.Clear();
     }
@@ -152,7 +152,7 @@ public class SceneManager : MonoBehaviour
     public static void notify_Voodoo_selected(Transform grabbed_voodoo_object)
     {
         m_ExpandPanel.SetActive(false);
-        destoryObjectNotGrabbed?.Invoke(grabbed_voodoo_object);
+        destroyObjectNotGrabbed?.Invoke(grabbed_voodoo_object);
     }
     
     //set up listener for hover for right/left RayInteractor

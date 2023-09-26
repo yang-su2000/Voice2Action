@@ -1,0 +1,14 @@
+A low poly asset pack of Trees and Bushes. Perfect for your polygonal games - variations covered in snow are included, so you can use this pack for your low poly winter games as well!  
+
+Mobile friendly.
+
+36 low poly 3D models of various Trees and Bushes:
+
+- Wild Trees
+- Wild Bushes
+- Potted Plants
+- Street Trees
+
+Number of textures: 1
+Texture dimensions: 512x512
+Number of meshes/prefabs: 36

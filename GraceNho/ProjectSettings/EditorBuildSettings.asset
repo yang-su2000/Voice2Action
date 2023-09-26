@@ -4,7 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Voice2Action.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects:
-    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 0dbea2c980b21de40a22f6f802f44f91, type: 2}
-    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: a5cad60a73c54b847a99d00a0ba87d12, type: 2}
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 1e5baad27ddb4a045a7234d81ade42db, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 7aa6a0d448a14054ab50d02faa910bb8, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: b1d938d173d789b46b87412ce051a817, type: 2}

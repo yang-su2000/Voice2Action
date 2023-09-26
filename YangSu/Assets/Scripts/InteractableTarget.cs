@@ -3,19 +3,16 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class InteractableTarget : MonoBehaviour
 {
-    // Start is called before the first frame update
-    private XRGrabInteractable interactable;
-    private Vector3 targetPosition;
-    private Vector3 originalPosition;
-    // private int lerpFrames = 60 * 2;
-    // private int currentFrame = 0;
-    private float lerpDuration = 2f;
-    private float lerpTimer = 0f;
-    private bool isLerping;
+    private XRGrabInteractable m_Interactable;
+    private Vector3 m_TargetPosition;
+    private Vector3 m_OriginalPosition;
+    private float m_LerpDuration = 2f;
+    private float m_LerpTimer = 0f;
+    private bool m_IsLerping;
     public bool isVoodoo = false;
     public Transform originObject = null;
-    private LineRenderer connecting_line = null;
-    private GameObject expandPanel;
+    private LineRenderer m_ConnectingLine = null;
+    private GameObject m_ExpandPanel;
     private ShapeController m_ShapeController;
 
     public ShapeController shapeController
@@ -25,77 +22,74 @@ public class InteractableTarget : MonoBehaviour
     }
     void Start()
     {
-        expandPanel = GameObject.Find("ExpandPanel");
-        interactable = gameObject.GetComponent<XRGrabInteractable>();
-        interactable.activated.AddListener(OnActivated);
-        interactable.selectEntered.AddListener(voodoo_on_selected);
-        interactable.hoverEntered.AddListener(draw_connecting_lines);
-        interactable.hoverExited.AddListener(remove_connecting_lines);
-        SceneManager.activateInteractable += expand_response;
-        SceneManager.destoryObjectNotGrabbed += destory_not_grabbed;
+        //Finds and stores the Panel that holds all of the selected Interactable objects into the m_ExpandPanel variable
+        m_ExpandPanel = GameObject.Find("ExpandPanel");
+        
+        m_Interactable = gameObject.GetComponent<XRGrabInteractable>();
+        //Add event listeners to the Interactable
+        m_Interactable.activated.AddListener(OnActivated);
+        m_Interactable.selectEntered.AddListener(VoodooOnSelected);
+        m_Interactable.hoverEntered.AddListener(DrawConnectingLines);
+        m_Interactable.hoverExited.AddListener(RemoveConnectingLines);
+        SceneManager.activateInteractable += ExpandResponse;
+        SceneManager.destroyObjectNotGrabbed += DestroyUnGrabbedVoodoo;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isLerping)
+        //If the Target is currently "Lerp"ing
+        if (m_IsLerping)
         {
-            // (deprecated)
-            // float interpolationRatio = (float)currentFrame / lerpFrames;
-            // Vector3 interpolatedPosition = Vector3.Lerp(originalPosition, targetPosition, interpolationRatio);
-            // transform.position = interpolatedPosition;
-            // currentFrame = (currentFrame + 1);
-            // if (currentFrame == lerpFrames)
-            // {
-            //     currentFrame = 0;
-            //     isLerping = false;
-            // }
-            // (new)
+
+            //Calculates the position to interpolate to and assigns it to the Object's transform position
             float deltaTime = Time.deltaTime;
-            lerpTimer += deltaTime;
-            float deltaInterpolation = Mathf.Min(lerpTimer / lerpDuration, 1f);
-            Vector3 interpolatedPosition = Vector3.Lerp(originalPosition, targetPosition, deltaInterpolation);
+            m_LerpTimer += deltaTime;
+            float deltaInterpolation = Mathf.Min(m_LerpTimer / m_LerpDuration, 1f);
+            Vector3 interpolatedPosition = Vector3.Lerp(m_OriginalPosition, m_TargetPosition, deltaInterpolation);
             transform.position = interpolatedPosition;
-            if (lerpTimer >= lerpDuration)
+            
+            //Reset the Lerp Timer if it exceeds LerpDuration
+            if (m_LerpTimer >= m_LerpDuration)
             {
-                isLerping = false;
-                lerpTimer = 0f;
+                m_IsLerping = false;
+                m_LerpTimer = 0f;
             }
         }
-        // if (isVoodoo)
-        // {
-        //     originObject.transform.rotation = transform.rotation;
-        // }
-        if (connecting_line)
+
+        //Sets the end positions of the line that connects the voodoo object with the original object 
+        if (m_ConnectingLine)
         {
-            connecting_line.SetPosition(0, transform.position);
-            connecting_line.SetPosition(1, originalPosition);
+            m_ConnectingLine.SetPosition(0, transform.position);
+            m_ConnectingLine.SetPosition(1, m_OriginalPosition);
         }
     }
 
-    void draw_connecting_lines(HoverEnterEventArgs args)
+    void DrawConnectingLines(HoverEnterEventArgs args)
     {
+        //If the Interactable Target object is not a Voodoo Object, do not draw connecting lines.
         if (!isVoodoo)
         {
             return;
         }
-        connecting_line = gameObject.GetComponent<LineRenderer>();
-        if (connecting_line == null) connecting_line = gameObject.AddComponent<LineRenderer>();
-        connecting_line.material = Resources.Load<Material>("Materials/LineMaterial");
-        // connecting_line.material.SetColor("_Color", Color.yellow);
-        connecting_line.useWorldSpace = true;
-        // connecting_line.startColor = Color.yellow;
-        // connecting_line.endColor = Color.yellow;
-        connecting_line.startWidth = 0.01f;
-        connecting_line.endWidth = 0.01f;
-        connecting_line.SetPosition(0, transform.position);
-        connecting_line.SetPosition(1, originalPosition);
+        
+        //Get the components LineRenderer component; if it doesn't exist, Add the Component.
+        m_ConnectingLine = gameObject.GetComponent<LineRenderer>();
+        if (m_ConnectingLine == null)m_ConnectingLine = gameObject.AddComponent<LineRenderer>();
+        
+        //Sets the UI & positions of the Connecting Line game object.
+        m_ConnectingLine.material = Resources.Load<Material>("Materials/LineMaterial");
+        m_ConnectingLine.useWorldSpace = true;
+        m_ConnectingLine.startWidth = 0.01f;
+        m_ConnectingLine.endWidth = 0.01f;
+        m_ConnectingLine.SetPosition(0, transform.position);
+        m_ConnectingLine.SetPosition(1, m_OriginalPosition);
     }
 
-    void remove_connecting_lines(HoverExitEventArgs args)
+    void RemoveConnectingLines(HoverExitEventArgs args)
     {
-        Destroy(connecting_line);
-        connecting_line = null;
+        Destroy(m_ConnectingLine);
+        m_ConnectingLine = null;
     }
     
     void OnActivated(ActivateEventArgs args)
@@ -103,25 +97,33 @@ public class InteractableTarget : MonoBehaviour
         if (isVoodoo) return;
         SceneManager.notify_activated(transform);
     }
-
-    public void lerp_to_target_positon(Vector3 position)
+    /// <summary>
+    /// Sets the variables (original position, target position, and isLerping) for calculation of Vector for Lerping
+    /// </summary>
+    /// <param name="position">Target position the Voodoo object should Lerp to</param>
+    public void SetVariablesForLerping(Vector3 position)
     {
-        originalPosition = transform.position;
-        targetPosition = position;
-        isLerping = true;
+        m_OriginalPosition = transform.position;
+        m_TargetPosition = position;
+        m_IsLerping = true;
     }
 
-    public ShapeController makeVoodoo()
+    /// <summary>
+    /// Creates a voodoo object of the Interactable Target
+    /// </summary>
+    public ShapeController MakeVoodoo()
     {
         GameObject voodoo = Instantiate(gameObject);
         m_ShapeController = voodoo.GetComponent<ShapeController>();
         m_ShapeController.InitShape();
-        // Destroy(voodoo.GetComponent<ShapeController>());
-        //change the position of the voodoo to the transform position. 
+
+        //Change the position of the voodoo to the transform position. 
         voodoo.transform.position = transform.position;
-        voodoo.transform.rotation = expandPanel.transform.rotation;
+        voodoo.transform.rotation = m_ExpandPanel.transform.rotation;
         m_ShapeController.interactableTarget.isVoodoo = true;
         m_ShapeController.interactableTarget.originObject = transform;
+        
+        //Set UI for voodoo object
         foreach (Renderer renderer in m_ShapeController.renderers)
         {
             Material material = renderer.material;
@@ -141,30 +143,35 @@ public class InteractableTarget : MonoBehaviour
         return shapeController;
     }
     
-    void expand_response(Transform interactable_activated)
+    void ExpandResponse(Transform interactableActivated)
     {
+        
         if (isVoodoo)
         {
             Destroy(gameObject);
         }
-        if ((transform.position - interactable_activated.position).magnitude < 1)
+        //<Ask Harald>
+        // Only bring in objects that are of a certain distance away from the object when an interactable target is selected
+        /*if ((transform.position - interactableActivated.position).magnitude < 1)
         {
-            ShapeController voodooController = makeVoodoo();
+            ShapeController voodooController = MakeVoodoo();
             SceneManager.add_Expanding_and_Voodoo(shapeController, voodooController);
-        }
+        }*/
+        //</Ask Harald>
+        
     }
 
-    private void voodoo_on_selected(SelectEnterEventArgs args)
+    private void VoodooOnSelected(SelectEnterEventArgs args)
     {
         if(!isVoodoo) return;
-
-        Destroy(connecting_line);
-        connecting_line = null;
+        Destroy(m_ConnectingLine);
+        m_ConnectingLine = null;
         SceneManager.notify_Voodoo_selected(transform);
     }
-    void destory_not_grabbed(Transform grabbed_voodoo_transform)
+    void DestroyUnGrabbedVoodoo(Transform grabbedVoodooTransform)
     {
-        if (isVoodoo & (grabbed_voodoo_transform != transform))
+        //When you pick a Voodoo Object, destroys the rest of the Voodoo Objects that were not selected
+        if (isVoodoo & (grabbedVoodooTransform != transform))
         {
             Destroy(gameObject);
         }
@@ -172,11 +179,12 @@ public class InteractableTarget : MonoBehaviour
 
     private void OnDisable()
     {
-        interactable.activated.RemoveListener(OnActivated);
-        interactable.selectEntered.RemoveListener(voodoo_on_selected);
-        interactable.hoverEntered.RemoveListener(draw_connecting_lines);
-        interactable.hoverExited.RemoveListener(remove_connecting_lines);
-        SceneManager.activateInteractable -= expand_response;
-        SceneManager.destoryObjectNotGrabbed -= destory_not_grabbed;
+        //Remove Listeners and Events
+        m_Interactable.activated.RemoveListener(OnActivated);
+        m_Interactable.selectEntered.RemoveListener(VoodooOnSelected);
+        m_Interactable.hoverEntered.RemoveListener(DrawConnectingLines);
+        m_Interactable.hoverExited.RemoveListener(RemoveConnectingLines);
+        SceneManager.activateInteractable -= ExpandResponse;
+        SceneManager.destroyObjectNotGrabbed -= DestroyUnGrabbedVoodoo;
     }
 }

@@ -49,7 +49,7 @@ public static class PropertyMatcher
         string[] candidateTuple = tuple[0].Split(", ");
         if (candidateTuple.Length == 3 && int.TryParse(candidateTuple[2].Remove(candidateTuple[2].Length-1), out int confidence))
         {
-            if (confidence >= Utils.MinConfidenceToProceed)
+            if (confidence >= Utils.s_MinConfidenceToProceed)
             {
                 return new List<string> { candidateTuple[1] };
             }
@@ -110,19 +110,19 @@ public static class PropertyMatcher
     private static async Task<bool> MatchShape(string feature, List<string> historyMessages)
     {
         List<ShapeController> filteredControllers = new List<ShapeController>();
-        string userPrompt = EmbeddingPrompt(feature, "shape", new List<string>(Embeddings.ShapesMap.Keys), Utils.TopK);
+        string userPrompt = EmbeddingPrompt(feature, "shape", new List<string>(Embeddings.m_ShapesMap.Keys), Utils.s_TopK);
         Debug.Log("ShapesPrompt:\n" + userPrompt);
         bool successFlag = true;
         try
         {
-            var result = await Utils.OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt, temperature: Utils.CompletionTemperature);
+            var result = await Utils.s_OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt, temperature: Utils.s_CompletionTemperature);
             openAIMessage = result.ToString();
             Debug.Log("shape matcher: " + openAIMessage);
-            List<string> response = TokenizeMessage(openAIMessage, Utils.TopK);
-            if (response.Count > 0 && Embeddings.ShapesMap.ContainsKey(response[0]))
+            List<string> response = TokenizeMessage(openAIMessage, Utils.s_TopK);
+            if (response.Count > 0 && Embeddings.m_ShapesMap.ContainsKey(response[0]))
             {
                 string shapeName = response[0];
-                Shapes shape = Embeddings.ShapesMap[shapeName];
+                Shapes shape = Embeddings.m_ShapesMap[shapeName];
                 historyMessages.Add("<color=purple>shape: [" + shapeName + "]</color>\n");
                 Debug.Log("<color=purple>shape: [" + shapeName + "]</color>\n");
                 foreach (var controller in matchedControllers)
@@ -151,19 +151,19 @@ public static class PropertyMatcher
     private static async Task<bool> MatchColor(string feature, List<string> historyMessages)
     {
         List<ShapeController> filteredControllers = new List<ShapeController>();
-        string userPrompt = EmbeddingPrompt(feature, "color", new List<string>(Embeddings.ColorMap.Keys), Utils.TopK);
+        string userPrompt = EmbeddingPrompt(feature, "color", new List<string>(Embeddings.m_ColorMap.Keys), Utils.s_TopK);
         Debug.Log("ColorPrompt:\n" + userPrompt);
         bool successFlag = true;
         try
         {
-            var result = await Utils.OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt, temperature: Utils.CompletionTemperature);
+            var result = await Utils.s_OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt, temperature: Utils.s_CompletionTemperature);
             openAIMessage = result.ToString();
             Debug.Log("color matcher: " + openAIMessage);
-            List<string> response = TokenizeMessage(openAIMessage, Utils.TopK);
-            if (response.Count > 0 && Embeddings.ColorMap.ContainsKey(response[0]))
+            List<string> response = TokenizeMessage(openAIMessage, Utils.s_TopK);
+            if (response.Count > 0 && Embeddings.m_ColorMap.ContainsKey(response[0]))
             {
                 string colorName = response[0];
-                Color color = Embeddings.ColorMap[colorName];
+                Color color = Embeddings.m_ColorMap[colorName];
                 historyMessages.Add("<color=purple>color: [" + colorName + "]</color>\n");
                 Debug.Log("<color=purple>color: [" + colorName + "]</color>\n");
                 foreach (var controller in matchedControllers)
@@ -198,19 +198,19 @@ public static class PropertyMatcher
     private static async Task<bool> MatchAddress(string feature, List<string> historyMessages)
     {
         List<ShapeController> filteredControllers = new List<ShapeController>();
-        string userPrompt = EmbeddingPrompt(feature, "address", new List<string>(Embeddings.AddressMap.Keys), Utils.TopK);
+        string userPrompt = EmbeddingPrompt(feature, "address", new List<string>(Embeddings.m_AddressMap.Keys), Utils.s_TopK);
         Debug.Log("AddressPrompt:\n" + userPrompt);
         bool successFlag = true;
         try
         {
-            var result = await Utils.OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt, temperature: Utils.CompletionTemperature);
+            var result = await Utils.s_OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt, temperature: Utils.s_CompletionTemperature);
             openAIMessage = result.ToString();
             Debug.Log("address matcher: " + openAIMessage);
-            List<string> response = TokenizeMessage(openAIMessage, Utils.TopK);
-            if (response.Count > 0 && Embeddings.AddressMap.ContainsKey(response[0]))
+            List<string> response = TokenizeMessage(openAIMessage, Utils.s_TopK);
+            if (response.Count > 0 && Embeddings.m_AddressMap.ContainsKey(response[0]))
             {
                 string address = response[0];
-                (float x1, float x2, float z1, float z2) = Embeddings.AddressMap[address];
+                (float x1, float x2, float z1, float z2) = Embeddings.m_AddressMap[address];
                 historyMessages.Add("<color=purple>address: [" + address + "]</color>\n");
                 Debug.Log("<color=purple>address: [" + address + "]</color>\n");
                 foreach (var controller in matchedControllers)
@@ -245,7 +245,7 @@ public static class PropertyMatcher
         bool successFlag = true;
         try
         {
-            var result = await Utils.OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt, temperature: Utils.CompletionTemperature);
+            var result = await Utils.s_OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt, temperature: Utils.s_CompletionTemperature);
             openAIMessage = result.ToString();
             Debug.Log("distance matcher: " + openAIMessage);
             string[] tuple = openAIMessage.Split(", ");
@@ -286,19 +286,19 @@ public static class PropertyMatcher
     private static async Task<bool> MatchDirection(string feature, List<string> historyMessages)
     {
         List<ShapeController> filteredControllers = new List<ShapeController>();
-        string userPrompt = EmbeddingPrompt(feature, "direction", new List<string>(Embeddings.DirectionMap.Keys), Utils.TopK);
+        string userPrompt = EmbeddingPrompt(feature, "direction", new List<string>(Embeddings.m_DirectionMap.Keys), Utils.s_TopK);
         Debug.Log("DirectionPrompt:\n" + userPrompt);
         bool successFlag = true;
         try
         {
-            var result = await Utils.OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt, temperature: Utils.CompletionTemperature);
+            var result = await Utils.s_OpenAIClient.CompletionsEndpoint.CreateCompletionAsync(userPrompt, temperature: Utils.s_CompletionTemperature);
             openAIMessage = result.ToString();
             Debug.Log("direction matcher: " + openAIMessage);
-            List<string> response = TokenizeMessage(openAIMessage, Utils.TopK);
-            if (response.Count > 0 && Embeddings.DirectionMap.ContainsKey(response[0]))
+            List<string> response = TokenizeMessage(openAIMessage, Utils.s_TopK);
+            if (response.Count > 0 && Embeddings.m_DirectionMap.ContainsKey(response[0]))
             {
                 string directionName = response[0];
-                Vector3 direction = Embeddings.DirectionMap[directionName];
+                Vector3 direction = Embeddings.m_DirectionMap[directionName];
                 historyMessages.Add("<color=purple>direction: [" + directionName + "]</color>\n");
                 Debug.Log("<color=purple>direction: [" + directionName + "]</color>\n");
                 Vector3 playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;

@@ -6,24 +6,18 @@ public class ExpandPanel : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public GameObject ExpandUI;
+    public GameObject expandUI;
     private static Camera m_Camera;
     void Start()
     {
-        //ExpandUI.SetActive(false);
-        SceneManager.activateUI += SetActive;
         m_Camera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
+        SceneManager.activateUI += SetActive;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 
     public void SetActive(int objectCount)
     {
-        ExpandUI.SetActive(true);
+        expandUI.SetActive(true);
         transform.position = new Vector3(m_Camera.transform.position.x , m_Camera.transform.position.y,
             m_Camera.transform.position.z + 1.0f);
     }

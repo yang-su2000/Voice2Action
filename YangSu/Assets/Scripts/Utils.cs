@@ -22,23 +22,24 @@ public enum Shapes
 public static class Utils
 {
     [Header("OpenAI API")]
-    public static readonly OpenAIClient OpenAIClient = new OpenAIClient();
+    public static readonly OpenAIClient s_OpenAIClient = new OpenAIClient();
     
     [Header("OpenAI Parameters")]
-    public static readonly float CompletionTemperature = 0.0f;
-    // out of 100
-    public static readonly int MinConfidenceToProceed = 50;
+    public static readonly float s_CompletionTemperature = 0.0f;
     
-    public static readonly int TopK = 1;
+    // out of 100
+    public static readonly int s_MinConfidenceToProceed = 50;
+    
+    public static readonly int s_TopK = 1;
 
     [Header("Example Properties")]
-    public static readonly List<Color> AllColors = new List<Color>
+    public static readonly List<Color> s_AllColors = new List<Color>
     {
         Color.black, Color.blue, Color.cyan, Color.grey, Color.green, Color.red,
         Color.white, Color.yellow,
     };
 
-    public static readonly List<(PrimitiveType, Shapes)> AllShapes = new List<(PrimitiveType, Shapes)>
+    public static readonly List<(PrimitiveType, Shapes)> s_AllShapes = new List<(PrimitiveType, Shapes)>
     {
         (PrimitiveType.Capsule, Shapes.Capsule), 
         (PrimitiveType.Cube, Shapes.Cube), 
@@ -50,16 +51,18 @@ public static class Utils
     {
         for (int i = 0; i < spawnCount; i++)
         {
-            var shapePair = AllShapes[Random.Range(0, AllShapes.Count)];
+            var shapePair = s_AllShapes[Random.Range(0, s_AllShapes.Count)];
             GameObject cube = GameObject.CreatePrimitive(shapePair.Item1);
             XRGrabInteractable interactable = cube.AddComponent<XRGrabInteractable>();
             InteractableTarget interactableTarget = cube.AddComponent<InteractableTarget>();
             interactable.useDynamicAttach = true;
             interactable.throwOnDetach = false;
-            // interactable.matchAttachPosition = true;
-            // interactable.matchAttachRotation = true;
-            // interactable.snapToColliderVolume = true;
-            // interactable.reinitializeDynamicAttachEverySingleGrab = true;
+            //<Debug Code>
+                // interactable.matchAttachPosition = true;
+                // interactable.matchAttachRotation = true;
+                // interactable.snapToColliderVolume = true;
+                // interactable.reinitializeDynamicAttachEverySingleGrab = true;
+            //<Debug Code>
             cube.GetComponent<Rigidbody>().useGravity = false;
             cube.GetComponent<Rigidbody>().isKinematic = true;
             cube.transform.parent = parentInteractable.transform;
@@ -70,7 +73,7 @@ public static class Utils
             Renderer renderer = shapeController.GetComponent<Renderer>();
             renderer.material = Resources.Load<Material>("Materials/BuildingMaterial");
             renderer.material.SetFloat("_Mode", 2);
-            renderer.material.color = AllColors[Random.Range(0, AllColors.Count)];
+            renderer.material.color = s_AllColors[Random.Range(0, s_AllColors.Count)];
             shapeController.InitShape();
             if (Random.Range(0f, 1f) < 0.5f)
             {
@@ -110,15 +113,15 @@ public static class Utils
         foreach (Transform category in interactables.transform)
         {
             Shapes categoryType = Shapes.Object;
-            // Debug.Log("category " + category.name);
+            
             foreach (Shapes shapeType in Enum.GetValues(typeof(Shapes)))
             {
                 if (category.name.Contains(shapeType.ToString()))
                 {
                     categoryType = shapeType;
-                    if (!Embeddings.ShapesMap.ContainsKey(shapeType.ToString()))
+                    if (!Embeddings.m_ShapesMap.ContainsKey(shapeType.ToString()))
                     {
-                        Embeddings.ShapesMap.Add(shapeType.ToString(), shapeType);
+                        Embeddings.m_ShapesMap.Add(shapeType.ToString(), shapeType);
                     }
                     break; // one category can only have one shape
                 }
@@ -141,10 +144,12 @@ public static class Utils
         outline.OutlineColor = new Color(255, 128, 0, 1); // orange
         xrGrabInteractable.useDynamicAttach = true;
         xrGrabInteractable.throwOnDetach = false;
-        // xrGrabInteractable.matchAttachPosition = true;
-        // xrGrabInteractable.matchAttachRotation = true;
-        // xrGrabInteractable.snapToColliderVolume = true;
-        // xrGrabInteractable.reinitializeDynamicAttachEverySingleGrab = true;
+        //<Debug Code>
+            // xrGrabInteractable.matchAttachPosition = true;
+            // xrGrabInteractable.matchAttachRotation = true;
+            // xrGrabInteractable.snapToColliderVolume = true;
+            // xrGrabInteractable.reinitializeDynamicAttachEverySingleGrab = true;
+        // <Debug Code>
         instance.GetComponent<Rigidbody>().useGravity = false;
         instance.GetComponent<Rigidbody>().isKinematic = true;
         ShapeController shapeController = instance.AddComponent<ShapeController>();
@@ -152,18 +157,16 @@ public static class Utils
         Renderer renderer = instance.GetComponent<Renderer>();
         if (renderer != null)
         {
-            // Debug.Log("+" + instance.name);
             if (shapeType == Shapes.Building)
             {
                 renderer.material = Resources.Load<Material>("Materials/BuildingMaterial");
-                renderer.material.color = Utils.AllColors[UnityEngine.Random.Range(0, Utils.AllColors.Count)];
+                renderer.material.color = Utils.s_AllColors[UnityEngine.Random.Range(0, Utils.s_AllColors.Count)];
             }
             renderer.material.SetFloat("_Mode", 2);
-            // shapeController.material = renderer.material;
         }
         if (shapeType == Shapes.Car) // TODO: temporary for demo, all car components should have the same color
         {
-            Color colorGroup = Utils.AllColors[UnityEngine.Random.Range(0, Utils.AllColors.Count)];
+            Color colorGroup = Utils.s_AllColors[UnityEngine.Random.Range(0, Utils.s_AllColors.Count)];
             foreach (Transform childInstance in instance.transform)
             {
                 Renderer childRenderer = childInstance.GetComponent<Renderer>();
