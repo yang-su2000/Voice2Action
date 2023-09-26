@@ -227,11 +227,11 @@ public class VoiceIntentController : MonoBehaviour
         historyMessages.Add("User: <color=blue>" + prompt + "</color>\n");
         UpdateMessageDisplay("User: <color=blue>" + prompt + "</color>");
         await PropertyExtractor.SelectProperty(prompt, historyMessages);
-        if (PropertyExtractor.propertyPreds.Count == 0)
+        if (PropertyExtractor.m_PropertyPreds.Count == 0)
         {
             openAIStatus = false;
-            historyMessages.Add("Assistant: <color=green>" + PropertyMatcher.matchedControllers.Count + " objects selected\n</color>");
-            UpdateMessageDisplay("Assistant: <color=green>" + PropertyMatcher.matchedControllers.Count + " objects selected</color>");
+            historyMessages.Add("Assistant: <color=green>" + PropertyMatcher.m_MatchedControllers.Count + " objects selected\n</color>");
+            UpdateMessageDisplay("Assistant: <color=green>" + PropertyMatcher.m_MatchedControllers.Count + " objects selected</color>");
             formattedMessage = PrintHistory(historyMessages);
             MessageText.text = formattedMessage;
         }
@@ -239,10 +239,10 @@ public class VoiceIntentController : MonoBehaviour
         {
             openAIStatus = true;
             ResetControllers();
-            await PropertyMatcher.MatchProperty(PropertyExtractor.propertyPreds, allControllers, historyMessages);
+            await PropertyMatcher.MatchProperty(PropertyExtractor.m_PropertyPreds, allControllers, historyMessages);
             fadeActive = true;
             int countProxy = 0;
-            foreach (ShapeController controller in PropertyMatcher.matchedControllers)
+            foreach (ShapeController controller in PropertyMatcher.m_MatchedControllers)
             {
                 matchedControllers.Add(controller.name, controller);
                 if (countProxy < SceneManager.m_MaxExpandNum)
@@ -252,8 +252,8 @@ public class VoiceIntentController : MonoBehaviour
                     countProxy += 1;
                 }
             }
-            historyMessages.Add("Assistant: <color=green>" + PropertyMatcher.matchedControllers.Count + " objects selected\n</color>");
-            UpdateMessageDisplay("Assistant: <color=green>" + PropertyMatcher.matchedControllers.Count + " objects selected</color>");
+            historyMessages.Add("Assistant: <color=green>" + PropertyMatcher.m_MatchedControllers.Count + " objects selected\n</color>");
+            UpdateMessageDisplay("Assistant: <color=green>" + PropertyMatcher.m_MatchedControllers.Count + " objects selected</color>");
             formattedMessage = PrintHistory(historyMessages);
             MessageText.text = formattedMessage;
         }
