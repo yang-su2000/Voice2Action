@@ -195,12 +195,12 @@ public class VoiceIntentController : MonoBehaviour
         m_HistoryMessages.Add("User: <color=blue>" + prompt + "</color>\n");
         UpdateMessageDisplay("User: <color=blue>" + prompt + "</color>");
         await PropertyExtractor.SelectProperty(prompt, m_HistoryMessages);
-        if (PropertyExtractor.propertyPreds.Count == 0)
+        if (PropertyExtractor.s_PropertyPreds.Count == 0)
         {
             m_OpenAIStatus = false;
-            m_HistoryMessages.Add("Assistant: <color=green>" + PropertyMatcher.matchedControllers.Count +
+            m_HistoryMessages.Add("Assistant: <color=green>" + PropertyMatcher.m_MatchedControllers.Count +
                                   " objects selected\n</color>");
-            UpdateMessageDisplay("Assistant: <color=green>" + PropertyMatcher.matchedControllers.Count +
+            UpdateMessageDisplay("Assistant: <color=green>" + PropertyMatcher.m_MatchedControllers.Count +
                                  " objects selected</color>");
             m_FormattedMessage = PrintHistory(m_HistoryMessages);
             m_MessageText.text = m_FormattedMessage;
@@ -209,23 +209,23 @@ public class VoiceIntentController : MonoBehaviour
         {
             m_OpenAIStatus = true;
             ResetControllers();
-            await PropertyMatcher.MatchProperty(PropertyExtractor.propertyPreds, m_AllControllers, m_HistoryMessages);
+            await PropertyMatcher.MatchProperty(PropertyExtractor.s_PropertyPreds, m_AllControllers, m_HistoryMessages);
             m_FadeActive = true;
             var countProxy = 0;
-            foreach (var controller in PropertyMatcher.matchedControllers)
+            foreach (var controller in PropertyMatcher.m_MatchedControllers)
             {
                 m_MatchedControllers.Add(controller.name, controller);
-                if (countProxy < SceneManager.maxExpandNum)
+                if (countProxy < SceneManager.m_MaxExpandNum)
                 {
-                    var proxyController = controller.interactableTarget.makeVoodoo();
+                    var proxyController = controller.interactableTarget.MakeVoodoo();
                     SceneManager.add_Expanding_and_Voodoo(controller, proxyController);
                     countProxy += 1;
                 }
             }
 
-            m_HistoryMessages.Add("Assistant: <color=green>" + PropertyMatcher.matchedControllers.Count +
+            m_HistoryMessages.Add("Assistant: <color=green>" + PropertyMatcher.m_MatchedControllers.Count +
                                   " objects selected\n</color>");
-            UpdateMessageDisplay("Assistant: <color=green>" + PropertyMatcher.matchedControllers.Count +
+            UpdateMessageDisplay("Assistant: <color=green>" + PropertyMatcher.m_MatchedControllers.Count +
                                  " objects selected</color>");
             m_FormattedMessage = PrintHistory(m_HistoryMessages);
             m_MessageText.text = m_FormattedMessage;
@@ -274,7 +274,7 @@ public class VoiceIntentController : MonoBehaviour
     {
         m_MatchedControllers.Clear();
         SceneManager.clearProxys();
-        SceneManager.expandPanel.SetActive(false);
+        SceneManager.m_ExpandPanel.SetActive(false);
         foreach (var shapeController in m_AllControllers)
             m_MatchedControllers.Add(shapeController.name, shapeController);
 

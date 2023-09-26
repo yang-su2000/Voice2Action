@@ -88,12 +88,12 @@ public class ShapeController : MonoBehaviour
         if (renderers.Count > 0) myColor = renderers[renderers.Count - 1].material.color;
 
         var myColorName = "N/A";
-        foreach (var (colorName, color) in Embeddings.ColorMap)
+        foreach (var (colorName, color) in Embeddings.m_ColorMap)
             if (color.r == myColor.r && color.g == myColor.g && color.b == myColor.b)
                 myColorName = colorName;
 
         var myAddress = "N/A";
-        foreach ((var addressName, (var x1, var x2, var z1, var z2)) in Embeddings.AddressMap)
+        foreach (var (addressName, (x1, x2, z1, z2)) in Embeddings.m_AddressMap)
             if (x1 <= transform.position.x && transform.position.x <= x2 && z1 <= transform.position.z &&
                 transform.position.z <= z2)
             {
@@ -107,7 +107,7 @@ public class ShapeController : MonoBehaviour
                                     Mathf.Pow(myPosition.z - playerPosition.z, 2));
         var myDirection = "N/A";
         var diffPosition = myPosition - playerPosition;
-        foreach (var (directionName, direction) in Embeddings.DirectionMap)
+        foreach (var (directionName, direction) in Embeddings.m_DirectionMap)
             if (Vector3.Dot(diffPosition, direction) > 0f)
             {
                 myDirection = directionName;

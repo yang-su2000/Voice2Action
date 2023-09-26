@@ -118,8 +118,8 @@ public static class Utils
                 if (category.name.Contains(shapeType.ToString()))
                 {
                     categoryType = shapeType;
-                    if (!Embeddings.ShapesMap.ContainsKey(shapeType.ToString()))
-                        Embeddings.ShapesMap.Add(shapeType.ToString(), shapeType);
+                    if (!Embeddings.m_ShapesMap.ContainsKey(shapeType.ToString()))
+                        Embeddings.m_ShapesMap.Add(shapeType.ToString(), shapeType);
 
                     break; // one category can only have one shape
                 }
