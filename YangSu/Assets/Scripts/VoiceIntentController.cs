@@ -112,11 +112,13 @@ public class VoiceIntentController : MonoBehaviour
         {
             Debug.Log("OnRequest Created");
             partialTranscriptText.text = "<color=black>Listening: </color>";
-            // audioSource.clip = Microphone.Start(Microphone.devices[0], false, 10, 44100);
-            // if (audioSource == null)
-            // {
-            //     Debug.Log("cannot record audio");
-            // }
+            // <Debug Code>
+                // audioSource.clip = Microphone.Start(Microphone.devices[0], false, 10, 44100);
+                // if (audioSource == null)
+                // {
+                //     Debug.Log("cannot record audio");
+                // }
+            // <Debug Code>
         });
 
         appVoiceExperience.events.OnRequestCompleted.AddListener(OnVoiceEnd);
@@ -193,11 +195,13 @@ public class VoiceIntentController : MonoBehaviour
     private async void OnVoiceEnd()
     {
         Debug.Log("OnRequest Completed");
-        // Microphone.End(Microphone.devices[0]);
-        // userMessage = await CallWhisper(audioSource.clip);
-        // Debug.Log("userMessage: " + userMessage);
-        // fullTranscriptText.text = userMessage;
-        // if (userMessage != "N/A") await CallGPT(userMessage);
+        //<Debug Code>
+            // Microphone.End(Microphone.devices[0]);
+            // userMessage = await CallWhisper(audioSource.clip);
+            // Debug.Log("userMessage: " + userMessage);
+            // fullTranscriptText.text = userMessage;
+            // if (userMessage != "N/A") await CallGPT(userMessage);
+        //<Debug Code>
         await CallGPT(userMessage);
     }
 
