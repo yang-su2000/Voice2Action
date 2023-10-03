@@ -6,6 +6,14 @@ XR provides a clear value proposition for 3D design applications, such as indust
 
 [Voice2Action](https://drive.google.com/file/d/159XWeBlK_tdkoEv76xrA5s78dy4UEPfS/view?usp=sharing)
 
+## Paper - Voice2Action
+
+- [Here](https://arxiv.org/abs/2310.00092).
+
+**Abstract**
+
+Large Language Models (LLMs) are trained and aligned to follow natural language instructions with only a handful of examples, and they are prompted as task-driven autonomous agents to adapt to various sources of execution environments. However, deploying agent LLMs in virtual reality (VR) has been challenging due to the lack of efficiency in online interactions and the complex manipulation categories in 3D environments. In this work, we propose Voice2Action, a framework that hierarchically analyzes customized voice signals and textual commands through action and entity extraction and divides the execution tasks into canonical interaction subsets in real-time with error prevention from environment feedback. Experiment results in an urban engineering VR environment with synthetic instruction data show that Voice2Action can perform more efficiently and accurately than approaches without optimizations.
+
 ## Milestones
 
 ### Screenshots
@@ -43,14 +51,6 @@ XR provides a clear value proposition for 3D design applications, such as indust
 - [Voice2Action v0](https://youtu.be/bS-PrmOSAVc): with [Wit.ai](https://wit.ai/)
 
 - [Expand with Proxy](https://youtu.be/txuVBk85-gA)
-
-## Paper - Voice2Action
-
-- [Here](https://drive.google.com/file/d/1MIPDtJ5SR1e9J4PD2kWg70Zu_v8qyk7H/view?usp=sharing).
-
-**Abstract**
-
-Large Language Models (LLMs) are trained and aligned to follow natural language instructions with only a handful of examples, and they are prompted as task-driven autonomous agents to adapt to various sources of execution environments. However, deploying agent LLMs in virtual reality (VR) has been challenging due to the lack of efficiency in online interactions and the complex manipulation categories in 3D environments. In this work, we propose Voice2Action, a framework that hierarchically analyzes customized voice signals and textual commands through action and entity extraction and divides the execution tasks into canonical interaction subsets in real-time with error prevention from environment feedback. Experiment results in an urban engineering VR environment with synthetic instruction data show that Voice2Action can perform more efficiently and accurately than approaches without optimizations.
 
 ## Spring Report
 
