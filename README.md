@@ -6,7 +6,10 @@ XR provides a clear value proposition for 3D design applications, such as indust
 
 ## Demo
 
-[Voice2Action](https://drive.google.com/file/d/159XWeBlK_tdkoEv76xrA5s78dy4UEPfS/view?usp=sharing)
+[Voice2Action](https://drive.google.com/file/d/1sn-Ts5LoFv5zuEkp-rUpSDxgufWu6Qj0/view?usp=drive_link)
+
+[Voice2Action (old)](https://drive.google.com/file/d/159XWeBlK_tdkoEv76xrA5s78dy4UEPfS/view?usp=sharing)
+
 
 ## Paper - Voice2Action
 
