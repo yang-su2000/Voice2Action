@@ -2,6 +2,8 @@
 
 2023-11-15 Update: We plan to build a Unity package for this project that is expected to be open-sourced by the end of 2023. More updates will come when we finalize it, stay tuned!
 
+[Package (WIP)](https://xrc-students.github.io/xrc-students-fa2023-sp06-en268_jx288_ys724/)
+
 XR provides a clear value proposition for 3D design applications, such as industrial design, mechanical engineering, and urban design. This project explores multimodal interaction techniques for improving productivity in virtual reality creator tools.
 
 ## Demo
