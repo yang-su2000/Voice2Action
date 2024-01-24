@@ -4,7 +4,7 @@
 
 [Package (WIP)](https://xrc-students.github.io/xrc-students-fa2023-sp06-en268_jx288_ys724/)
 
-XR provides a clear value proposition for 3D design applications, such as industrial design, mechanical engineering, and urban design. This project explores multimodal interaction techniques for improving productivity in virtual reality creator tools.
+Voice2Action is a Unity package that revolutionizes how we interact with Virtual Reality (VR) environments. Leveraging the power of Large Language Models (LLMs), Voice2Action enables users to execute complex tasks in VR through intuitive voice commands. It's designed for seamless integration with Unity, providing an unparalleled experience in 3D interactive environments.
 
 ## Demo
 
