@@ -14,9 +14,11 @@ This package uses LLMs (Large Language Models) to analyze user instruction throu
 
 ## Demo
 
-[Voice2Action](https://drive.google.com/file/d/159XWeBlK_tdkoEv76xrA5s78dy4UEPfS/view?usp=sharing)
+[Voice2Action v-0.0.1](https://drive.google.com/file/d/1gc5TM23k0LqAgCDx0cTBGGiTMh2x3EQj/view?usp=sharing)
 
-[Voice2Action (old)](https://www.youtube.com/watch?v=bS-PrmOSAVc)
+[Voice2Action (old)](https://drive.google.com/file/d/159XWeBlK_tdkoEv76xrA5s78dy4UEPfS/view?usp=sharing)
+
+[Voice2Action (older)](https://www.youtube.com/watch?v=bS-PrmOSAVc)
 
 ## Paper - Voice2Action
 
