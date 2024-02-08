@@ -1,18 +1,22 @@
 # VR-Multimodal-Interaction
 
-2024-01-23 Update: We open sourced the Unity package for a minimal implementation of this project!
+2024-02-07 Update: Our Unity package "Voice to Action - Expand Interaction with LLMs" is open for beta testing!
 
-[Package (WIP)](https://xrc-students.github.io/xrc-students-fa2023-sp06-en268_jx288_ys724/)
+[Voice to Action Unity Package v-0.0.1](https://xrc-students.github.io/xrc-students-fa2023-sp06-en268_jx288_ys724/)
 
-Voice2Action is a Unity package that revolutionizes how we interact with Virtual Reality (VR) environments. Leveraging the power of Large Language Models (LLMs), Voice2Action enables users to execute complex tasks in VR through intuitive voice commands. It's designed for seamless integration with Unity, providing an unparalleled experience in 3D interactive environments.
+This package uses LLMs (Large Language Models) to analyze user instruction through action and entity extraction, and divides the execution tasks into canonical interaction subsets with error prevention from the game engine feedback. It combines an "Expand" interaction technique to create an innovative selection and manipulation mechanism for enhanced user experiences.
+
+## Advantages
+
+- Efficiency: Extremely **Low Cost**
+- Domain Adaptation: Highly **Customizable**
+- Scalability: Highly **Parallelizable**
 
 ## Demo
 
-[Voice2Action](https://drive.google.com/file/d/1sn-Ts5LoFv5zuEkp-rUpSDxgufWu6Qj0/view?usp=drive_link)
+[Voice2Action](https://drive.google.com/file/d/159XWeBlK_tdkoEv76xrA5s78dy4UEPfS/view?usp=sharing)
 
-[Voice2Action (old)](https://drive.google.com/file/d/159XWeBlK_tdkoEv76xrA5s78dy4UEPfS/view?usp=sharing)
-
-[Voice2Action (older)](https://www.youtube.com/watch?v=bS-PrmOSAVc)
+[Voice2Action (old)](https://www.youtube.com/watch?v=bS-PrmOSAVc)
 
 ## Paper - Voice2Action
 
