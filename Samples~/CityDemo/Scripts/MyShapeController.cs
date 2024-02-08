@@ -18,6 +18,29 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Samples.CityDemo.Scripts
     /// </remarks>
     public class MyShapeController: ShapeController
     {
+        /// <summary>
+        /// Initializes user-defined properties of the attached game object, needs to be called right after class initialization. User can customize its behavior.
+        /// </summary>
+        public override void InitMyShape() {}
+        
+        /// <returns>Selected properties of current game object for visualization, user can customize its behavior by overriding this function.</returns>
+        public override (string, string)[] GetShapeInfo()
+        {
+            var myColor = Color.clear;
+            // this gets the last renderer (the parent renderer) as the source of the default main color
+            if (renderers.Count > 0) myColor = renderers[^1].material.color;
+            
+            var colorInfo = ("Color", myColor.ToString());
+            
+            // combine shapeInfo
+            var childInfo = new[] { colorInfo };
+            var parentInfo = base.GetShapeInfo();
+            (string, string)[] myInfo = new (string, string)[parentInfo.Length + childInfo.Length];
+            for (int i = 0; i < parentInfo.Length; i++) myInfo[i] = parentInfo[i];
+            for (int i = 0; i < childInfo.Length; i++) myInfo[parentInfo.Length + i] = childInfo[i];
+            return myInfo;
+        }
+
         // user-defined atomic function for selection
         #region SelectionControll
         
@@ -39,7 +62,7 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Samples.CityDemo.Scripts
                 return distance <= threshold;
             }
             
-            if (color is null) return false;
+            if (color == null) return false;
             if (color.Count < 3) return false;
             float r = color[0], g = color[1], b = color[2];
             Color otherColor = new Color(r / 255, g / 255, b / 255);
@@ -62,10 +85,10 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Samples.CityDemo.Scripts
         /// </summary>
         /// <param name="addressPosition">The center position of the address.</param>
         /// <returns>Denote selection success.</returns>
-        [PropertyMethod("AddressMap")]
+        [PropertyMethod("addressMap")]
         public bool GetAddress(List<float> addressPosition)
         {
-            if (addressPosition is null) return false;
+            if (addressPosition == null) return false;
             if (addressPosition.Count < 4) return false;
             float x1 = addressPosition[0], x2 = addressPosition[1], z1 = addressPosition[2], z2 = addressPosition[3];
             var controllerPosition = transform.position;
@@ -85,7 +108,7 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Samples.CityDemo.Scripts
         /// <returns>Denote modification success.</returns>
         public bool ModifyColor(List<int> color)
         {
-            if (color is null) return false;
+            if (color == null) return false;
             if (color.Count < 3) return false;
             float r = color[0], g = color[1], b = color[2];
             Color otherColor = new Color(r / 255, g / 255, b / 255);

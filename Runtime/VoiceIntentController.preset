@@ -42,7 +42,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_VoiceActivateAction.m_Action.m_Id
-    value: 6fe38046-9593-4e8b-90d9-ec9c9e937349
+    value: 015dc741-7a29-451f-ab13-5c7f15ddcf43
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_VoiceActivateAction.m_Action.m_Processors
@@ -63,7 +63,7 @@ Preset:
   - target: {fileID: 0}
     propertyPath: m_VoiceActivateAction.m_Reference
     value: 
-    objectReference: {fileID: -5120633144932478015, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    objectReference: {fileID: -8077247646254567018, guid: b28fa14d724dc104f9e82c7ea330eaf5, type: 3}
   - target: {fileID: 0}
     propertyPath: m_ExpandResetAction.m_UseReference
     value: 1
@@ -82,7 +82,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_ExpandResetAction.m_Action.m_Id
-    value: 93e286bd-c576-42a7-be20-76a7d0b6a71b
+    value: 71d73235-40ab-4cce-aa6e-ee31feac491a
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_ExpandResetAction.m_Action.m_Processors
@@ -103,25 +103,29 @@ Preset:
   - target: {fileID: 0}
     propertyPath: m_ExpandResetAction.m_Reference
     value: 
-    objectReference: {fileID: -7746228314906103057, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    objectReference: {fileID: 5600551588905316248, guid: b28fa14d724dc104f9e82c7ea330eaf5, type: 3}
   - target: {fileID: 0}
-    propertyPath: m_Interactable
+    propertyPath: m_PropertyClassifier
     value: 
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: m_PositionMarker
+    propertyPath: m_PropertyExtractor
     value: 
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: m_SpawnCount
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: m_MessageText
+    propertyPath: m_PropertyExecutor
     value: 
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: m_speakingPanel
+    propertyPath: m_Voice2ActionGUIScrollText
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_SpeakingFeedbackPanel
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_SceneManager
     value: 
     objectReference: {fileID: 0}
   - target: {fileID: 0}
@@ -439,5 +443,21 @@ Preset:
   - target: {fileID: 0}
     propertyPath: m_MessageGUI.m_StretchHeight
     value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_Interactable
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_MyInteractable
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_MyEmbeddings
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_MyShapeController
+    value: 
     objectReference: {fileID: 0}
   m_ExcludedProperties: []

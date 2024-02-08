@@ -1,0 +1,54 @@
+{
+    "name": "Voice2Action Default Input Actions",
+    "maps": [
+        {
+            "name": "RightHand Interaction",
+            "id": "7b710c6b-2be2-4ca5-8881-600b27f8dcce",
+            "actions": [
+                {
+                    "name": "VoiceActivate",
+                    "type": "Button",
+                    "id": "07c70ca0-8649-4eae-93da-b6d0e5a17cb6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ExpandReset",
+                    "type": "Button",
+                    "id": "0bc0ca93-eb6c-4ea4-bb17-b36fbb5ffa4b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "9eb1cf35-5e8e-44a2-92c3-5c7b7e19ba6f",
+                    "path": "<XRController>{RightHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "VoiceActivate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5df11f3a-4d38-4504-9e0d-06e3c2bed924",
+                    "path": "<XRController>{RightHand}/secondaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ExpandReset",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

@@ -18,6 +18,51 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
     /// <remarks>This class is expected to be actual embedding vector matches in future package version, right now it is an under-optimized version by explicit rankings.</remarks>
     public class Embeddings: MonoBehaviour
     {
+        private Dictionary<string, object> m_ShapeMap = new()
+        {
+            {k_DefaultShape, k_DefaultShape}, // default shape - it represents any object
+        };
+        
+        /// <summary>
+        /// Stores object types, used for reflection in PropertyExecutor atomic functions. <br/>
+        /// When the scene starts, all object types under the "Parent Interactable" hierarchy of the VoiceIntentController class should be loaded. <br/>
+        /// e.g. User: "make the car bigger" -> "car" object type is matched. <br/>
+        /// </summary>
+        /// <value>Object type property mapping.</value>
+        /// <remarks>
+        /// This functionality is expected to be implemented with vision model, so the system can recognize object types by their visual appearance. <br/>
+        /// We will add that in future package version.
+        /// </remarks>
+        public Dictionary<string, object> shapeMap
+        {
+            get => m_ShapeMap;
+            set => m_ShapeMap = value;
+        }
+        
+        /// <value>The default object type.</value>
+        public const string k_DefaultShape = "object";
+        
+        /// <summary>
+        /// Initializes the components of the given instance for ExpandPanel to expand them, and their other default components.
+        /// </summary>
+        /// <param name="instance">Game object that might be expanded in the future.</param>
+        /// <param name="shapeType">Object type of the given instance.</param>
+        /// <param name="myShapeControllerType">Type of user-defined ShapeController.</param>
+        private void InitInstance(GameObject instance, string shapeType, Type myShapeControllerType)
+        {
+            var xrGrabInteractable = instance.AddComponent<XRGrabInteractable>();
+            var interactableTarget = instance.AddComponent<InteractableTarget>();
+            interactableTarget.isProxy = false;
+            xrGrabInteractable.useDynamicAttach = true;
+            xrGrabInteractable.throwOnDetach = false;
+            instance.GetComponent<Rigidbody>().useGravity = false;
+            instance.GetComponent<Rigidbody>().isKinematic = true;
+            var shapeController = (ShapeController) instance.AddComponent(myShapeControllerType);
+            shapeController.shape = shapeType;
+            shapeController.InitShape();
+            shapeController.InitMyShape();
+        }
+        
         /// <summary>
         /// The entry point for initializing all property LLMs (large language models). <br/>
         /// This class is intentionally left blank so user can override it, see CityDemo.Scripts.MyEmbeddings for its example usage. <br/>
@@ -39,8 +84,8 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
         {
             foreach (Transform category in parentInteractable.transform)
             {
-                var parentShapeType = category.gameObject.name;
-                m_ShapeMap[parentShapeType] = parentShapeType;
+                var parentShapeType = category.gameObject.name.ToLower();
+                shapeMap[parentShapeType] = parentShapeType;
                 foreach (Transform instance in category) InitInstance(instance.gameObject, parentShapeType, myShapeControllerType);
             }
         }
@@ -50,46 +95,8 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
         /// The function is intentionally left blank so the user can override it, see CityDemo.Scripts.MyEmbeddings for its example usage. <br/>
         /// </summary>
         /// <param name="defaultParentInteractable">Default game object that holds all interactable targets.</param>
-        /// <param name="myParentInteractable">User-defined game object that holds all interactable targets.</param>
+        /// <param name="myParentInteractable">Optional (can be null), user-defined game object that holds all interactable targets.</param>
         /// <param name="myShapeControllerType">Type of user-defined ShapeController.</param>
         public virtual void InitMyInteractable(GameObject defaultParentInteractable, GameObject myParentInteractable, Type myShapeControllerType) {}
-        
-        /// <summary>
-        /// Initializes the components of the given instance for ExpandPanel to expand them, and their other default components.
-        /// </summary>
-        /// <param name="instance">Game object that might be expanded in the future.</param>
-        /// <param name="shapeType">Object type of the given instance.</param>
-        /// <param name="myShapeControllerType">Type of user-defined ShapeController.</param>
-        private void InitInstance(GameObject instance, string shapeType, Type myShapeControllerType)
-        {
-            var xrGrabInteractable = instance.AddComponent<XRGrabInteractable>();
-            var interactableTarget = instance.AddComponent<InteractableTarget>();
-            interactableTarget.m_IsVoodoo = false;
-            xrGrabInteractable.useDynamicAttach = true;
-            xrGrabInteractable.throwOnDetach = false;
-            instance.GetComponent<Rigidbody>().useGravity = false;
-            instance.GetComponent<Rigidbody>().isKinematic = true;
-            var shapeController = (ShapeController) instance.AddComponent(myShapeControllerType);
-            shapeController.m_Shape = shapeType;
-            shapeController.InitShape();
-        }
-        
-        /// <value>The default object type.</value>
-        public const string k_DefaultShape = "object";
-        
-        /// <summary>
-        /// Stores object types, used for reflection in PropertyExecutor atomic functions. <br/>
-        /// When the scene starts, all object types under the "Parent Interactable" hierarchy of the VoiceIntentController class should be loaded. <br/>
-        /// e.g. User: "make the car bigger" -> "car" object type is matched. <br/>
-        /// </summary>
-        /// <value>Object type property mapping.</value>
-        /// <remarks>
-        /// This functionality is expected to be implemented with vision model, so the system can recognize object types by their visual appearance. <br/>
-        /// We will add that in future package version.
-        /// </remarks>
-        public Dictionary<string, object> m_ShapeMap = new()
-        {
-            {k_DefaultShape, k_DefaultShape}, // default shape - it represents any object
-        };
     }
 }

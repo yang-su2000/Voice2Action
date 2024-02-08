@@ -19,12 +19,8 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
     /// </summary>
     public class PropertyExecutor: MonoBehaviour
     {
-        /// <value>System instruction for the execution model.</value>
-        public const string k_ExecutionInstruction =
-            "You convert instructions to structured function calls. Your response must contain only the provided functions.";
-        
-        /// <value>Contains atomic property functions for the model to use, along with function and parameter description and their example usage.</value>
-        public List<FunctionCallGroup> m_FunctionCallGroups = new()
+        [SerializeField]
+        private List<FunctionCallGroup> m_FunctionCallGroups = new()
         {
             // ------------Added for CityDemo in MyShapeController, user can define their own through code or hierarchy------------
             // new FunctionCallGroup(
@@ -106,6 +102,100 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
                     ),
                 }),
         };
+
+        /// <value>Contains atomic property functions for the model to use, along with function and parameter description and their example usage.</value>
+        public List<FunctionCallGroup> functionCallGroups
+        {
+            get => m_FunctionCallGroups;
+            set => m_FunctionCallGroups = value;
+        }
+        
+        /// <value>System instruction for the execution model.</value>
+        public const string k_ExecutionInstruction =
+            "You convert instructions to structured function calls. Your response must contain only the provided functions.";
+        
+        /// <summary>
+        /// A group containing essential elements for executing a property function.
+        /// </summary>
+        [Serializable]
+        public struct FunctionCallGroup
+        {
+            [SerializeField] private string m_Name;
+            [SerializeField] private string m_Description;
+            [SerializeField] private List<FunctionParamGroup> m_ParamGroups;
+
+            /// <value>Function name.</value>
+            public string name 
+            { 
+                get => m_Name; 
+                set => m_Name = value; 
+            }
+    
+            /// <value>Function description.</value>
+            public string description 
+            { 
+                get => m_Description; 
+                set => m_Description = value; 
+            }
+    
+            /// <value>Optional, function parameters.</value>
+            public List<FunctionParamGroup> paramGroups 
+            { 
+                get => m_ParamGroups; 
+                set => m_ParamGroups = value ?? new List<FunctionParamGroup>(); 
+            }
+            
+            /// <param name="functionName">Function name, i.e. MyFunctionName(...)</param>
+            /// <param name="functionDescription">Function description, a summarization of its functionality. </param>
+            /// <param name="functionParams">Optional, function parameters, nested with all of their information.</param>
+            public FunctionCallGroup(string functionName, string functionDescription, List<FunctionParamGroup> functionParams = null)
+            {
+                m_Name = functionName;
+                m_Description = functionDescription;
+                m_ParamGroups = functionParams;
+                m_ParamGroups ??= new List<FunctionParamGroup>(); // if null, initialize to empty
+            }
+
+            /// <summary>
+            /// Add the "required" key in the given JsonSchema.
+            /// </summary>
+            /// <param name="funcObject">The JsonSchema of the current property function, will be updated upon execution of this method.</param>
+            public void AddParamsRequirement(ref JObject funcObject)
+            {
+                var requiredParams = new JArray();
+                foreach (var paramGroup in paramGroups)
+                {
+                    if (paramGroup.required) requiredParams.Add(paramGroup.name);
+                }
+                funcObject.Add("required", requiredParams);
+            }
+            
+            /// <param name="methodInfo">Information of current property function through reflection.</param>
+            /// <param name="inputs">Function arguments.</param>
+            /// <returns>A string as if the function is called, i.e. "MyFunctionName(MyArgType1 MyArg1, MyArgType2 MyArg2, ...)"</returns>
+            public static string PrettyPrintFunctionCall(MethodInfo methodInfo, object[] inputs)
+            {
+                var sb = new StringBuilder();
+                sb.Append(methodInfo.Name);
+                sb.Append("(");
+                var parameters = methodInfo.GetParameters();
+                for (int i = 0; i < parameters.Length; i++)
+                {
+                    var paramTypeName = parameters[i].ParameterType.Name;
+                    string paramValue;
+                    if (inputs[i] == null) paramValue = "null";
+                    else
+                    {
+                        try { paramValue = JsonConvert.SerializeObject(inputs[i]); }
+                        catch { paramValue = inputs[i].ToString(); }
+                    }
+                    sb.AppendFormat("{0} {1}", paramTypeName, paramValue);
+                    if (i < parameters.Length - 1) sb.Append(", ");
+                }
+                sb.Append(")");
+                return sb.ToString();
+            }
+        }
         
         /// <summary>
         /// Initializes all atomic property functions to OpenAI API supported format (JsonSchema).
@@ -115,30 +205,30 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
         /// <returns>A dictionary where key = functionName, value = corresponding JsonSchema of the function.</returns>
         public Dictionary<string, Tool> InitFunctionCalls(Type myShapeControllerType, List<string> propertyFunctionNames)
         {
-            Dictionary<string, FunctionCallGroup> functionCallDict = new Dictionary<string, FunctionCallGroup>();
-            foreach (var functionCallGroup in m_FunctionCallGroups)
+            var functionCallDict = new Dictionary<string, FunctionCallGroup>();
+            foreach (var functionCallGroup in functionCallGroups)
             {
-                functionCallDict.Add(functionCallGroup.m_Name, functionCallGroup);
+                functionCallDict.Add(functionCallGroup.name, functionCallGroup);
             }
-            Dictionary<string, Tool> toolDict = new Dictionary<string, Tool>();
-            foreach (string functionName in propertyFunctionNames)
+            var toolDict = new Dictionary<string, Tool>();
+            foreach (var functionName in propertyFunctionNames)
             {
                 // the atomic function must exist
-                MethodInfo methodInfo = myShapeControllerType.GetMethod(functionName);
-                if (methodInfo is null)
+                var methodInfo = myShapeControllerType.GetMethod(functionName);
+                if (methodInfo == null)
                 {
                     Debug.LogWarning($"propertyFunction with name {functionName} does not exist, skipped");
                     continue;
                 }
                 // parameter type can either cast or be embedding matches by specifying with PropertyMethodAttribute
-                if (methodInfo.GetCustomAttribute<ShapeController.PropertyMethodAttribute>() is not null) continue;
-                JObject paramsObject = new JObject();
-                bool canCast = true;
+                if (methodInfo.GetCustomAttribute<ShapeController.PropertyMethodAttribute>() != null) continue;
+                var paramsObject = new JObject();
+                var canCast = true;
                 foreach (var parameterInfo in methodInfo.GetParameters())
                 {
                     // if the parameter has PropertyParameter Attribute, skip them
                     if (Attribute.IsDefined(parameterInfo, typeof(ShapeController.PropertyParameterAttribute))) continue;
-                    if (!FunctionParamGroup.m_ParamTypeJsons.TryGetValue(parameterInfo.ParameterType, out JObject paramObject))
+                    if (!FunctionParamGroup.paramTypeJsons.TryGetValue(parameterInfo.ParameterType, out var paramObject))
                     {
                         Debug.LogWarning($"cannot cast {parameterInfo.Name} with type {parameterInfo.ParameterType}");
                         canCast = false;
@@ -147,20 +237,20 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
                     // JObject paramObject =
                     //     PropertyExecutor.FunctionParamGroup.GetParamTypeJsonObject(parameterInfo.ParameterType);
                     // DO NOT modify the template m_ParamTypeJsons!
-                    JObject paramObjectCopy = (JObject) paramObject.DeepClone();
+                    var paramObjectCopy = (JObject) paramObject.DeepClone();
                     paramsObject.Add(parameterInfo.Name, paramObjectCopy);
                 }
                 if (!canCast) continue;
                 // add custom parameter properties if they exist
-                bool isCustomArgs = functionCallDict.TryGetValue(functionName, out FunctionCallGroup functionCallGroup);
+                var isCustomArgs = functionCallDict.TryGetValue(functionName, out var functionCallGroup);
                 if (isCustomArgs)
                 {
-                    foreach (var functionParamGroup in functionCallGroup.m_Params)
+                    foreach (var functionParamGroup in functionCallGroup.paramGroups)
                     {
-                        bool isInfoAdded = functionParamGroup.TryAddParamInfo(ref paramsObject);
+                        var isInfoAdded = functionParamGroup.TryAddParamInfo(ref paramsObject);
                         if (isInfoAdded)
                         {
-                            Debug.Log($"custom parameter {functionParamGroup.m_Name} info is added to function {functionCallGroup.m_Name}");
+                            Debug.Log($"custom parameter {functionParamGroup.name} info is added to function {functionCallGroup.name}");
                         }
                     }
                 }
@@ -177,7 +267,7 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
                 }
                 // add function description if they exist
                 string functionDescription = null;
-                if (isCustomArgs) functionDescription = functionCallGroup.m_Description;
+                if (isCustomArgs) functionDescription = functionCallGroup.description;
                 Tool tool = new Function(
                     name: functionName,
                     description: functionDescription,
@@ -188,73 +278,6 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
             }
             return toolDict;
         }
-        
-        /// <summary>
-        /// A group containing essential elements for executing a property function.
-        /// </summary>
-        [Serializable]
-        public struct FunctionCallGroup
-        {
-            /// <value>Function name.</value>
-            public string m_Name;
-            
-            /// <value>Function description.</value>
-            public string m_Description;
-            
-            /// <value>Optional, function parameters.</value>
-            public List<FunctionParamGroup> m_Params;
-            
-            /// <param name="functionName">Function name, i.e. MyFunctionName(...)</param>
-            /// <param name="functionDescription">Function description, a summarization of its functionality. </param>
-            /// <param name="functionParams">Optional, function parameters, nested with all of their information.</param>
-            public FunctionCallGroup(string functionName, string functionDescription, List<FunctionParamGroup> functionParams = null)
-            {
-                m_Name = functionName;
-                m_Description = functionDescription;
-                m_Params = functionParams;
-                m_Params ??= new List<FunctionParamGroup>(); // if null, initialize to empty
-            }
-
-            /// <summary>
-            /// Add the "required" key in the given JsonSchema.
-            /// </summary>
-            /// <param name="funcObject">The JsonSchema of the current property function, will be updated upon execution of this method.</param>
-            public void AddParamsRequirement(ref JObject funcObject)
-            {
-                JArray requiredParams = new JArray();
-                foreach (var paramGroup in m_Params)
-                {
-                    if (paramGroup.m_Required) requiredParams.Add(paramGroup.m_Name);
-                }
-                funcObject.Add("required", requiredParams);
-            }
-            
-            /// <param name="methodInfo">Information of current property function through reflection.</param>
-            /// <param name="inputs">Function arguments.</param>
-            /// <returns>A string as if the function is called, i.e. "MyFunctionName(MyArgType1 MyArg1, MyArgType2 MyArg2, ...)"</returns>
-            public static string PrettyPrintFunctionCall(MethodInfo methodInfo, object[] inputs)
-            {
-                StringBuilder sb = new StringBuilder();
-                sb.Append(methodInfo.Name);
-                sb.Append("(");
-                ParameterInfo[] parameters = methodInfo.GetParameters();
-                for (int i = 0; i < parameters.Length; i++)
-                {
-                    string paramTypeName = parameters[i].ParameterType.Name;
-                    string paramValue;
-                    if (inputs[i] is null) paramValue = "null";
-                    else
-                    {
-                        try { paramValue = JsonConvert.SerializeObject(inputs[i]); }
-                        catch { paramValue = inputs[i].ToString(); }
-                    }
-                    sb.AppendFormat("{0} {1}", paramTypeName, paramValue);
-                    if (i < parameters.Length - 1) sb.Append(", ");
-                }
-                sb.Append(")");
-                return sb.ToString();
-            }
-        }
 
         /// <summary>
         /// A group containing essential elements for one function parameter.
@@ -262,18 +285,39 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
         [Serializable]
         public struct FunctionParamGroup
         {
+            [SerializeField] private string m_Name;
+            [SerializeField] private bool m_Required;
+            [SerializeField] private string m_Description;
+            [SerializeField] private List<Utils.FewShotPair> m_Examples;
+
             /// <value>Function parameter name.</value>
-            public string m_Name;
-            
+            public string name
+            {
+                get => m_Name;
+                set => m_Name = value;
+            }
+    
             /// <value>Whether this parameter is required, default to False.</value>
-            public bool m_Required;
-            
+            public bool required
+            {
+                get => m_Required;
+                set => m_Required = value;
+            }
+    
             /// <value>Optional, function parameter description.</value>
-            public string m_Description;
-            
+            public string description
+            {
+                get => m_Description;
+                set => m_Description = value;
+            }
+    
             /// <value>Optional, list of few-shot example (input, output) pair provided to the model as illustration to the parameter is used.</value>
-            public List<Utils.FewShotPair> m_Examples;
-            
+            public List<Utils.FewShotPair> examples
+            {
+                get => m_Examples;
+                set => m_Examples = value;
+            }
+
             /// <param name="paramName">Function parameter name.</param>
             /// <param name="paramRequired">Whether this parameter is required, default to False.</param>
             /// <param name="paramDescription">Optional, function parameter description, a summarization of its usage.</param>
@@ -283,7 +327,7 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
                 m_Name = paramName;
                 m_Required = paramRequired;
                 m_Description = paramDescription;
-                m_Examples = paramExamples;
+                m_Examples = paramExamples ?? new List<Utils.FewShotPair>();
             }
 
             /// <summary>
@@ -293,24 +337,24 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
             /// <returns>Whether the JsonSchema is updated successfully.</returns>
             public bool TryAddParamInfo(ref JObject paramsObject)
             {
-                if (!paramsObject.TryGetValue(m_Name, out JToken paramToken))
+                if (!paramsObject.TryGetValue(name, out var paramToken))
                 {
-                    Debug.LogWarning($"custom parameter {m_Name} does not exist in declared paramsObject {paramsObject}");
+                    Debug.LogWarning($"custom parameter {name} does not exist in declared paramsObject {paramsObject}");
                     return false;
                 }
-                JObject paramObject = (JObject) paramToken;
-                string fullParamDescription = "";
-                if (m_Description is not null) fullParamDescription += m_Description;
-                if (m_Examples is not null)
+                var paramObject = (JObject) paramToken;
+                var fullParamDescription = "";
+                if (description != null) fullParamDescription += description;
+                if (examples != null)
                 {
-                    foreach (var example in m_Examples)
+                    foreach (var example in examples)
                     {
-                        fullParamDescription += $" {example.m_Input} -> {example.m_Output}.";
+                        fullParamDescription += $" {example.input} -> {example.output}.";
                     }
                 }
                 if (fullParamDescription == "")
                 {
-                    Debug.LogWarning($"custom parameter {m_Name} does not have information attached to it in resolved paramObject {paramObject}");
+                    Debug.LogWarning($"custom parameter {name} does not have information attached to it in resolved paramObject {paramObject}");
                     return false;
                 }
                 paramObject.Add("description", fullParamDescription);
@@ -324,8 +368,7 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
             //     return JObject.Parse(schemaJson);
             // }
             
-            /// <value>Pre-defined (function type, JsonSchema template) mappings for OpenAI API, user can add customized mapping by updating this field.</value>
-            public static Dictionary<Type, JObject> m_ParamTypeJsons = new ()
+            private static Dictionary<Type, JObject> m_ParamTypeJsons = new ()
             {
                 {typeof(int), new JObject { ["type"] = "integer" }},
                 {typeof(bool), new JObject { ["type"] = "boolean" }},
@@ -364,6 +407,13 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
                     }
                 }},
             };
+
+            /// <value>Pre-defined (function type, JsonSchema template) mappings for OpenAI API, user can add customized mapping by updating this field.</value>
+            public static Dictionary<Type, JObject> paramTypeJsons
+            {
+                get => m_ParamTypeJsons;
+                set => m_ParamTypeJsons = value;
+            }
         }
 
         /// <summary>
@@ -389,11 +439,11 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
         {
             foreach (var propertyKey in propertyDict.Keys)
             {
-                string functionName = (string)propertyKey;
-                string userInput = (string) propertyDict[functionName];
-                MethodInfo methodInfo = myShapeControllerType.GetMethod(functionName);
+                var functionName = (string) propertyKey;
+                var userInput = (string) propertyDict[functionName];
+                var methodInfo = myShapeControllerType.GetMethod(functionName);
                 // it is the user's responsibility to write the desired atomic function
-                if (methodInfo is null)
+                if (methodInfo == null)
                 {
                     Debug.LogWarning($"propertyFunction with name {functionName} does not exist, skipped");
                     continue;
@@ -405,7 +455,7 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
                 }
                 object[] parameters;
                 // field to optionally denote comparison based parameter position
-                int comparisonPos = -1;
+                var comparisonPos = -1;
                 // fetch parameters by function calling to LLMs
                 if (toolDict.TryGetValue(functionName, out Tool tool))
                 {
@@ -414,19 +464,19 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
                     Debug.Log($"{functionName} functionCallOutput: {functionCallOutput}");
                     // handle model failure in function calling
                     if (functionCallOutput == Utils.k_FailureResponse) continue;
-                    JObject functionCallJObject = JsonConvert.DeserializeObject<JObject>(functionCallOutput);
-                    ParameterInfo[] parameterInfos = methodInfo.GetParameters();
+                    var functionCallJObject = JsonConvert.DeserializeObject<JObject>(functionCallOutput);
+                    var parameterInfos = methodInfo.GetParameters();
                     parameters = new object[parameterInfos.Length];
-                    bool invokeState = true;
-                    for (int i = 0; i < parameterInfos.Length; i++)
+                    var invokeState = true;
+                    for (var i = 0; i < parameterInfos.Length; i++)
                     {
-                        string parameterName = parameterInfos[i].Name;
-                        Type parameterType = parameterInfos[i].ParameterType;
+                        var parameterName = parameterInfos[i].Name;
+                        var parameterType = parameterInfos[i].ParameterType;
                         // assign value if it exists
                         if (functionCallJObject.TryGetValue(parameterName, out JToken parameterJToken))
                         {
-                            object parameterValue = JsonConvert.DeserializeObject(parameterJToken.ToString(), parameterType);
-                            if (parameterValue is null)
+                            var parameterValue = JsonConvert.DeserializeObject(parameterJToken.ToString(), parameterType);
+                            if (parameterValue == null)
                             {
                                 invokeState = false;
                                 Debug.LogWarning($"propertyFunction with name {functionName} fails to deserialize parameter value at position {i}: type {parameterType} got value {parameterJToken}");
@@ -440,7 +490,7 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
                             parameters[i] = parameterInfos[i].DefaultValue;
                         }
                         // assign to comparison target later (i.e. shape controller) if parameter is a comparison based argument
-                        else if (parameterInfos[i].GetCustomAttribute<ShapeController.PropertyParameterAttribute>() is not null)
+                        else if (parameterInfos[i].GetCustomAttribute<ShapeController.PropertyParameterAttribute>() != null)
                         {
                             parameters[i] = null;
                             comparisonPos = i;
@@ -466,29 +516,29 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
                     }
                     // method must have special attribute to denote "embedding match"
                     var methodAttribute = methodInfo.GetCustomAttribute<ShapeController.PropertyMethodAttribute>();
-                    if (methodAttribute is null)
+                    if (methodAttribute == null)
                     {
                         Debug.LogWarning($"propertyFunction with name {functionName} must have PropertyMethodAttribute to access embeddings");
                         continue;
                     }
                     // the attribute must point to the storage field of the embedding
-                    string propertyName = "m_" + methodAttribute.m_Property;
-                    FieldInfo fieldInfo = myEmbeddingsType.GetField(propertyName);
-                    if (fieldInfo is null)
+                    var propertyName = methodAttribute.property;
+                    var fieldInfo = myEmbeddingsType.GetProperty(propertyName);
+                    if (fieldInfo == null)
                     {
                         Debug.LogWarning($"propertyFunction with name {functionName} does not have corresponding fieldInfo to access embeddings, get {propertyName}");
                         continue;
                     }
-                    object fieldValue = fieldInfo.GetValue(embeddings);
+                    var fieldValue = fieldInfo.GetValue(embeddings);
                     // this should never happen because Embedding class is accessed right before this line
-                    if (fieldValue is null)
+                    if (fieldValue == null)
                     {
                         Debug.LogWarning($"fieldValue with name {propertyName} is not field member of the given embedding");
                         continue;
                     }
                     // the embedding storage must be the following type for auto casting
                     Dictionary<string, object> fieldDict = fieldValue as Dictionary<string, object>;
-                    if (fieldDict is null)
+                    if (fieldDict == null)
                     {
                         Debug.LogWarning($"fieldValue with name {fieldInfo.Name} must be of type {typeof(Dictionary<string, object>)} for dynamic casting");
                         continue;
@@ -510,8 +560,8 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
                     parameters = new []{ propertyValue };
                 }
                 // function calling to each controller
-                int otherControllerIdx = -1;
-                for (int i = 0; i < allControllers.Length; i++)
+                var otherControllerIdx = -1;
+                for (var i = 0; i < allControllers.Length; i++)
                 {
                     if (!selectedControllers[i]) continue;
                     
@@ -525,7 +575,7 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
                         }
                         parameters[comparisonPos] = allControllers[otherControllerIdx];
                     }
-                    bool isMatched = (bool) methodInfo.Invoke(allControllers[i], parameters);
+                    var isMatched = (bool) methodInfo.Invoke(allControllers[i], parameters);
                     if (comparisonPos != -1 && isMatched)
                     {
                         selectedControllers[otherControllerIdx] = false;
@@ -534,13 +584,12 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
                     if (!isMatched) selectedControllers[i] = false;
                 }
                 // update display
-                string displayMessage =
-                    FunctionCallGroup.PrettyPrintFunctionCall(methodInfo, parameters);
+                var displayMessage = FunctionCallGroup.PrettyPrintFunctionCall(methodInfo, parameters);
                 displayMessage = $"<color=#00bfff>{displayMessage}</color>\n";
                 Debug.Log(displayMessage);
                 historyMessages.Add(displayMessage);
             }
-            for (int i = 0; i < selectedControllers.Length; i++)
+            for (var i = 0; i < selectedControllers.Length; i++)
             {
                 var xrGrabInteractable = allControllers[i].grabInteractable;
                 if (xrGrabInteractable == null) continue;

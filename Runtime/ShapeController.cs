@@ -12,17 +12,19 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
     /// </summary>
     public class ShapeController : MonoBehaviour
     {
-        /// <value>The game object that represents the user.</value>
-        public static GameObject m_Player;
-
-        /// <value>Object type of the attached game object, customizable by the user.</value>
-        public string m_Shape;
-
         /// <value>String formatted information of this ShapeController.</value>
-        private string [] m_Info;
+        private (string, string) [] m_Info;
 
         /// <value>Is this ShapeController properly initialized, for debugging purpose.</value>
         private bool m_IsInit;
+        
+        /// <value>The game object that represents the user.</value>
+        public static GameObject player { get; set; }
+        
+        [SerializeField] private string m_Shape;
+        
+        /// <value>Object type of the attached game object, customizable by the user.</value>
+        public string shape { get => m_Shape; set => m_Shape = value; }
 
         /// <value>Pointer to a required game component for Expand (Spin In-and-Out).</value>
         public XRGrabInteractable grabInteractable { get; private set; }
@@ -37,7 +39,7 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
         public List<Renderer> renderers { get; private set; }
 
         /// <summary>
-        /// Initialize all required components, needs to be called right after class initialization.
+        /// Initializes default properties of the attached game object, needs to be called right after class initialization.
         /// </summary>
         public void InitShape()
         {
@@ -50,6 +52,11 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
         }
 
         /// <summary>
+        /// Initializes user-defined properties of the attached game object, needs to be called right after class initialization.
+        /// </summary>
+        public virtual void InitMyShape() {}
+
+        /// <summary>
         /// Add Transparency to the game object's material if they exist, used for visualization.
         /// </summary>
         /// <param name="alpha">Alpha value to set to the material.</param>
@@ -58,18 +65,18 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
             if (!m_IsInit) throw new Exception("ShapeController not initialized");
 
             // only fade-in fade-out for the real objects
-            if (interactableTarget.m_IsVoodoo) return;
+            if (interactableTarget.isProxy) return;
             
             foreach (var renderer1 in renderers)
             {
                 var material = renderer1.material;
                 var color = material.color;
                 // Get property IDs
-                int modeID = Shader.PropertyToID("_Mode");
-                int srcBlendID = Shader.PropertyToID("_SrcBlend");
-                int dstBlendID = Shader.PropertyToID("_DstBlend");
-                int zWriteID = Shader.PropertyToID("_ZWrite");
-                int colorID = Shader.PropertyToID("_Color");
+                var modeID = Shader.PropertyToID("_Mode");
+                var srcBlendID = Shader.PropertyToID("_SrcBlend");
+                var dstBlendID = Shader.PropertyToID("_DstBlend");
+                var zWriteID = Shader.PropertyToID("_ZWrite");
+                var colorID = Shader.PropertyToID("_Color");
                 // Set the material to use the Transparent mode
                 material.SetFloat(modeID, 3);
                 // Set up source and destination blend factors for transparency
@@ -89,20 +96,18 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
             }
         }
         
-        /// <returns>Selected properties of current game object for visualization.</returns>
-        public string[] GetShapeInfo()
+        /// <returns>Selected properties of current game object for visualization, user can customize its behavior by overriding this function.</returns>
+        public virtual (string, string)[] GetShapeInfo()
         {
-            var myColor = Color.clear;
-            // this gets the last renderer (the parent renderer) as the source of the default main color
-            if (renderers.Count > 0) myColor = renderers[^1].material.color;
-            string myColorName = myColor.ToString();
             var myPosition = transform.position;
-            var playerPosition = m_Player.transform.position;
+            var playerPosition = player.transform.position;
             var myDistance = Mathf.Sqrt(Mathf.Pow(myPosition.x - playerPosition.x, 2) + Mathf.Pow(myPosition.z - playerPosition.z, 2));
-            var myDirection = Utils.k_FailureResponse;
             var myScale = transform.localScale;
-            var myAddress = Utils.k_FailureResponse;
-            m_Info = new []{ name, m_Shape, myColorName, myAddress, myDirection, myDistance.ToString("F"), myPosition.ToString(), myScale.ToString() };
+            
+            var positionInfo = ("Position", myPosition.ToString());
+            var distanceInfo = ("Distance", myDistance.ToString("F"));
+            var scaleInfo = ("Scale", myScale.ToString());
+            m_Info = new[] { positionInfo, distanceInfo, scaleInfo };
             return m_Info;
         }
         
@@ -115,8 +120,14 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
         [AttributeUsage(AttributeTargets.Method)]
         public class PropertyMethodAttribute : Attribute
         {
+            private string m_Property;
+
             /// <value>The name of the propertyMappings field in (My)Embeddings, they will be called with reflection during function execution.</value>
-            public readonly string m_Property;
+            public string property
+            {
+                get => m_Property; 
+                set => m_Property = value;
+            }
             
             /// <param name="property">The name of the propertyMappings field in (My)Embeddings.</param>
             public PropertyMethodAttribute(string property)
@@ -131,9 +142,15 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
         [AttributeUsage(AttributeTargets.Parameter)]
         public class PropertyParameterAttribute : Attribute
         {
+            private string m_Property;
+            
             /// <value>Behavior customization type of parameters.</value>
             /// (TODO: we will implement more customizable behaviors in future package version)
-            public readonly string m_Property;
+            public string property
+            {
+                get => m_Property; 
+                set => m_Property = value;
+            }
             
             /// <param name="property">Behavior customization type of parameters.</param>
             public PropertyParameterAttribute(string property)
@@ -150,10 +167,10 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
         /// </summary>
         /// <param name="otherShape">The shape to compare to.</param>
         /// <returns>Denote selection success.</returns>
-        [PropertyMethod("ShapeMap")]
+        [PropertyMethod("shapeMap")]
         public bool GetShape(string otherShape)
         {
-            return otherShape == Embeddings.k_DefaultShape || otherShape == m_Shape;
+            return otherShape == Embeddings.k_DefaultShape || otherShape == shape;
         }
 
         /// <summary>
@@ -167,7 +184,7 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
             start = Mathf.Max(start, 0);
             end = Mathf.Max(end, 0);
             if (start > end) return false;
-            var playerPosition = m_Player.transform.position;
+            var playerPosition = player.transform.position;
             var controllerPosition = transform.position;
             var diff = Mathf.Abs(controllerPosition.x - playerPosition.x) +
                        Mathf.Abs(controllerPosition.y - playerPosition.y) +
@@ -182,10 +199,10 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
         /// <returns>Denote selection success.</returns>
         public bool GetDirection(List<float> direction)
         {
-            if (direction is null) return false;
+            if (direction == null) return false;
             if (direction.Count < 3) return false;
             Vector3 unitDirection = new Vector3(direction[0], direction[1], direction[2]);
-            var playerPosition = m_Player.transform.position;
+            var playerPosition = player.transform.position;
             var controllerPosition = transform.position;
             var diffPosition = controllerPosition - playerPosition;
             return Vector3.Dot(diffPosition, unitDirection) > 0f;
@@ -207,7 +224,7 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
             size ??= new List<int> { 0, 0, 0 };
             position ??= new List<int> { 0, 0, 0 };
             if (size.Count < 3 || position.Count < 3) return false;
-            var playerPosition = m_Player.transform.position;
+            var playerPosition = player.transform.position;
 
             float GetDiff(ShapeController controller, Vector3 playerPos)
             {
@@ -239,7 +256,7 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
         /// <returns>Denote modification success.</returns>
         public bool ModifyScale(List<float> size)
         {
-            if (size is null) return false;
+            if (size == null) return false;
             if (size.Count < 3) return false;
             float x = size[0], y = size[1], z = size[2];
             var controllerScale = transform.localScale;
@@ -260,7 +277,7 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
         /// <returns>Denote modification success.</returns>
         public bool ModifyPosition(float value)
         {
-            var playerPosition = m_Player.transform.position;
+            var playerPosition = player.transform.position;
             var controllerPosition = transform.position;
             if (value < 0)
             {

@@ -1,81 +1,203 @@
 # Voice to Action - Expand Interaction with LLMs
  
-## Overview
-This Unity package combines an "Expand" interaction technique with the combination of voice-based NLP to create an innovative selection mechanism for enhanced user experiences. 
+### Overview
 
-By incorporating this package into your VR project, you can use voice commands to filter through multiple objects, creates smaller, scaled-down versions of the original object called "proxy objects", and brings the proxy objects into view. When you hover over the proxy object, it will show the user the information of the original object. A raycast will also show the user where the object is located. 
-## Package contents	
+This package uses LLMs (Large Language Models) to analyze user instruction through action and entity extraction, and divides the execution tasks into canonical interaction subsets with error prevention from the game engine feedback. It combines an "Expand" interaction technique to create an innovative selection and manipulation mechanism for enhanced user experiences. 
+
+By incorporating this package into your VR project, you can use voice commands to filter through multiple objects, create smaller, scaled-down versions of the original object called "proxy objects", and bring the proxy objects into view. When you hover over the proxy object, it will show the user the information of the original object. A raycast will also show the user where the object is located. Users are then able to modify the properties of the filtered objects through customizable voice commands.
+
+For the source of the Expand functionality, go to [3D User Interfaces: Theory and Practice](https://www.oreilly.com/library/view/3d-user-interfaces/9780134034478/)
+
+For the source of the LLMs functionality, go to [Voice2Action GitHub Repository (Paper & Package)](https://github.com/yang-su2000/VR-Multimodal-Interaction)
+
+### Advantages
+
+- Efficiency: Extremely **Low Cost**
+    - Based on our testing in the "Samples/CityDemo" with 2 ** (7+3) = 1024 function call combinations (with infinite argument combinations) and 100 * 32 = 3.2k user interaction (including multi-turn due to execution failure), our OpenAI API (with gpt-3.5-turbo) total cost ~= 5 USD, which converts to 0.16 cents per interaction!
+- Domain Adaptation: Highly **Customizable**
+    - User can customize their actions and properties by easily inheriting our Runtime scripts, see examples in the Advanced section for more details.
+    - We can also fine-tune our models based on domain-specific manipulation category requirements, stay tuned!
+- Scalability: Highly **Parallelizable**
+    - While the current package is a minimal implementation of the full Voice2Action framework, all property classes can do their jobs in parallel without any intervention as they belongs to different manipulation categories.
+    - More importantly, by adapting Unity (Unreal, or other game engine) [Profiler](https://docs.unity3d.com/Manual/Profiler.html), we are actually able to integrate the LLMs function calling and feedback ability into Unity runtime, while maintaining the paralleliability of each rendering components, hence this framework is an initial attempt as "LLMs as co-operating system for game engines".
+
+### Package contents	
+
+**Overview**
+
+The user input would be sent to a parallelizable series of classes for LLMs to analyze and execute user-defined functions on given interactable targets (game objects). User can customize the property manipulation categories of game objects by inheriting *ShapeController.cs* and customize their usage by inheriting *Embeddings.cs*. See "Samples/CityDemo/Scripts/" for more details.
+
+![Voice2ActionWorkflow.PNG](images/Voice2ActionWorkflow.png)
+
 **Runtime**
-In the Runtime folder, you can find a list of scripts that are used in this package. 
-There are several scripts that need to be understood in order to utilize this package. 
 
-1. ExpandPanel.cs - Attach this script to a GameObject where you want to call objects onto. Objects that you wish to call will be shown on this panel. 
-2. VoiceIntentController.cs - User needs to configure the "Interactable" Serializable field. In order for the package to detect which objects are "interactable" - meaning which objects can be filtered through and called - these "interactable" objects need to be grouped together under the same parent in the Scene Hierarchy. This is what we call the "Interactables" group object. This parent game object, or group, must be attached to the VoiceIntentController script by serializing it in the Interactables Seraializable field. 
+The runtime folder contains core scripts of this package. There are 2 prefab that the user wants to put into the scene to use Voice2Action customizably.
+- The **Voice2Action** Prefab.
+    - This prefab is the core of the Voice2Action system. User can put it anywhere they want.
+- The **Voice2ActionGUI** Prefab.
+    - This prefab is for interaction. The user wants to put this prefab to somewhere comfortable, e.g. attach it to the left/right hand controller, as what we do in "Samples".
 
-**Sample**
-This folder holds a sample scene called "CityDemo" with the package implemented inside the scene. 
+**Samples**
 
-## Installation instructions
-1. Go to Windows > Package Manager and click the "+" button on the left-hand corner. Select "Add package through git URL." Add [this GitHub Repository Link](https://github.com/xrc-students/xrc-students-fa2023-sp06-en268_jx288_ys724.git) into the URL field. 
-    a. (Optional) In the Samples tab, you can import the CityDemo to see a sample scene of the usage of our package. 
-2. Inside the Package Manager, look for the XR Interaction Toolkit Package. In the Samples tab, install "Starter Assets" and "Device Simulator." 
-3. In order to utilize the core features, we need to install the OpenAI package. Go to [the Open UPM package](https://openupm.com/packages/com.openai.unity/) and follow the instructions to download OpenAI UPM. 
-4. In Package Manager > My Registries > OpenAI > Version History tab, check to see that you have downloaded OpenAI version "5.0.11." If not, click update to this version. 
-5. Restart Unity to properly configure Unity and OpenAI settings. 
-6. Create a folder in the Assets folder titled "Resources". Inside the folder, right click and select Create > OpenAI > OpenAIConfigurations. Enter your API key and your organization ID from your OpenAI API user settings. 
+- "Starter Assets"
+    - Contains essential prefabs and tutorial scenes of the Voice2Action system
+    - Contains two scenes "StarterScene-Empty" and "StarterScene-Complete"
+    - User can use these scenes to become familiar with the system, see the Tutorial section below for more information
+- "CityDemo"
+    - Contains a scene "CityScene" with customized actions and properties
+    - User can use this scene for a thorough playthrough of the capabilities and limitations of the system, preparing them for Advanced usage of the system
+    - "CityScene" uses an urban planning environment to call different buildings, cars, trees, etc. in different directions / locations / streets, and user can modify the colors, sizes, positions of selected objects
 
-## Requirements	
-Uses Unity Version 2022.03
-OpenAI UPM version 5.0.11
-Must have OpenAI credentials 
+### Installation instructions
 
-## Workflows	
-**Interactables**<br>
-All of the interactable objects should be grouped under a parent game object. 
-![InteractablesHierarchy.PNG](images%2FInteractablesHierarchy.PNG)<br>
-Currently, the objects should be grouped into these specific names [Buildings, Cars, Streets, Trees, MiniBuses, SchoolBuses]. 
-<br><br>**Landmark**<br>
-![LandmarkHierarchy.PNG](images%2FLandmarkHierarchy.PNG) <br>
-Landmark is used when you want to call objects located in a specific area. Our example used streets to exemplify this. 
-![LandmarkExample.JPG](images%2FLandmarkExample.JPG)
-For example, if you want to call an object near "Main Street", you must specify with an object where the boundaries of "Main Street" is. 
-In this scene, when the user calls for objects near Main Street, it will call all the objects that are near this strip of land.
-<br><br>**InfoPanel**<br>
-![InfoPanel.jpeg](images%2FInfoPanel.jpeg)
-The Info panel stores the information of the object that is being highlighted over in the expand panel.  
+1. Follow the instructions to download [OpenAI UPM](https://openupm.com/packages/com.openai.unity/) in order to utilize the core features of Voice2Action.
+    - Go to *Package Manager > My Registries > OpenAI > Version History* to check the OpenAI UPM version is **7.3.2**. If not, click update to this version.
+    - (Recommend) Restart your project as OpenAI UPM sometimes has configurations that are not updated only after Unity restart.
 
-<br><br>**Voice2Action GUI** <br>
+2. In the Assets folder, created a folder titled "**Resources**". Inside the folder, right click and select *Create > OpenAI > OpenAIConfigurations*. Enter your API key and organization ID from the OpenAI API user settings. Others can be left blank.
 
-![Voice 2 Action GUI](images/voice2ActionGUI.JPG)<br>
+3. Go to *Windows > Package Manager*, look for the XR Interaction Toolkit Package.
+    - In the Samples tab, import "Starter Assets" and "Device Simulator."
 
-Inside the Samples folder (if you have imported the optional CityDemo sample) you will see a prefab called "Voice2ActionGUI". This prefab is the text panel that holds the history of speech messages between the user and the AI model. 
-While this is not a required feature, if you wish to have a speech to text interface please look at "VoiceIntentController" section below for more information on setting up the Voice2Action GUI for your project.
-<br><br>**ExpandPanel** <br>
-![Voice 2 Action GUI](images/ExpandPanel.PNG)<br>
-The Expand Panel is used to store the objects you've called that will be "expanded" in front of you. 
-When you highlight over an object that is presented to you in the expand panel, it will show a raycast indicating the location of the object as well as general information of the object.
-![Voice 2 Action GUI](images/expandpaneltag.PNG)<br>
-In order to use an expand panel, set the tag for the game object that you wish to expand to to "ExpandPanel."
+4. In the Package Manager, click the "+" button on the left-hand corner. Select "Add package through git URL." Add the [Voice2Action Package Link](https://github.com/xrc-students/xrc-students-fa2023-sp06-en268_jx288_ys724.git) into the URL field.
+    - In the Samples tab, import "Starter Assets".
+    - (Optional) In the Samples tab, you can import *CityDemo* to see a sample scene of the usage of our package. 
 
-<br><br>**VoiceIntentController**<br>
-This script is the bridge between user and the AI natural language processing model.
-![Voice 2 Action GUI](images/VoiceIntentControllerScript.PNG)<br>
-First, connect the VoiceActivateAction to "XRI RightHand Interaction/VoiceActivate." Second, connect the XRI RightHand Interaction/Expand Reset Action to the Expand Reset Action reference.
-<br>
+### Requirements
 
-Next, connect your Interactables Game Object and Landmarks Game Object into the Interactable field and the Position Marker field, respectively.
+- Unity Version 2022.03
+- [OpenAI UPM](https://openupm.com/packages/com.openai.unity/) Version 7.3.2
+    - Must have OpenAI credentials: API Key and Organization ID
 
-The UI field is where you will connect the text from the Voice2ActionGUI. 
-Connect the text component from your VoiceIntentControllerGUI - this will store the entire history of messages that the user exchanged with the AI assistant.
-The Speaking panel is a panel under the VoiceIntentControllerGUI that will show up when the Voice Activate Action is enabled. 
-Thus, it will show up when the user presses the primary button and starts speaking into the mic.
-<br><br>**SceneManager**<br>
-![SceneManagerScript.PNG](images%2FSceneManagerScript.PNG)<br>
+### Get Started
 
-The Scene Manager handles all of the other components inside the scene. Attach your left and right ray interactors with their specified fields. Attach the XR Origin Main Camera to the XR Origin Camera field and finally attach the InfoPanel to the ShapeInfo Panel field. The ObjectScale value indicates how big you want the objects that are expanded into view to be.
-Include a list of steps that the user can easily follow that demonstrates how to use the feature. You can include screenshots to help describe how to use the feature.
+- Open "Samples/Starter Assets/StarterScene-Complete" and hit play, make sure there are exactly **10** debug logs - which denotes successful installation.
+    - Toggle right controller, **Hold** B and (make sure you have microphone on!) say "Select buildings on my left and make them taller"
+    - You should see those buildings get filtered and show on the Expand Panel as follows and become taller, if yes, you are good to go!
 
+![StartScene Sample Command](images/StartScene-SampleCommand.png)
 
-## Samples
-Inside the Samples folder, we have a sample scene called CityDemo with the package implemented inside the Scene. 
-This scene uses an urban planning environment to call different buildings, cars, trees, etc. in different locations / streets.
+### Tutorial
+
+- (1) In "Stater Assets", you'll find "StarterScene-Empty" and "StarterScene-Complete". 
+    - Follow the following steps to upgrade "StarterScene-Empty" to the "StarterScene-Complete" version.
+    - You can use "StarterScene-Complete" as a reference to ensure correct completion of the tutorial.
+- (2) Place the following prefabs into the Unity Hierarchy
+    - Place *Voice2Action* anywhere
+    - Place *Voice2ActionGUI* as a child of *XR Origin (XR Rig) > Camera Offset > Left Controller* (tips: this is for convenience, you can put it anywhere)
+- (3) Create an empty parent gameobject to hold all interactables, name it "Default Interactable" (tips: this is for convenience, you can name it anything)
+    - create sub-parent gameobjects and name them the object types that their children will have
+    - for example, if your have some "Buildings" gameobjects, put them under here - the system will recognize their object types by this name
+    - let's put some primary cubes as children gameobjects to "Buildings", name them anything
+    - The following should be your current Hierarchy (except possible difference under "Default Interactable")
+
+![StartScene Hierarchy](images/StartScene-Complete.png)
+
+- (4) Click on *Voice2Action > SceneManager* to open its inspector
+    - attach *Left/Right Ray Interactor* to its corresponding gameobject
+    - attach *XR Origin Camera* to its corresponding gameobject
+    - you want to get the following setup
+
+![StartScene SceneManager](images/StartScene-SceneManager.png)
+
+- (5) Click on *VoiceIntentController* to open its inspector
+    - attach *Voice2ActionGUIScrollText* to its corresponding gameobject
+    - attach *SpeakingFeedbackPanel* to its corresponding gameobject
+    - attach *Interactable* to the parent gameobject we created in step 3
+    - *MyInteractable* can be left empty, see "Advanced" section for its usage
+    - you want to get the following setup
+
+![StartScene VoiceIntentController](images/StartScene-VoiceIntentController.png)
+
+- (6) Lastly, for the UI to take effect
+    - on *XR Origin (XR Rig)*, attach the *InputActionManager* preset to the component 
+    - you want to get the following setup
+
+![StartScene InputActions](images/StartScene-InputActions.png)
+
+- Now you should be good to use the system - hit play and make sure the result matches exactly to that of the "Get Started" section
+
+**Custom Scene**
+
+- Now you are familiar with the setup, for your custom scene, the steps are exactly the same - follow precisely step (2, 3, 4, 5) in the tutorial
+- Only thing you might want to keep in mind is that the Voice2Action system filter objects by making the unmatched objects transparent, so if your object's material is non-transparent, they might still show (visually), but not on the Expand Panel
+- See below for detailed customization in UI and the use of LLMs if you want to operate customized functions as well
+
+### UI Customization
+
+**Interactables**
+
+By default, all interactable objects are grouped under a parent game object. This enables the system to specify different groups of objects types by their names, the following image shows the example in "Samples/CityDemo".
+
+![Interactables Hierarchy](images/InteractablesHierarchy.png)
+
+**My Interactables**
+
+User can customizably define how they wish to detect objects as well. For example, in "Samples/CityDemo", we use *MyInteractables* as entry for detecting landmarks, which is used to call objects located in a specific area. The is very flexible as user can override all behaviors of this gameobject by simply attaching it to the serialize field of *VoiceIntentController*. For example, we can use tags, materials, positions to detect objects, just to name a few.
+
+![My Interactable Hierarchy](images/MyInteractablesHirerachy.png)
+
+**Expand Panel**
+
+The Expand Panel is used to store the objects you've called that will be "expanded" in front of you. When you highlight over an object that is presented to you in the expand panel, it will show a raycast indicating the location of the object as well as general information of the object.
+
+![Expand Panel](images/ExpandPanel.png)
+
+### LLMs Customization (Advanced)
+
+- The user can customizably define their own classes and functions for broader interaction categories.
+- You want to write code that follows the instructions **exactly** as specified as follows - reflection (or [Unity profiling](https://docs.unity3d.com/Manual/Profiler.html)) is used for the system to perform its core functionality, and it would be quite hard to debug (although we provide extensive error prevention) if you did them wrong.
+- You can open "Samples/CityDemo" and play around with it to better understand the system.
+    - make sure to follow step (6) in the tutorial for the UI to take effect
+
+### Custom Actions
+
+- Go to *Voice2Action > PropertyController (Game Object)*. 
+    - Write atomic functions by inheriting *Embeddings.cs* and *ShapeController.cs* classes.
+    - Example usage can be found in "Samples/CityDemo/Scripts/MyEmbeddings.cs" and "Samples/CityDemo/Scripts/MyShapeController.cs".
+- Attach this customized *PropertyController* to *Voice2Action > VoiceIntentController (Game Object) > VoiceIntentController (Scripts) > CustomAction* to take effect.
+- When the scene starts, *MyShapeController* field will become *None* (on purpose), which indicates success.
+
+**Example: LandMark**
+
+In order to call an object near certain street, we want to specify where the boundaries that street is by writing atomic functions that define "boundaries".
+- *MyEmbeddings.cs* is used to initialize where the landmarks are and store them in a publicly available data structure (like a dictionary, for example).
+- *MyShapeController.cs* is used to write functions that specify what it means by "object is within current landmark's boundary".
+- Now, when the user calls for objects near Main Street, it will call all the objects that are near the strip of land shown below.
+
+![Landmark](images/LandMark.png)
+
+### Custom Properties
+
+In order for the LLMs to perform accruate actions, the user can choose to add few-shot examples to demonstrate how to call each action, including but not limited to class/function/atomic action description, constraints, execution orders and confidence thresholds.
+
+![Property Controller](images/PropertyController.png)
+
+**Property Classifier**
+
+An example customization of the "LLM for Classification" step implemented in "Samples/CityDemo", e.g. does user instruction contains selection or modification?
+- *Instruction* must contain "{}" for property insertion. 
+- Lower *orders* indicate higher priorities. 
+- *Indicators* are used to specify constraints or remarks of the properties.
+
+User can either declare properties in the Unity hierarchy directly, or do so with code by overriding "Embeddings.Init(My)Interactables(...)", see "Samples/CityDemo/Scripts/MyEmbeddings.cs" for more details.
+
+![Property Classifier](images/PropertyClassifier.png)
+
+**Property Extractor**
+
+An example customization of the "LLM for Extraction" step implemented in "Samples/CityDemo". The hierarchy follows "LLM for Classification".
+
+![Property Extractor](images/PropertyExtractor.png)
+
+**Propety Executor**
+
+An example customization of the "LLM for Execution" step implemented in "Samples/CityDemo". This is not required but will likely improve execution success rate.
+
+- *params* are used to declare parameter types and their example usages.
+
+![Property Executor](images/PropertyExecutor.png)
+
+### Limitations and Future Features
+
+The current Voice2Action package only supports **inference**, i.e. you cannot fine-tune your model based on domain-specific action types. We plan to open source that in future versions if the package becomes popular.

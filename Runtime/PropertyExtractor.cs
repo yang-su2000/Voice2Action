@@ -13,20 +13,8 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
     /// </summary>
     public class PropertyExtractor: MonoBehaviour
     {
-        /// <value>Contains the available atomic action properties to interact with for selection and their example usage.</value>
-        /// <example>
-        /// Extract actions {"GetShape", "GetColor", "GetDirection", "GetDistance", "GetSuperlative"} from the input, separate by comma. <br/>
-        /// If some actions do not exist, do not print anything. <br/>
-        /// Input: <br/>
-        /// {more input examples} <br/>
-        /// Output: <br/>
-        /// {more output examples} <br/>
-        /// ... {add some more if there's budget} <br/>
-        /// Input: <br/>
-        /// {userInput} <br/>
-        /// Output: <br/>
-        /// </example>
-        public Utils.FewShotGroup m_SelectionGroup = new(
+        [SerializeField]
+        private Utils.FewShotGroup m_SelectionGroup = new(
             instruction: "Extract actions {} from the input, separate by comma.",
             indicators: new List<string>
             {
@@ -79,21 +67,9 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
                 ),
             }
         );
-
-        /// <value>Contains the available atomic action properties to interact with for modification and their example usage.</value>
-        /// <example>
-        /// Extract actions {"ModifyColor", "ModifyScale", "ModifyPosition"} from the input, separate by comma. <br/>
-        /// If some actions do not exist, do not print anything. <br/>
-        /// Input: <br/>
-        /// {more input examples} <br/>
-        /// Output: <br/>
-        /// {more output examples} <br/>
-        /// ... {add some more if there's budget} <br/>
-        /// Input: <br/>
-        /// {userInput} <br/>
-        /// Output: <br/>
-        /// </example>
-        public Utils.FewShotGroup m_ModificationGroup = new(
+        
+        [SerializeField]
+        private Utils.FewShotGroup m_ModificationGroup = new(
             instruction: "Extract actions {} from the input, separate by comma.",
             indicators: new List<string>
             {
@@ -133,6 +109,55 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
             }
         );
         
+        /// <value>Contains the available atomic action properties to interact with for selection and their example usage.</value>
+        /// <example>
+        /// Extract actions {"GetShape", "GetColor", "GetDirection", "GetDistance", "GetSuperlative"} from the input, separate by comma. <br/>
+        /// If some actions do not exist, do not print anything. <br/>
+        /// Input: <br/>
+        /// {more input examples} <br/>
+        /// Output: <br/>
+        /// {more output examples} <br/>
+        /// ... {add some more if there's budget} <br/>
+        /// Input: <br/>
+        /// {userInput} <br/>
+        /// Output: <br/>
+        /// </example>
+        public Utils.FewShotGroup selectionGroup
+        {
+            get => m_SelectionGroup;
+            set => m_SelectionGroup = value;
+        }
+        
+        /// <value>Contains the available atomic action properties to interact with for modification and their example usage.</value>
+        /// <example>
+        /// Extract actions {"ModifyColor", "ModifyScale", "ModifyPosition"} from the input, separate by comma. <br/>
+        /// If some actions do not exist, do not print anything. <br/>
+        /// Input: <br/>
+        /// {more input examples} <br/>
+        /// Output: <br/>
+        /// {more output examples} <br/>
+        /// ... {add some more if there's budget} <br/>
+        /// Input: <br/>
+        /// {userInput} <br/>
+        /// Output: <br/>
+        /// </example>
+        public Utils.FewShotGroup modificationGroup
+        {
+            get => m_ModificationGroup;
+            set => m_ModificationGroup = value;
+        }
+        
+        /// <param name="action">The action that userInput belongs to.</param>
+        /// <param name="userInput">Input user instruction.</param>
+        /// <returns>Formatted extraction input.</returns>
+        private string GetExtractionPrompt(string action, string userInput)
+        {
+            if (action == "select") return m_SelectionGroup.GetPrompt(userInput);
+            if (action == "modify") return m_ModificationGroup.GetPrompt(userInput);
+            Debug.LogWarning("action class does not exist: " + action);
+            return Utils.k_FailureResponse;
+        }
+        
         /// <summary>
         /// Add new atomic action property to the extractor, used for customized properties. <br/>
         /// The user may also want to AddExtractExamples(...) to ensure accurate results. <br/>
@@ -144,13 +169,13 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
         {
             if (action == "select")
             {
-                m_SelectionGroup.m_Orders.Add(order);
-                m_SelectionGroup.m_Properties.Add(newAtomicAction);
+                m_SelectionGroup.orders.Add(order);
+                m_SelectionGroup.properties.Add(newAtomicAction);
             }
             else if (action == "modify")
             {
-                m_ModificationGroup.m_Orders.Add(order);
-                m_ModificationGroup.m_Properties.Add(newAtomicAction);
+                m_ModificationGroup.orders.Add(order);
+                m_ModificationGroup.properties.Add(newAtomicAction);
             }
             else
             {
@@ -166,21 +191,10 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
         /// <param name="output">Example desired model output.</param>
         public void AddExtractionExamples(string action, string input, string output)
         {
-            Utils.FewShotPair examplePair = new Utils.FewShotPair(input, output);
-            if (action == "select") m_SelectionGroup.m_FewShotPairs.Add(examplePair);
-            else if (action == "modify") m_ModificationGroup.m_FewShotPairs.Add(examplePair);
+            var examplePair = new Utils.FewShotPair(input, output);
+            if (action == "select") m_SelectionGroup.fewShotPairs.Add(examplePair);
+            else if (action == "modify") m_ModificationGroup.fewShotPairs.Add(examplePair);
             else Debug.LogWarning("action class does not exist: " + action);
-        }
-        
-        /// <param name="action">The action that userInput belongs to.</param>
-        /// <param name="userInput">Input user instruction.</param>
-        /// <returns>Formatted extraction input.</returns>
-        private string GetExtractionPrompt(string action, string userInput)
-        {
-            if (action == "select") return m_SelectionGroup.GetPrompt(userInput);
-            if (action == "modify") return m_ModificationGroup.GetPrompt(userInput);
-            Debug.LogWarning("action class does not exist: " + action);
-            return Utils.k_FailureResponse;
         }
 
         /// <summary>
@@ -197,7 +211,7 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
         {
             var extractionPrompt = GetExtractionPrompt(action, userInput);
             Debug.Log($"{action} extractionPrompt: {extractionPrompt}");
-            OrderedDictionary extractDict = new OrderedDictionary();
+            var extractDict = new OrderedDictionary();
             string extractionOutput;
             try
             {
@@ -225,23 +239,23 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
                 {
                     var targetProperty = propertyTuple[0];
                     var targetFeature = propertyTuple[1];
-                    if (extractionGroup.m_Properties.Contains(targetProperty))
+                    if (extractionGroup.properties.Contains(targetProperty))
                     {
                         Debug.Log($"<color=green>{action}: [{targetProperty}] -> [{targetFeature}]</color>\n");
                         extractDict.Add(targetProperty, targetFeature);
                     }
                 }
             }
-            List<(int, string)> orderedExtractList = new List<(int, string)>();
-            for (int i = 0; i < extractionGroup.m_Properties.Count; i++)
+            var orderedExtractList = new List<(int, string)>();
+            for (var i = 0; i < extractionGroup.properties.Count; i++)
             {
-                if (extractDict.Contains(extractionGroup.m_Properties[i]))
+                if (extractDict.Contains(extractionGroup.properties[i]))
                 {
-                    orderedExtractList.Add((extractionGroup.m_Orders[i], extractionGroup.m_Properties[i]));
+                    orderedExtractList.Add((extractionGroup.orders[i], extractionGroup.properties[i]));
                 }
             }
             orderedExtractList.Sort();
-            OrderedDictionary orderedExtractDict = new OrderedDictionary();
+            var orderedExtractDict = new OrderedDictionary();
             foreach (var (_, targetProperty) in orderedExtractList)
             {
                 orderedExtractDict.Add(targetProperty, extractDict[targetProperty]);

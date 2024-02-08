@@ -16,6 +16,59 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Samples.CityDemo.Scripts
     /// </remarks>
     public class MyEmbeddings : Embeddings
     {
+        // <Abstract-Code-Example>
+        // public static readonly Dictionary<string, object> m_PropertyMap = new();
+        // public static void AddProperty(string propertyName, propertyType propertyValue)
+        // {
+        //     m_PropertyMap[propertyName] = propertyValue;
+        // }
+        // </Abstract-Code-Example>
+        // -------------------------Caution----------------------
+        // m_PropertyMap MUST be public and of Type Dictionary<string, object>, there are important for Voice2Action to work properly.
+        // The reason behind is that we will use reflection to match these information.
+        // -------------------------Caution----------------------
+        
+        private Dictionary<string, object> m_AddressMap = new()
+        {
+            // {"Voice2Action Origin", new List{ 40.759f, 40.760f, -73.947f, -73.948f },
+        };
+
+        /// <value>
+        /// Example property mapping: address.
+        /// </value>
+        /// <remarks>
+        /// Used for reflection in PropertyExecutor. <br/>
+        /// Key: must be a string literal, e.g. "Main Street", "Voice2Action Origin". <br/>
+        /// Value: customizable, here we use a tuple to denote the (x1, x2, z1, z2) range position of the "address", where y-axis (height) is ignored. <br/>
+        /// Users can <br/>
+        /// 1. define default (key, value) pairs. <br/>
+        /// 2. let the system to update them when the scene starts. <br/>
+        /// If choosing 1., write it in the dictionary directly. <br/>
+        /// If choosing 2., use "AddProperty(...)" function to update by calling it in "InitMyInteractable(...)". <br/>
+        /// </remarks>
+        public Dictionary<string, object> addressMap
+        {
+            get => m_AddressMap;
+            set => m_AddressMap = value;
+        }
+        
+        /// <summary>
+        /// Add/Modify address mapping to/of the system.
+        /// </summary>
+        /// <remarks>
+        /// Note that the propertyType ("GameObject") is highly customizable, it can be any type as long as the user properly defines how the actual propertyValue,
+        /// i.e., (x1, x2, z1, z2) position of the GameObject is calculated.
+        /// </remarks>
+        /// <param name="addressName">Key, e.g. "Main Street"</param>
+        /// <param name="addressObject">Value, e.g. GameObject, Transform, any type that can be used to determine the "address" of this instance.</param>
+        private void AddAddress(string addressName, GameObject addressObject)
+        {
+            var bound = addressObject.GetComponent<MeshCollider>().bounds;
+            var bottomLeft = bound.center - bound.extents;
+            var upperRight = bound.center + bound.extents;
+            m_AddressMap[addressName] = new List<float>{ bottomLeft.x, upperRight.x, bottomLeft.z, upperRight.z };
+        }
+        
         /// <summary>
         /// The entry point for initializing all property LLMs (large language models). <br/>
         /// </summary>
@@ -51,13 +104,13 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Samples.CityDemo.Scripts
             // add function call group
             // the system will be updated in how actions can be performed
             // note that some functions are doing embedding matches (i.e. GetAddress), they are added differently: see MyEmbeddings.cs
-            executor.m_FunctionCallGroups.Add(
+            executor.functionCallGroups.Add(
                 new PropertyExecutor.FunctionCallGroup(
                     functionName: "GetColor",
                     functionDescription: "Extract the RGB value of given color."
                 )
             );
-            executor.m_FunctionCallGroups.Add(
+            executor.functionCallGroups.Add(
                 new PropertyExecutor.FunctionCallGroup(
                     functionName: "ModifyColor",
                     functionDescription: "Return the RGB value of given color."
@@ -69,16 +122,18 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Samples.CityDemo.Scripts
         /// Initializes user-defined components of the given parent interactable in the scene. <br/>
         /// </summary>
         /// <param name="defaultParentInteractable">Default game object that holds all interactable targets.</param>
-        /// <param name="myParentInteractable">User-defined game object that holds all interactable targets.</param>
+        /// <param name="myParentInteractable">Optional (can be null), user-defined game object that holds all interactable targets.</param>
         /// <param name="myShapeControllerType">Type of user-defined ShapeController.</param>
         public override void InitMyInteractable(GameObject defaultParentInteractable, GameObject myParentInteractable, Type myShapeControllerType)
         {
             // initialize each instance by their object type
             foreach (Transform category in defaultParentInteractable.transform)
             {
-                var parentShapeType = category.gameObject.name;
+                var parentShapeType = category.gameObject.name.ToLower();
                 foreach (Transform instance in category) InitMyInstance(instance.gameObject, parentShapeType);
             }
+
+            if (myParentInteractable == null) return;
             // initialize customized propertyMappings, i.e. Address of each object
             foreach (Transform myChildTransform in myParentInteractable.transform)
             {
@@ -112,53 +167,6 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Samples.CityDemo.Scripts
                     childRenderer.material.color = colorGroup;
                 }
             }
-        }
-        
-        // <Abstract-Code-Example>
-        // public static readonly Dictionary<string, object> m_PropertyMap = new();
-        // public static void AddProperty(string propertyName, propertyType propertyValue)
-        // {
-        //     m_PropertyMap[propertyName] = propertyValue;
-        // }
-        // </Abstract-Code-Example>
-        // -------------------------Caution----------------------
-        // m_PropertyMap MUST be public and of Type Dictionary<string, object>, there are important for Voice2Action to work properly.
-        // The reason behind is that we will use reflection to match these information.
-        // -------------------------Caution----------------------
-        
-        /// <value>
-        /// Example property mapping: address.
-        /// </value>
-        /// <remarks>
-        /// Used for reflection in PropertyExecutor. <br/>
-        /// Key: must be a string literal, e.g. "Main Street", "Voice2Action Origin". <br/>
-        /// Value: customizable, here we use a tuple to denote the (x1, x2, z1, z2) range position of the "address", where y-axis (height) is ignored. <br/>
-        /// Users can <br/>
-        /// 1. define default (key, value) pairs. <br/>
-        /// 2. let the system to update them when the scene starts. <br/>
-        /// If choosing 1., write it in the dictionary directly. <br/>
-        /// If choosing 2., use "AddProperty(...)" function to update by calling it in "InitMyInteractable(...)". <br/>
-        /// </remarks>
-        public Dictionary<string, object> m_AddressMap = new ()
-        {
-            // {"Voice2Action Origin", new List{ 40.759f, 40.760f, -73.947f, -73.948f },
-        };
-        
-        /// <summary>
-        /// Add/Modify address mapping to/of the system.
-        /// </summary>
-        /// <remarks>
-        /// Note that the propertyType ("GameObject") is highly customizable, it can be any type as long as the user properly defines how the actual propertyValue,
-        /// i.e., (x1, x2, z1, z2) position of the GameObject is calculated.
-        /// </remarks>
-        /// <param name="addressName">Key, e.g. "Main Street"</param>
-        /// <param name="addressObject">Value, e.g. GameObject, Transform, any type that can be used to determine the "address" of this instance.</param>
-        private void AddAddress(string addressName, GameObject addressObject)
-        {
-            var bound = addressObject.GetComponent<MeshCollider>().bounds;
-            var bottomLeft = bound.center - bound.extents;
-            var upperRight = bound.center + bound.extents;
-            m_AddressMap[addressName] = new List<float>{ bottomLeft.x, upperRight.x, bottomLeft.z, upperRight.z };
         }
     }
 }

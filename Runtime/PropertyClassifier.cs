@@ -12,41 +12,8 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
     /// </summary>
     public class PropertyClassifier: MonoBehaviour
     {
-        /// <value>System instruction for the classification model.</value>
-        public const string k_ClassificationInstruction = "You classify user input into exactly one category from the given categories. No explanation.";
-        
-        /// <param name="userInput">Original user input instruction.</param>
-        /// <param name="targets">Classes to classify user input into.</param>
-        /// <returns>Formatted classification input.</returns>
-        public static string GetClassificationPrompt(string userInput, List<string> targets)
-        {
-            if (targets.Count == 0)
-            {
-                Debug.LogWarning($"no category exists for classification input {userInput}");
-                return Utils.k_FailureResponse;
-            }
-            var ret = $"Classify {userInput} into one of";
-            foreach (var category in targets)
-            {
-                ret += $" \"{category}\"";
-            }
-            return ret;
-        }
-        
-        /// <value>Contains the available action classes to interact with for classification and their example usage.</value>
-        /// <example>
-        /// Extract actions "select, modify" from the input, separate by comma. <br/>
-        /// If some actions do not exist, do not print anything. <br/>
-        /// Input: <br/>
-        /// {input examples} <br/>
-        /// Output: <br/>
-        /// {output examples} <br/>
-        /// ... {add some more if there's budget} <br/>
-        /// Input: <br/>
-        /// {userInput} <br/>
-        /// Output: <br/>
-        /// </example>
-        public Utils.FewShotGroup m_ClassificationGroup = new (
+        [SerializeField]
+        private Utils.FewShotGroup m_ClassificationGroup = new (
             instruction: "Extract actions {} from the input, separate by comma.",
             indicators: new List<string>
             {
@@ -75,6 +42,46 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
                 ),
             }
         );
+        
+        /// <value>Contains the available action classes to interact with for classification and their example usage.</value>
+        /// <example>
+        /// Extract actions "select, modify" from the input, separate by comma. <br/>
+        /// If some actions do not exist, do not print anything. <br/>
+        /// Input: <br/>
+        /// {input examples} <br/>
+        /// Output: <br/>
+        /// {output examples} <br/>
+        /// ... {add some more if there's budget} <br/>
+        /// Input: <br/>
+        /// {userInput} <br/>
+        /// Output: <br/>
+        /// </example>
+        public Utils.FewShotGroup classificationGroup
+        {
+            get => m_ClassificationGroup;
+            set => m_ClassificationGroup = value;
+        }
+        
+        /// <value>System instruction for the classification model.</value>
+        public const string k_ClassificationInstruction = "You classify user input into exactly one category from the given categories. No explanation.";
+        
+        /// <param name="userInput">Original user input instruction.</param>
+        /// <param name="targets">Classes to classify user input into.</param>
+        /// <returns>Formatted classification input.</returns>
+        public static string GetClassificationPrompt(string userInput, List<string> targets)
+        {
+            if (targets.Count == 0)
+            {
+                Debug.LogWarning($"no category exists for classification input {userInput}");
+                return Utils.k_FailureResponse;
+            }
+            var ret = $"Classify {userInput} into one of";
+            foreach (var category in targets)
+            {
+                ret += $" \"{category}\"";
+            }
+            return ret;
+        }
 
         /// <summary>
         /// Add new action class to the classifier, used for customized actions. <br/>
@@ -83,9 +90,9 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
         /// <param name="order">Order of extraction of the new action.</param>
         /// <param name="newAction">New action to add.</param>
         public void AddAction(int order, string newAction)
-        {
-            m_ClassificationGroup.m_Orders.Add(order);
-            m_ClassificationGroup.m_Properties.Add(newAction);
+        { 
+            classificationGroup.orders.Add(order);
+            classificationGroup.properties.Add(newAction);
         }
 
         /// <summary>
@@ -95,8 +102,8 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
         /// <param name="output">Example desired model output.</param>
         public void AddClassificationExamples(string input, string output)
         {
-            Utils.FewShotPair examplePair = new Utils.FewShotPair(input, output);
-            m_ClassificationGroup.m_FewShotPairs.Add(examplePair);
+            var examplePair = new Utils.FewShotPair(input, output);
+            classificationGroup.fewShotPairs.Add(examplePair);
         }
         
         /// <summary>
@@ -110,9 +117,9 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
         /// </returns>
         public async Task<Dictionary<string, string>> ClassifyProperty(string userInput)
         {
-            var classificationPrompt = m_ClassificationGroup.GetPrompt(userInput);
+            var classificationPrompt = classificationGroup.GetPrompt(userInput);
             Debug.Log("classificationPrompt: " + classificationPrompt);
-            Dictionary<string, string> classifyDict = new Dictionary<string, string>();
+            var classifyDict = new Dictionary<string, string>();
             string classificationOutput;
             try
             {
@@ -131,7 +138,7 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
                 if (propertyTuple.Length > 1) {
                     var targetClass = propertyTuple[0];
                     var targetPhrases = propertyTuple[1];
-                    if (m_ClassificationGroup.m_Properties.Contains(targetClass)) {
+                    if (classificationGroup.properties.Contains(targetClass)) {
                         Debug.Log($"<color=yellow>classify: [{targetClass}] -> [{targetPhrases}]</color>\n");
                         classifyDict.Add(targetClass, targetPhrases);
                     }

@@ -36,48 +36,28 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
         /// <value>The instance of "LLM for Execution".</value>
         [SerializeField] private PropertyExecutor m_PropertyExecutor;
 
-        /// <value>One conversation history of users vs. AI.</value>
-        [Header("UI")]
-        [SerializeField] private TextMeshProUGUI m_MessageText;
-        
         /// <value>All history conversations of users vs. AI.</value>
-        [SerializeField] private GameObject m_ScrollText;
+        [Header("UI")]
+        [SerializeField] private GameObject m_Voice2ActionGUIScrollText;
         
-        /// <value>The instance of Expand Panel.</value>
-        [SerializeField] private GameObject m_SpeakingPanel;
+        /// <value>The instance of the Speaking Feedback Panel that indicates whether "speaking mode" is activated.</value>
+        [SerializeField] private GameObject m_SpeakingFeedbackPanel;
+
+        /// <value>The instance of SceneManager.</value>
+        [SerializeField] private SceneManager m_SceneManager;
         
         /// <value>[Debug] Displayed on the top left of the scene in play mode.</value>
         [SerializeField] private GUIStyle m_MessageGUI;
         
-        /// <summary>
-        /// Contains default game objects that the user want to interact with using Voice2Action. <br/>
-        /// To take effect, the user wants to attach it to the actual parent interactable in the Unity hierarchy before the game starts.
-        /// </summary>
-        /// <value>The default parent interactable.</value>
-        [Header("Custom Interactable")] 
-        public GameObject m_Interactable;
+        [Header("Custom Interactable")]
+        [SerializeField] private GameObject m_Interactable;
         
-        /// <summary>
-        /// Contains user-defined game objects that the user want to interact with using Voice2Action. <br/>
-        /// e.g. In CityDemo, this is defined as the parent for all "Address" game objects. <br/>
-        /// To take effect, the user wants to attach it to the actual parent interactable in the Unity hierarchy before the game starts. <br/>
-        /// To scale, the user can also put sub-parents under it and call them respectively in the user-defined property classes. <br/>
-        /// </summary>
-        /// <value>The customizable parent interactable.</value>
-        public GameObject m_MyInteractable;
+        [SerializeField] private GameObject m_MyInteractable;
         
-        /// <summary>
-        /// Contains user-defined fields and attributes for all atomic functions. Also used for customizable behavior in scene initialization.
-        /// </summary>
-        /// <value>The instance of user-defined Embeddings.</value>
         [Header("Custom Action")]
-        public Embeddings m_MyEmbeddings;
+        [SerializeField] private Embeddings m_MyEmbeddings;
         
-        /// <summary>
-        /// Contains user-defined interactable properties and actual implementations of all atomic functions.
-        /// </summary>
-        /// <value>The instance of user-defined ShapeController.</value>
-        public ShapeController m_MyShapeController;
+        [SerializeField] private ShapeController m_MyShapeController;
         
         /// <value>Type of user-defined Embeddings.</value>
         private Type m_MyEmbeddingsType;
@@ -130,22 +110,67 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
         /// <value>A dictionary where key = functionName, value = JsonSchema of that function in OpenAI API required format.</value>
         [Header("Function Params")]
         private Dictionary<string, Tool> m_ToolDict;
+
+        /// <summary>
+        /// Contains default game objects that the user want to interact with using Voice2Action. <br/>
+        /// To take effect, the user wants to attach it to the actual parent interactable in the Unity hierarchy before the game starts.
+        /// </summary>
+        /// <value>The default parent interactable.</value>
+        public GameObject interactable
+        {
+            get => m_Interactable;
+            set => m_Interactable = value;
+        }
+
+        /// <summary>
+        /// Contains user-defined game objects that the user want to interact with using Voice2Action. <br/>
+        /// e.g. In CityDemo, this is defined as the parent for all "Address" game objects. <br/>
+        /// To take effect, the user wants to attach it to the actual parent interactable in the Unity hierarchy before the game starts. <br/>
+        /// To scale, the user can also put sub-parents under it and call them respectively in the user-defined property classes. <br/>
+        /// </summary>
+        /// <value>The customizable parent interactable.</value>
+        public GameObject myInteractable
+        {
+            get => m_MyInteractable;
+            set => m_MyInteractable = value;
+        }
+
+        /// <summary>
+        /// Contains user-defined fields and attributes for all atomic functions. Also used for customizable behavior in scene initialization.
+        /// </summary>
+        /// <value>The instance of user-defined Embeddings.</value>
+        public Embeddings myEmbeddings
+        {
+            get => m_MyEmbeddings;
+            set => m_MyEmbeddings = value;
+        }
+
+        /// <summary>
+        /// Contains user-defined interactable properties and actual implementations of all atomic functions.
+        /// </summary>
+        /// <value>The instance of user-defined ShapeController.</value>
+        public ShapeController myShapeController
+        {
+            get => m_MyShapeController;
+            set => m_MyShapeController = value;
+        }
         
         private void Awake()
         {
-            m_MyShapeControllerType = m_MyShapeController.GetType();
-            DestroyImmediate(m_MyShapeController);
-            m_MyShapeController = null;
-            m_MyEmbeddingsType = m_MyEmbeddings.GetType();
-            m_MyEmbeddings.InitProperty(m_PropertyClassifier, m_PropertyExtractor, m_PropertyExecutor);
-            m_MyEmbeddings.InitInteractable(m_Interactable, m_MyShapeControllerType);
-            m_MyEmbeddings.InitMyInteractable(m_Interactable, m_MyInteractable, m_MyShapeControllerType);
+            m_MyShapeControllerType = myShapeController.GetType();
+            DestroyImmediate(myShapeController);
+            myShapeController = null;
+            m_MyEmbeddingsType = myEmbeddings.GetType();
+            myEmbeddings.InitProperty(m_PropertyClassifier, m_PropertyExtractor, m_PropertyExecutor);
+            myEmbeddings.InitInteractable(interactable, m_MyShapeControllerType);
+            myEmbeddings.InitMyInteractable(interactable, myInteractable, m_MyShapeControllerType);
             
             List<string> propertyFunctionNames = new List<string>();
-            propertyFunctionNames.AddRange(m_PropertyExtractor.m_SelectionGroup.m_Properties);
-            propertyFunctionNames.AddRange(m_PropertyExtractor.m_ModificationGroup.m_Properties);
+            propertyFunctionNames.AddRange(m_PropertyExtractor.selectionGroup.properties);
+            propertyFunctionNames.AddRange(m_PropertyExtractor.modificationGroup.properties);
             m_ToolDict = m_PropertyExecutor.InitFunctionCalls(m_MyShapeControllerType, propertyFunctionNames);
-            ShapeController.m_Player = GameObject.FindGameObjectWithTag("Player");
+            ShapeController.player = m_SceneManager.xrOriginCamera.gameObject;
+            InteractableTarget.sceneManager = m_SceneManager;
             
             m_AllControllers = FindObjectsOfType<ShapeController>();
             m_SelectedControllers = new bool[m_AllControllers.Length];
@@ -160,7 +185,7 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
             m_VoiceActivateAction.action.started += _ =>
             {
                 // m_AppVoiceActive = true; // <Debug Code>
-                m_SpeakingPanel.SetActive(true);
+                m_SpeakingFeedbackPanel.SetActive(true);
                 Debug.Log("OnAction Started");
                 m_AudioSource.clip = Microphone.Start(Microphone.devices[0], false, 10, 44100);
                 if (m_AudioSource == null)
@@ -171,13 +196,13 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
             m_VoiceActivateAction.action.canceled += async _ =>
             {
                 // m_AppVoiceActive = false; // <Debug Code>
-                m_SpeakingPanel.SetActive(false);
+                m_SpeakingFeedbackPanel.SetActive(false);
                 Debug.Log("OnAction Canceled");
-                if (Utils.m_OpenAIClient is null)
+                if (Utils.openAIClient == null)
                 {
                     try
                     {
-                        Utils.m_OpenAIClient = new OpenAIClient();
+                        Utils.openAIClient = new OpenAIClient();
                     }
                     catch (Exception e)
                     {
@@ -245,7 +270,7 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
             var request = new AudioTranscriptionRequest(audioClip, language: "en");
             try
             {
-                var result = await Utils.m_OpenAIClient.AudioEndpoint.CreateTranscriptionAsync(request);
+                var result = await Utils.openAIClient.AudioEndpoint.CreateTranscriptionAsync(request);
                 Debug.Log("Whisper: " + result);
                 m_OpenAIStatus = true;
                 return result;
@@ -268,7 +293,7 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
         private async Task CallVoice2Action(string prompt)
         {
             m_HistoryMessages.Add("<color=white>User:</color> <color=green>" + prompt + "</color>\n");
-            UpdateMessageDisplay("<color=white>User:</color> <color=green>" + prompt + "</color>");
+            UpdateMessageDisplay("<color=white>User:</color> <color=green>" + prompt + "</color>", m_Voice2ActionGUIScrollText);
             Dictionary<string, string> classifyDict = await m_PropertyClassifier.ClassifyProperty(prompt);
             var countControllers = 0;
             if (classifyDict.TryGetValue("select", out string selectionInput))
@@ -278,9 +303,8 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
                 {
                     m_OpenAIStatus = false;
                     m_HistoryMessages.Add("<color=white>Assistant: no objects selected\n</color>");
-                    UpdateMessageDisplay("<color=white>Assistant: no objects selected</color>");
+                    UpdateMessageDisplay("<color=white>Assistant: no objects selected</color>", m_Voice2ActionGUIScrollText);
                     m_FormattedMessage = PrintHistory(m_HistoryMessages);
-                    m_MessageText.text = m_FormattedMessage;
                 }
                 else
                 {
@@ -288,7 +312,7 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
                     ResetControllers();
                     m_SelectedControllers = await m_PropertyExecutor.ExecuteProperty(selectDict, m_ToolDict, 
                         m_MyShapeControllerType, m_AllControllers, m_SelectedControllers, 
-                        m_MyEmbeddingsType, m_MyEmbeddings,
+                        m_MyEmbeddingsType, myEmbeddings,
                         m_HistoryMessages);
                     m_FadeActive = true;
                     var countProxy = 0;
@@ -298,16 +322,15 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
                         countControllers++;
                         if (countProxy < SceneManager.k_MaxExpandNum)
                         {
-                            SceneManager.add_Expanding_and_Voodoo(m_AllControllers[i]);
+                            m_SceneManager.AddExpandingAndProxy(m_AllControllers[i]);
                             countProxy += 1;
                         }
                     }
                     m_HistoryMessages.Add("<color=white>Assistant:</color> <color=green>" + countControllers +
                                           " objects selected\n</color>");
                     UpdateMessageDisplay("<color=white>Assistant:</color> <color=green>" + countControllers +
-                                         " objects selected</color>");
+                                         " objects selected</color>", m_Voice2ActionGUIScrollText);
                     m_FormattedMessage = PrintHistory(m_HistoryMessages);
-                    m_MessageText.text = m_FormattedMessage;
                 }
             }
             if (classifyDict.TryGetValue("modify", out string modificationInput))
@@ -315,7 +338,7 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
                 OrderedDictionary modifyDict = await m_PropertyExtractor.ExtractProperty("modify", modificationInput);
                 m_SelectedControllers = await m_PropertyExecutor.ExecuteProperty(modifyDict, m_ToolDict, 
                     m_MyShapeControllerType, m_AllControllers, m_SelectedControllers, 
-                    m_MyEmbeddingsType, m_MyEmbeddings,
+                    m_MyEmbeddingsType, myEmbeddings,
                     m_HistoryMessages);
                 countControllers = 0;
                 foreach (var flag in m_SelectedControllers)
@@ -328,9 +351,8 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
                     m_HistoryMessages.Add("<color=white>Assistant:</color> <color=green>" + countControllers +
                                           " objects modified\n</color>");
                     UpdateMessageDisplay("<color=white>Assistant:</color> <color=green>" + countControllers +
-                                         " objects modified</color>");
+                                         " objects modified</color>", m_Voice2ActionGUIScrollText);
                     m_FormattedMessage = PrintHistory(m_HistoryMessages);
-                    m_MessageText.text = m_FormattedMessage;
                 }
             }
         }
@@ -352,7 +374,7 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
             string output = Utils.k_FailureResponse;
             try
             {
-                var chatResponse = await Utils.m_OpenAIClient.ChatEndpoint.GetCompletionAsync(chatRequest);
+                var chatResponse = await Utils.openAIClient.ChatEndpoint.GetCompletionAsync(chatRequest);
                 output = chatResponse.FirstChoice.ToString();
             }
             catch (Exception e)
@@ -379,7 +401,7 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
             string output = Utils.k_FailureResponse;
             try
             {
-                var chatResponse = await Utils.m_OpenAIClient.ChatEndpoint.GetCompletionAsync(chatRequest);
+                var chatResponse = await Utils.openAIClient.ChatEndpoint.GetCompletionAsync(chatRequest);
                 if (!string.IsNullOrEmpty(chatResponse.ToString()))
                 {
                     // TODO: improve this to support multi-turn conversations
@@ -408,7 +430,7 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
             {
                 m_SelectedControllers[i] = true;
             }
-            SceneManager.ClearProxies();
+            m_SceneManager.ClearProxies();
         }
 
         /// <summary>
@@ -416,8 +438,8 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
         /// </summary>
         private void ResetExpand()
         {
-            SceneManager.ClearProxies();
-            SceneManager.m_ExpandPanel.SetActive(false);
+            m_SceneManager.ClearProxies();
+            m_SceneManager.expandPanel.SetActive(false);
             for (int i = 0; i < m_SelectedControllers.Length; i++)
             {
                 m_SelectedControllers[i] = true;
@@ -429,10 +451,12 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
         /// Update the scroll view information.
         /// </summary>
         /// <param name="message">Message to view</param>
-        private void UpdateMessageDisplay(string message)
+        /// <param name="parentScrollView">Parent game object to append the message to.</param>
+        public static void UpdateMessageDisplay(string message, GameObject parentScrollView)
         {
-            var newText = new GameObject("newText");
-            newText.transform.SetParent(m_ScrollText.transform);
+            var newText = new GameObject(message);
+            newText.transform.SetParent(parentScrollView.transform);
+            newText.transform.SetSiblingIndex(0);
             newText.transform.localPosition = Vector3.zero;
             newText.transform.localRotation = Quaternion.identity;
             newText.transform.localScale = Vector3.one;
