@@ -121,4 +121,4 @@ Large Language Models (LLMs) are trained and aligned to follow natural language 
 ### Connect With Us
 
 - [XR Collabroatory @ Cornell](https://xr.cornell.edu/collaboratory)
-- *[Email](ys724@cornell.edu)*
+- Email: [ys724@cornell.edu]
