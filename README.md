@@ -42,18 +42,6 @@ Large Language Models (LLMs) are trained and aligned to follow natural language 
 
 <img src="fig/Voice2Action_example.PNG" width="800" height="375">
 
-<!-- - Industrial Prototype Engineering
-
-<img src="fig/city.jpg" width="800" height="500">
-
-- Interact with [Arkio](https://www.arkio.is/)
-
-<img src="fig/arkio.png" width="800" height="500">
-
-- MRTK3 with Figma
-
-<img src="fig/mrtk-figma.png" width="800" height="500"> -->
-
 ### Key Features
 
 - **Hierarchical Analysis**
@@ -110,5 +98,8 @@ Large Language Models (LLMs) are trained and aligned to follow natural language 
 
 ### Connect With Us
 
-- [XR Collabroatory @ Cornell](https://xr.cornell.edu/collaboratory)
-- Email: [ys724@cornell.edu]
+- [XR Collaboratory @ Cornell](https://xr.cornell.edu/collaboratory)
+- Email
+    - [ys724@cornell.edu] for Yang Su, Research Engineer
+    - [en268@cornell.edu] for Grace Nho, XR Developer and Designer
+    - [jx288@cornell.edu] for Jingze Xue, Game Designer
