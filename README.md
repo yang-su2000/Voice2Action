@@ -1,6 +1,6 @@
 # VR-Multimodal-Interaction
 
-2024-02-07 Update: Our Unity package "Voice to Action - Expand Interaction with LLMs" is open for beta testing!
+2024-02-13 Update: Our Unity package "Voice to Action - Multimodal Interaction with LLM Agents" is open for beta testing!
 
 [Voice to Action Unity Package v-0.0.1](https://xrc-students.github.io/xrc-students-fa2023-sp06-en268_jx288_ys724/)
 
@@ -14,9 +14,9 @@ This package uses LLMs (Large Language Models) to analyze user instruction throu
 
 ## Demo
 
-[Voice2Action](https://drive.google.com/file/d/159XWeBlK_tdkoEv76xrA5s78dy4UEPfS/view?usp=sharing)
+[Voice2Action v-0.0.1](https://drive.google.com/file/d/1vt0LqiVqYMkwFLfSo1ZvKmSYNohes_Mq/view?usp=sharing)
 
-[Voice2Action (old)](https://www.youtube.com/watch?v=bS-PrmOSAVc)
+[Voice2Action v-0.0.0](https://drive.google.com/file/d/159XWeBlK_tdkoEv76xrA5s78dy4UEPfS/view?usp=sharing)
 
 ## Paper - Voice2Action
 
@@ -121,4 +121,4 @@ Large Language Models (LLMs) are trained and aligned to follow natural language 
 ### Connect With Us
 
 - [XR Collabroatory @ Cornell](https://xr.cornell.edu/collaboratory)
-- [Community Forum (TBD)](https://github.com/yang-su2000/VR-Multimodal-Interaction)
+- Email: [ys724@cornell.edu]
