@@ -129,7 +129,7 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Samples.CityDemo.Scripts
             // initialize each instance by their object type
             foreach (Transform category in defaultParentInteractable.transform)
             {
-                var parentShapeType = category.gameObject.name.ToLower();
+                var parentShapeType = category.gameObject.name;
                 foreach (Transform instance in category) InitMyInstance(instance.gameObject, parentShapeType);
             }
 

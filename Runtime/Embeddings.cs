@@ -84,7 +84,7 @@ namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
         {
             foreach (Transform category in parentInteractable.transform)
             {
-                var parentShapeType = category.gameObject.name.ToLower();
+                var parentShapeType = category.gameObject.name;
                 shapeMap[parentShapeType] = parentShapeType;
                 foreach (Transform instance in category) InitInstance(instance.gameObject, parentShapeType, myShapeControllerType);
             }
