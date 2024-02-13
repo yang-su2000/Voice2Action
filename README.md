@@ -54,16 +54,6 @@ Large Language Models (LLMs) are trained and aligned to follow natural language 
 
 <img src="fig/mrtk-figma.png" width="800" height="500"> -->
 
-### Video
-
-- [Term 1 Final](https://drive.google.com/file/d/124bYdC-xJdPBfnGoTMYzD3i7H-uv6LQy/view?usp=sharing): Entity Selection and Expand in Industrial Design
-
-- [Voice2Action v1](https://drive.google.com/file/d/1aBnFjKaf-YRXj5mlfzjCzcBiivHBB9JC/view?usp=sharing): with [OpenAI API](https://openai.com/blog/openai-api)
-
-- [Voice2Action v0](https://youtu.be/bS-PrmOSAVc): with [Wit.ai](https://wit.ai/)
-
-- [Expand with Proxy](https://youtu.be/txuVBk85-gA)
-
 ### Key Features
 
 - **Hierarchical Analysis**
