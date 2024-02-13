@@ -1,6 +1,6 @@
 # VR-Multimodal-Interaction
 
-2024-02-07 Update: Our Unity package "Voice to Action - Expand Interaction with LLMs" is open for beta testing!
+2024-02-13 Update: Our Unity package "Voice to Action - Multimodal Interaction with LLM Agents" is open for beta testing!
 
 [Voice to Action Unity Package v-0.0.1](https://xrc-students.github.io/xrc-students-fa2023-sp06-en268_jx288_ys724/)
 
