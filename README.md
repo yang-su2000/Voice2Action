@@ -104,10 +104,10 @@ Large Language Models (LLMs) are trained and aligned to follow natural language 
 ### Connect With Us
 
 - [XR Collaboratory @ Cornell](https://xr.cornell.edu/collaboratory)
-- Email (alphabetical order by last name)
+- Email (alphabetical order)
     - [en268@cornell.edu] for Grace Nho, XR Developer and Designer
-    - [ys724@cornell.edu] for Yang Su, Machine Learning Research Engineer
     - [jx288@cornell.edu] for Jingze Xue, Game Developer and Designer
+    - [ys724@cornell.edu] for Yang Su, Machine Learning Research Engineer
 
 ### Limitations and Future Work
 
