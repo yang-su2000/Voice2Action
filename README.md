@@ -21,7 +21,7 @@ This package uses LLMs (Large Language Models) to analyze user instruction throu
     - We can also fine-tune our models based on domain-specific manipulation category requirements, stay tuned!
 - Scalability: Highly **Parallelizable**
     - While the current package is a minimal implementation of the full Voice2Action framework, all property classes can do their jobs in parallel without any intervention as they belongs to different manipulation categories.
-    - More importantly, by adapting Unity (Unreal, or other game engine) [Profiler](https://docs.unity3d.com/Manual/Profiler.html), we are able to integrate the LLMs function calling and feedback ability into Unity runtime, while maintaining the parallelizability of each rendering components, hence this framework is an initial attempt as "LLMs as co-operating system for game engines".
+    - More importantly, by adapting Unity (Unreal, or other game engine) functional impact analysis (including controlled experiments, parameterized testing, dependency analysis and [profiling](https://docs.unity3d.com/Manual/Profiler.html)), we are able to integrate the LLMs function calling and feedback ability into Unity runtime, while maintaining the parallelizability of each scripting and rendering components, hence this package is an initial attempt as a multi-agent collaboration framework for game engine code execution.
 
 ## Paper - Voice2Action
 
