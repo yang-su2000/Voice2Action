@@ -1,0 +1,569 @@
+{
+  "sitemap": {
+    "fileOptions": {
+      "api/*": {
+        "baseUrl": "https://xrc-students.github.io/voice2action/",
+        "changefreq": "daily"
+      }
+    },
+    "baseUrl": "https://xrc-students.github.io/voice2action/",
+    "changefreq": "weekly"
+  },
+  "homepages": [],
+  "source_base_path": "D:/a/VR-Multimodal-Interaction/VR-Multimodal-Interaction/Documentation~",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      },
+      "is_incremental": false
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XRC.Students.Voice2Action.Embeddings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XRC.Students.Voice2Action.Embeddings.html",
+          "hash": "dr1LRn7iM784+WTVrHdt2pEmgsmuhgL1F2QCn/PHLb8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XRC.Students.Voice2Action.InteractableTarget.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XRC.Students.Voice2Action.InteractableTarget.html",
+          "hash": "OIHWyGVnIATq8OSoVRkZrOtz0LJ6eKz7iLA7SpRUhU8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XRC.Students.Voice2Action.PropertyClassifier.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XRC.Students.Voice2Action.PropertyClassifier.html",
+          "hash": "5PoaphkkrEu1Il8gnLz/fdckOhiu2E9HhfHLithiy8M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XRC.Students.Voice2Action.PropertyExecutor.FunctionCallGroup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XRC.Students.Voice2Action.PropertyExecutor.FunctionCallGroup.html",
+          "hash": "+etwrTLAOB9przakbD4x3XJylF2YRds/+hXfbLr4BAA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XRC.Students.Voice2Action.PropertyExecutor.FunctionParamGroup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XRC.Students.Voice2Action.PropertyExecutor.FunctionParamGroup.html",
+          "hash": "967a/rzZLwVddb+WwhcKxwsR9u3WdWzECuV0Ay009CA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XRC.Students.Voice2Action.PropertyExecutor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XRC.Students.Voice2Action.PropertyExecutor.html",
+          "hash": "7X6NAL3kGIf4u87WOwKVzTyBFS/Y3I1dO0FWEnjMubo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XRC.Students.Voice2Action.PropertyExtractor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XRC.Students.Voice2Action.PropertyExtractor.html",
+          "hash": "63xXp1PNe9jjhS4nlFLYcXBWCWCNfOUEEVBqpL/rDHI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XRC.Students.Voice2Action.SceneManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XRC.Students.Voice2Action.SceneManager.html",
+          "hash": "QX3Y9WVXKTVyhkOkQqdUb0q+Emsft35vkDIhEohInVE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XRC.Students.Voice2Action.ShapeController.PropertyMethodAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XRC.Students.Voice2Action.ShapeController.PropertyMethodAttribute.html",
+          "hash": "zGHyMJIDrh7OevQu8gXjKAtVuQ+SIIw93RG+LuDVg4w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XRC.Students.Voice2Action.ShapeController.PropertyParameterAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XRC.Students.Voice2Action.ShapeController.PropertyParameterAttribute.html",
+          "hash": "L6ggPUbMvVggZzh1LS5jDAWa5iMknvLGPIvxBG1K9vA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XRC.Students.Voice2Action.ShapeController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XRC.Students.Voice2Action.ShapeController.html",
+          "hash": "4aRcf91M0MIlf59qg2PqDLV8aYlh9gsVUy5CBDn4XlI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XRC.Students.Voice2Action.Utils.FewShotGroup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XRC.Students.Voice2Action.Utils.FewShotGroup.html",
+          "hash": "UQYYCUjzC26cyIFQN+9pNnbeWNRCoo6yLlm1IrykKRs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XRC.Students.Voice2Action.Utils.FewShotPair.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XRC.Students.Voice2Action.Utils.FewShotPair.html",
+          "hash": "blwBRMkF63oU5coKv6k4FR0995DHA3LDCTU0R6UlYrE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XRC.Students.Voice2Action.Utils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XRC.Students.Voice2Action.Utils.html",
+          "hash": "1xAPUYUJ6Abu5EsIkB3i7jM5yqRD0XgP+wfOZkLLoT8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XRC.Students.Voice2Action.VoiceIntentController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XRC.Students.Voice2Action.VoiceIntentController.html",
+          "hash": "coCB1ZqHoQ/GExmXdG0dTki7MspaaGJ+8nYfcLZGv+4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XRC.Students.Voice2Action.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XRC.Students.Voice2Action.html",
+          "hash": "49Hs42SK4f4nqPBmz0ye1GEpF5cDcL4p2YEtbcFb7Wo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "/4816CaZsdlh6wtuKgZeMv0iuNLkns8163a5YWYXlIc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "changelog/CHANGELOG.md",
+      "output": {
+        ".html": {
+          "relative_path": "changelog/CHANGELOG.html",
+          "hash": "Z0U3JQr0bj/ZIgj1KYYLwc936Qj48wKOtiz53g+1/xE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "changelog/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "changelog/toc.html",
+          "hash": "j/R7VsgfMrRj2PSFCxNuNW5i4MM9bx8I75x/hK6u+GE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/ExpandPanel.PNG",
+      "output": {
+        "resource": {
+          "relative_path": "images/ExpandPanel.PNG"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/InteractablesHierarchy.PNG",
+      "output": {
+        "resource": {
+          "relative_path": "images/InteractablesHierarchy.PNG"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/LandMark.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/LandMark.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/MyInteractablesHirerachy.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/MyInteractablesHirerachy.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/PropertyClassifier.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/PropertyClassifier.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/PropertyController.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/PropertyController.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/PropertyExecutor.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/PropertyExecutor.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/PropertyExtractor.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/PropertyExtractor.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/StartScene-Complete.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/StartScene-Complete.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/StartScene-InputActions.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/StartScene-InputActions.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/StartScene-SampleCommand.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/StartScene-SampleCommand.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/StartScene-SceneManager.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/StartScene-SceneManager.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/StartScene-VoiceIntentController.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/StartScene-VoiceIntentController.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/Voice2ActionWorkflow.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/Voice2ActionWorkflow.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/VoiceIntentController.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/VoiceIntentController.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/logo.ico",
+      "output": {
+        "resource": {
+          "relative_path": "images/logo.ico"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/logo.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/logo.svg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "YFJvkk41e8kT+uJ5k/TvW+60sAsYqBcoU9coCE65AU4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "license/LICENSE.md",
+      "output": {
+        ".html": {
+          "relative_path": "license/LICENSE.html",
+          "hash": "sp+JZIrP3QqkeFpJjva9dqGWoa1FUO74nmUgm6PUooc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "license/Third Party Notices.md",
+      "output": {
+        ".html": {
+          "relative_path": "license/Third Party Notices.html",
+          "hash": "wUVxFzW8dT3/qelgM3eiOynkeax/Zvwu0EsIhY4Tq0E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "license/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "license/toc.html",
+          "hash": "zfXrFxQyL/X/Vbeg+7xqOf3aHkYVe/V+Maus03SZRXc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "manual/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "manual/toc.html",
+          "hash": "h045Zzl7v5xZInTWuYdhN6jLh26Rma5lA4mXbnjvKt4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "xIMRDYxuVn78Mx3YRAPisD8AZQ7CfQJIor5qLoFY4iE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot build incrementally because last build info is missing.",
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0,
+        "full_build_reason_code": "NoAvailableBuildCache"
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 4,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 16,
+          "skipped_file_count": 0
+        },
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: should not trace intermediate info.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

@@ -1,0 +1,350 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class SceneManager
+   | XRC Students Voice2Action </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class SceneManager
+   | XRC Students Voice2Action ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../images/logo.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="XRC.Students.Voice2Action.SceneManager">
+  
+  
+  <h1 id="XRC_Students_Voice2Action_SceneManager" data-uid="XRC.Students.Voice2Action.SceneManager" class="text-break">Class SceneManager
+  </h1>
+  <div class="markdown level0 summary"><p>The main class of Expand, contains all core required components for the system. <br>
+After Voice2Action executes the user&apos;s instructions, objects that got their status modified (i.e. selected) will fly onto the ExpandPanel. <br>
+Other objects that are not modified will become transparent and non-interactable. <br>
+Pressing the primary button on the RightRayInteractor will reset this step. <br></p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">SceneManager</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="XRC.Students.Voice2Action.html">XRC.Students.Voice2Action</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="XRC_Students_Voice2Action_SceneManager_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class SceneManager : MonoBehaviour</code></pre>
+  </div>
+  <h3 id="fields">Fields
+  </h3>
+  <h4 id="XRC_Students_Voice2Action_SceneManager_k_MaxExpandNum" data-uid="XRC.Students.Voice2Action.SceneManager.k_MaxExpandNum">k_MaxExpandNum</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int k_MaxExpandNum = 8</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><p>Maximum number of objects that are expanded and displayed on the Expand Panel</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <a id="XRC_Students_Voice2Action_SceneManager_expandPanel_" data-uid="XRC.Students.Voice2Action.SceneManager.expandPanel*"></a>
+  <h4 id="XRC_Students_Voice2Action_SceneManager_expandPanel" data-uid="XRC.Students.Voice2Action.SceneManager.expandPanel">expandPanel</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GameObject expandPanel { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GameObject</span></td>
+        <td><p>The Expand Panel that holds and displays all the expanded objects</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="XRC_Students_Voice2Action_SceneManager_xrOriginCamera_" data-uid="XRC.Students.Voice2Action.SceneManager.xrOriginCamera*"></a>
+  <h4 id="XRC_Students_Voice2Action_SceneManager_xrOriginCamera" data-uid="XRC.Students.Voice2Action.SceneManager.xrOriginCamera">xrOriginCamera</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Camera xrOriginCamera { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Camera</span></td>
+        <td><p>XROrigin Camera</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="XRC_Students_Voice2Action_SceneManager_AddExpandingAndProxy_" data-uid="XRC.Students.Voice2Action.SceneManager.AddExpandingAndProxy*"></a>
+  <h4 id="XRC_Students_Voice2Action_SceneManager_AddExpandingAndProxy_XRC_Students_Voice2Action_ShapeController_" data-uid="XRC.Students.Voice2Action.SceneManager.AddExpandingAndProxy(XRC.Students.Voice2Action.ShapeController)">AddExpandingAndProxy(ShapeController)</h4>
+  <div class="markdown level1 summary"><p>Add original and proxy object in this function, at the end of the frame, it would lerp all proxy object in front of users.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddExpandingAndProxy(ShapeController original)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="XRC.Students.Voice2Action.ShapeController.html">ShapeController</a></td>
+        <td><span class="parametername">original</span></td>
+        <td><p>original ShapeController</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="XRC_Students_Voice2Action_SceneManager_ClearProxies_" data-uid="XRC.Students.Voice2Action.SceneManager.ClearProxies*"></a>
+  <h4 id="XRC_Students_Voice2Action_SceneManager_ClearProxies" data-uid="XRC.Students.Voice2Action.SceneManager.ClearProxies">ClearProxies()</h4>
+  <div class="markdown level1 summary"><p>Destroy all proxy objects.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ClearProxies()</code></pre>
+  </div>
+  <a id="XRC_Students_Voice2Action_SceneManager_NotifyActivated_" data-uid="XRC.Students.Voice2Action.SceneManager.NotifyActivated*"></a>
+  <h4 id="XRC_Students_Voice2Action_SceneManager_NotifyActivated_Transform_" data-uid="XRC.Students.Voice2Action.SceneManager.NotifyActivated(Transform)">NotifyActivated(Transform)</h4>
+  <div class="markdown level1 summary"><p>Tell the sceneManager, some InteractableTarget is being activated.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void NotifyActivated(Transform otherTransform)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Transform</span></td>
+        <td><span class="parametername">otherTransform</span></td>
+        <td><p>transform of the object being called, used as the center of expand</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="XRC_Students_Voice2Action_SceneManager_NotifyProxySelected_" data-uid="XRC.Students.Voice2Action.SceneManager.NotifyProxySelected*"></a>
+  <h4 id="XRC_Students_Voice2Action_SceneManager_NotifyProxySelected_Transform_" data-uid="XRC.Students.Voice2Action.SceneManager.NotifyProxySelected(Transform)">NotifyProxySelected(Transform)</h4>
+  <div class="markdown level1 summary"><p>Notify all proxy objects that 1 proxy object is being grabbed, and destroy the rest.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void NotifyProxySelected(Transform grabbedProxyObject)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Transform</span></td>
+        <td><span class="parametername">grabbedProxyObject</span></td>
+        <td><p>Transform of be proxy object being grabbed</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="events">Events
+  </h3>
+  <h4 id="XRC_Students_Voice2Action_SceneManager_activateInteractable" data-uid="XRC.Students.Voice2Action.SceneManager.activateInteractable">activateInteractable</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Action&lt;Transform&gt; activateInteractable</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<span class="xref">Transform</span>&gt;</td>
+        <td><p>Invoked when one object is being activated. When invoked, it will call all InteractableTarget&apos;s expand_response.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 id="XRC_Students_Voice2Action_SceneManager_destroyObjectNotGrabbed" data-uid="XRC.Students.Voice2Action.SceneManager.destroyObjectNotGrabbed">destroyObjectNotGrabbed</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Action&lt;Transform&gt; destroyObjectNotGrabbed</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<span class="xref">Transform</span>&gt;</td>
+        <td><p>Invoked when one proxy is grabbed, to destroy all other proxy</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            XR Collaboratory
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

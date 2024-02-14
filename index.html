@@ -1,0 +1,344 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Voice to Action - Multimodal Interactions with LLM Agents | XRC Students Voice2Action </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Voice to Action - Multimodal Interactions with LLM Agents | XRC Students Voice2Action ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="images/logo.ico">
+    <link rel="stylesheet" href="styles/docfx.vendor.css">
+    <link rel="stylesheet" href="styles/docfx.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <meta property="docfx:navrel" content="toc.html">
+    <meta property="docfx:tocrel" content="manual/toc.html">
+    
+    <meta property="docfx:rel" content="">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="voice-to-action---multimodal-interactions-with-llm-agents">Voice to Action - Multimodal Interactions with LLM Agents</h1>
+
+<h3 id="overview">Overview</h3>
+<p>This package uses LLMs (Large Language Models) to analyze user instruction through action and entity extraction, and divides the execution tasks into canonical interaction subsets with error prevention from the game engine feedback. It combines an &quot;Expand&quot; interaction technique to create an innovative selection and manipulation mechanism for enhanced user experiences. </p>
+<p>By incorporating this package into your VR project, you can use voice commands to filter through multiple objects, create smaller, scaled-down versions of the original object called &quot;proxy objects&quot;, and bring the proxy objects into view. When you hover over the proxy object, it will show the user the information of the original object. A raycast will also show the user where the object is located. Users are then able to modify the properties of the filtered objects through customizable voice commands.</p>
+<p>For the original repository of the package, go to <a href="https://github.com/yang-su2000/VR-Multimodal-Interaction">Voice2Action GitHub Repository (Paper &amp; Package)</a></p>
+<h3 id="requirements">Requirements</h3>
+<ul>
+<li>Unity Version 2022.03</li>
+<li><a href="https://openupm.com/packages/com.openai.unity/">OpenAI UPM</a> Version 7.3.2<ul>
+<li>Must have OpenAI credentials: API Key and Organization ID</li>
+</ul>
+</li>
+</ul>
+<h3 id="package-contents">Package contents</h3>
+<p><strong>Overview</strong></p>
+<p>The user input would be sent to a parallelizable series of classes for LLMs to analyze and execute user-defined functions on given interactable targets (game objects) through functional impact analysis and reflection. User can customize the property manipulation categories of game objects by inheriting &quot;ShapeController.cs&quot; and customize their usage by inheriting &quot;Embeddings.cs&quot;. See &quot;Samples/CityDemo/Scripts/&quot; and the Advanced section below for more details.</p>
+<p><img src="images/Voice2ActionWorkflow.png" alt="Voice2Action Workflow"></p>
+<p><strong>Runtime</strong></p>
+<p>The runtime folder contains the core scripts of this package. There are 2 prefabs that the user wants to put into the scene to use Voice2Action customizably.</p>
+<ul>
+<li>The <strong>Voice2Action</strong> Prefab.<ul>
+<li>This prefab contains the core system of Voice2Action. User can put it anywhere they want.</li>
+</ul>
+</li>
+<li>The <strong>Voice2ActionGUI</strong> Prefab.<ul>
+<li>This prefab is for interaction. The user wants to put this prefab to somewhere comfortable, e.g. attach it to the left/right hand controller, as what we do in &quot;Samples&quot;.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Samples</strong></p>
+<ul>
+<li>&quot;Starter Assets&quot;<ul>
+<li>Contains essential prefabs and tutorial scenes of the Voice2Action system</li>
+<li>Contains two scenes &quot;StarterScene-Empty&quot; and &quot;StarterScene-Complete&quot;</li>
+<li>User can use these scenes to become familiar with the system, see the Tutorial section below for more information</li>
+</ul>
+</li>
+<li>&quot;CityDemo&quot;<ul>
+<li>Contains a scene &quot;CityScene&quot; with customized actions and properties</li>
+<li>User can use this scene for a thorough playthrough of the capabilities and limitations of the system, preparing them for Advanced usage of the system</li>
+<li>&quot;CityScene&quot; uses an urban planning environment to call different buildings, cars, trees, etc. in different directions / locations / streets, and user can modify the colors, sizes, positions of selected objects</li>
+</ul>
+</li>
+</ul>
+<h3 id="installation-instructions">Installation instructions</h3>
+<p>This package requires a 2-step installation process. </p>
+<p><strong>Prerequisites (Open AI UPM and XR Interaction Tookit)</strong></p>
+<ol>
+<li>Navigate to this page and follow the instructions to install the Open AI UPM package: <a href="https://openupm.com/packages/com.openai.unity/">https://openupm.com/packages/com.openai.unity/</a><ul>
+<li>Go to <strong>Windows &gt; Package Manager &gt; My Registries &gt; OpenAI &gt; Version History</strong> to check the OpenAI UPM version is <strong>7.3.2</strong>. If not, update the version</li>
+<li>(Optional but recommended) Restart your project as OpenAI UPM sometimes has configurations that are only updated after restarting Unity</li>
+</ul>
+</li>
+<li>In the Assets folder, create a folder titled &quot;<strong>Resources</strong>&quot;. </li>
+<li>Inside the folder, right click and select <strong>Create &gt; OpenAI &gt; OpenAIConfigurations</strong>. </li>
+<li>Enter your <em>API key</em> and <em>organization ID</em> from the OpenAI API user settings. Other fields can be left blank.</li>
+<li>Go to <strong>Windows &gt; Package Manager</strong>, install XR Interaction Toolkit Package.<ul>
+<li>In the Samples tab, import &quot;Starter Assets&quot; and &quot;Device Simulator&quot;</li>
+</ul>
+</li>
+</ol>
+<p><strong>Voice2Action Package</strong> </p>
+<ol>
+<li>In the Package Manager, click the &quot;+&quot; button on the left-hand corner. Select &quot;Add package through git URL.&quot; </li>
+<li>Add the package link <a href="https://github.com/xrc-students/voice2action.git">https://github.com/xrc-students/voice2action.git</a> into the URL field.<ul>
+<li>In the Samples tab, import &quot;Starter Assets&quot;</li>
+<li>(Optional) In the Samples tab, you can import <strong>CityDemo</strong> to see a sample scene of the usage of our package</li>
+</ul>
+</li>
+</ol>
+<h3 id="get-started">Get Started</h3>
+<ul>
+<li>Open &quot;Samples/Starter Assets/StarterScene-Complete&quot; and hit play, make sure there are exactly <strong>10</strong> debug logs - which denotes successful installation.<ul>
+<li>Toggle right controller, <strong>Hold</strong> B and say &quot;Select buildings on my left and make them taller&quot;<ul>
+<li>Make sure you have microphone on! If you see the system output &quot;you&quot;, it is mostly because that the microphone is not detected.</li>
+</ul>
+</li>
+<li>You should see those buildings get filtered and show on the Expand Panel as follows and become taller, if yes, you are good to go!</li>
+</ul>
+</li>
+</ul>
+<p><img src="images/StartScene-SampleCommand.png" alt="StartScene Sample Command"></p>
+<h3 id="tutorial">Tutorial</h3>
+<ul>
+<li><a href="https://drive.google.com/file/d/1v57kEXheWsnz9mDRum2bTXlCHYDKECTG/view?usp=sharing">Step-by-Step Tutorial Video</a></li>
+<li>(1) In &quot;Stater Assets&quot;, you&#39;ll find &quot;StarterScene-Empty&quot; and &quot;StarterScene-Complete&quot;<ul>
+<li>Follow the following steps to upgrade &quot;StarterScene-Empty&quot; to the &quot;StarterScene-Complete&quot; version</li>
+<li>You can use &quot;StarterScene-Complete&quot; as a reference to ensure correct completion of the tutorial</li>
+</ul>
+</li>
+<li>(2) Place the following prefabs into the Unity Hierarchy.<ul>
+<li>Place <strong>Voice2Action</strong> anywhere</li>
+<li>Place <strong>Voice2ActionGUI</strong> as a child of <strong>XR Origin (XR Rig) &gt; Camera Offset &gt; Left Controller</strong> (tips: this is for convenience, you can put it anywhere)</li>
+</ul>
+</li>
+<li>(3) Create an empty parent gameobject to hold all interactables, name it &quot;Default Interactable&quot; (tips: this is for convenience, you can name it anything).<ul>
+<li>Create sub-parent gameobjects and name them the object types that their children will have</li>
+<li>For example, if your have some &quot;Buildings&quot; gameobjects, put them under here - the system will recognize their object types by this name.</li>
+<li>Let&#39;s put some primary cubes as children gameobjects to &quot;Buildings&quot;, name them anything</li>
+<li>The following should be your current Hierarchy (except possible difference under &quot;Default Interactable&quot;)</li>
+</ul>
+</li>
+</ul>
+<p><img src="images/StartScene-Complete.png" alt="StartScene Hierarchy"></p>
+<ul>
+<li>(4) Click on <strong>Voice2Action &gt; SceneManager</strong> to open its inspector.<ul>
+<li>Attach &quot;Left/Right Ray Interactor&quot; to its corresponding gameobject</li>
+<li>Attach &quot;XR Origin Camera&quot; to its corresponding gameobject</li>
+<li>You want to get the following setup</li>
+</ul>
+</li>
+</ul>
+<p><img src="images/StartScene-SceneManager.png" alt="StartScene SceneManager"></p>
+<ul>
+<li>(5) Click on <strong>VoiceIntentController</strong> to open its inspector.<ul>
+<li>Attach &quot;Voice2ActionGUIScrollText&quot; to its corresponding gameobject</li>
+<li>Attach &quot;SpeakingFeedbackPanel&quot; to its corresponding gameobject</li>
+<li>Attach &quot;Interactable&quot; to the parent gameobject we created in step (3)</li>
+<li>&quot;MyInteractable&quot; can be left empty, see Advanced section below for its usage</li>
+<li>You want to get the following setup</li>
+</ul>
+</li>
+</ul>
+<p><img src="images/StartScene-VoiceIntentController.png" alt="StartScene VoiceIntentController"></p>
+<ul>
+<li>(6) Lastly, for the UI to take effect<ul>
+<li>On <strong>XR Origin (XR Rig)</strong>, attach the &quot;InputActionManager&quot; preset to the component </li>
+<li>You want to get the following setup</li>
+</ul>
+</li>
+</ul>
+<p><img src="images/StartScene-InputActions.png" alt="StartScene InputActions"></p>
+<ul>
+<li>Now you should be good to use the system - hit play and make sure the result matches exactly to that of the &quot;Get Started&quot; section</li>
+</ul>
+<p><strong>Custom Scene</strong></p>
+<ul>
+<li>To create a custom scene, follow steps 2-5 in the tutorial. <ul>
+<li>The Voice2Action system filters objects by making the unmatched objects transparent, so if your object&#39;s material is non-transparent, they might still show (visually), but not on the Expand Panel</li>
+</ul>
+</li>
+</ul>
+<h3 id="advanced---ui-customization">Advanced - UI Customization</h3>
+<p><strong>Interactables</strong></p>
+<p>By default, all interactable objects are grouped under a parent game object. This enables the system to specify different groups of objects types by their names, the following image shows the example in &quot;Samples/CityDemo&quot;.</p>
+<p><img src="images/InteractablesHierarchy.PNG" alt="Interactables Hierarchy"></p>
+<p><strong>My Interactables</strong></p>
+<p>User can customizably define how they wish to detect objects as well. For example, in &quot;Samples/CityDemo&quot;, we use <em>MyInteractables</em> as entry for detecting landmarks, which is used to call objects located in a specific area. The is very flexible as user can override all behaviors of this gameobject by simply attaching it to the serialize field of <em>VoiceIntentController</em>. For example, we can use tags, materials, positions to detect objects, just to name a few.</p>
+<p><img src="images/MyInteractablesHirerachy.png" alt="My Interactable Hierarchy"></p>
+<p><strong>Expand Panel</strong></p>
+<p>The Expand Panel is used to store the objects you&#39;ve called that will be &quot;expanded&quot; in front of you. When you highlight over an object that is presented to you in the expand panel, it will show a raycast indicating the location of the object as well as general information of the object.</p>
+<p><img src="images/ExpandPanel.PNG" alt="Expand Panel"></p>
+<h3 id="advanced---llms-customization">Advanced - LLMs Customization</h3>
+<ul>
+<li>The user can customizably define their own classes and functions for broader interaction categories.</li>
+<li>You want to write code that follows the instructions <strong>exactly</strong> as specified as follows - reflection is used for the system to perform its core functionality, and it would be quite hard to debug (although we provide extensive error prevention) if you did them wrong.</li>
+<li>You can open &quot;Samples/CityDemo&quot; and play around with it to better understand the system.<ul>
+<li>Make sure to follow step (6) in the tutorial for the UI to take effect</li>
+</ul>
+</li>
+</ul>
+<h3 id="custom-actions">Custom Actions</h3>
+<ul>
+<li>Go to <strong>Voice2Action &gt; PropertyController (Game Object)</strong>. <ul>
+<li>Write atomic functions by inheriting &quot;Embeddings.cs&quot; and &quot;ShapeController.cs&quot; classes</li>
+<li>Example usage can be found in &quot;Samples/CityDemo/Scripts/MyEmbeddings.cs&quot; and &quot;Samples/CityDemo/Scripts/MyShapeController.cs&quot;</li>
+</ul>
+</li>
+<li>Attach this customized &quot;PropertyController&quot; to <strong>Voice2Action &gt; VoiceIntentController (Game Object) &gt; VoiceIntentController (Scripts) &gt; CustomAction</strong> to take effect.</li>
+<li>When the scene starts, &quot;MyShapeController&quot; field will become <em>None</em> (on purpose), which indicates success.</li>
+</ul>
+<p><strong>Example: LandMark</strong></p>
+<p>In order to call an object near certain street, we want to specify where the boundaries that street is by writing atomic functions that define &quot;boundaries&quot;.</p>
+<ul>
+<li>&quot;MyEmbeddings.cs&quot; is used to initialize where the landmarks are and store them in a publicly available data structure (like a dictionary, for example)</li>
+<li>&quot;MyShapeController.cs: is used to write functions that specify what it means by &quot;object is within current landmark&#39;s boundary&quot;</li>
+<li>Now, when the user calls for objects near Main Street, it will call all the objects that are near the strip of land shown below</li>
+</ul>
+<p><img src="images/LandMark.png" alt="Landmark"></p>
+<h3 id="custom-properties">Custom Properties</h3>
+<p>In order for the LLMs to perform accruate actions, the user can choose to add few-shot examples to demonstrate how to call each action, including but not limited to class/function/atomic action description, constraints, execution orders and confidence thresholds.</p>
+<p><img src="images/PropertyController.png" alt="Property Controller"></p>
+<p><strong>Property Classifier</strong></p>
+<p>An example customization of the &quot;LLM for Classification&quot; step implemented in &quot;Samples/CityDemo&quot;, e.g. does user instruction contains selection or modification?</p>
+<ul>
+<li><em>Instruction</em> must contain &quot;{}&quot; for property insertion. </li>
+<li>Lower <em>orders</em> indicate higher priorities. </li>
+<li><em>Indicators</em> are used to specify constraints or remarks of the properties.</li>
+</ul>
+<p>User can either declare properties in the Unity hierarchy directly, or do so with code by overriding &quot;Embeddings.Init(My)Interactables(...)&quot;, see &quot;Samples/CityDemo/Scripts/MyEmbeddings.cs&quot; for more details.</p>
+<p><img src="images/PropertyClassifier.png" alt="Property Classifier"></p>
+<p><strong>Property Extractor</strong></p>
+<p>An example customization of the &quot;LLM for Extraction&quot; step implemented in &quot;Samples/CityDemo&quot;. The hierarchy follows &quot;LLM for Classification&quot;.</p>
+<p><img src="images/PropertyExtractor.png" alt="Property Extractor"></p>
+<p><strong>Propety Executor</strong></p>
+<p>An example customization of the &quot;LLM for Execution&quot; step implemented in &quot;Samples/CityDemo&quot;. This is not required but will likely improve execution success rate.</p>
+<ul>
+<li><em>params</em> are used to declare parameter types and their example usages.</li>
+</ul>
+<p><img src="images/PropertyExecutor.png" alt="Property Executor"></p>
+<h3 id="advantages">Advantages</h3>
+<ul>
+<li>Efficiency: Extremely <strong>Low Cost</strong><ul>
+<li>Based on our testing in the &quot;Samples/CityDemo&quot; with 2 ** (7+3) = 1024 function call combinations (with infinite argument combinations) and 100 * 32 = 3.2k user interaction (including multi-turn due to execution failure), our OpenAI API (with gpt-3.5-turbo) total cost ~= 5 USD, which converts to 0.16 cents per interaction!</li>
+</ul>
+</li>
+<li>Domain Adaptation: Highly <strong>Customizable</strong><ul>
+<li>User can customize their actions and properties by easily inheriting our Runtime scripts, see examples in the Advanced section for more details.</li>
+<li>We can also fine-tune our models based on domain-specific manipulation category requirements, stay tuned!</li>
+</ul>
+</li>
+<li>Scalability: Highly <strong>Parallelizable</strong><ul>
+<li>While the current package is a minimal implementation of the full Voice2Action framework, all property classes can do their jobs in parallel without any intervention as they belongs to different manipulation categories.</li>
+<li>More importantly, by adapting Unity (Unreal, or other game engine) functional impact analysis (including controlled experiments, parameterized testing, dependency analysis and <a href="https://docs.unity3d.com/Manual/Profiler.html">profiling</a>), we are able to integrate the LLMs function calling and feedback ability into Unity runtime, while maintaining the parallelizability of each scripting and rendering components, hence this package is an initial attempt as a multi-agent collaboration framework for game engine code execution.</li>
+</ul>
+</li>
+</ul>
+<h3 id="limitations-and-future-works">Limitations and Future Works</h3>
+<ul>
+<li>The current Voice2Action package only supports <strong>inference</strong>, i.e. you cannot fine-tune your model based on domain-specific action types. We plan to open source that in future versions.</li>
+<li>We plan to decouple the LLM feature and the Expand feature into different packages in future versions.</li>
+</ul>
+<h3 id="references">References</h3>
+<ul>
+<li><p>For the source of the Expand functionality, go to <a href="https://www.oreilly.com/library/view/3d-user-interfaces/9780134034478/">3D User Interfaces: Theory and Practice</a></p>
+</li>
+<li><p>For the reference to the original Expand paper, go to <a href="https://ieeexplore.ieee.org/abstract/document/6165145">Dense and Dynamic 3D Selction for Game-Based Virtual Environment - Cashion et al. (2012)</a></p>
+</li>
+<li><p>For the reference to the original Voice2Action paper, go to <a href="https://github.com/yang-su2000/VR-Multimodal-Interaction">Voice2Action GitHub Repository (Paper &amp; Package)</a></p>
+</li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            XR Collaboratory
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>
