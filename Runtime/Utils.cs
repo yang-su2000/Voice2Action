@@ -4,7 +4,7 @@ using OpenAI;
 using OpenAI.Models;
 using UnityEngine;
 
-namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
+namespace XRC.Students.Voice2Action
 {
     /// <summary>
     /// Stores all singleton fields, global constants, and utility functions.

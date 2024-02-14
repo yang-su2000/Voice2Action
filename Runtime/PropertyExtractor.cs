@@ -4,7 +4,7 @@ using System.Collections.Specialized;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
+namespace XRC.Students.Voice2Action
 {
     /// <summary>
     /// A minimal implementation of the "LLM for Extraction" step in Voice2Action. <br/>

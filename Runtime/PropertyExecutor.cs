@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 using OpenAI;
 using UnityEngine;
 
-namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
+namespace XRC.Students.Voice2Action
 {
     /// <summary>
     /// A minimal implementation of the "LLM for Execution" step in Voice2Action. <br/>

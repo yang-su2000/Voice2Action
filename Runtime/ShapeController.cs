@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.XR.Interaction.Toolkit;
 
-namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
+namespace XRC.Students.Voice2Action
 {
     /// <summary>
     /// Stores all actual implementations of the atomic function and attributes, must ALL be public for reflection. <br/>

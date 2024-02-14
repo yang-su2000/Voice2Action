@@ -20,7 +20,7 @@
     ],
     "build": {
         "globalMetadata": {
-            "_appTitle": "XRC Students fa2023-sp06-en268_jx288_ys724",
+            "_appTitle": "XRC Students Voice2Action",
             "_appFooter": "XR Collaboratory",
             "_enableSearch": true,
             "_disableContribution": true,
@@ -84,7 +84,7 @@
             }
         ],
         "sitemap": {
-            "baseUrl": "https://xrc-students.github.io/xrc-students-fa2023-sp06-en268_jx288_ys724",
+            "baseUrl": "https://xrc-students.github.io/voice2action",
             "changefreq": "weekly",
             "fileOptions": {
                 "api/*": {

@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine.Assertions;
 using UnityEngine.XR.Interaction.Toolkit;
 
-namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime
+namespace XRC.Students.Voice2Action
 {
     /// <summary>
     /// The main class of Expand, contains all core required components for the system. <br/>

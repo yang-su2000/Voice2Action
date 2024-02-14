@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using xrc_students_fa2023_sp06_en268_jx288_ys724.Runtime;
+using XRC.Students.Voice2Action;
 
-namespace xrc_students_fa2023_sp06_en268_jx288_ys724.Samples.CityDemo.Scripts
+namespace XRC.Students.Voice2Action.Samples.CityDemo.Scripts
 {
     /// <summary>
     /// Inherited class of ShapeController if users want to add customized atomic functions to the system.

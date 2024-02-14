@@ -18,7 +18,7 @@ For the original repository of the package, go to [Voice2Action GitHub Repositor
 
 **Overview**
 
-The user input would be sent to a parallelizable series of classes for LLMs to analyze and execute user-defined functions on given interactable targets (game objects) through profiling and reflection. User can customize the property manipulation categories of game objects by inheriting "ShapeController.cs" and customize their usage by inheriting "Embeddings.cs". See "Samples/CityDemo/Scripts/" and the Advanced section below for more details.
+The user input would be sent to a parallelizable series of classes for LLMs to analyze and execute user-defined functions on given interactable targets (game objects) through functional impact analysis and reflection. User can customize the property manipulation categories of game objects by inheriting "ShapeController.cs" and customize their usage by inheriting "Embeddings.cs". See "Samples/CityDemo/Scripts/" and the Advanced section below for more details.
 
 ![Voice2Action Workflow](images/Voice2ActionWorkflow.png)
 
@@ -59,7 +59,7 @@ This package requires a 2-step installation process.
 **Voice2Action Package** 
 
 1. In the Package Manager, click the "+" button on the left-hand corner. Select "Add package through git URL." 
-2. Add the package link [https://github.com/xrc-students/xrc-students-fa2023-sp06-en268_jx288_ys724.git](https://github.com/xrc-students/xrc-students-fa2023-sp06-en268_jx288_ys724.git) into the URL field.
+2. Add the package link [https://github.com/xrc-students/voice2action.git](https://github.com/xrc-students/voice2action.git) into the URL field.
     - In the Samples tab, import "Starter Assets"
     - (Optional) In the Samples tab, you can import **CityDemo** to see a sample scene of the usage of our package
 
@@ -141,7 +141,7 @@ The Expand Panel is used to store the objects you've called that will be "expand
 ### Advanced - LLMs Customization
 
 - The user can customizably define their own classes and functions for broader interaction categories.
-- You want to write code that follows the instructions **exactly** as specified as follows - reflection (or [Unity profiling](https://docs.unity3d.com/Manual/Profiler.html)) is used for the system to perform its core functionality, and it would be quite hard to debug (although we provide extensive error prevention) if you did them wrong.
+- You want to write code that follows the instructions **exactly** as specified as follows - reflection is used for the system to perform its core functionality, and it would be quite hard to debug (although we provide extensive error prevention) if you did them wrong.
 - You can open "Samples/CityDemo" and play around with it to better understand the system.
     - Make sure to follow step (6) in the tutorial for the UI to take effect
 
@@ -203,7 +203,7 @@ An example customization of the "LLM for Execution" step implemented in "Samples
   - We can also fine-tune our models based on domain-specific manipulation category requirements, stay tuned!
 - Scalability: Highly **Parallelizable**
   - While the current package is a minimal implementation of the full Voice2Action framework, all property classes can do their jobs in parallel without any intervention as they belongs to different manipulation categories.
-  - More importantly, by adapting Unity (Unreal, or other game engine) [Profiler](https://docs.unity3d.com/Manual/Profiler.html), we are able to integrate the LLMs function calling and feedback ability into Unity runtime, while maintaining the parallelizability of each rendering components, hence this framework is an initial attempt as "LLMs as co-operating system for game engines".
+  - More importantly, by adapting Unity (Unreal, or other game engine) functional impact analysis (including controlled experiments, parameterized testing, dependency analysis and [profiling](https://docs.unity3d.com/Manual/Profiler.html)), we are able to integrate the LLMs function calling and feedback ability into Unity runtime, while maintaining the parallelizability of each scripting and rendering components, hence this package is an initial attempt as a multi-agent collaboration framework for game engine code execution.
 
 ### Limitations and Future Works
 
