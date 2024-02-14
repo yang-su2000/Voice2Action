@@ -104,7 +104,12 @@ Large Language Models (LLMs) are trained and aligned to follow natural language 
 ### Connect With Us
 
 - [XR Collaboratory @ Cornell](https://xr.cornell.edu/collaboratory)
-- Email
-    - [ys724@cornell.edu] for Yang Su, Research Engineer
+- Email (alphabetical order by last name)
     - [en268@cornell.edu] for Grace Nho, XR Developer and Designer
-    - [jx288@cornell.edu] for Jingze Xue, Game Designer
+    - [ys724@cornell.edu] for Yang Su, Machine Learning Research Engineer
+    - [jx288@cornell.edu] for Jingze Xue, Game Developer and Designer
+
+### Limitations and Future Work
+
+- The current Voice2Action package only supports inference, i.e. you cannot fine-tune your model based on domain-specific action types. We plan to open source that in future versions.
+- We plan to decouple the LLM feature and the Expand feature into different packages in future versions.
