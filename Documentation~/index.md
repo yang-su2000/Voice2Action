@@ -1,5 +1,7 @@
 # Voice2Action - VR Multimodal Interaction with LLM Agents
 
+This project was done by students at the [XR Collaboratory](https://xr.cornell.edu/collaboratory) at Cornell Tech.
+
 ### Overview
 
 This package uses LLMs (Large Language Models) to analyze user instruction through action and entity extraction, and divides the execution tasks into canonical interaction subsets with error prevention from the game engine feedback. It combines an "Expand" interaction technique to create an innovative selection and manipulation mechanism for enhanced user experiences. 
