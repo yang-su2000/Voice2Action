@@ -1,8 +1,8 @@
-# VR-Multimodal-Interaction
+# Voice2Action
 
-2024-02-13 Update: Our Unity package "Voice to Action - Multimodal Interaction with LLM Agents" is open for beta testing!
+2024-02-14 Update: Our Unity package "Voice2Action - VR Multimodal Interaction with LLM Agents" is open for beta testing!
 
-[Voice to Action Unity Package v-0.0.1](https://xrc-students.github.io/xrc-students-fa2023-sp06-en268_jx288_ys724/)
+[Voice2Action Unity Package v-0.0.1](https://yang-su2000.github.io/Voice2Action/)
 
 This package uses LLMs (Large Language Models) to analyze user instruction through action and entity extraction, and divides the execution tasks into canonical interaction subsets with error prevention from the game engine feedback. It combines an "Expand" interaction technique to create an innovative selection and manipulation mechanism for enhanced user experiences.
 

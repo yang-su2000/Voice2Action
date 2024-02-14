@@ -1,4 +1,4 @@
-# Voice to Action - Multimodal Interactions with LLM Agents
+# Voice2Action - VR Multimodal Interaction with LLM Agents
 
 ### Overview
 
@@ -6,7 +6,7 @@ This package uses LLMs (Large Language Models) to analyze user instruction throu
 
 By incorporating this package into your VR project, you can use voice commands to filter through multiple objects, create smaller, scaled-down versions of the original object called "proxy objects", and bring the proxy objects into view. When you hover over the proxy object, it will show the user the information of the original object. A raycast will also show the user where the object is located. Users are then able to modify the properties of the filtered objects through customizable voice commands.
 
-For the original repository of the package, go to [Voice2Action GitHub Repository (Paper & Package)](https://github.com/yang-su2000/VR-Multimodal-Interaction)
+For the original repository of the package, go to [Voice2Action GitHub Repository (Paper & Package)](https://github.com/yang-su2000/Voice2Action)
 
 ### Requirements
 
@@ -59,7 +59,7 @@ This package requires a 2-step installation process.
 **Voice2Action Package** 
 
 1. In the Package Manager, click the "+" button on the left-hand corner. Select "Add package through git URL." 
-2. Add the package link [https://github.com/xrc-students/voice2action.git](https://github.com/xrc-students/voice2action.git) into the URL field.
+2. Add the package link [https://github.com/yang-su2000/Voice2Action.git](https://github.com/yang-su2000/Voice2Action.git) into the URL field.
     - In the Samples tab, import "Starter Assets"
     - (Optional) In the Samples tab, you can import **CityDemo** to see a sample scene of the usage of our package
 
@@ -216,4 +216,4 @@ An example customization of the "LLM for Execution" step implemented in "Samples
 
 - For the reference to the original Expand paper, go to [Dense and Dynamic 3D Selction for Game-Based Virtual Environment - Cashion et al. (2012)](https://ieeexplore.ieee.org/abstract/document/6165145)
 
-- For the reference to the original Voice2Action paper, go to [Voice2Action GitHub Repository (Paper & Package)](https://github.com/yang-su2000/VR-Multimodal-Interaction)
+- For the reference to the original Voice2Action paper, go to [Voice2Action GitHub Repository (Paper & Package)](https://github.com/yang-su2000/Voice2Action)

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-namespace XRC.Students.Voice2Action
+namespace Voice2Action
 {
     /// <summary>
     /// Storage class for all property mappings and initialization of all required components of Voice2Action (except function calling). <br/>

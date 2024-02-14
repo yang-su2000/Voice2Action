@@ -20,7 +20,7 @@
     ],
     "build": {
         "globalMetadata": {
-            "_appTitle": "XRC Students Voice2Action",
+            "_appTitle": "Voice2Action",
             "_appFooter": "XR Collaboratory",
             "_enableSearch": true,
             "_disableContribution": true,
@@ -84,7 +84,7 @@
             }
         ],
         "sitemap": {
-            "baseUrl": "https://xrc-students.github.io/voice2action",
+            "baseUrl": "https://yang-su2000.github.io/Voice2Action",
             "changefreq": "weekly",
             "fileOptions": {
                 "api/*": {

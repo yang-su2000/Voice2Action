@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-namespace XRC.Students.Voice2Action
+namespace Voice2Action
 {
     /// <summary>
     /// Implements proxy manipulation in Expand. <br/>

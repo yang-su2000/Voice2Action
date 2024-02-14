@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace XRC.Students.Voice2Action
+namespace Voice2Action
 {
     /// <summary>
     /// A minimal implementation of the "LLM for Classification" step in Voice2Action. <br/>

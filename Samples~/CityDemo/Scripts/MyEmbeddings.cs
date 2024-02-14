@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
-using XRC.Students.Voice2Action;
+using Voice2Action;
 
-namespace XRC.Students.Voice2Action.Samples.CityDemo.Scripts
+namespace Voice2Action.Samples.CityDemo.Scripts
 {
     /// <summary>
     /// Inherited class of Embeddings if users want to add new property mappings to the system.

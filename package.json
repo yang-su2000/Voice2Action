@@ -1,13 +1,13 @@
 {
-	"name": "xrc.students.voice2action",
+	"name": "voice2action",
 	"version": "0.0.1",
 	"displayName": "Voice2Action",
 	"description": "A low-cost, domain-adaptable package for real-time interaction and code execution in Unity, with highly customizable voice commands through Large Language Models (LLMs) and Expand Interaction.",
 	"unity": "2022.3",
 	"unityRelease": "7f1",
-	"documentationUrl": "https://xrc-students.github.io/voice2action",
-	"changelogUrl": "https://xrc-students.github.io/voice2action/changelog/CHANGELOG.html",
-	"licensesUrl": "https://xrc-students.github.io/voice2action/license/LICENSE.html",
+	"documentationUrl": "https://yang-su2000.github.io/Voice2Action",
+	"changelogUrl": "https://yang-su2000.github.io/Voice2Action/changelog/CHANGELOG.html",
+	"licensesUrl": "https://yang-su2000.github.io/Voice2Action/license/LICENSE.html",
 	"dependencies": {
 		"com.unity.2d.sprite": "1.0.0",
 		"com.unity.2d.tilemap": "1.0.0",
@@ -66,11 +66,19 @@
 	"keywords": [
 		"XRC",
 		"XR Collaboratory",
+		"Cornell",
+		"Cornell Tech",
 		"LLMs",
-		"Large Language Models"
+		"Large Language Models",
+		"Agent",
+		"Code Execution",
+		"Expand",
+		"VR",
+		"Multimodal",
+		"Interaction"
 	],
 	"author": {
-		"name": "XR Collaboratory"
+		"name": "Cornell Tech XR Collaboratory"
 	},
 
 	"samples": [
