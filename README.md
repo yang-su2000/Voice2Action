@@ -6,17 +6,22 @@
 
 This package uses LLMs (Large Language Models) to analyze user instruction through action and entity extraction, and divides the execution tasks into canonical interaction subsets with error prevention from the game engine feedback. It combines an "Expand" interaction technique to create an innovative selection and manipulation mechanism for enhanced user experiences.
 
-## Advantages
-
-- Efficiency: Extremely **Low Cost**
-- Domain Adaptation: Highly **Customizable**
-- Scalability: Highly **Parallelizable**
-
 ## Demo
 
 [Voice2Action v-0.0.1](https://drive.google.com/file/d/1vt0LqiVqYMkwFLfSo1ZvKmSYNohes_Mq/view?usp=sharing)
 
 [Voice2Action v-0.0.0](https://drive.google.com/file/d/159XWeBlK_tdkoEv76xrA5s78dy4UEPfS/view?usp=sharing)
+
+## Advantages
+
+- Efficiency: Extremely **Low Cost**
+    - Based on our testing in the "Samples/CityDemo" with 2 ** (7+3) = 1024 function call combinations (with infinite argument combinations) and 100 * 32 = 3.2k user interaction (including multi-turn due to execution failure), our OpenAI API (with gpt-3.5-turbo) total cost ~= 5 USD, which converts to 0.16 cents per interaction!
+- Domain Adaptation: Highly **Customizable**
+    - User can customize their actions and properties by easily inheriting our Runtime scripts, see examples in the Advanced section for more details.
+    - We can also fine-tune our models based on domain-specific manipulation category requirements, stay tuned!
+- Scalability: Highly **Parallelizable**
+    - While the current package is a minimal implementation of the full Voice2Action framework, all property classes can do their jobs in parallel without any intervention as they belongs to different manipulation categories.
+    - More importantly, by adapting Unity (Unreal, or other game engine) [Profiler](https://docs.unity3d.com/Manual/Profiler.html), we are able to integrate the LLMs function calling and feedback ability into Unity runtime, while maintaining the parallelizability of each rendering components, hence this framework is an initial attempt as "LLMs as co-operating system for game engines".
 
 ## Paper - Voice2Action
 
