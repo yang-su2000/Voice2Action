@@ -5,11 +5,11 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Namespace XRC.Students.Voice2Action
-   | XRC Students Voice2Action </title>
+    <title>Namespace Voice2Action
+   | Voice2Action </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Namespace XRC.Students.Voice2Action
-   | XRC Students Voice2Action ">
+    <meta name="title" content="Namespace Voice2Action
+   | Voice2Action ">
     <meta name="generator" content="docfx 2.59.4.0">
     
     <link rel="shortcut icon" href="../images/logo.ico">
@@ -78,16 +78,16 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="XRC.Students.Voice2Action">
+            <article class="content wrap" id="_content" data-uid="Voice2Action">
   
-  <h1 id="XRC_Students_Voice2Action" data-uid="XRC.Students.Voice2Action" class="text-break">Namespace XRC.Students.Voice2Action
+  <h1 id="Voice2Action" data-uid="Voice2Action" class="text-break">Namespace Voice2Action
   </h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="markdown level0 remarks"></div>
     <h3 id="classes">Classes
   </h3>
-      <h4><a class="xref" href="XRC.Students.Voice2Action.Embeddings.html">Embeddings</a></h4>
+      <h4><a class="xref" href="Voice2Action.Embeddings.html">Embeddings</a></h4>
       <section><p>Storage class for all property mappings and initialization of all required components of Voice2Action (except function calling). <br>
 Fields in this class should be updated as soon as the scene starts, and they are used when function calling with similarity match is attached. <br>
 <br>Details: <br>
@@ -97,49 +97,49 @@ Users can add their own property mappings by inheriting this class, see MyEmbedd
 For (1) to work, functions need to be attached with a custom PropertyMethodAttribute with the name of the property mappings, so that the system can
 recognize the user&apos;s instruction by fetching this attribute during reflection, see readme for example usage. <br></p>
 </section>
-      <h4><a class="xref" href="XRC.Students.Voice2Action.InteractableTarget.html">InteractableTarget</a></h4>
+      <h4><a class="xref" href="Voice2Action.InteractableTarget.html">InteractableTarget</a></h4>
       <section><p>Implements proxy manipulation in Expand. <br>
 When the user hovers enter the proxy object, an information panel will be displayed to show the status of the actual game object. <br>
 The user can customize the display by overriding (My)ShapeController.GetShapeInfo(...). <br></p>
 </section>
-      <h4><a class="xref" href="XRC.Students.Voice2Action.PropertyClassifier.html">PropertyClassifier</a></h4>
+      <h4><a class="xref" href="Voice2Action.PropertyClassifier.html">PropertyClassifier</a></h4>
       <section><p>A minimal implementation of the &quot;LLM for Classification&quot; step in Voice2Action. <br>
 This implementation is not optimized and only used for inference. <br>
 We will add action class generation and alignment training via order ranking of the model in future package version. <br></p>
 </section>
-      <h4><a class="xref" href="XRC.Students.Voice2Action.PropertyExecutor.html">PropertyExecutor</a></h4>
+      <h4><a class="xref" href="Voice2Action.PropertyExecutor.html">PropertyExecutor</a></h4>
       <section><p>A minimal implementation of the &quot;LLM for Execution&quot; step in Voice2Action. <br>
 This implementation is not optimized and only used for inference. <br>
 We will add reward modeling, atomic function generation and alignment training via user feedback of the model in future package version.</p>
 </section>
-      <h4><a class="xref" href="XRC.Students.Voice2Action.PropertyExtractor.html">PropertyExtractor</a></h4>
+      <h4><a class="xref" href="Voice2Action.PropertyExtractor.html">PropertyExtractor</a></h4>
       <section><p>A minimal implementation of the &quot;LLM for Extraction&quot; step in Voice2Action. <br>
 This implementation is not optimized and only used for inference. <br>
 We will add atomic action property generation, alignment training via order ranking and environment feedback of the model in future package version. <br></p>
 </section>
-      <h4><a class="xref" href="XRC.Students.Voice2Action.SceneManager.html">SceneManager</a></h4>
+      <h4><a class="xref" href="Voice2Action.SceneManager.html">SceneManager</a></h4>
       <section><p>The main class of Expand, contains all core required components for the system. <br>
 After Voice2Action executes the user&apos;s instructions, objects that got their status modified (i.e. selected) will fly onto the ExpandPanel. <br>
 Other objects that are not modified will become transparent and non-interactable. <br>
 Pressing the primary button on the RightRayInteractor will reset this step. <br></p>
 </section>
-      <h4><a class="xref" href="XRC.Students.Voice2Action.ShapeController.html">ShapeController</a></h4>
+      <h4><a class="xref" href="Voice2Action.ShapeController.html">ShapeController</a></h4>
       <section><p>Stores all actual implementations of the atomic function and attributes, must ALL be public for reflection. <br>
 Stores all interactable properties of the attached game objects for Voice2Action to manipulate with. <br></p>
 </section>
-      <h4><a class="xref" href="XRC.Students.Voice2Action.ShapeController.PropertyMethodAttribute.html">ShapeController.PropertyMethodAttribute</a></h4>
+      <h4><a class="xref" href="Voice2Action.ShapeController.PropertyMethodAttribute.html">ShapeController.PropertyMethodAttribute</a></h4>
       <section><p>Used for specifying atomic functions that are doing embedding matches. <br>
 i.e. Suppose there is a function that does FindObjectWithProperty(property), where property belongs to a list of discrete candidates (we will call them propertyMappings). <br>
 Then this attribute is used to specify what the propertyMappings are. <br>
 See GetShape(...) below for its usage and their corresponding propertyMappings in Embeddings. <br></p>
 </section>
-      <h4><a class="xref" href="XRC.Students.Voice2Action.ShapeController.PropertyParameterAttribute.html">ShapeController.PropertyParameterAttribute</a></h4>
+      <h4><a class="xref" href="Voice2Action.ShapeController.PropertyParameterAttribute.html">ShapeController.PropertyParameterAttribute</a></h4>
       <section><p>Used for customizing the behavior of certain parameters in atomic functions.</p>
 </section>
-      <h4><a class="xref" href="XRC.Students.Voice2Action.Utils.html">Utils</a></h4>
+      <h4><a class="xref" href="Voice2Action.Utils.html">Utils</a></h4>
       <section><p>Stores all singleton fields, global constants, and utility functions.</p>
 </section>
-      <h4><a class="xref" href="XRC.Students.Voice2Action.VoiceIntentController.html">VoiceIntentController</a></h4>
+      <h4><a class="xref" href="Voice2Action.VoiceIntentController.html">VoiceIntentController</a></h4>
       <section><p>The main class of Voice2Action, contains all core required components for the system. <br>
 This class is not inheritable, instead, the user wants to inherit each individual components for customizable behaviors. <br>
 This is a minimal implementation, we will add function re-ordering, rejection sampling, and alignment training with environment and user feedback in future package version. <br>
@@ -147,16 +147,16 @@ The &quot;LLM for Pre-Processing&quot; step in Voice2Action is omitted here by a
 </section>
     <h3 id="structs">Structs
   </h3>
-      <h4><a class="xref" href="XRC.Students.Voice2Action.PropertyExecutor.FunctionCallGroup.html">PropertyExecutor.FunctionCallGroup</a></h4>
+      <h4><a class="xref" href="Voice2Action.PropertyExecutor.FunctionCallGroup.html">PropertyExecutor.FunctionCallGroup</a></h4>
       <section><p>A group containing essential elements for executing a property function.</p>
 </section>
-      <h4><a class="xref" href="XRC.Students.Voice2Action.PropertyExecutor.FunctionParamGroup.html">PropertyExecutor.FunctionParamGroup</a></h4>
+      <h4><a class="xref" href="Voice2Action.PropertyExecutor.FunctionParamGroup.html">PropertyExecutor.FunctionParamGroup</a></h4>
       <section><p>A group containing essential elements for one function parameter.</p>
 </section>
-      <h4><a class="xref" href="XRC.Students.Voice2Action.Utils.FewShotGroup.html">Utils.FewShotGroup</a></h4>
+      <h4><a class="xref" href="Voice2Action.Utils.FewShotGroup.html">Utils.FewShotGroup</a></h4>
       <section><p>A group containing essential prompting elements for few-shot prompting.</p>
 </section>
-      <h4><a class="xref" href="XRC.Students.Voice2Action.Utils.FewShotPair.html">Utils.FewShotPair</a></h4>
+      <h4><a class="xref" href="Voice2Action.Utils.FewShotPair.html">Utils.FewShotPair</a></h4>
       <section><p>A few shot example input and output pair to the model.</p>
 </section>
 </article>

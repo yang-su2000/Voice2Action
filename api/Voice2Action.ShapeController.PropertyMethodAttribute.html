@@ -5,11 +5,11 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ShapeController.PropertyParameterAttribute
-   | XRC Students Voice2Action </title>
+    <title>Class ShapeController.PropertyMethodAttribute
+   | Voice2Action </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ShapeController.PropertyParameterAttribute
-   | XRC Students Voice2Action ">
+    <meta name="title" content="Class ShapeController.PropertyMethodAttribute
+   | Voice2Action ">
     <meta name="generator" content="docfx 2.59.4.0">
     
     <link rel="shortcut icon" href="../images/logo.ico">
@@ -78,19 +78,22 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="XRC.Students.Voice2Action.ShapeController.PropertyParameterAttribute">
+            <article class="content wrap" id="_content" data-uid="Voice2Action.ShapeController.PropertyMethodAttribute">
   
   
-  <h1 id="XRC_Students_Voice2Action_ShapeController_PropertyParameterAttribute" data-uid="XRC.Students.Voice2Action.ShapeController.PropertyParameterAttribute" class="text-break">Class ShapeController.PropertyParameterAttribute
+  <h1 id="Voice2Action_ShapeController_PropertyMethodAttribute" data-uid="Voice2Action.ShapeController.PropertyMethodAttribute" class="text-break">Class ShapeController.PropertyMethodAttribute
   </h1>
-  <div class="markdown level0 summary"><p>Used for customizing the behavior of certain parameters in atomic functions.</p>
+  <div class="markdown level0 summary"><p>Used for specifying atomic functions that are doing embedding matches. <br>
+i.e. Suppose there is a function that does FindObjectWithProperty(property), where property belongs to a list of discrete candidates (we will call them propertyMappings). <br>
+Then this attribute is used to specify what the propertyMappings are. <br>
+See GetShape(...) below for its usage and their corresponding propertyMappings in Embeddings. <br></p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
     <div class="level1"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.attribute">Attribute</a></div>
-    <div class="level2"><span class="xref">ShapeController.PropertyParameterAttribute</span></div>
+    <div class="level2"><span class="xref">ShapeController.PropertyMethodAttribute</span></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
@@ -237,22 +240,22 @@
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
     </div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="XRC.Students.Voice2Action.html">XRC.Students.Voice2Action</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Voice2Action.html">Voice2Action</a></h6>
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
-  <h5 id="XRC_Students_Voice2Action_ShapeController_PropertyParameterAttribute_syntax">Syntax</h5>
+  <h5 id="Voice2Action_ShapeController_PropertyMethodAttribute_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[AttributeUsage(AttributeTargets.Parameter)]
-public class PropertyParameterAttribute : Attribute, _Attribute</code></pre>
+    <pre><code class="lang-csharp hljs">[AttributeUsage(AttributeTargets.Method)]
+public class PropertyMethodAttribute : Attribute, _Attribute</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
-  <a id="XRC_Students_Voice2Action_ShapeController_PropertyParameterAttribute__ctor_" data-uid="XRC.Students.Voice2Action.ShapeController.PropertyParameterAttribute.#ctor*"></a>
-  <h4 id="XRC_Students_Voice2Action_ShapeController_PropertyParameterAttribute__ctor_System_String_" data-uid="XRC.Students.Voice2Action.ShapeController.PropertyParameterAttribute.#ctor(System.String)">PropertyParameterAttribute(String)</h4>
+  <a id="Voice2Action_ShapeController_PropertyMethodAttribute__ctor_" data-uid="Voice2Action.ShapeController.PropertyMethodAttribute.#ctor*"></a>
+  <h4 id="Voice2Action_ShapeController_PropertyMethodAttribute__ctor_System_String_" data-uid="Voice2Action.ShapeController.PropertyMethodAttribute.#ctor(System.String)">PropertyMethodAttribute(String)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PropertyParameterAttribute(string property)</code></pre>
+    <pre><code class="lang-csharp hljs">public PropertyMethodAttribute(string property)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -267,15 +270,15 @@ public class PropertyParameterAttribute : Attribute, _Attribute</code></pre>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
         <td><span class="parametername">property</span></td>
-        <td><p>Behavior customization type of parameters.</p>
+        <td><p>The name of the propertyMappings field in (My)Embeddings.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <h3 id="properties">Properties
   </h3>
-  <a id="XRC_Students_Voice2Action_ShapeController_PropertyParameterAttribute_property_" data-uid="XRC.Students.Voice2Action.ShapeController.PropertyParameterAttribute.property*"></a>
-  <h4 id="XRC_Students_Voice2Action_ShapeController_PropertyParameterAttribute_property" data-uid="XRC.Students.Voice2Action.ShapeController.PropertyParameterAttribute.property">property</h4>
+  <a id="Voice2Action_ShapeController_PropertyMethodAttribute_property_" data-uid="Voice2Action.ShapeController.PropertyMethodAttribute.property*"></a>
+  <h4 id="Voice2Action_ShapeController_PropertyMethodAttribute_property" data-uid="Voice2Action.ShapeController.PropertyMethodAttribute.property">property</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -293,7 +296,7 @@ public class PropertyParameterAttribute : Attribute, _Attribute</code></pre>
     <tbody>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><p>Behavior customization type of parameters.</p>
+        <td><p>The name of the propertyMappings field in (My)Embeddings, they will be called with reflection during function execution.</p>
 </td>
       </tr>
     </tbody>

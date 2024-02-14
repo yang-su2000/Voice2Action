@@ -5,11 +5,11 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Struct PropertyExecutor.FunctionCallGroup
-   | XRC Students Voice2Action </title>
+    <title>Struct PropertyExecutor.FunctionParamGroup
+   | Voice2Action </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Struct PropertyExecutor.FunctionCallGroup
-   | XRC Students Voice2Action ">
+    <meta name="title" content="Struct PropertyExecutor.FunctionParamGroup
+   | Voice2Action ">
     <meta name="generator" content="docfx 2.59.4.0">
     
     <link rel="shortcut icon" href="../images/logo.ico">
@@ -78,12 +78,12 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="XRC.Students.Voice2Action.PropertyExecutor.FunctionCallGroup">
+            <article class="content wrap" id="_content" data-uid="Voice2Action.PropertyExecutor.FunctionParamGroup">
   
   
-  <h1 id="XRC_Students_Voice2Action_PropertyExecutor_FunctionCallGroup" data-uid="XRC.Students.Voice2Action.PropertyExecutor.FunctionCallGroup" class="text-break">Struct PropertyExecutor.FunctionCallGroup
+  <h1 id="Voice2Action_PropertyExecutor_FunctionParamGroup" data-uid="Voice2Action.PropertyExecutor.FunctionParamGroup" class="text-break">Struct PropertyExecutor.FunctionParamGroup
   </h1>
-  <div class="markdown level0 summary"><p>A group containing essential elements for executing a property function.</p>
+  <div class="markdown level0 summary"><p>A group containing essential elements for one function parameter.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritedMembers">
@@ -107,22 +107,22 @@
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
     </div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="XRC.Students.Voice2Action.html">XRC.Students.Voice2Action</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Voice2Action.html">Voice2Action</a></h6>
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
-  <h5 id="XRC_Students_Voice2Action_PropertyExecutor_FunctionCallGroup_syntax">Syntax</h5>
+  <h5 id="Voice2Action_PropertyExecutor_FunctionParamGroup_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[Serializable]
-public struct FunctionCallGroup</code></pre>
+public struct FunctionParamGroup</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
-  <a id="XRC_Students_Voice2Action_PropertyExecutor_FunctionCallGroup__ctor_" data-uid="XRC.Students.Voice2Action.PropertyExecutor.FunctionCallGroup.#ctor*"></a>
-  <h4 id="XRC_Students_Voice2Action_PropertyExecutor_FunctionCallGroup__ctor_System_String_System_String_System_Collections_Generic_List_XRC_Students_Voice2Action_PropertyExecutor_FunctionParamGroup__" data-uid="XRC.Students.Voice2Action.PropertyExecutor.FunctionCallGroup.#ctor(System.String,System.String,System.Collections.Generic.List{XRC.Students.Voice2Action.PropertyExecutor.FunctionParamGroup})">FunctionCallGroup(String, String, List&lt;PropertyExecutor.FunctionParamGroup&gt;)</h4>
+  <a id="Voice2Action_PropertyExecutor_FunctionParamGroup__ctor_" data-uid="Voice2Action.PropertyExecutor.FunctionParamGroup.#ctor*"></a>
+  <h4 id="Voice2Action_PropertyExecutor_FunctionParamGroup__ctor_System_String_System_Boolean_System_String_System_Collections_Generic_List_Voice2Action_Utils_FewShotPair__" data-uid="Voice2Action.PropertyExecutor.FunctionParamGroup.#ctor(System.String,System.Boolean,System.String,System.Collections.Generic.List{Voice2Action.Utils.FewShotPair})">FunctionParamGroup(String, Boolean, String, List&lt;Utils.FewShotPair&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FunctionCallGroup(string functionName, string functionDescription, List&lt;PropertyExecutor.FunctionParamGroup&gt; functionParams = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public FunctionParamGroup(string paramName, bool paramRequired = false, string paramDescription = null, List&lt;Utils.FewShotPair&gt; paramExamples = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -136,28 +136,34 @@ public struct FunctionCallGroup</code></pre>
     <tbody>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><span class="parametername">functionName</span></td>
-        <td><p>Function name, i.e. MyFunctionName(...)</p>
+        <td><span class="parametername">paramName</span></td>
+        <td><p>Function parameter name.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="parametername">paramRequired</span></td>
+        <td><p>Whether this parameter is required, default to False.</p>
 </td>
       </tr>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><span class="parametername">functionDescription</span></td>
-        <td><p>Function description, a summarization of its functionality. </p>
+        <td><span class="parametername">paramDescription</span></td>
+        <td><p>Optional, function parameter description, a summarization of its usage.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="XRC.Students.Voice2Action.PropertyExecutor.FunctionParamGroup.html">PropertyExecutor.FunctionParamGroup</a>&gt;</td>
-        <td><span class="parametername">functionParams</span></td>
-        <td><p>Optional, function parameters, nested with all of their information.</p>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Voice2Action.Utils.FewShotPair.html">Utils.FewShotPair</a>&gt;</td>
+        <td><span class="parametername">paramExamples</span></td>
+        <td><p>Optional, list of few-shot example (input, output) pair provided to the model.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <h3 id="properties">Properties
   </h3>
-  <a id="XRC_Students_Voice2Action_PropertyExecutor_FunctionCallGroup_description_" data-uid="XRC.Students.Voice2Action.PropertyExecutor.FunctionCallGroup.description*"></a>
-  <h4 id="XRC_Students_Voice2Action_PropertyExecutor_FunctionCallGroup_description" data-uid="XRC.Students.Voice2Action.PropertyExecutor.FunctionCallGroup.description">description</h4>
+  <a id="Voice2Action_PropertyExecutor_FunctionParamGroup_description_" data-uid="Voice2Action.PropertyExecutor.FunctionParamGroup.description*"></a>
+  <h4 id="Voice2Action_PropertyExecutor_FunctionParamGroup_description" data-uid="Voice2Action.PropertyExecutor.FunctionParamGroup.description">description</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -175,13 +181,37 @@ public struct FunctionCallGroup</code></pre>
     <tbody>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><p>Function description.</p>
+        <td><p>Optional, function parameter description.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <a id="XRC_Students_Voice2Action_PropertyExecutor_FunctionCallGroup_name_" data-uid="XRC.Students.Voice2Action.PropertyExecutor.FunctionCallGroup.name*"></a>
-  <h4 id="XRC_Students_Voice2Action_PropertyExecutor_FunctionCallGroup_name" data-uid="XRC.Students.Voice2Action.PropertyExecutor.FunctionCallGroup.name">name</h4>
+  <a id="Voice2Action_PropertyExecutor_FunctionParamGroup_examples_" data-uid="Voice2Action.PropertyExecutor.FunctionParamGroup.examples*"></a>
+  <h4 id="Voice2Action_PropertyExecutor_FunctionParamGroup_examples" data-uid="Voice2Action.PropertyExecutor.FunctionParamGroup.examples">examples</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;Utils.FewShotPair&gt; examples { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Voice2Action.Utils.FewShotPair.html">Utils.FewShotPair</a>&gt;</td>
+        <td><p>Optional, list of few-shot example (input, output) pair provided to the model as illustration to the parameter is used.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Voice2Action_PropertyExecutor_FunctionParamGroup_name_" data-uid="Voice2Action.PropertyExecutor.FunctionParamGroup.name*"></a>
+  <h4 id="Voice2Action_PropertyExecutor_FunctionParamGroup_name" data-uid="Voice2Action.PropertyExecutor.FunctionParamGroup.name">name</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -199,18 +229,18 @@ public struct FunctionCallGroup</code></pre>
     <tbody>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><p>Function name.</p>
+        <td><p>Function parameter name.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <a id="XRC_Students_Voice2Action_PropertyExecutor_FunctionCallGroup_paramGroups_" data-uid="XRC.Students.Voice2Action.PropertyExecutor.FunctionCallGroup.paramGroups*"></a>
-  <h4 id="XRC_Students_Voice2Action_PropertyExecutor_FunctionCallGroup_paramGroups" data-uid="XRC.Students.Voice2Action.PropertyExecutor.FunctionCallGroup.paramGroups">paramGroups</h4>
+  <a id="Voice2Action_PropertyExecutor_FunctionParamGroup_paramTypeJsons_" data-uid="Voice2Action.PropertyExecutor.FunctionParamGroup.paramTypeJsons*"></a>
+  <h4 id="Voice2Action_PropertyExecutor_FunctionParamGroup_paramTypeJsons" data-uid="Voice2Action.PropertyExecutor.FunctionParamGroup.paramTypeJsons">paramTypeJsons</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public List&lt;PropertyExecutor.FunctionParamGroup&gt; paramGroups { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public static Dictionary&lt;Type, JObject&gt; paramTypeJsons { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -222,22 +252,46 @@ public struct FunctionCallGroup</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="XRC.Students.Voice2Action.PropertyExecutor.FunctionParamGroup.html">PropertyExecutor.FunctionParamGroup</a>&gt;</td>
-        <td><p>Optional, function parameters.</p>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a>, <span class="xref">JObject</span>&gt;</td>
+        <td><p>Pre-defined (function type, JsonSchema template) mappings for OpenAI API, user can add customized mapping by updating this field.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Voice2Action_PropertyExecutor_FunctionParamGroup_required_" data-uid="Voice2Action.PropertyExecutor.FunctionParamGroup.required*"></a>
+  <h4 id="Voice2Action_PropertyExecutor_FunctionParamGroup_required" data-uid="Voice2Action.PropertyExecutor.FunctionParamGroup.required">required</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool required { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><p>Whether this parameter is required, default to False.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <h3 id="methods">Methods
   </h3>
-  <a id="XRC_Students_Voice2Action_PropertyExecutor_FunctionCallGroup_AddParamsRequirement_" data-uid="XRC.Students.Voice2Action.PropertyExecutor.FunctionCallGroup.AddParamsRequirement*"></a>
-  <h4 id="XRC_Students_Voice2Action_PropertyExecutor_FunctionCallGroup_AddParamsRequirement_JObject__" data-uid="XRC.Students.Voice2Action.PropertyExecutor.FunctionCallGroup.AddParamsRequirement(JObject@)">AddParamsRequirement(ref JObject)</h4>
-  <div class="markdown level1 summary"><p>Add the &quot;required&quot; key in the given JsonSchema.</p>
+  <a id="Voice2Action_PropertyExecutor_FunctionParamGroup_TryAddParamInfo_" data-uid="Voice2Action.PropertyExecutor.FunctionParamGroup.TryAddParamInfo*"></a>
+  <h4 id="Voice2Action_PropertyExecutor_FunctionParamGroup_TryAddParamInfo_JObject__" data-uid="Voice2Action.PropertyExecutor.FunctionParamGroup.TryAddParamInfo(JObject@)">TryAddParamInfo(ref JObject)</h4>
+  <div class="markdown level1 summary"><p>Try to add current parameter information to a (possibly empty) JsonSchema.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void AddParamsRequirement(ref JObject funcObject)</code></pre>
+    <pre><code class="lang-csharp hljs">public bool TryAddParamInfo(ref JObject paramsObject)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -251,40 +305,8 @@ public struct FunctionCallGroup</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">JObject</span></td>
-        <td><span class="parametername">funcObject</span></td>
-        <td><p>The JsonSchema of the current property function, will be updated upon execution of this method.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="XRC_Students_Voice2Action_PropertyExecutor_FunctionCallGroup_PrettyPrintFunctionCall_" data-uid="XRC.Students.Voice2Action.PropertyExecutor.FunctionCallGroup.PrettyPrintFunctionCall*"></a>
-  <h4 id="XRC_Students_Voice2Action_PropertyExecutor_FunctionCallGroup_PrettyPrintFunctionCall_MethodInfo_System_Object___" data-uid="XRC.Students.Voice2Action.PropertyExecutor.FunctionCallGroup.PrettyPrintFunctionCall(MethodInfo,System.Object[])">PrettyPrintFunctionCall(MethodInfo, Object[])</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static string PrettyPrintFunctionCall(MethodInfo methodInfo, object[] inputs)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">MethodInfo</span></td>
-        <td><span class="parametername">methodInfo</span></td>
-        <td><p>Information of current property function through reflection.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a>[]</td>
-        <td><span class="parametername">inputs</span></td>
-        <td><p>Function arguments.</p>
+        <td><span class="parametername">paramsObject</span></td>
+        <td><p>The JsonSchema of the property function that the current parameter is attached to, will be updated upon execution of this method.</p>
 </td>
       </tr>
     </tbody>
@@ -299,8 +321,8 @@ public struct FunctionCallGroup</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><p>A string as if the function is called, i.e. &quot;MyFunctionName(MyArgType1 MyArg1, MyArgType2 MyArg2, ...)&quot;</p>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><p>Whether the JsonSchema is updated successfully.</p>
 </td>
       </tr>
     </tbody>

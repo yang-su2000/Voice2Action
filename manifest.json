@@ -2,15 +2,15 @@
   "sitemap": {
     "fileOptions": {
       "api/*": {
-        "baseUrl": "https://xrc-students.github.io/voice2action/",
+        "baseUrl": "https://yang-su2000.github.io/Voice2Action/",
         "changefreq": "daily"
       }
     },
-    "baseUrl": "https://xrc-students.github.io/voice2action/",
+    "baseUrl": "https://yang-su2000.github.io/Voice2Action/",
     "changefreq": "weekly"
   },
   "homepages": [],
-  "source_base_path": "D:/a/VR-Multimodal-Interaction/VR-Multimodal-Interaction/Documentation~",
+  "source_base_path": "D:/a/Voice2Action/Voice2Action/Documentation~",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -24,11 +24,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/XRC.Students.Voice2Action.Embeddings.yml",
+      "source_relative_path": "api/Voice2Action.Embeddings.yml",
       "output": {
         ".html": {
-          "relative_path": "api/XRC.Students.Voice2Action.Embeddings.html",
-          "hash": "dr1LRn7iM784+WTVrHdt2pEmgsmuhgL1F2QCn/PHLb8="
+          "relative_path": "api/Voice2Action.Embeddings.html",
+          "hash": "pndDo5ktRpCQhub9P71WQAdwd+Kt7NAE8i2eu38asc8="
         }
       },
       "is_incremental": false,
@@ -36,11 +36,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/XRC.Students.Voice2Action.InteractableTarget.yml",
+      "source_relative_path": "api/Voice2Action.InteractableTarget.yml",
       "output": {
         ".html": {
-          "relative_path": "api/XRC.Students.Voice2Action.InteractableTarget.html",
-          "hash": "OIHWyGVnIATq8OSoVRkZrOtz0LJ6eKz7iLA7SpRUhU8="
+          "relative_path": "api/Voice2Action.InteractableTarget.html",
+          "hash": "0uz+6MQ0EPbVWC2D5moM6ars2jA7LLjirzFUj3v2azg="
         }
       },
       "is_incremental": false,
@@ -48,11 +48,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/XRC.Students.Voice2Action.PropertyClassifier.yml",
+      "source_relative_path": "api/Voice2Action.PropertyClassifier.yml",
       "output": {
         ".html": {
-          "relative_path": "api/XRC.Students.Voice2Action.PropertyClassifier.html",
-          "hash": "5PoaphkkrEu1Il8gnLz/fdckOhiu2E9HhfHLithiy8M="
+          "relative_path": "api/Voice2Action.PropertyClassifier.html",
+          "hash": "vmV4uTHj2V4GVYdaTt4DWBOY4cX3g1R8FplW7m8/fko="
         }
       },
       "is_incremental": false,
@@ -60,11 +60,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/XRC.Students.Voice2Action.PropertyExecutor.FunctionCallGroup.yml",
+      "source_relative_path": "api/Voice2Action.PropertyExecutor.FunctionCallGroup.yml",
       "output": {
         ".html": {
-          "relative_path": "api/XRC.Students.Voice2Action.PropertyExecutor.FunctionCallGroup.html",
-          "hash": "+etwrTLAOB9przakbD4x3XJylF2YRds/+hXfbLr4BAA="
+          "relative_path": "api/Voice2Action.PropertyExecutor.FunctionCallGroup.html",
+          "hash": "4fymBb/zfKOOOeV3CHCSq9M24PjIJ54cQHKRAISeqPs="
         }
       },
       "is_incremental": false,
@@ -72,11 +72,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/XRC.Students.Voice2Action.PropertyExecutor.FunctionParamGroup.yml",
+      "source_relative_path": "api/Voice2Action.PropertyExecutor.FunctionParamGroup.yml",
       "output": {
         ".html": {
-          "relative_path": "api/XRC.Students.Voice2Action.PropertyExecutor.FunctionParamGroup.html",
-          "hash": "967a/rzZLwVddb+WwhcKxwsR9u3WdWzECuV0Ay009CA="
+          "relative_path": "api/Voice2Action.PropertyExecutor.FunctionParamGroup.html",
+          "hash": "ru9FAbvFv7hrL8QDircfaXRSzShmff061yMQfaKnh0U="
         }
       },
       "is_incremental": false,
@@ -84,11 +84,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/XRC.Students.Voice2Action.PropertyExecutor.yml",
+      "source_relative_path": "api/Voice2Action.PropertyExecutor.yml",
       "output": {
         ".html": {
-          "relative_path": "api/XRC.Students.Voice2Action.PropertyExecutor.html",
-          "hash": "7X6NAL3kGIf4u87WOwKVzTyBFS/Y3I1dO0FWEnjMubo="
+          "relative_path": "api/Voice2Action.PropertyExecutor.html",
+          "hash": "Z26zZkyUTrOP97M/vpBEXVRNhtkPHcRMTDjEU3FUd50="
         }
       },
       "is_incremental": false,
@@ -96,11 +96,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/XRC.Students.Voice2Action.PropertyExtractor.yml",
+      "source_relative_path": "api/Voice2Action.PropertyExtractor.yml",
       "output": {
         ".html": {
-          "relative_path": "api/XRC.Students.Voice2Action.PropertyExtractor.html",
-          "hash": "63xXp1PNe9jjhS4nlFLYcXBWCWCNfOUEEVBqpL/rDHI="
+          "relative_path": "api/Voice2Action.PropertyExtractor.html",
+          "hash": "AIVgR9lMmyXSfr44OVqqvKAMjDfGM8y9iIORC7iedsE="
         }
       },
       "is_incremental": false,
@@ -108,11 +108,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/XRC.Students.Voice2Action.SceneManager.yml",
+      "source_relative_path": "api/Voice2Action.SceneManager.yml",
       "output": {
         ".html": {
-          "relative_path": "api/XRC.Students.Voice2Action.SceneManager.html",
-          "hash": "QX3Y9WVXKTVyhkOkQqdUb0q+Emsft35vkDIhEohInVE="
+          "relative_path": "api/Voice2Action.SceneManager.html",
+          "hash": "pMN6EnGX1bFLaPg3C8R0KVBvn0UM7Ed0dODryFt1z00="
         }
       },
       "is_incremental": false,
@@ -120,11 +120,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/XRC.Students.Voice2Action.ShapeController.PropertyMethodAttribute.yml",
+      "source_relative_path": "api/Voice2Action.ShapeController.PropertyMethodAttribute.yml",
       "output": {
         ".html": {
-          "relative_path": "api/XRC.Students.Voice2Action.ShapeController.PropertyMethodAttribute.html",
-          "hash": "zGHyMJIDrh7OevQu8gXjKAtVuQ+SIIw93RG+LuDVg4w="
+          "relative_path": "api/Voice2Action.ShapeController.PropertyMethodAttribute.html",
+          "hash": "jTS0nHL6U0usZpLoV0mnAw7ET7Il0lqvEKWP629jnpc="
         }
       },
       "is_incremental": false,
@@ -132,11 +132,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/XRC.Students.Voice2Action.ShapeController.PropertyParameterAttribute.yml",
+      "source_relative_path": "api/Voice2Action.ShapeController.PropertyParameterAttribute.yml",
       "output": {
         ".html": {
-          "relative_path": "api/XRC.Students.Voice2Action.ShapeController.PropertyParameterAttribute.html",
-          "hash": "L6ggPUbMvVggZzh1LS5jDAWa5iMknvLGPIvxBG1K9vA="
+          "relative_path": "api/Voice2Action.ShapeController.PropertyParameterAttribute.html",
+          "hash": "xvh6HbgI63Nbt4AYfW2rLAWCS0DFcjtT7k18U232yr4="
         }
       },
       "is_incremental": false,
@@ -144,11 +144,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/XRC.Students.Voice2Action.ShapeController.yml",
+      "source_relative_path": "api/Voice2Action.ShapeController.yml",
       "output": {
         ".html": {
-          "relative_path": "api/XRC.Students.Voice2Action.ShapeController.html",
-          "hash": "4aRcf91M0MIlf59qg2PqDLV8aYlh9gsVUy5CBDn4XlI="
+          "relative_path": "api/Voice2Action.ShapeController.html",
+          "hash": "a4ltw8DbQ1MQVG0GVlC4Ie7OcTXxRXfJ+IjciGF/V2o="
         }
       },
       "is_incremental": false,
@@ -156,11 +156,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/XRC.Students.Voice2Action.Utils.FewShotGroup.yml",
+      "source_relative_path": "api/Voice2Action.Utils.FewShotGroup.yml",
       "output": {
         ".html": {
-          "relative_path": "api/XRC.Students.Voice2Action.Utils.FewShotGroup.html",
-          "hash": "UQYYCUjzC26cyIFQN+9pNnbeWNRCoo6yLlm1IrykKRs="
+          "relative_path": "api/Voice2Action.Utils.FewShotGroup.html",
+          "hash": "xeGF++4/4av8/zJUXPqH/FAFNw+azFIVi9r41+AjvPI="
         }
       },
       "is_incremental": false,
@@ -168,11 +168,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/XRC.Students.Voice2Action.Utils.FewShotPair.yml",
+      "source_relative_path": "api/Voice2Action.Utils.FewShotPair.yml",
       "output": {
         ".html": {
-          "relative_path": "api/XRC.Students.Voice2Action.Utils.FewShotPair.html",
-          "hash": "blwBRMkF63oU5coKv6k4FR0995DHA3LDCTU0R6UlYrE="
+          "relative_path": "api/Voice2Action.Utils.FewShotPair.html",
+          "hash": "Qr4rBOh2NMDjOZekeUf5XNUQpCUigY0H29R0+rzAMlA="
         }
       },
       "is_incremental": false,
@@ -180,11 +180,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/XRC.Students.Voice2Action.Utils.yml",
+      "source_relative_path": "api/Voice2Action.Utils.yml",
       "output": {
         ".html": {
-          "relative_path": "api/XRC.Students.Voice2Action.Utils.html",
-          "hash": "1xAPUYUJ6Abu5EsIkB3i7jM5yqRD0XgP+wfOZkLLoT8="
+          "relative_path": "api/Voice2Action.Utils.html",
+          "hash": "eBYeqZIzL2FaHN+VQWTdAYJsLiTWl+kgXR2kdVnZhfg="
         }
       },
       "is_incremental": false,
@@ -192,11 +192,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/XRC.Students.Voice2Action.VoiceIntentController.yml",
+      "source_relative_path": "api/Voice2Action.VoiceIntentController.yml",
       "output": {
         ".html": {
-          "relative_path": "api/XRC.Students.Voice2Action.VoiceIntentController.html",
-          "hash": "coCB1ZqHoQ/GExmXdG0dTki7MspaaGJ+8nYfcLZGv+4="
+          "relative_path": "api/Voice2Action.VoiceIntentController.html",
+          "hash": "lKQv91C7W+JP5NHM0WVAJ2yzEBtTkwRIPi3gt/oyixg="
         }
       },
       "is_incremental": false,
@@ -204,11 +204,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/XRC.Students.Voice2Action.yml",
+      "source_relative_path": "api/Voice2Action.yml",
       "output": {
         ".html": {
-          "relative_path": "api/XRC.Students.Voice2Action.html",
-          "hash": "49Hs42SK4f4nqPBmz0ye1GEpF5cDcL4p2YEtbcFb7Wo="
+          "relative_path": "api/Voice2Action.html",
+          "hash": "vjnSKID9YGJ0VdjJyFmQAuZlKNUzbh4Nqh2HkLzF9Wc="
         }
       },
       "is_incremental": false,
@@ -220,7 +220,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "/4816CaZsdlh6wtuKgZeMv0iuNLkns8163a5YWYXlIc="
+          "hash": "TpHqYYJLaFCz3qxktgyBwnTbAI3q9efvoAQSUrBcWsU="
         }
       },
       "is_incremental": false,
@@ -232,7 +232,7 @@
       "output": {
         ".html": {
           "relative_path": "changelog/CHANGELOG.html",
-          "hash": "Z0U3JQr0bj/ZIgj1KYYLwc936Qj48wKOtiz53g+1/xE="
+          "hash": "L++G/ye08XwXB1ogOzSKCoLA1FvoioQ9puqb++JI290="
         }
       },
       "is_incremental": false,
@@ -443,7 +443,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "YFJvkk41e8kT+uJ5k/TvW+60sAsYqBcoU9coCE65AU4="
+          "hash": "tz/69lHsSWhoNnfOEDZ/NrTbKLLboCk9DBHjXS9vDoI="
         }
       },
       "is_incremental": false,
@@ -455,7 +455,7 @@
       "output": {
         ".html": {
           "relative_path": "license/LICENSE.html",
-          "hash": "sp+JZIrP3QqkeFpJjva9dqGWoa1FUO74nmUgm6PUooc="
+          "hash": "q93qGDmiuVPna3wzxEvW4gK6P9ikAqSpxDGEcvNJ/gM="
         }
       },
       "is_incremental": false,
@@ -467,7 +467,7 @@
       "output": {
         ".html": {
           "relative_path": "license/Third Party Notices.html",
-          "hash": "wUVxFzW8dT3/qelgM3eiOynkeax/Zvwu0EsIhY4Tq0E="
+          "hash": "02hM+Hy9IkoAlPjuyOxflcGYnMGV7xMbmaaB3Dgh4qY="
         }
       },
       "is_incremental": false,
@@ -503,7 +503,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "xIMRDYxuVn78Mx3YRAPisD8AZQ7CfQJIor5qLoFY4iE="
+          "hash": "kSSH9ofM0L9sTtZX8Qa6ux8JMydC072KbOedB//V+uk="
         }
       },
       "is_incremental": false,

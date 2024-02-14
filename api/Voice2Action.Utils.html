@@ -5,11 +5,11 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class InteractableTarget
-   | XRC Students Voice2Action </title>
+    <title>Class Utils
+   | Voice2Action </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class InteractableTarget
-   | XRC Students Voice2Action ">
+    <meta name="title" content="Class Utils
+   | Voice2Action ">
     <meta name="generator" content="docfx 2.59.4.0">
     
     <link rel="shortcut icon" href="../images/logo.ico">
@@ -78,36 +78,162 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="XRC.Students.Voice2Action.InteractableTarget">
+            <article class="content wrap" id="_content" data-uid="Voice2Action.Utils">
   
   
-  <h1 id="XRC_Students_Voice2Action_InteractableTarget" data-uid="XRC.Students.Voice2Action.InteractableTarget" class="text-break">Class InteractableTarget
+  <h1 id="Voice2Action_Utils" data-uid="Voice2Action.Utils" class="text-break">Class Utils
   </h1>
-  <div class="markdown level0 summary"><p>Implements proxy manipulation in Expand. <br>
-When the user hovers enter the proxy object, an information panel will be displayed to show the status of the actual game object. <br>
-The user can customize the display by overriding (My)ShapeController.GetShapeInfo(...). <br></p>
+  <div class="markdown level0 summary"><p>Stores all singleton fields, global constants, and utility functions.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
-    <div class="level1"><span class="xref">InteractableTarget</span></div>
+    <div class="level1"><span class="xref">Utils</span></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="XRC.Students.Voice2Action.html">XRC.Students.Voice2Action</a></h6>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Voice2Action.html">Voice2Action</a></h6>
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
-  <h5 id="XRC_Students_Voice2Action_InteractableTarget_syntax">Syntax</h5>
+  <h5 id="Voice2Action_Utils_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class InteractableTarget : MonoBehaviour</code></pre>
+    <pre><code class="lang-csharp hljs">public static class Utils</code></pre>
   </div>
+  <h3 id="fields">Fields
+  </h3>
+  <h4 id="Voice2Action_Utils_k_CompletionTemperature" data-uid="Voice2Action.Utils.k_CompletionTemperature">k_CompletionTemperature</h4>
+  <div class="markdown level1 summary"><p>Temperature parameter of the OpenAI CompletionAPI, lower means that the output is more deterministic.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const float k_CompletionTemperature = 0F</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Single</a></td>
+        <td><p>Range [0f, 1f].</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Voice2Action_Utils_k_CompletionTemperature_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This is highly correlated to the functionality of Voice2Action, we recommend not to change it.</p>
+</div>
+  <h4 id="Voice2Action_Utils_k_FailureResponse" data-uid="Voice2Action.Utils.k_FailureResponse">k_FailureResponse</h4>
+  <div class="markdown level1 summary"><p>A string to denote model failure state</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string k_FailureResponse = &quot;N/A&quot;</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><p>&quot;N/A&quot;</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 id="Voice2Action_Utils_k_MinConfidenceToProceed" data-uid="Voice2Action.Utils.k_MinConfidenceToProceed">k_MinConfidenceToProceed</h4>
+  <div class="markdown level1 summary"><p>TODO: we will add similarity match implementation in future package version. <br>
+Confidence of the system to accept matching in the Embedding class. <br>
+This is used to determine if there is a match in the property mappings. If the system does not have enough confidence, it rejects the mapping. <br>
+User can make this bigger if they want a stricter match, or make this lower if they want a looser match. <br>
+e.g. User: &quot;change the box to orange&quot; -&gt; &quot;yellow&quot; is matched with {k_MinConfidenceToProceed}% confidence. <br></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int k_MinConfidenceToProceed = 50</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><p>Range [0, 100].</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 id="Voice2Action_Utils_s_OpenAIModel" data-uid="Voice2Action.Utils.s_OpenAIModel">s_OpenAIModel</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Model s_OpenAIModel</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Model</span></td>
+        <td><p>The base model type used in Voice2Action.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="properties">Properties
   </h3>
-  <a id="XRC_Students_Voice2Action_InteractableTarget_isProxy_" data-uid="XRC.Students.Voice2Action.InteractableTarget.isProxy*"></a>
-  <h4 id="XRC_Students_Voice2Action_InteractableTarget_isProxy" data-uid="XRC.Students.Voice2Action.InteractableTarget.isProxy">isProxy</h4>
+  <a id="Voice2Action_Utils_openAIClient_" data-uid="Voice2Action.Utils.openAIClient*"></a>
+  <h4 id="Voice2Action_Utils_openAIClient" data-uid="Voice2Action.Utils.openAIClient">openAIClient</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool isProxy { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public static OpenAIClient openAIClient { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -119,110 +245,8 @@ The user can customize the display by overriding (My)ShapeController.GetShapeInf
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td><p>Checks if the Interactable Target is a proxy object</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="XRC_Students_Voice2Action_InteractableTarget_originObject_" data-uid="XRC.Students.Voice2Action.InteractableTarget.originObject*"></a>
-  <h4 id="XRC_Students_Voice2Action_InteractableTarget_originObject" data-uid="XRC.Students.Voice2Action.InteractableTarget.originObject">originObject</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Transform originObject { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Transform</span></td>
-        <td><p>Stores the transform value of the original object of the interactable target</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="XRC_Students_Voice2Action_InteractableTarget_sceneManager_" data-uid="XRC.Students.Voice2Action.InteractableTarget.sceneManager*"></a>
-  <h4 id="XRC_Students_Voice2Action_InteractableTarget_sceneManager" data-uid="XRC.Students.Voice2Action.InteractableTarget.sceneManager">sceneManager</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static SceneManager sceneManager { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="XRC.Students.Voice2Action.SceneManager.html">SceneManager</a></td>
-        <td><p>The Scene Manager instance</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-  </h3>
-  <a id="XRC_Students_Voice2Action_InteractableTarget_MakeProxy_" data-uid="XRC.Students.Voice2Action.InteractableTarget.MakeProxy*"></a>
-  <h4 id="XRC_Students_Voice2Action_InteractableTarget_MakeProxy" data-uid="XRC.Students.Voice2Action.InteractableTarget.MakeProxy">MakeProxy()</h4>
-  <div class="markdown level1 summary"><p>Creates a proxy object of the Interactable Target.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ShapeController MakeProxy()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="XRC.Students.Voice2Action.ShapeController.html">ShapeController</a></td>
-        <td><p>The shape controller of the proxy game object.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="XRC_Students_Voice2Action_InteractableTarget_SetVariablesForLerp_" data-uid="XRC.Students.Voice2Action.InteractableTarget.SetVariablesForLerp*"></a>
-  <h4 id="XRC_Students_Voice2Action_InteractableTarget_SetVariablesForLerp_Vector3_" data-uid="XRC.Students.Voice2Action.InteractableTarget.SetVariablesForLerp(Vector3)">SetVariablesForLerp(Vector3)</h4>
-  <div class="markdown level1 summary"><p>Sets the variables (original position, target position, and isLerp) for calculation of Vector for Lerp.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void SetVariablesForLerp(Vector3 position)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Vector3</span></td>
-        <td><span class="parametername">position</span></td>
-        <td><p>Target position the Proxy object should Lerp to</p>
+        <td><span class="xref">OpenAIClient</span></td>
+        <td><p>The entry for all OpenAI API requests.</p>
 </td>
       </tr>
     </tbody>

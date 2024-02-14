@@ -6,10 +6,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Class Embeddings
-   | XRC Students Voice2Action </title>
+   | Voice2Action </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class Embeddings
-   | XRC Students Voice2Action ">
+   | Voice2Action ">
     <meta name="generator" content="docfx 2.59.4.0">
     
     <link rel="shortcut icon" href="../images/logo.ico">
@@ -78,10 +78,10 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="XRC.Students.Voice2Action.Embeddings">
+            <article class="content wrap" id="_content" data-uid="Voice2Action.Embeddings">
   
   
-  <h1 id="XRC_Students_Voice2Action_Embeddings" data-uid="XRC.Students.Voice2Action.Embeddings" class="text-break">Class Embeddings
+  <h1 id="Voice2Action_Embeddings" data-uid="Voice2Action.Embeddings" class="text-break">Class Embeddings
   </h1>
   <div class="markdown level0 summary"><p>Storage class for all property mappings and initialization of all required components of Voice2Action (except function calling). <br>
 Fields in this class should be updated as soon as the scene starts, and they are used when function calling with similarity match is attached. <br>
@@ -98,18 +98,18 @@ recognize the user&apos;s instruction by fetching this attribute during reflecti
     <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
     <div class="level1"><span class="xref">Embeddings</span></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="XRC.Students.Voice2Action.html">XRC.Students.Voice2Action</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Voice2Action.html">Voice2Action</a></h6>
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
-  <h5 id="XRC_Students_Voice2Action_Embeddings_syntax">Syntax</h5>
+  <h5 id="Voice2Action_Embeddings_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class Embeddings : MonoBehaviour</code></pre>
   </div>
-  <h5 id="XRC_Students_Voice2Action_Embeddings_remarks"><strong>Remarks</strong></h5>
+  <h5 id="Voice2Action_Embeddings_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>This class is expected to be actual embedding vector matches in future package version, right now it is an under-optimized version by explicit rankings.</p>
 </div>
   <h3 id="fields">Fields
   </h3>
-  <h4 id="XRC_Students_Voice2Action_Embeddings_k_DefaultShape" data-uid="XRC.Students.Voice2Action.Embeddings.k_DefaultShape">k_DefaultShape</h4>
+  <h4 id="Voice2Action_Embeddings_k_DefaultShape" data-uid="Voice2Action.Embeddings.k_DefaultShape">k_DefaultShape</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -134,8 +134,8 @@ recognize the user&apos;s instruction by fetching this attribute during reflecti
   </table>
   <h3 id="properties">Properties
   </h3>
-  <a id="XRC_Students_Voice2Action_Embeddings_shapeMap_" data-uid="XRC.Students.Voice2Action.Embeddings.shapeMap*"></a>
-  <h4 id="XRC_Students_Voice2Action_Embeddings_shapeMap" data-uid="XRC.Students.Voice2Action.Embeddings.shapeMap">shapeMap</h4>
+  <a id="Voice2Action_Embeddings_shapeMap_" data-uid="Voice2Action.Embeddings.shapeMap*"></a>
+  <h4 id="Voice2Action_Embeddings_shapeMap" data-uid="Voice2Action.Embeddings.shapeMap">shapeMap</h4>
   <div class="markdown level1 summary"><p>Stores object types, used for reflection in PropertyExecutor atomic functions. <br>
 When the scene starts, all object types under the &quot;Parent Interactable&quot; hierarchy of the VoiceIntentController class should be loaded. <br>
 e.g. User: &quot;make the car bigger&quot; -&gt; &quot;car&quot; object type is matched. <br></p>
@@ -161,14 +161,14 @@ e.g. User: &quot;make the car bigger&quot; -&gt; &quot;car&quot; object type is 
       </tr>
     </tbody>
   </table>
-  <h5 id="XRC_Students_Voice2Action_Embeddings_shapeMap_remarks">Remarks</h5>
+  <h5 id="Voice2Action_Embeddings_shapeMap_remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>This functionality is expected to be implemented with vision model, so the system can recognize object types by their visual appearance. <br>
 We will add that in future package version.</p>
 </div>
   <h3 id="methods">Methods
   </h3>
-  <a id="XRC_Students_Voice2Action_Embeddings_InitInteractable_" data-uid="XRC.Students.Voice2Action.Embeddings.InitInteractable*"></a>
-  <h4 id="XRC_Students_Voice2Action_Embeddings_InitInteractable_GameObject_System_Type_" data-uid="XRC.Students.Voice2Action.Embeddings.InitInteractable(GameObject,System.Type)">InitInteractable(GameObject, Type)</h4>
+  <a id="Voice2Action_Embeddings_InitInteractable_" data-uid="Voice2Action.Embeddings.InitInteractable*"></a>
+  <h4 id="Voice2Action_Embeddings_InitInteractable_GameObject_System_Type_" data-uid="Voice2Action.Embeddings.InitInteractable(GameObject,System.Type)">InitInteractable(GameObject, Type)</h4>
   <div class="markdown level1 summary"><p>Initializes the default components of the given parent interactable in the scene. <br>
 By default, this class initialize all object types under the given parent interactable by checking each children&apos;s object name. <br>
 Hence, the default behavior is that each children object is expected to contain all objects with the same type (shape). <br>
@@ -203,8 +203,8 @@ User can choose to not use this, however, by doing it differently in InitMyInter
       </tr>
     </tbody>
   </table>
-  <a id="XRC_Students_Voice2Action_Embeddings_InitMyInteractable_" data-uid="XRC.Students.Voice2Action.Embeddings.InitMyInteractable*"></a>
-  <h4 id="XRC_Students_Voice2Action_Embeddings_InitMyInteractable_GameObject_GameObject_System_Type_" data-uid="XRC.Students.Voice2Action.Embeddings.InitMyInteractable(GameObject,GameObject,System.Type)">InitMyInteractable(GameObject, GameObject, Type)</h4>
+  <a id="Voice2Action_Embeddings_InitMyInteractable_" data-uid="Voice2Action.Embeddings.InitMyInteractable*"></a>
+  <h4 id="Voice2Action_Embeddings_InitMyInteractable_GameObject_GameObject_System_Type_" data-uid="Voice2Action.Embeddings.InitMyInteractable(GameObject,GameObject,System.Type)">InitMyInteractable(GameObject, GameObject, Type)</h4>
   <div class="markdown level1 summary"><p>Initializes user-defined components of the given parent interactable in the scene.<br>
 The function is intentionally left blank so the user can override it, see CityDemo.Scripts.MyEmbeddings for its example usage. <br></p>
 </div>
@@ -243,8 +243,8 @@ The function is intentionally left blank so the user can override it, see CityDe
       </tr>
     </tbody>
   </table>
-  <a id="XRC_Students_Voice2Action_Embeddings_InitProperty_" data-uid="XRC.Students.Voice2Action.Embeddings.InitProperty*"></a>
-  <h4 id="XRC_Students_Voice2Action_Embeddings_InitProperty_XRC_Students_Voice2Action_PropertyClassifier_XRC_Students_Voice2Action_PropertyExtractor_XRC_Students_Voice2Action_PropertyExecutor_" data-uid="XRC.Students.Voice2Action.Embeddings.InitProperty(XRC.Students.Voice2Action.PropertyClassifier,XRC.Students.Voice2Action.PropertyExtractor,XRC.Students.Voice2Action.PropertyExecutor)">InitProperty(PropertyClassifier, PropertyExtractor, PropertyExecutor)</h4>
+  <a id="Voice2Action_Embeddings_InitProperty_" data-uid="Voice2Action.Embeddings.InitProperty*"></a>
+  <h4 id="Voice2Action_Embeddings_InitProperty_Voice2Action_PropertyClassifier_Voice2Action_PropertyExtractor_Voice2Action_PropertyExecutor_" data-uid="Voice2Action.Embeddings.InitProperty(Voice2Action.PropertyClassifier,Voice2Action.PropertyExtractor,Voice2Action.PropertyExecutor)">InitProperty(PropertyClassifier, PropertyExtractor, PropertyExecutor)</h4>
   <div class="markdown level1 summary"><p>The entry point for initializing all property LLMs (large language models). <br>
 This class is intentionally left blank so user can override it, see CityDemo.Scripts.MyEmbeddings for its example usage. <br></p>
 </div>
@@ -264,19 +264,19 @@ This class is intentionally left blank so user can override it, see CityDemo.Scr
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="XRC.Students.Voice2Action.PropertyClassifier.html">PropertyClassifier</a></td>
+        <td><a class="xref" href="Voice2Action.PropertyClassifier.html">PropertyClassifier</a></td>
         <td><span class="parametername">classifier</span></td>
         <td><p>The &quot;LLM for Classification&quot;.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="XRC.Students.Voice2Action.PropertyExtractor.html">PropertyExtractor</a></td>
+        <td><a class="xref" href="Voice2Action.PropertyExtractor.html">PropertyExtractor</a></td>
         <td><span class="parametername">extractor</span></td>
         <td><p>The &quot;LLM for Extraction&quot;.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="XRC.Students.Voice2Action.PropertyExecutor.html">PropertyExecutor</a></td>
+        <td><a class="xref" href="Voice2Action.PropertyExecutor.html">PropertyExecutor</a></td>
         <td><span class="parametername">executor</span></td>
         <td><p>The &quot;LLM for Execution&quot;.</p>
 </td>
