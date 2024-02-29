@@ -27,6 +27,8 @@ This package uses LLMs (Large Language Models) to analyze user instruction throu
 
 - [Here](https://arxiv.org/abs/2310.00092).
 
+- [Google Slides](https://docs.google.com/presentation/d/1nB0ITNqnGCjYhDXntcIfWOXTMKZqVVJ8l_gE9LOtU_w/edit?usp=sharing)
+
 **Abstract**
 
 Large Language Models (LLMs) are trained and aligned to follow natural language instructions with only a handful of examples, and they are prompted as task-driven autonomous agents to adapt to various sources of execution environments. However, deploying agent LLMs in virtual reality (VR) has been challenging due to the lack of efficiency in online interactions and the complex manipulation categories in 3D environments. In this work, we propose Voice2Action, a framework that hierarchically analyzes customized voice signals and textual commands through action and entity extraction and divides the execution tasks into canonical interaction subsets in real-time with error prevention from environment feedback. Experiment results in an urban engineering VR environment with synthetic instruction data show that Voice2Action can perform more efficiently and accurately than approaches without optimizations.
