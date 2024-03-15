@@ -56,6 +56,7 @@ namespace Voice2Action
         /// </summary>
         /// <param name="myShapeControllerType">Type of user-defined ShapeController, used to check existence of atomic property functions.</param>
         /// <param name="propertyFunctionNames">Names of property functions.</param>
+        /// <returns>None.</returns>
         public async Task InitEmbeddings(Type myShapeControllerType, List<string> propertyFunctionNames)
         {
             foreach (var functionName in propertyFunctionNames)
@@ -101,6 +102,7 @@ namespace Voice2Action
         /// </summary>
         /// <param name="propertyMap">A propertyMap instance, i.e. shapeMap.</param>
         /// <param name="propertyMapName">The string name of the propertyMap, i.e. "shapeMap".</param>
+        /// <returns>Whether the process succeeds.</returns>
         public async Task<bool> ProcessEmbeddingData(Dictionary<string, object> propertyMap, string propertyMapName)
         {
             if (m_EmbeddingMap.ContainsKey(propertyMapName)) return true;
