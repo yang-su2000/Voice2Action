@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.XR.Interaction.Toolkit;
 
-namespace Voice2Action.Runtime
+namespace Voice2Action
 {
     /// <summary>
     /// Storage class for all property mappings and initialization of all required components of Voice2Action (except function calling). <br/>

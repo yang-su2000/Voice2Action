@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 using OpenAI;
 using UnityEngine;
 
-namespace Voice2Action.Runtime
+namespace Voice2Action
 {
     /// <summary>
     /// A minimal implementation of the "LLM for Execution" step in Voice2Action. <br/>
