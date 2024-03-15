@@ -46967,7 +46967,7 @@ PrefabInstance:
     - target: {fileID: 6825826414124240360, guid: cf8415a57570d6445966058b47aabc30, type: 3}
       propertyPath: m_MyEmbeddings
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 662802409}
     - target: {fileID: 6825826414124240360, guid: cf8415a57570d6445966058b47aabc30, type: 3}
       propertyPath: m_SpeakingPanel
       value: 
