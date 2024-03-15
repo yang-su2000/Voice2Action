@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.XR.Interaction.Toolkit;
 
-namespace Voice2Action
+namespace Voice2Action.Runtime
 {
     /// <summary>
     /// Stores all actual implementations of the atomic function and attributes, must ALL be public for reflection. <br/>

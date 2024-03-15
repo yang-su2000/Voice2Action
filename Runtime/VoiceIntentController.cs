@@ -9,7 +9,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Voice2Action
+namespace Voice2Action.Runtime
 {
     /// <summary>
     /// The main class of Voice2Action, contains all core required components for the system. <br/>
@@ -215,7 +215,7 @@ namespace Voice2Action
             };
             m_ExpandResetAction.action.started += _ => ResetExpand();
         }
-        
+
         private void Update()
         {
             if (m_FadeActive)
@@ -356,6 +356,28 @@ namespace Voice2Action
                 }
             }
         }
+
+        /// <summary>
+        /// Utility function to perform text embedding retrieval with the OpenAI API.
+        /// </summary>
+        /// <param name="userInput">Input user message</param>
+        /// <returns>A list of double values.</returns>
+        public static async Task<IReadOnlyList<double>> CallEmbedding(string userInput)
+        {
+            IReadOnlyList<double> output = null;
+            try
+            {
+                var chatResponse =
+                    await Utils.openAIClient.EmbeddingsEndpoint.CreateEmbeddingAsync(userInput,
+                        model: Utils.k_EmbeddingModel, dimensions: Utils.k_EmbeddingDim);
+                output = chatResponse.Data[0].Embedding;
+            }
+            catch (Exception e)
+            {
+                Debug.LogWarning("Exception in CallEmbedding:\n" + e);
+            }
+            return output;
+        }
         
         /// <summary>
         /// Utility function to perform chat completion with the OpenAI API.
@@ -370,7 +392,7 @@ namespace Voice2Action
                 new(Role.System, systemInput),
                 new(Role.User, userInput),
             };
-            var chatRequest = new ChatRequest(chatPrompts, model: Utils.s_OpenAIModel, temperature: Utils.k_CompletionTemperature);
+            var chatRequest = new ChatRequest(chatPrompts, model: Utils.k_ChatModel, temperature: Utils.k_CompletionTemperature);
             string output = Utils.k_FailureResponse;
             try
             {
@@ -397,7 +419,7 @@ namespace Voice2Action
                 new(Role.System, PropertyExecutor.k_ExecutionInstruction),
                 new(Role.User, userInput),
             };
-            var chatRequest = new ChatRequest(chatPrompts, tools: tools, model: Utils.s_OpenAIModel, temperature: Utils.k_CompletionTemperature);
+            var chatRequest = new ChatRequest(chatPrompts, tools: tools, model: Utils.k_ChatModel, temperature: Utils.k_CompletionTemperature);
             string output = Utils.k_FailureResponse;
             try
             {
