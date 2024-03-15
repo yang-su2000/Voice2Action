@@ -292,8 +292,6 @@ namespace Voice2Action.Runtime
         /// <returns>No return value, but the function needs to be asynchronous to take effect.</returns>
         private async Task CallVoice2Action(string prompt)
         {
-            // IReadOnlyList<double> ret = await CallEmbedding("Jackson Ave");
-            // return;
             m_HistoryMessages.Add("<color=white>User:</color> <color=green>" + prompt + "</color>\n");
             UpdateMessageDisplay("<color=white>User:</color> <color=green>" + prompt + "</color>", m_Voice2ActionGUIScrollText);
             Dictionary<string, string> classifyDict = await m_PropertyClassifier.ClassifyProperty(prompt);

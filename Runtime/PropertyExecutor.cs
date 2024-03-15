@@ -550,13 +550,6 @@ namespace Voice2Action.Runtime
                         Debug.LogWarning($"failed to process propertyMap embedding with name {propertyName}");
                         continue;
                     }
-                    // [Deprecated]
-                    // var classificationInput =
-                    //     PropertyClassifier.GetClassificationPrompt(userInput, new List<string>(fieldDict.Keys));
-                    // Debug.Log($"{functionName} classificationInput: {classificationInput}");
-                    // var classificationOutput = await VoiceIntentController.CallCompletion(classificationInput,
-                    //     PropertyClassifier.k_ClassificationInstruction);
-                    // Debug.Log($"{functionName} classificationOutput: {classificationOutput}");
                     var (classificationOutput, similarity) = await embeddings.GetEmbedding(userInput, propertyName);
                     Debug.Log($"{functionName} classificationOutput: {classificationOutput}, confidence: {similarity}");
                     // handle model failure in classification

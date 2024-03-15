@@ -159,6 +159,9 @@ The Expand Panel is used to store the objects you've called that will be "expand
 
 In order to call an object near certain street, we want to specify where the boundaries that street is by writing atomic functions that define "boundaries".
 - "MyEmbeddings.cs" is used to initialize where the landmarks are and store them in a publicly available data structure (like a dictionary, for example)
+    - it has a "Embedding Data Dir" field that the user can customizably define the cached embedding location for each scene
+    - as long as you do not have the same atomic functions but doing different things in different scenes, you can leave this blank and it will not cause any issue to the system
+    - otherwise, it is recommended to set it to a unique name for each of your Unity Scene, i.e. "Embedding Data Dir=CityDemo" for the "CityDemo" Scene
 - "MyShapeController.cs: is used to write functions that specify what it means by "object is within current landmark's boundary"
 - Now, when the user calls for objects near Main Street, it will call all the objects that are near the strip of land shown below
 
