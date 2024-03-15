@@ -132,10 +132,10 @@ namespace Voice2Action.Runtime
                 var parts = line.Split(',');
                 Assert.AreEqual(parts.Length, Utils.k_EmbeddingDim + 1);
                 var propertyName = parts[0];
-                List<double> propertyEmbedding = new List<double>(Utils.k_EmbeddingDim);
+                List<double> propertyEmbedding = new List<double>();
                 for (int i = 1; i < parts.Length; i++)
                 {
-                    propertyEmbedding[i - 1] = double.Parse(parts[i]);
+                    propertyEmbedding.Add(double.Parse(parts[i]));
                 }
                 propertyMapData[propertyName] = propertyEmbedding;
             }
