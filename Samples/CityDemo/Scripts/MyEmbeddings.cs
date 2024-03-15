@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Voice2Action.Samples.CityDemo.Scenes
+namespace Voice2Action.Samples.CityDemo.Scripts
 {
     /// <summary>
     /// Inherited class of Embeddings if users want to add new property mappings to the system.

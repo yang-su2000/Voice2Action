@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Voice2Action.Samples.CityDemo.Scenes
+namespace Voice2Action.Samples.CityDemo.Scripts
 {
     /// <summary>
     /// Inherited class of ShapeController if users want to add customized atomic functions to the system.
