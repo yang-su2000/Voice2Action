@@ -46967,7 +46967,7 @@ PrefabInstance:
     - target: {fileID: 6825826414124240360, guid: cf8415a57570d6445966058b47aabc30, type: 3}
       propertyPath: m_MyEmbeddings
       value: 
-      objectReference: {fileID: 662802409}
+      objectReference: {fileID: 0}
     - target: {fileID: 6825826414124240360, guid: cf8415a57570d6445966058b47aabc30, type: 3}
       propertyPath: m_SpeakingPanel
       value: 
@@ -46989,8 +46989,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1226662123}
     m_RemovedComponents:
-    - {fileID: 8873065322889790554, guid: cf8415a57570d6445966058b47aabc30, type: 3}
     - {fileID: 8686930483864042259, guid: cf8415a57570d6445966058b47aabc30, type: 3}
+    - {fileID: 8873065322889790554, guid: cf8415a57570d6445966058b47aabc30, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
