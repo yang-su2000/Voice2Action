@@ -78,10 +78,10 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Voice2Action.Runtime.PropertyClassifier">
+            <article class="content wrap" id="_content" data-uid="Voice2Action.PropertyClassifier">
   
   
-  <h1 id="Voice2Action_Runtime_PropertyClassifier" data-uid="Voice2Action.Runtime.PropertyClassifier" class="text-break">Class PropertyClassifier
+  <h1 id="Voice2Action_PropertyClassifier" data-uid="Voice2Action.PropertyClassifier" class="text-break">Class PropertyClassifier
   </h1>
   <div class="markdown level0 summary"><p>A minimal implementation of the &quot;LLM for Classification&quot; step in Voice2Action. <br>
 This implementation is not optimized and only used for inference. <br>
@@ -93,15 +93,15 @@ We will add action class generation and alignment training via order ranking of 
     <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
     <div class="level1"><span class="xref">PropertyClassifier</span></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Voice2Action.Runtime.html">Voice2Action.Runtime</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Voice2Action.html">Voice2Action</a></h6>
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
-  <h5 id="Voice2Action_Runtime_PropertyClassifier_syntax">Syntax</h5>
+  <h5 id="Voice2Action_PropertyClassifier_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class PropertyClassifier : MonoBehaviour</code></pre>
   </div>
   <h3 id="fields">Fields
   </h3>
-  <h4 id="Voice2Action_Runtime_PropertyClassifier_k_ClassificationInstruction" data-uid="Voice2Action.Runtime.PropertyClassifier.k_ClassificationInstruction">k_ClassificationInstruction</h4>
+  <h4 id="Voice2Action_PropertyClassifier_k_ClassificationInstruction" data-uid="Voice2Action.PropertyClassifier.k_ClassificationInstruction">k_ClassificationInstruction</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -126,8 +126,8 @@ We will add action class generation and alignment training via order ranking of 
   </table>
   <h3 id="properties">Properties
   </h3>
-  <a id="Voice2Action_Runtime_PropertyClassifier_classificationGroup_" data-uid="Voice2Action.Runtime.PropertyClassifier.classificationGroup*"></a>
-  <h4 id="Voice2Action_Runtime_PropertyClassifier_classificationGroup" data-uid="Voice2Action.Runtime.PropertyClassifier.classificationGroup">classificationGroup</h4>
+  <a id="Voice2Action_PropertyClassifier_classificationGroup_" data-uid="Voice2Action.PropertyClassifier.classificationGroup*"></a>
+  <h4 id="Voice2Action_PropertyClassifier_classificationGroup" data-uid="Voice2Action.PropertyClassifier.classificationGroup">classificationGroup</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -144,13 +144,13 @@ We will add action class generation and alignment training via order ranking of 
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Voice2Action.Runtime.Utils.FewShotGroup.html">Utils.FewShotGroup</a></td>
+        <td><a class="xref" href="Voice2Action.Utils.FewShotGroup.html">Utils.FewShotGroup</a></td>
         <td><p>Contains the available action classes to interact with for classification and their example usage.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Voice2Action_Runtime_PropertyClassifier_classificationGroup_examples">Examples</h5>
+  <h5 id="Voice2Action_PropertyClassifier_classificationGroup_examples">Examples</h5>
   <p>Extract actions &quot;select, modify&quot; from the input, separate by comma. <br>
 If some actions do not exist, do not print anything. <br>
 Input: <br>
@@ -164,8 +164,8 @@ Output: <br></p>
 
   <h3 id="methods">Methods
   </h3>
-  <a id="Voice2Action_Runtime_PropertyClassifier_AddAction_" data-uid="Voice2Action.Runtime.PropertyClassifier.AddAction*"></a>
-  <h4 id="Voice2Action_Runtime_PropertyClassifier_AddAction_System_Int32_System_String_" data-uid="Voice2Action.Runtime.PropertyClassifier.AddAction(System.Int32,System.String)">AddAction(Int32, String)</h4>
+  <a id="Voice2Action_PropertyClassifier_AddAction_" data-uid="Voice2Action.PropertyClassifier.AddAction*"></a>
+  <h4 id="Voice2Action_PropertyClassifier_AddAction_System_Int32_System_String_" data-uid="Voice2Action.PropertyClassifier.AddAction(System.Int32,System.String)">AddAction(Int32, String)</h4>
   <div class="markdown level1 summary"><p>Add new action class to the classifier, used for customized actions. <br>
 The user may also want to AddClassificationExamples(...) to ensure accurate results.</p>
 </div>
@@ -198,8 +198,8 @@ The user may also want to AddClassificationExamples(...) to ensure accurate resu
       </tr>
     </tbody>
   </table>
-  <a id="Voice2Action_Runtime_PropertyClassifier_AddClassificationExamples_" data-uid="Voice2Action.Runtime.PropertyClassifier.AddClassificationExamples*"></a>
-  <h4 id="Voice2Action_Runtime_PropertyClassifier_AddClassificationExamples_System_String_System_String_" data-uid="Voice2Action.Runtime.PropertyClassifier.AddClassificationExamples(System.String,System.String)">AddClassificationExamples(String, String)</h4>
+  <a id="Voice2Action_PropertyClassifier_AddClassificationExamples_" data-uid="Voice2Action.PropertyClassifier.AddClassificationExamples*"></a>
+  <h4 id="Voice2Action_PropertyClassifier_AddClassificationExamples_System_String_System_String_" data-uid="Voice2Action.PropertyClassifier.AddClassificationExamples(System.String,System.String)">AddClassificationExamples(String, String)</h4>
   <div class="markdown level1 summary"><p>Add new classification examples to the system, used when user adds customized actions.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -231,8 +231,8 @@ The user may also want to AddClassificationExamples(...) to ensure accurate resu
       </tr>
     </tbody>
   </table>
-  <a id="Voice2Action_Runtime_PropertyClassifier_ClassifyProperty_" data-uid="Voice2Action.Runtime.PropertyClassifier.ClassifyProperty*"></a>
-  <h4 id="Voice2Action_Runtime_PropertyClassifier_ClassifyProperty_System_String_" data-uid="Voice2Action.Runtime.PropertyClassifier.ClassifyProperty(System.String)">ClassifyProperty(String)</h4>
+  <a id="Voice2Action_PropertyClassifier_ClassifyProperty_" data-uid="Voice2Action.PropertyClassifier.ClassifyProperty*"></a>
+  <h4 id="Voice2Action_PropertyClassifier_ClassifyProperty_System_String_" data-uid="Voice2Action.PropertyClassifier.ClassifyProperty(System.String)">ClassifyProperty(String)</h4>
   <div class="markdown level1 summary"><p>Classify and extract phrases in user instruction that corresponds to each defined action class. <br></p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -276,8 +276,8 @@ The user may also want to AddClassificationExamples(...) to ensure accurate resu
       </tr>
     </tbody>
   </table>
-  <a id="Voice2Action_Runtime_PropertyClassifier_GetClassificationPrompt_" data-uid="Voice2Action.Runtime.PropertyClassifier.GetClassificationPrompt*"></a>
-  <h4 id="Voice2Action_Runtime_PropertyClassifier_GetClassificationPrompt_System_String_System_Collections_Generic_List_System_String__" data-uid="Voice2Action.Runtime.PropertyClassifier.GetClassificationPrompt(System.String,System.Collections.Generic.List{System.String})">GetClassificationPrompt(String, List&lt;String&gt;)</h4>
+  <a id="Voice2Action_PropertyClassifier_GetClassificationPrompt_" data-uid="Voice2Action.PropertyClassifier.GetClassificationPrompt*"></a>
+  <h4 id="Voice2Action_PropertyClassifier_GetClassificationPrompt_System_String_System_Collections_Generic_List_System_String__" data-uid="Voice2Action.PropertyClassifier.GetClassificationPrompt(System.String,System.Collections.Generic.List{System.String})">GetClassificationPrompt(String, List&lt;String&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>

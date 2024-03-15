@@ -78,10 +78,10 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Voice2Action.Runtime.PropertyExtractor">
+            <article class="content wrap" id="_content" data-uid="Voice2Action.PropertyExtractor">
   
   
-  <h1 id="Voice2Action_Runtime_PropertyExtractor" data-uid="Voice2Action.Runtime.PropertyExtractor" class="text-break">Class PropertyExtractor
+  <h1 id="Voice2Action_PropertyExtractor" data-uid="Voice2Action.PropertyExtractor" class="text-break">Class PropertyExtractor
   </h1>
   <div class="markdown level0 summary"><p>A minimal implementation of the &quot;LLM for Extraction&quot; step in Voice2Action. <br>
 This implementation is not optimized and only used for inference. <br>
@@ -93,16 +93,16 @@ We will add atomic action property generation, alignment training via order rank
     <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
     <div class="level1"><span class="xref">PropertyExtractor</span></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Voice2Action.Runtime.html">Voice2Action.Runtime</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Voice2Action.html">Voice2Action</a></h6>
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
-  <h5 id="Voice2Action_Runtime_PropertyExtractor_syntax">Syntax</h5>
+  <h5 id="Voice2Action_PropertyExtractor_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class PropertyExtractor : MonoBehaviour</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  <a id="Voice2Action_Runtime_PropertyExtractor_modificationGroup_" data-uid="Voice2Action.Runtime.PropertyExtractor.modificationGroup*"></a>
-  <h4 id="Voice2Action_Runtime_PropertyExtractor_modificationGroup" data-uid="Voice2Action.Runtime.PropertyExtractor.modificationGroup">modificationGroup</h4>
+  <a id="Voice2Action_PropertyExtractor_modificationGroup_" data-uid="Voice2Action.PropertyExtractor.modificationGroup*"></a>
+  <h4 id="Voice2Action_PropertyExtractor_modificationGroup" data-uid="Voice2Action.PropertyExtractor.modificationGroup">modificationGroup</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -119,13 +119,13 @@ We will add atomic action property generation, alignment training via order rank
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Voice2Action.Runtime.Utils.FewShotGroup.html">Utils.FewShotGroup</a></td>
+        <td><a class="xref" href="Voice2Action.Utils.FewShotGroup.html">Utils.FewShotGroup</a></td>
         <td><p>Contains the available atomic action properties to interact with for modification and their example usage.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Voice2Action_Runtime_PropertyExtractor_modificationGroup_examples">Examples</h5>
+  <h5 id="Voice2Action_PropertyExtractor_modificationGroup_examples">Examples</h5>
   <p>Extract actions {&quot;ModifyColor&quot;, &quot;ModifyScale&quot;, &quot;ModifyPosition&quot;} from the input, separate by comma. <br>
 If some actions do not exist, do not print anything. <br>
 Input: <br>
@@ -137,8 +137,8 @@ Input: <br>
 {userInput} <br>
 Output: <br></p>
 
-  <a id="Voice2Action_Runtime_PropertyExtractor_selectionGroup_" data-uid="Voice2Action.Runtime.PropertyExtractor.selectionGroup*"></a>
-  <h4 id="Voice2Action_Runtime_PropertyExtractor_selectionGroup" data-uid="Voice2Action.Runtime.PropertyExtractor.selectionGroup">selectionGroup</h4>
+  <a id="Voice2Action_PropertyExtractor_selectionGroup_" data-uid="Voice2Action.PropertyExtractor.selectionGroup*"></a>
+  <h4 id="Voice2Action_PropertyExtractor_selectionGroup" data-uid="Voice2Action.PropertyExtractor.selectionGroup">selectionGroup</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -155,13 +155,13 @@ Output: <br></p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Voice2Action.Runtime.Utils.FewShotGroup.html">Utils.FewShotGroup</a></td>
+        <td><a class="xref" href="Voice2Action.Utils.FewShotGroup.html">Utils.FewShotGroup</a></td>
         <td><p>Contains the available atomic action properties to interact with for selection and their example usage.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Voice2Action_Runtime_PropertyExtractor_selectionGroup_examples">Examples</h5>
+  <h5 id="Voice2Action_PropertyExtractor_selectionGroup_examples">Examples</h5>
   <p>Extract actions {&quot;GetShape&quot;, &quot;GetColor&quot;, &quot;GetDirection&quot;, &quot;GetDistance&quot;, &quot;GetSuperlative&quot;} from the input, separate by comma. <br>
 If some actions do not exist, do not print anything. <br>
 Input: <br>
@@ -175,8 +175,8 @@ Output: <br></p>
 
   <h3 id="methods">Methods
   </h3>
-  <a id="Voice2Action_Runtime_PropertyExtractor_AddAtomicAction_" data-uid="Voice2Action.Runtime.PropertyExtractor.AddAtomicAction*"></a>
-  <h4 id="Voice2Action_Runtime_PropertyExtractor_AddAtomicAction_System_String_System_Int32_System_String_" data-uid="Voice2Action.Runtime.PropertyExtractor.AddAtomicAction(System.String,System.Int32,System.String)">AddAtomicAction(String, Int32, String)</h4>
+  <a id="Voice2Action_PropertyExtractor_AddAtomicAction_" data-uid="Voice2Action.PropertyExtractor.AddAtomicAction*"></a>
+  <h4 id="Voice2Action_PropertyExtractor_AddAtomicAction_System_String_System_Int32_System_String_" data-uid="Voice2Action.PropertyExtractor.AddAtomicAction(System.String,System.Int32,System.String)">AddAtomicAction(String, Int32, String)</h4>
   <div class="markdown level1 summary"><p>Add new atomic action property to the extractor, used for customized properties. <br>
 The user may also want to AddExtractExamples(...) to ensure accurate results. <br></p>
 </div>
@@ -215,8 +215,8 @@ The user may also want to AddExtractExamples(...) to ensure accurate results. <b
       </tr>
     </tbody>
   </table>
-  <a id="Voice2Action_Runtime_PropertyExtractor_AddExtractionExamples_" data-uid="Voice2Action.Runtime.PropertyExtractor.AddExtractionExamples*"></a>
-  <h4 id="Voice2Action_Runtime_PropertyExtractor_AddExtractionExamples_System_String_System_String_System_String_" data-uid="Voice2Action.Runtime.PropertyExtractor.AddExtractionExamples(System.String,System.String,System.String)">AddExtractionExamples(String, String, String)</h4>
+  <a id="Voice2Action_PropertyExtractor_AddExtractionExamples_" data-uid="Voice2Action.PropertyExtractor.AddExtractionExamples*"></a>
+  <h4 id="Voice2Action_PropertyExtractor_AddExtractionExamples_System_String_System_String_System_String_" data-uid="Voice2Action.PropertyExtractor.AddExtractionExamples(System.String,System.String,System.String)">AddExtractionExamples(String, String, String)</h4>
   <div class="markdown level1 summary"><p>Add new extraction examples to the system, used when user adds customized atomic actions. <br></p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -254,8 +254,8 @@ The user may also want to AddExtractExamples(...) to ensure accurate results. <b
       </tr>
     </tbody>
   </table>
-  <a id="Voice2Action_Runtime_PropertyExtractor_ExtractProperty_" data-uid="Voice2Action.Runtime.PropertyExtractor.ExtractProperty*"></a>
-  <h4 id="Voice2Action_Runtime_PropertyExtractor_ExtractProperty_System_String_System_String_" data-uid="Voice2Action.Runtime.PropertyExtractor.ExtractProperty(System.String,System.String)">ExtractProperty(String, String)</h4>
+  <a id="Voice2Action_PropertyExtractor_ExtractProperty_" data-uid="Voice2Action.PropertyExtractor.ExtractProperty*"></a>
+  <h4 id="Voice2Action_PropertyExtractor_ExtractProperty_System_String_System_String_" data-uid="Voice2Action.PropertyExtractor.ExtractProperty(System.String,System.String)">ExtractProperty(String, String)</h4>
   <div class="markdown level1 summary"><p>Extract property mappings in user instruction that corresponds to each defined atomic action class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>

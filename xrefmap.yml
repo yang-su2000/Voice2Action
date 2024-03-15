@@ -1,1314 +1,1314 @@
 ### YamlMime:XRefMap
 sorted: true
 references:
-- uid: Voice2Action.Runtime
-  name: Voice2Action.Runtime
-  href: api/Voice2Action.Runtime.html
-  commentId: N:Voice2Action.Runtime
-  fullName: Voice2Action.Runtime
-  nameWithType: Voice2Action.Runtime
-- uid: Voice2Action.Runtime.Embeddings
+- uid: Voice2Action
+  name: Voice2Action
+  href: api/Voice2Action.html
+  commentId: N:Voice2Action
+  fullName: Voice2Action
+  nameWithType: Voice2Action
+- uid: Voice2Action.Embeddings
   name: Embeddings
-  href: api/Voice2Action.Runtime.Embeddings.html
-  commentId: T:Voice2Action.Runtime.Embeddings
-  fullName: Voice2Action.Runtime.Embeddings
+  href: api/Voice2Action.Embeddings.html
+  commentId: T:Voice2Action.Embeddings
+  fullName: Voice2Action.Embeddings
   nameWithType: Embeddings
-- uid: Voice2Action.Runtime.Embeddings.GetEmbedding(System.String,System.String)
+- uid: Voice2Action.Embeddings.GetEmbedding(System.String,System.String)
   name: GetEmbedding(String, String)
-  href: api/Voice2Action.Runtime.Embeddings.html#Voice2Action_Runtime_Embeddings_GetEmbedding_System_String_System_String_
-  commentId: M:Voice2Action.Runtime.Embeddings.GetEmbedding(System.String,System.String)
-  fullName: Voice2Action.Runtime.Embeddings.GetEmbedding(System.String, System.String)
+  href: api/Voice2Action.Embeddings.html#Voice2Action_Embeddings_GetEmbedding_System_String_System_String_
+  commentId: M:Voice2Action.Embeddings.GetEmbedding(System.String,System.String)
+  fullName: Voice2Action.Embeddings.GetEmbedding(System.String, System.String)
   nameWithType: Embeddings.GetEmbedding(String, String)
-- uid: Voice2Action.Runtime.Embeddings.GetEmbedding*
+- uid: Voice2Action.Embeddings.GetEmbedding*
   name: GetEmbedding
-  href: api/Voice2Action.Runtime.Embeddings.html#Voice2Action_Runtime_Embeddings_GetEmbedding_
-  commentId: Overload:Voice2Action.Runtime.Embeddings.GetEmbedding
+  href: api/Voice2Action.Embeddings.html#Voice2Action_Embeddings_GetEmbedding_
+  commentId: Overload:Voice2Action.Embeddings.GetEmbedding
   isSpec: "True"
-  fullName: Voice2Action.Runtime.Embeddings.GetEmbedding
+  fullName: Voice2Action.Embeddings.GetEmbedding
   nameWithType: Embeddings.GetEmbedding
-- uid: Voice2Action.Runtime.Embeddings.InitEmbeddings(System.Type,System.Collections.Generic.List{System.String})
+- uid: Voice2Action.Embeddings.InitEmbeddings(System.Type,System.Collections.Generic.List{System.String})
   name: InitEmbeddings(Type, List<String>)
-  href: api/Voice2Action.Runtime.Embeddings.html#Voice2Action_Runtime_Embeddings_InitEmbeddings_System_Type_System_Collections_Generic_List_System_String__
-  commentId: M:Voice2Action.Runtime.Embeddings.InitEmbeddings(System.Type,System.Collections.Generic.List{System.String})
+  href: api/Voice2Action.Embeddings.html#Voice2Action_Embeddings_InitEmbeddings_System_Type_System_Collections_Generic_List_System_String__
+  commentId: M:Voice2Action.Embeddings.InitEmbeddings(System.Type,System.Collections.Generic.List{System.String})
   name.vb: InitEmbeddings(Type, List(Of String))
-  fullName: Voice2Action.Runtime.Embeddings.InitEmbeddings(System.Type, System.Collections.Generic.List<System.String>)
-  fullName.vb: Voice2Action.Runtime.Embeddings.InitEmbeddings(System.Type, System.Collections.Generic.List(Of System.String))
+  fullName: Voice2Action.Embeddings.InitEmbeddings(System.Type, System.Collections.Generic.List<System.String>)
+  fullName.vb: Voice2Action.Embeddings.InitEmbeddings(System.Type, System.Collections.Generic.List(Of System.String))
   nameWithType: Embeddings.InitEmbeddings(Type, List<String>)
   nameWithType.vb: Embeddings.InitEmbeddings(Type, List(Of String))
-- uid: Voice2Action.Runtime.Embeddings.InitEmbeddings*
+- uid: Voice2Action.Embeddings.InitEmbeddings*
   name: InitEmbeddings
-  href: api/Voice2Action.Runtime.Embeddings.html#Voice2Action_Runtime_Embeddings_InitEmbeddings_
-  commentId: Overload:Voice2Action.Runtime.Embeddings.InitEmbeddings
+  href: api/Voice2Action.Embeddings.html#Voice2Action_Embeddings_InitEmbeddings_
+  commentId: Overload:Voice2Action.Embeddings.InitEmbeddings
   isSpec: "True"
-  fullName: Voice2Action.Runtime.Embeddings.InitEmbeddings
+  fullName: Voice2Action.Embeddings.InitEmbeddings
   nameWithType: Embeddings.InitEmbeddings
-- uid: Voice2Action.Runtime.Embeddings.InitInteractable(GameObject,System.Type)
+- uid: Voice2Action.Embeddings.InitInteractable(GameObject,System.Type)
   name: InitInteractable(GameObject, Type)
-  href: api/Voice2Action.Runtime.Embeddings.html#Voice2Action_Runtime_Embeddings_InitInteractable_GameObject_System_Type_
-  commentId: M:Voice2Action.Runtime.Embeddings.InitInteractable(GameObject,System.Type)
-  fullName: Voice2Action.Runtime.Embeddings.InitInteractable(GameObject, System.Type)
+  href: api/Voice2Action.Embeddings.html#Voice2Action_Embeddings_InitInteractable_GameObject_System_Type_
+  commentId: M:Voice2Action.Embeddings.InitInteractable(GameObject,System.Type)
+  fullName: Voice2Action.Embeddings.InitInteractable(GameObject, System.Type)
   nameWithType: Embeddings.InitInteractable(GameObject, Type)
-- uid: Voice2Action.Runtime.Embeddings.InitInteractable*
+- uid: Voice2Action.Embeddings.InitInteractable*
   name: InitInteractable
-  href: api/Voice2Action.Runtime.Embeddings.html#Voice2Action_Runtime_Embeddings_InitInteractable_
-  commentId: Overload:Voice2Action.Runtime.Embeddings.InitInteractable
+  href: api/Voice2Action.Embeddings.html#Voice2Action_Embeddings_InitInteractable_
+  commentId: Overload:Voice2Action.Embeddings.InitInteractable
   isSpec: "True"
-  fullName: Voice2Action.Runtime.Embeddings.InitInteractable
+  fullName: Voice2Action.Embeddings.InitInteractable
   nameWithType: Embeddings.InitInteractable
-- uid: Voice2Action.Runtime.Embeddings.InitMyInteractable(GameObject,GameObject,System.Type)
+- uid: Voice2Action.Embeddings.InitMyInteractable(GameObject,GameObject,System.Type)
   name: InitMyInteractable(GameObject, GameObject, Type)
-  href: api/Voice2Action.Runtime.Embeddings.html#Voice2Action_Runtime_Embeddings_InitMyInteractable_GameObject_GameObject_System_Type_
-  commentId: M:Voice2Action.Runtime.Embeddings.InitMyInteractable(GameObject,GameObject,System.Type)
-  fullName: Voice2Action.Runtime.Embeddings.InitMyInteractable(GameObject, GameObject, System.Type)
+  href: api/Voice2Action.Embeddings.html#Voice2Action_Embeddings_InitMyInteractable_GameObject_GameObject_System_Type_
+  commentId: M:Voice2Action.Embeddings.InitMyInteractable(GameObject,GameObject,System.Type)
+  fullName: Voice2Action.Embeddings.InitMyInteractable(GameObject, GameObject, System.Type)
   nameWithType: Embeddings.InitMyInteractable(GameObject, GameObject, Type)
-- uid: Voice2Action.Runtime.Embeddings.InitMyInteractable*
+- uid: Voice2Action.Embeddings.InitMyInteractable*
   name: InitMyInteractable
-  href: api/Voice2Action.Runtime.Embeddings.html#Voice2Action_Runtime_Embeddings_InitMyInteractable_
-  commentId: Overload:Voice2Action.Runtime.Embeddings.InitMyInteractable
+  href: api/Voice2Action.Embeddings.html#Voice2Action_Embeddings_InitMyInteractable_
+  commentId: Overload:Voice2Action.Embeddings.InitMyInteractable
   isSpec: "True"
-  fullName: Voice2Action.Runtime.Embeddings.InitMyInteractable
+  fullName: Voice2Action.Embeddings.InitMyInteractable
   nameWithType: Embeddings.InitMyInteractable
-- uid: Voice2Action.Runtime.Embeddings.InitProperty(Voice2Action.Runtime.PropertyClassifier,Voice2Action.Runtime.PropertyExtractor,Voice2Action.Runtime.PropertyExecutor)
+- uid: Voice2Action.Embeddings.InitProperty(Voice2Action.PropertyClassifier,Voice2Action.PropertyExtractor,Voice2Action.PropertyExecutor)
   name: InitProperty(PropertyClassifier, PropertyExtractor, PropertyExecutor)
-  href: api/Voice2Action.Runtime.Embeddings.html#Voice2Action_Runtime_Embeddings_InitProperty_Voice2Action_Runtime_PropertyClassifier_Voice2Action_Runtime_PropertyExtractor_Voice2Action_Runtime_PropertyExecutor_
-  commentId: M:Voice2Action.Runtime.Embeddings.InitProperty(Voice2Action.Runtime.PropertyClassifier,Voice2Action.Runtime.PropertyExtractor,Voice2Action.Runtime.PropertyExecutor)
-  fullName: Voice2Action.Runtime.Embeddings.InitProperty(Voice2Action.Runtime.PropertyClassifier, Voice2Action.Runtime.PropertyExtractor, Voice2Action.Runtime.PropertyExecutor)
+  href: api/Voice2Action.Embeddings.html#Voice2Action_Embeddings_InitProperty_Voice2Action_PropertyClassifier_Voice2Action_PropertyExtractor_Voice2Action_PropertyExecutor_
+  commentId: M:Voice2Action.Embeddings.InitProperty(Voice2Action.PropertyClassifier,Voice2Action.PropertyExtractor,Voice2Action.PropertyExecutor)
+  fullName: Voice2Action.Embeddings.InitProperty(Voice2Action.PropertyClassifier, Voice2Action.PropertyExtractor, Voice2Action.PropertyExecutor)
   nameWithType: Embeddings.InitProperty(PropertyClassifier, PropertyExtractor, PropertyExecutor)
-- uid: Voice2Action.Runtime.Embeddings.InitProperty*
+- uid: Voice2Action.Embeddings.InitProperty*
   name: InitProperty
-  href: api/Voice2Action.Runtime.Embeddings.html#Voice2Action_Runtime_Embeddings_InitProperty_
-  commentId: Overload:Voice2Action.Runtime.Embeddings.InitProperty
+  href: api/Voice2Action.Embeddings.html#Voice2Action_Embeddings_InitProperty_
+  commentId: Overload:Voice2Action.Embeddings.InitProperty
   isSpec: "True"
-  fullName: Voice2Action.Runtime.Embeddings.InitProperty
+  fullName: Voice2Action.Embeddings.InitProperty
   nameWithType: Embeddings.InitProperty
-- uid: Voice2Action.Runtime.Embeddings.k_DefaultShape
+- uid: Voice2Action.Embeddings.k_DefaultShape
   name: k_DefaultShape
-  href: api/Voice2Action.Runtime.Embeddings.html#Voice2Action_Runtime_Embeddings_k_DefaultShape
-  commentId: F:Voice2Action.Runtime.Embeddings.k_DefaultShape
-  fullName: Voice2Action.Runtime.Embeddings.k_DefaultShape
+  href: api/Voice2Action.Embeddings.html#Voice2Action_Embeddings_k_DefaultShape
+  commentId: F:Voice2Action.Embeddings.k_DefaultShape
+  fullName: Voice2Action.Embeddings.k_DefaultShape
   nameWithType: Embeddings.k_DefaultShape
-- uid: Voice2Action.Runtime.Embeddings.m_EmbeddingDataDir
+- uid: Voice2Action.Embeddings.m_EmbeddingDataDir
   name: m_EmbeddingDataDir
-  href: api/Voice2Action.Runtime.Embeddings.html#Voice2Action_Runtime_Embeddings_m_EmbeddingDataDir
-  commentId: F:Voice2Action.Runtime.Embeddings.m_EmbeddingDataDir
-  fullName: Voice2Action.Runtime.Embeddings.m_EmbeddingDataDir
+  href: api/Voice2Action.Embeddings.html#Voice2Action_Embeddings_m_EmbeddingDataDir
+  commentId: F:Voice2Action.Embeddings.m_EmbeddingDataDir
+  fullName: Voice2Action.Embeddings.m_EmbeddingDataDir
   nameWithType: Embeddings.m_EmbeddingDataDir
-- uid: Voice2Action.Runtime.Embeddings.ProcessEmbeddingData(System.Collections.Generic.Dictionary{System.String,System.Object},System.String)
+- uid: Voice2Action.Embeddings.ProcessEmbeddingData(System.Collections.Generic.Dictionary{System.String,System.Object},System.String)
   name: ProcessEmbeddingData(Dictionary<String, Object>, String)
-  href: api/Voice2Action.Runtime.Embeddings.html#Voice2Action_Runtime_Embeddings_ProcessEmbeddingData_System_Collections_Generic_Dictionary_System_String_System_Object__System_String_
-  commentId: M:Voice2Action.Runtime.Embeddings.ProcessEmbeddingData(System.Collections.Generic.Dictionary{System.String,System.Object},System.String)
+  href: api/Voice2Action.Embeddings.html#Voice2Action_Embeddings_ProcessEmbeddingData_System_Collections_Generic_Dictionary_System_String_System_Object__System_String_
+  commentId: M:Voice2Action.Embeddings.ProcessEmbeddingData(System.Collections.Generic.Dictionary{System.String,System.Object},System.String)
   name.vb: ProcessEmbeddingData(Dictionary(Of String, Object), String)
-  fullName: Voice2Action.Runtime.Embeddings.ProcessEmbeddingData(System.Collections.Generic.Dictionary<System.String, System.Object>, System.String)
-  fullName.vb: Voice2Action.Runtime.Embeddings.ProcessEmbeddingData(System.Collections.Generic.Dictionary(Of System.String, System.Object), System.String)
+  fullName: Voice2Action.Embeddings.ProcessEmbeddingData(System.Collections.Generic.Dictionary<System.String, System.Object>, System.String)
+  fullName.vb: Voice2Action.Embeddings.ProcessEmbeddingData(System.Collections.Generic.Dictionary(Of System.String, System.Object), System.String)
   nameWithType: Embeddings.ProcessEmbeddingData(Dictionary<String, Object>, String)
   nameWithType.vb: Embeddings.ProcessEmbeddingData(Dictionary(Of String, Object), String)
-- uid: Voice2Action.Runtime.Embeddings.ProcessEmbeddingData*
+- uid: Voice2Action.Embeddings.ProcessEmbeddingData*
   name: ProcessEmbeddingData
-  href: api/Voice2Action.Runtime.Embeddings.html#Voice2Action_Runtime_Embeddings_ProcessEmbeddingData_
-  commentId: Overload:Voice2Action.Runtime.Embeddings.ProcessEmbeddingData
+  href: api/Voice2Action.Embeddings.html#Voice2Action_Embeddings_ProcessEmbeddingData_
+  commentId: Overload:Voice2Action.Embeddings.ProcessEmbeddingData
   isSpec: "True"
-  fullName: Voice2Action.Runtime.Embeddings.ProcessEmbeddingData
+  fullName: Voice2Action.Embeddings.ProcessEmbeddingData
   nameWithType: Embeddings.ProcessEmbeddingData
-- uid: Voice2Action.Runtime.Embeddings.shapeMap
+- uid: Voice2Action.Embeddings.shapeMap
   name: shapeMap
-  href: api/Voice2Action.Runtime.Embeddings.html#Voice2Action_Runtime_Embeddings_shapeMap
-  commentId: P:Voice2Action.Runtime.Embeddings.shapeMap
-  fullName: Voice2Action.Runtime.Embeddings.shapeMap
+  href: api/Voice2Action.Embeddings.html#Voice2Action_Embeddings_shapeMap
+  commentId: P:Voice2Action.Embeddings.shapeMap
+  fullName: Voice2Action.Embeddings.shapeMap
   nameWithType: Embeddings.shapeMap
-- uid: Voice2Action.Runtime.Embeddings.shapeMap*
+- uid: Voice2Action.Embeddings.shapeMap*
   name: shapeMap
-  href: api/Voice2Action.Runtime.Embeddings.html#Voice2Action_Runtime_Embeddings_shapeMap_
-  commentId: Overload:Voice2Action.Runtime.Embeddings.shapeMap
+  href: api/Voice2Action.Embeddings.html#Voice2Action_Embeddings_shapeMap_
+  commentId: Overload:Voice2Action.Embeddings.shapeMap
   isSpec: "True"
-  fullName: Voice2Action.Runtime.Embeddings.shapeMap
+  fullName: Voice2Action.Embeddings.shapeMap
   nameWithType: Embeddings.shapeMap
-- uid: Voice2Action.Runtime.InteractableTarget
+- uid: Voice2Action.InteractableTarget
   name: InteractableTarget
-  href: api/Voice2Action.Runtime.InteractableTarget.html
-  commentId: T:Voice2Action.Runtime.InteractableTarget
-  fullName: Voice2Action.Runtime.InteractableTarget
+  href: api/Voice2Action.InteractableTarget.html
+  commentId: T:Voice2Action.InteractableTarget
+  fullName: Voice2Action.InteractableTarget
   nameWithType: InteractableTarget
-- uid: Voice2Action.Runtime.InteractableTarget.isProxy
+- uid: Voice2Action.InteractableTarget.isProxy
   name: isProxy
-  href: api/Voice2Action.Runtime.InteractableTarget.html#Voice2Action_Runtime_InteractableTarget_isProxy
-  commentId: P:Voice2Action.Runtime.InteractableTarget.isProxy
-  fullName: Voice2Action.Runtime.InteractableTarget.isProxy
+  href: api/Voice2Action.InteractableTarget.html#Voice2Action_InteractableTarget_isProxy
+  commentId: P:Voice2Action.InteractableTarget.isProxy
+  fullName: Voice2Action.InteractableTarget.isProxy
   nameWithType: InteractableTarget.isProxy
-- uid: Voice2Action.Runtime.InteractableTarget.isProxy*
+- uid: Voice2Action.InteractableTarget.isProxy*
   name: isProxy
-  href: api/Voice2Action.Runtime.InteractableTarget.html#Voice2Action_Runtime_InteractableTarget_isProxy_
-  commentId: Overload:Voice2Action.Runtime.InteractableTarget.isProxy
+  href: api/Voice2Action.InteractableTarget.html#Voice2Action_InteractableTarget_isProxy_
+  commentId: Overload:Voice2Action.InteractableTarget.isProxy
   isSpec: "True"
-  fullName: Voice2Action.Runtime.InteractableTarget.isProxy
+  fullName: Voice2Action.InteractableTarget.isProxy
   nameWithType: InteractableTarget.isProxy
-- uid: Voice2Action.Runtime.InteractableTarget.MakeProxy
+- uid: Voice2Action.InteractableTarget.MakeProxy
   name: MakeProxy()
-  href: api/Voice2Action.Runtime.InteractableTarget.html#Voice2Action_Runtime_InteractableTarget_MakeProxy
-  commentId: M:Voice2Action.Runtime.InteractableTarget.MakeProxy
-  fullName: Voice2Action.Runtime.InteractableTarget.MakeProxy()
+  href: api/Voice2Action.InteractableTarget.html#Voice2Action_InteractableTarget_MakeProxy
+  commentId: M:Voice2Action.InteractableTarget.MakeProxy
+  fullName: Voice2Action.InteractableTarget.MakeProxy()
   nameWithType: InteractableTarget.MakeProxy()
-- uid: Voice2Action.Runtime.InteractableTarget.MakeProxy*
+- uid: Voice2Action.InteractableTarget.MakeProxy*
   name: MakeProxy
-  href: api/Voice2Action.Runtime.InteractableTarget.html#Voice2Action_Runtime_InteractableTarget_MakeProxy_
-  commentId: Overload:Voice2Action.Runtime.InteractableTarget.MakeProxy
+  href: api/Voice2Action.InteractableTarget.html#Voice2Action_InteractableTarget_MakeProxy_
+  commentId: Overload:Voice2Action.InteractableTarget.MakeProxy
   isSpec: "True"
-  fullName: Voice2Action.Runtime.InteractableTarget.MakeProxy
+  fullName: Voice2Action.InteractableTarget.MakeProxy
   nameWithType: InteractableTarget.MakeProxy
-- uid: Voice2Action.Runtime.InteractableTarget.originObject
+- uid: Voice2Action.InteractableTarget.originObject
   name: originObject
-  href: api/Voice2Action.Runtime.InteractableTarget.html#Voice2Action_Runtime_InteractableTarget_originObject
-  commentId: P:Voice2Action.Runtime.InteractableTarget.originObject
-  fullName: Voice2Action.Runtime.InteractableTarget.originObject
+  href: api/Voice2Action.InteractableTarget.html#Voice2Action_InteractableTarget_originObject
+  commentId: P:Voice2Action.InteractableTarget.originObject
+  fullName: Voice2Action.InteractableTarget.originObject
   nameWithType: InteractableTarget.originObject
-- uid: Voice2Action.Runtime.InteractableTarget.originObject*
+- uid: Voice2Action.InteractableTarget.originObject*
   name: originObject
-  href: api/Voice2Action.Runtime.InteractableTarget.html#Voice2Action_Runtime_InteractableTarget_originObject_
-  commentId: Overload:Voice2Action.Runtime.InteractableTarget.originObject
+  href: api/Voice2Action.InteractableTarget.html#Voice2Action_InteractableTarget_originObject_
+  commentId: Overload:Voice2Action.InteractableTarget.originObject
   isSpec: "True"
-  fullName: Voice2Action.Runtime.InteractableTarget.originObject
+  fullName: Voice2Action.InteractableTarget.originObject
   nameWithType: InteractableTarget.originObject
-- uid: Voice2Action.Runtime.InteractableTarget.sceneManager
+- uid: Voice2Action.InteractableTarget.sceneManager
   name: sceneManager
-  href: api/Voice2Action.Runtime.InteractableTarget.html#Voice2Action_Runtime_InteractableTarget_sceneManager
-  commentId: P:Voice2Action.Runtime.InteractableTarget.sceneManager
-  fullName: Voice2Action.Runtime.InteractableTarget.sceneManager
+  href: api/Voice2Action.InteractableTarget.html#Voice2Action_InteractableTarget_sceneManager
+  commentId: P:Voice2Action.InteractableTarget.sceneManager
+  fullName: Voice2Action.InteractableTarget.sceneManager
   nameWithType: InteractableTarget.sceneManager
-- uid: Voice2Action.Runtime.InteractableTarget.sceneManager*
+- uid: Voice2Action.InteractableTarget.sceneManager*
   name: sceneManager
-  href: api/Voice2Action.Runtime.InteractableTarget.html#Voice2Action_Runtime_InteractableTarget_sceneManager_
-  commentId: Overload:Voice2Action.Runtime.InteractableTarget.sceneManager
+  href: api/Voice2Action.InteractableTarget.html#Voice2Action_InteractableTarget_sceneManager_
+  commentId: Overload:Voice2Action.InteractableTarget.sceneManager
   isSpec: "True"
-  fullName: Voice2Action.Runtime.InteractableTarget.sceneManager
+  fullName: Voice2Action.InteractableTarget.sceneManager
   nameWithType: InteractableTarget.sceneManager
-- uid: Voice2Action.Runtime.InteractableTarget.SetVariablesForLerp(Vector3)
+- uid: Voice2Action.InteractableTarget.SetVariablesForLerp(Vector3)
   name: SetVariablesForLerp(Vector3)
-  href: api/Voice2Action.Runtime.InteractableTarget.html#Voice2Action_Runtime_InteractableTarget_SetVariablesForLerp_Vector3_
-  commentId: M:Voice2Action.Runtime.InteractableTarget.SetVariablesForLerp(Vector3)
-  fullName: Voice2Action.Runtime.InteractableTarget.SetVariablesForLerp(Vector3)
+  href: api/Voice2Action.InteractableTarget.html#Voice2Action_InteractableTarget_SetVariablesForLerp_Vector3_
+  commentId: M:Voice2Action.InteractableTarget.SetVariablesForLerp(Vector3)
+  fullName: Voice2Action.InteractableTarget.SetVariablesForLerp(Vector3)
   nameWithType: InteractableTarget.SetVariablesForLerp(Vector3)
-- uid: Voice2Action.Runtime.InteractableTarget.SetVariablesForLerp*
+- uid: Voice2Action.InteractableTarget.SetVariablesForLerp*
   name: SetVariablesForLerp
-  href: api/Voice2Action.Runtime.InteractableTarget.html#Voice2Action_Runtime_InteractableTarget_SetVariablesForLerp_
-  commentId: Overload:Voice2Action.Runtime.InteractableTarget.SetVariablesForLerp
+  href: api/Voice2Action.InteractableTarget.html#Voice2Action_InteractableTarget_SetVariablesForLerp_
+  commentId: Overload:Voice2Action.InteractableTarget.SetVariablesForLerp
   isSpec: "True"
-  fullName: Voice2Action.Runtime.InteractableTarget.SetVariablesForLerp
+  fullName: Voice2Action.InteractableTarget.SetVariablesForLerp
   nameWithType: InteractableTarget.SetVariablesForLerp
-- uid: Voice2Action.Runtime.PropertyClassifier
+- uid: Voice2Action.PropertyClassifier
   name: PropertyClassifier
-  href: api/Voice2Action.Runtime.PropertyClassifier.html
-  commentId: T:Voice2Action.Runtime.PropertyClassifier
-  fullName: Voice2Action.Runtime.PropertyClassifier
+  href: api/Voice2Action.PropertyClassifier.html
+  commentId: T:Voice2Action.PropertyClassifier
+  fullName: Voice2Action.PropertyClassifier
   nameWithType: PropertyClassifier
-- uid: Voice2Action.Runtime.PropertyClassifier.AddAction(System.Int32,System.String)
+- uid: Voice2Action.PropertyClassifier.AddAction(System.Int32,System.String)
   name: AddAction(Int32, String)
-  href: api/Voice2Action.Runtime.PropertyClassifier.html#Voice2Action_Runtime_PropertyClassifier_AddAction_System_Int32_System_String_
-  commentId: M:Voice2Action.Runtime.PropertyClassifier.AddAction(System.Int32,System.String)
-  fullName: Voice2Action.Runtime.PropertyClassifier.AddAction(System.Int32, System.String)
+  href: api/Voice2Action.PropertyClassifier.html#Voice2Action_PropertyClassifier_AddAction_System_Int32_System_String_
+  commentId: M:Voice2Action.PropertyClassifier.AddAction(System.Int32,System.String)
+  fullName: Voice2Action.PropertyClassifier.AddAction(System.Int32, System.String)
   nameWithType: PropertyClassifier.AddAction(Int32, String)
-- uid: Voice2Action.Runtime.PropertyClassifier.AddAction*
+- uid: Voice2Action.PropertyClassifier.AddAction*
   name: AddAction
-  href: api/Voice2Action.Runtime.PropertyClassifier.html#Voice2Action_Runtime_PropertyClassifier_AddAction_
-  commentId: Overload:Voice2Action.Runtime.PropertyClassifier.AddAction
+  href: api/Voice2Action.PropertyClassifier.html#Voice2Action_PropertyClassifier_AddAction_
+  commentId: Overload:Voice2Action.PropertyClassifier.AddAction
   isSpec: "True"
-  fullName: Voice2Action.Runtime.PropertyClassifier.AddAction
+  fullName: Voice2Action.PropertyClassifier.AddAction
   nameWithType: PropertyClassifier.AddAction
-- uid: Voice2Action.Runtime.PropertyClassifier.AddClassificationExamples(System.String,System.String)
+- uid: Voice2Action.PropertyClassifier.AddClassificationExamples(System.String,System.String)
   name: AddClassificationExamples(String, String)
-  href: api/Voice2Action.Runtime.PropertyClassifier.html#Voice2Action_Runtime_PropertyClassifier_AddClassificationExamples_System_String_System_String_
-  commentId: M:Voice2Action.Runtime.PropertyClassifier.AddClassificationExamples(System.String,System.String)
-  fullName: Voice2Action.Runtime.PropertyClassifier.AddClassificationExamples(System.String, System.String)
+  href: api/Voice2Action.PropertyClassifier.html#Voice2Action_PropertyClassifier_AddClassificationExamples_System_String_System_String_
+  commentId: M:Voice2Action.PropertyClassifier.AddClassificationExamples(System.String,System.String)
+  fullName: Voice2Action.PropertyClassifier.AddClassificationExamples(System.String, System.String)
   nameWithType: PropertyClassifier.AddClassificationExamples(String, String)
-- uid: Voice2Action.Runtime.PropertyClassifier.AddClassificationExamples*
+- uid: Voice2Action.PropertyClassifier.AddClassificationExamples*
   name: AddClassificationExamples
-  href: api/Voice2Action.Runtime.PropertyClassifier.html#Voice2Action_Runtime_PropertyClassifier_AddClassificationExamples_
-  commentId: Overload:Voice2Action.Runtime.PropertyClassifier.AddClassificationExamples
+  href: api/Voice2Action.PropertyClassifier.html#Voice2Action_PropertyClassifier_AddClassificationExamples_
+  commentId: Overload:Voice2Action.PropertyClassifier.AddClassificationExamples
   isSpec: "True"
-  fullName: Voice2Action.Runtime.PropertyClassifier.AddClassificationExamples
+  fullName: Voice2Action.PropertyClassifier.AddClassificationExamples
   nameWithType: PropertyClassifier.AddClassificationExamples
-- uid: Voice2Action.Runtime.PropertyClassifier.classificationGroup
+- uid: Voice2Action.PropertyClassifier.classificationGroup
   name: classificationGroup
-  href: api/Voice2Action.Runtime.PropertyClassifier.html#Voice2Action_Runtime_PropertyClassifier_classificationGroup
-  commentId: P:Voice2Action.Runtime.PropertyClassifier.classificationGroup
-  fullName: Voice2Action.Runtime.PropertyClassifier.classificationGroup
+  href: api/Voice2Action.PropertyClassifier.html#Voice2Action_PropertyClassifier_classificationGroup
+  commentId: P:Voice2Action.PropertyClassifier.classificationGroup
+  fullName: Voice2Action.PropertyClassifier.classificationGroup
   nameWithType: PropertyClassifier.classificationGroup
-- uid: Voice2Action.Runtime.PropertyClassifier.classificationGroup*
+- uid: Voice2Action.PropertyClassifier.classificationGroup*
   name: classificationGroup
-  href: api/Voice2Action.Runtime.PropertyClassifier.html#Voice2Action_Runtime_PropertyClassifier_classificationGroup_
-  commentId: Overload:Voice2Action.Runtime.PropertyClassifier.classificationGroup
+  href: api/Voice2Action.PropertyClassifier.html#Voice2Action_PropertyClassifier_classificationGroup_
+  commentId: Overload:Voice2Action.PropertyClassifier.classificationGroup
   isSpec: "True"
-  fullName: Voice2Action.Runtime.PropertyClassifier.classificationGroup
+  fullName: Voice2Action.PropertyClassifier.classificationGroup
   nameWithType: PropertyClassifier.classificationGroup
-- uid: Voice2Action.Runtime.PropertyClassifier.ClassifyProperty(System.String)
+- uid: Voice2Action.PropertyClassifier.ClassifyProperty(System.String)
   name: ClassifyProperty(String)
-  href: api/Voice2Action.Runtime.PropertyClassifier.html#Voice2Action_Runtime_PropertyClassifier_ClassifyProperty_System_String_
-  commentId: M:Voice2Action.Runtime.PropertyClassifier.ClassifyProperty(System.String)
-  fullName: Voice2Action.Runtime.PropertyClassifier.ClassifyProperty(System.String)
+  href: api/Voice2Action.PropertyClassifier.html#Voice2Action_PropertyClassifier_ClassifyProperty_System_String_
+  commentId: M:Voice2Action.PropertyClassifier.ClassifyProperty(System.String)
+  fullName: Voice2Action.PropertyClassifier.ClassifyProperty(System.String)
   nameWithType: PropertyClassifier.ClassifyProperty(String)
-- uid: Voice2Action.Runtime.PropertyClassifier.ClassifyProperty*
+- uid: Voice2Action.PropertyClassifier.ClassifyProperty*
   name: ClassifyProperty
-  href: api/Voice2Action.Runtime.PropertyClassifier.html#Voice2Action_Runtime_PropertyClassifier_ClassifyProperty_
-  commentId: Overload:Voice2Action.Runtime.PropertyClassifier.ClassifyProperty
+  href: api/Voice2Action.PropertyClassifier.html#Voice2Action_PropertyClassifier_ClassifyProperty_
+  commentId: Overload:Voice2Action.PropertyClassifier.ClassifyProperty
   isSpec: "True"
-  fullName: Voice2Action.Runtime.PropertyClassifier.ClassifyProperty
+  fullName: Voice2Action.PropertyClassifier.ClassifyProperty
   nameWithType: PropertyClassifier.ClassifyProperty
-- uid: Voice2Action.Runtime.PropertyClassifier.GetClassificationPrompt(System.String,System.Collections.Generic.List{System.String})
+- uid: Voice2Action.PropertyClassifier.GetClassificationPrompt(System.String,System.Collections.Generic.List{System.String})
   name: GetClassificationPrompt(String, List<String>)
-  href: api/Voice2Action.Runtime.PropertyClassifier.html#Voice2Action_Runtime_PropertyClassifier_GetClassificationPrompt_System_String_System_Collections_Generic_List_System_String__
-  commentId: M:Voice2Action.Runtime.PropertyClassifier.GetClassificationPrompt(System.String,System.Collections.Generic.List{System.String})
+  href: api/Voice2Action.PropertyClassifier.html#Voice2Action_PropertyClassifier_GetClassificationPrompt_System_String_System_Collections_Generic_List_System_String__
+  commentId: M:Voice2Action.PropertyClassifier.GetClassificationPrompt(System.String,System.Collections.Generic.List{System.String})
   name.vb: GetClassificationPrompt(String, List(Of String))
-  fullName: Voice2Action.Runtime.PropertyClassifier.GetClassificationPrompt(System.String, System.Collections.Generic.List<System.String>)
-  fullName.vb: Voice2Action.Runtime.PropertyClassifier.GetClassificationPrompt(System.String, System.Collections.Generic.List(Of System.String))
+  fullName: Voice2Action.PropertyClassifier.GetClassificationPrompt(System.String, System.Collections.Generic.List<System.String>)
+  fullName.vb: Voice2Action.PropertyClassifier.GetClassificationPrompt(System.String, System.Collections.Generic.List(Of System.String))
   nameWithType: PropertyClassifier.GetClassificationPrompt(String, List<String>)
   nameWithType.vb: PropertyClassifier.GetClassificationPrompt(String, List(Of String))
-- uid: Voice2Action.Runtime.PropertyClassifier.GetClassificationPrompt*
+- uid: Voice2Action.PropertyClassifier.GetClassificationPrompt*
   name: GetClassificationPrompt
-  href: api/Voice2Action.Runtime.PropertyClassifier.html#Voice2Action_Runtime_PropertyClassifier_GetClassificationPrompt_
-  commentId: Overload:Voice2Action.Runtime.PropertyClassifier.GetClassificationPrompt
+  href: api/Voice2Action.PropertyClassifier.html#Voice2Action_PropertyClassifier_GetClassificationPrompt_
+  commentId: Overload:Voice2Action.PropertyClassifier.GetClassificationPrompt
   isSpec: "True"
-  fullName: Voice2Action.Runtime.PropertyClassifier.GetClassificationPrompt
+  fullName: Voice2Action.PropertyClassifier.GetClassificationPrompt
   nameWithType: PropertyClassifier.GetClassificationPrompt
-- uid: Voice2Action.Runtime.PropertyClassifier.k_ClassificationInstruction
+- uid: Voice2Action.PropertyClassifier.k_ClassificationInstruction
   name: k_ClassificationInstruction
-  href: api/Voice2Action.Runtime.PropertyClassifier.html#Voice2Action_Runtime_PropertyClassifier_k_ClassificationInstruction
-  commentId: F:Voice2Action.Runtime.PropertyClassifier.k_ClassificationInstruction
-  fullName: Voice2Action.Runtime.PropertyClassifier.k_ClassificationInstruction
+  href: api/Voice2Action.PropertyClassifier.html#Voice2Action_PropertyClassifier_k_ClassificationInstruction
+  commentId: F:Voice2Action.PropertyClassifier.k_ClassificationInstruction
+  fullName: Voice2Action.PropertyClassifier.k_ClassificationInstruction
   nameWithType: PropertyClassifier.k_ClassificationInstruction
-- uid: Voice2Action.Runtime.PropertyExecutor
+- uid: Voice2Action.PropertyExecutor
   name: PropertyExecutor
-  href: api/Voice2Action.Runtime.PropertyExecutor.html
-  commentId: T:Voice2Action.Runtime.PropertyExecutor
-  fullName: Voice2Action.Runtime.PropertyExecutor
+  href: api/Voice2Action.PropertyExecutor.html
+  commentId: T:Voice2Action.PropertyExecutor
+  fullName: Voice2Action.PropertyExecutor
   nameWithType: PropertyExecutor
-- uid: Voice2Action.Runtime.PropertyExecutor.ExecuteProperty(OrderedDictionary,System.Collections.Generic.Dictionary{System.String,Tool},System.Type,Voice2Action.Runtime.ShapeController[],System.Boolean[],System.Type,Voice2Action.Runtime.Embeddings,System.Collections.Generic.List{System.String})
+- uid: Voice2Action.PropertyExecutor.ExecuteProperty(OrderedDictionary,System.Collections.Generic.Dictionary{System.String,Tool},System.Type,Voice2Action.ShapeController[],System.Boolean[],System.Type,Voice2Action.Embeddings,System.Collections.Generic.List{System.String})
   name: ExecuteProperty(OrderedDictionary, Dictionary<String, Tool>, Type, ShapeController[], Boolean[], Type, Embeddings, List<String>)
-  href: api/Voice2Action.Runtime.PropertyExecutor.html#Voice2Action_Runtime_PropertyExecutor_ExecuteProperty_OrderedDictionary_System_Collections_Generic_Dictionary_System_String_Tool__System_Type_Voice2Action_Runtime_ShapeController___System_Boolean___System_Type_Voice2Action_Runtime_Embeddings_System_Collections_Generic_List_System_String__
-  commentId: M:Voice2Action.Runtime.PropertyExecutor.ExecuteProperty(OrderedDictionary,System.Collections.Generic.Dictionary{System.String,Tool},System.Type,Voice2Action.Runtime.ShapeController[],System.Boolean[],System.Type,Voice2Action.Runtime.Embeddings,System.Collections.Generic.List{System.String})
+  href: api/Voice2Action.PropertyExecutor.html#Voice2Action_PropertyExecutor_ExecuteProperty_OrderedDictionary_System_Collections_Generic_Dictionary_System_String_Tool__System_Type_Voice2Action_ShapeController___System_Boolean___System_Type_Voice2Action_Embeddings_System_Collections_Generic_List_System_String__
+  commentId: M:Voice2Action.PropertyExecutor.ExecuteProperty(OrderedDictionary,System.Collections.Generic.Dictionary{System.String,Tool},System.Type,Voice2Action.ShapeController[],System.Boolean[],System.Type,Voice2Action.Embeddings,System.Collections.Generic.List{System.String})
   name.vb: ExecuteProperty(OrderedDictionary, Dictionary(Of String, Tool), Type, ShapeController(), Boolean(), Type, Embeddings, List(Of String))
-  fullName: Voice2Action.Runtime.PropertyExecutor.ExecuteProperty(OrderedDictionary, System.Collections.Generic.Dictionary<System.String, Tool>, System.Type, Voice2Action.Runtime.ShapeController[], System.Boolean[], System.Type, Voice2Action.Runtime.Embeddings, System.Collections.Generic.List<System.String>)
-  fullName.vb: Voice2Action.Runtime.PropertyExecutor.ExecuteProperty(OrderedDictionary, System.Collections.Generic.Dictionary(Of System.String, Tool), System.Type, Voice2Action.Runtime.ShapeController(), System.Boolean(), System.Type, Voice2Action.Runtime.Embeddings, System.Collections.Generic.List(Of System.String))
+  fullName: Voice2Action.PropertyExecutor.ExecuteProperty(OrderedDictionary, System.Collections.Generic.Dictionary<System.String, Tool>, System.Type, Voice2Action.ShapeController[], System.Boolean[], System.Type, Voice2Action.Embeddings, System.Collections.Generic.List<System.String>)
+  fullName.vb: Voice2Action.PropertyExecutor.ExecuteProperty(OrderedDictionary, System.Collections.Generic.Dictionary(Of System.String, Tool), System.Type, Voice2Action.ShapeController(), System.Boolean(), System.Type, Voice2Action.Embeddings, System.Collections.Generic.List(Of System.String))
   nameWithType: PropertyExecutor.ExecuteProperty(OrderedDictionary, Dictionary<String, Tool>, Type, ShapeController[], Boolean[], Type, Embeddings, List<String>)
   nameWithType.vb: PropertyExecutor.ExecuteProperty(OrderedDictionary, Dictionary(Of String, Tool), Type, ShapeController(), Boolean(), Type, Embeddings, List(Of String))
-- uid: Voice2Action.Runtime.PropertyExecutor.ExecuteProperty*
+- uid: Voice2Action.PropertyExecutor.ExecuteProperty*
   name: ExecuteProperty
-  href: api/Voice2Action.Runtime.PropertyExecutor.html#Voice2Action_Runtime_PropertyExecutor_ExecuteProperty_
-  commentId: Overload:Voice2Action.Runtime.PropertyExecutor.ExecuteProperty
+  href: api/Voice2Action.PropertyExecutor.html#Voice2Action_PropertyExecutor_ExecuteProperty_
+  commentId: Overload:Voice2Action.PropertyExecutor.ExecuteProperty
   isSpec: "True"
-  fullName: Voice2Action.Runtime.PropertyExecutor.ExecuteProperty
+  fullName: Voice2Action.PropertyExecutor.ExecuteProperty
   nameWithType: PropertyExecutor.ExecuteProperty
-- uid: Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup
+- uid: Voice2Action.PropertyExecutor.FunctionCallGroup
   name: PropertyExecutor.FunctionCallGroup
-  href: api/Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.html
-  commentId: T:Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup
-  fullName: Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup
+  href: api/Voice2Action.PropertyExecutor.FunctionCallGroup.html
+  commentId: T:Voice2Action.PropertyExecutor.FunctionCallGroup
+  fullName: Voice2Action.PropertyExecutor.FunctionCallGroup
   nameWithType: PropertyExecutor.FunctionCallGroup
-- uid: Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.#ctor(System.String,System.String,System.Collections.Generic.List{Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup})
+- uid: Voice2Action.PropertyExecutor.FunctionCallGroup.#ctor(System.String,System.String,System.Collections.Generic.List{Voice2Action.PropertyExecutor.FunctionParamGroup})
   name: FunctionCallGroup(String, String, List<PropertyExecutor.FunctionParamGroup>)
-  href: api/Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.html#Voice2Action_Runtime_PropertyExecutor_FunctionCallGroup__ctor_System_String_System_String_System_Collections_Generic_List_Voice2Action_Runtime_PropertyExecutor_FunctionParamGroup__
-  commentId: M:Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.#ctor(System.String,System.String,System.Collections.Generic.List{Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup})
+  href: api/Voice2Action.PropertyExecutor.FunctionCallGroup.html#Voice2Action_PropertyExecutor_FunctionCallGroup__ctor_System_String_System_String_System_Collections_Generic_List_Voice2Action_PropertyExecutor_FunctionParamGroup__
+  commentId: M:Voice2Action.PropertyExecutor.FunctionCallGroup.#ctor(System.String,System.String,System.Collections.Generic.List{Voice2Action.PropertyExecutor.FunctionParamGroup})
   name.vb: FunctionCallGroup(String, String, List(Of PropertyExecutor.FunctionParamGroup))
-  fullName: Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.FunctionCallGroup(System.String, System.String, System.Collections.Generic.List<Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup>)
-  fullName.vb: Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.FunctionCallGroup(System.String, System.String, System.Collections.Generic.List(Of Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup))
+  fullName: Voice2Action.PropertyExecutor.FunctionCallGroup.FunctionCallGroup(System.String, System.String, System.Collections.Generic.List<Voice2Action.PropertyExecutor.FunctionParamGroup>)
+  fullName.vb: Voice2Action.PropertyExecutor.FunctionCallGroup.FunctionCallGroup(System.String, System.String, System.Collections.Generic.List(Of Voice2Action.PropertyExecutor.FunctionParamGroup))
   nameWithType: PropertyExecutor.FunctionCallGroup.FunctionCallGroup(String, String, List<PropertyExecutor.FunctionParamGroup>)
   nameWithType.vb: PropertyExecutor.FunctionCallGroup.FunctionCallGroup(String, String, List(Of PropertyExecutor.FunctionParamGroup))
-- uid: Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.#ctor*
+- uid: Voice2Action.PropertyExecutor.FunctionCallGroup.#ctor*
   name: FunctionCallGroup
-  href: api/Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.html#Voice2Action_Runtime_PropertyExecutor_FunctionCallGroup__ctor_
-  commentId: Overload:Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.#ctor
+  href: api/Voice2Action.PropertyExecutor.FunctionCallGroup.html#Voice2Action_PropertyExecutor_FunctionCallGroup__ctor_
+  commentId: Overload:Voice2Action.PropertyExecutor.FunctionCallGroup.#ctor
   isSpec: "True"
-  fullName: Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.FunctionCallGroup
+  fullName: Voice2Action.PropertyExecutor.FunctionCallGroup.FunctionCallGroup
   nameWithType: PropertyExecutor.FunctionCallGroup.FunctionCallGroup
-- uid: Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.AddParamsRequirement(JObject@)
+- uid: Voice2Action.PropertyExecutor.FunctionCallGroup.AddParamsRequirement(JObject@)
   name: AddParamsRequirement(ref JObject)
-  href: api/Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.html#Voice2Action_Runtime_PropertyExecutor_FunctionCallGroup_AddParamsRequirement_JObject__
-  commentId: M:Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.AddParamsRequirement(JObject@)
+  href: api/Voice2Action.PropertyExecutor.FunctionCallGroup.html#Voice2Action_PropertyExecutor_FunctionCallGroup_AddParamsRequirement_JObject__
+  commentId: M:Voice2Action.PropertyExecutor.FunctionCallGroup.AddParamsRequirement(JObject@)
   name.vb: AddParamsRequirement(ByRef JObject)
-  fullName: Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.AddParamsRequirement(ref JObject)
-  fullName.vb: Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.AddParamsRequirement(ByRef JObject)
+  fullName: Voice2Action.PropertyExecutor.FunctionCallGroup.AddParamsRequirement(ref JObject)
+  fullName.vb: Voice2Action.PropertyExecutor.FunctionCallGroup.AddParamsRequirement(ByRef JObject)
   nameWithType: PropertyExecutor.FunctionCallGroup.AddParamsRequirement(ref JObject)
   nameWithType.vb: PropertyExecutor.FunctionCallGroup.AddParamsRequirement(ByRef JObject)
-- uid: Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.AddParamsRequirement*
+- uid: Voice2Action.PropertyExecutor.FunctionCallGroup.AddParamsRequirement*
   name: AddParamsRequirement
-  href: api/Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.html#Voice2Action_Runtime_PropertyExecutor_FunctionCallGroup_AddParamsRequirement_
-  commentId: Overload:Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.AddParamsRequirement
+  href: api/Voice2Action.PropertyExecutor.FunctionCallGroup.html#Voice2Action_PropertyExecutor_FunctionCallGroup_AddParamsRequirement_
+  commentId: Overload:Voice2Action.PropertyExecutor.FunctionCallGroup.AddParamsRequirement
   isSpec: "True"
-  fullName: Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.AddParamsRequirement
+  fullName: Voice2Action.PropertyExecutor.FunctionCallGroup.AddParamsRequirement
   nameWithType: PropertyExecutor.FunctionCallGroup.AddParamsRequirement
-- uid: Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.description
+- uid: Voice2Action.PropertyExecutor.FunctionCallGroup.description
   name: description
-  href: api/Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.html#Voice2Action_Runtime_PropertyExecutor_FunctionCallGroup_description
-  commentId: P:Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.description
-  fullName: Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.description
+  href: api/Voice2Action.PropertyExecutor.FunctionCallGroup.html#Voice2Action_PropertyExecutor_FunctionCallGroup_description
+  commentId: P:Voice2Action.PropertyExecutor.FunctionCallGroup.description
+  fullName: Voice2Action.PropertyExecutor.FunctionCallGroup.description
   nameWithType: PropertyExecutor.FunctionCallGroup.description
-- uid: Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.description*
+- uid: Voice2Action.PropertyExecutor.FunctionCallGroup.description*
   name: description
-  href: api/Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.html#Voice2Action_Runtime_PropertyExecutor_FunctionCallGroup_description_
-  commentId: Overload:Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.description
+  href: api/Voice2Action.PropertyExecutor.FunctionCallGroup.html#Voice2Action_PropertyExecutor_FunctionCallGroup_description_
+  commentId: Overload:Voice2Action.PropertyExecutor.FunctionCallGroup.description
   isSpec: "True"
-  fullName: Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.description
+  fullName: Voice2Action.PropertyExecutor.FunctionCallGroup.description
   nameWithType: PropertyExecutor.FunctionCallGroup.description
-- uid: Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.name
+- uid: Voice2Action.PropertyExecutor.FunctionCallGroup.name
   name: name
-  href: api/Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.html#Voice2Action_Runtime_PropertyExecutor_FunctionCallGroup_name
-  commentId: P:Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.name
-  fullName: Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.name
+  href: api/Voice2Action.PropertyExecutor.FunctionCallGroup.html#Voice2Action_PropertyExecutor_FunctionCallGroup_name
+  commentId: P:Voice2Action.PropertyExecutor.FunctionCallGroup.name
+  fullName: Voice2Action.PropertyExecutor.FunctionCallGroup.name
   nameWithType: PropertyExecutor.FunctionCallGroup.name
-- uid: Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.name*
+- uid: Voice2Action.PropertyExecutor.FunctionCallGroup.name*
   name: name
-  href: api/Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.html#Voice2Action_Runtime_PropertyExecutor_FunctionCallGroup_name_
-  commentId: Overload:Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.name
+  href: api/Voice2Action.PropertyExecutor.FunctionCallGroup.html#Voice2Action_PropertyExecutor_FunctionCallGroup_name_
+  commentId: Overload:Voice2Action.PropertyExecutor.FunctionCallGroup.name
   isSpec: "True"
-  fullName: Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.name
+  fullName: Voice2Action.PropertyExecutor.FunctionCallGroup.name
   nameWithType: PropertyExecutor.FunctionCallGroup.name
-- uid: Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.paramGroups
+- uid: Voice2Action.PropertyExecutor.FunctionCallGroup.paramGroups
   name: paramGroups
-  href: api/Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.html#Voice2Action_Runtime_PropertyExecutor_FunctionCallGroup_paramGroups
-  commentId: P:Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.paramGroups
-  fullName: Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.paramGroups
+  href: api/Voice2Action.PropertyExecutor.FunctionCallGroup.html#Voice2Action_PropertyExecutor_FunctionCallGroup_paramGroups
+  commentId: P:Voice2Action.PropertyExecutor.FunctionCallGroup.paramGroups
+  fullName: Voice2Action.PropertyExecutor.FunctionCallGroup.paramGroups
   nameWithType: PropertyExecutor.FunctionCallGroup.paramGroups
-- uid: Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.paramGroups*
+- uid: Voice2Action.PropertyExecutor.FunctionCallGroup.paramGroups*
   name: paramGroups
-  href: api/Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.html#Voice2Action_Runtime_PropertyExecutor_FunctionCallGroup_paramGroups_
-  commentId: Overload:Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.paramGroups
+  href: api/Voice2Action.PropertyExecutor.FunctionCallGroup.html#Voice2Action_PropertyExecutor_FunctionCallGroup_paramGroups_
+  commentId: Overload:Voice2Action.PropertyExecutor.FunctionCallGroup.paramGroups
   isSpec: "True"
-  fullName: Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.paramGroups
+  fullName: Voice2Action.PropertyExecutor.FunctionCallGroup.paramGroups
   nameWithType: PropertyExecutor.FunctionCallGroup.paramGroups
-- uid: Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.PrettyPrintFunctionCall(System.Reflection.MethodInfo,System.Object[])
+- uid: Voice2Action.PropertyExecutor.FunctionCallGroup.PrettyPrintFunctionCall(System.Reflection.MethodInfo,System.Object[])
   name: PrettyPrintFunctionCall(MethodInfo, Object[])
-  href: api/Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.html#Voice2Action_Runtime_PropertyExecutor_FunctionCallGroup_PrettyPrintFunctionCall_System_Reflection_MethodInfo_System_Object___
-  commentId: M:Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.PrettyPrintFunctionCall(System.Reflection.MethodInfo,System.Object[])
+  href: api/Voice2Action.PropertyExecutor.FunctionCallGroup.html#Voice2Action_PropertyExecutor_FunctionCallGroup_PrettyPrintFunctionCall_System_Reflection_MethodInfo_System_Object___
+  commentId: M:Voice2Action.PropertyExecutor.FunctionCallGroup.PrettyPrintFunctionCall(System.Reflection.MethodInfo,System.Object[])
   name.vb: PrettyPrintFunctionCall(MethodInfo, Object())
-  fullName: Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.PrettyPrintFunctionCall(System.Reflection.MethodInfo, System.Object[])
-  fullName.vb: Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.PrettyPrintFunctionCall(System.Reflection.MethodInfo, System.Object())
+  fullName: Voice2Action.PropertyExecutor.FunctionCallGroup.PrettyPrintFunctionCall(System.Reflection.MethodInfo, System.Object[])
+  fullName.vb: Voice2Action.PropertyExecutor.FunctionCallGroup.PrettyPrintFunctionCall(System.Reflection.MethodInfo, System.Object())
   nameWithType: PropertyExecutor.FunctionCallGroup.PrettyPrintFunctionCall(MethodInfo, Object[])
   nameWithType.vb: PropertyExecutor.FunctionCallGroup.PrettyPrintFunctionCall(MethodInfo, Object())
-- uid: Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.PrettyPrintFunctionCall*
+- uid: Voice2Action.PropertyExecutor.FunctionCallGroup.PrettyPrintFunctionCall*
   name: PrettyPrintFunctionCall
-  href: api/Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.html#Voice2Action_Runtime_PropertyExecutor_FunctionCallGroup_PrettyPrintFunctionCall_
-  commentId: Overload:Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.PrettyPrintFunctionCall
+  href: api/Voice2Action.PropertyExecutor.FunctionCallGroup.html#Voice2Action_PropertyExecutor_FunctionCallGroup_PrettyPrintFunctionCall_
+  commentId: Overload:Voice2Action.PropertyExecutor.FunctionCallGroup.PrettyPrintFunctionCall
   isSpec: "True"
-  fullName: Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.PrettyPrintFunctionCall
+  fullName: Voice2Action.PropertyExecutor.FunctionCallGroup.PrettyPrintFunctionCall
   nameWithType: PropertyExecutor.FunctionCallGroup.PrettyPrintFunctionCall
-- uid: Voice2Action.Runtime.PropertyExecutor.functionCallGroups
+- uid: Voice2Action.PropertyExecutor.functionCallGroups
   name: functionCallGroups
-  href: api/Voice2Action.Runtime.PropertyExecutor.html#Voice2Action_Runtime_PropertyExecutor_functionCallGroups
-  commentId: P:Voice2Action.Runtime.PropertyExecutor.functionCallGroups
-  fullName: Voice2Action.Runtime.PropertyExecutor.functionCallGroups
+  href: api/Voice2Action.PropertyExecutor.html#Voice2Action_PropertyExecutor_functionCallGroups
+  commentId: P:Voice2Action.PropertyExecutor.functionCallGroups
+  fullName: Voice2Action.PropertyExecutor.functionCallGroups
   nameWithType: PropertyExecutor.functionCallGroups
-- uid: Voice2Action.Runtime.PropertyExecutor.functionCallGroups*
+- uid: Voice2Action.PropertyExecutor.functionCallGroups*
   name: functionCallGroups
-  href: api/Voice2Action.Runtime.PropertyExecutor.html#Voice2Action_Runtime_PropertyExecutor_functionCallGroups_
-  commentId: Overload:Voice2Action.Runtime.PropertyExecutor.functionCallGroups
+  href: api/Voice2Action.PropertyExecutor.html#Voice2Action_PropertyExecutor_functionCallGroups_
+  commentId: Overload:Voice2Action.PropertyExecutor.functionCallGroups
   isSpec: "True"
-  fullName: Voice2Action.Runtime.PropertyExecutor.functionCallGroups
+  fullName: Voice2Action.PropertyExecutor.functionCallGroups
   nameWithType: PropertyExecutor.functionCallGroups
-- uid: Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup
+- uid: Voice2Action.PropertyExecutor.FunctionParamGroup
   name: PropertyExecutor.FunctionParamGroup
-  href: api/Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.html
-  commentId: T:Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup
-  fullName: Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup
+  href: api/Voice2Action.PropertyExecutor.FunctionParamGroup.html
+  commentId: T:Voice2Action.PropertyExecutor.FunctionParamGroup
+  fullName: Voice2Action.PropertyExecutor.FunctionParamGroup
   nameWithType: PropertyExecutor.FunctionParamGroup
-- uid: Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.#ctor(System.String,System.Boolean,System.String,System.Collections.Generic.List{Voice2Action.Runtime.Utils.FewShotPair})
+- uid: Voice2Action.PropertyExecutor.FunctionParamGroup.#ctor(System.String,System.Boolean,System.String,System.Collections.Generic.List{Voice2Action.Utils.FewShotPair})
   name: FunctionParamGroup(String, Boolean, String, List<Utils.FewShotPair>)
-  href: api/Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.html#Voice2Action_Runtime_PropertyExecutor_FunctionParamGroup__ctor_System_String_System_Boolean_System_String_System_Collections_Generic_List_Voice2Action_Runtime_Utils_FewShotPair__
-  commentId: M:Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.#ctor(System.String,System.Boolean,System.String,System.Collections.Generic.List{Voice2Action.Runtime.Utils.FewShotPair})
+  href: api/Voice2Action.PropertyExecutor.FunctionParamGroup.html#Voice2Action_PropertyExecutor_FunctionParamGroup__ctor_System_String_System_Boolean_System_String_System_Collections_Generic_List_Voice2Action_Utils_FewShotPair__
+  commentId: M:Voice2Action.PropertyExecutor.FunctionParamGroup.#ctor(System.String,System.Boolean,System.String,System.Collections.Generic.List{Voice2Action.Utils.FewShotPair})
   name.vb: FunctionParamGroup(String, Boolean, String, List(Of Utils.FewShotPair))
-  fullName: Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.FunctionParamGroup(System.String, System.Boolean, System.String, System.Collections.Generic.List<Voice2Action.Runtime.Utils.FewShotPair>)
-  fullName.vb: Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.FunctionParamGroup(System.String, System.Boolean, System.String, System.Collections.Generic.List(Of Voice2Action.Runtime.Utils.FewShotPair))
+  fullName: Voice2Action.PropertyExecutor.FunctionParamGroup.FunctionParamGroup(System.String, System.Boolean, System.String, System.Collections.Generic.List<Voice2Action.Utils.FewShotPair>)
+  fullName.vb: Voice2Action.PropertyExecutor.FunctionParamGroup.FunctionParamGroup(System.String, System.Boolean, System.String, System.Collections.Generic.List(Of Voice2Action.Utils.FewShotPair))
   nameWithType: PropertyExecutor.FunctionParamGroup.FunctionParamGroup(String, Boolean, String, List<Utils.FewShotPair>)
   nameWithType.vb: PropertyExecutor.FunctionParamGroup.FunctionParamGroup(String, Boolean, String, List(Of Utils.FewShotPair))
-- uid: Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.#ctor*
+- uid: Voice2Action.PropertyExecutor.FunctionParamGroup.#ctor*
   name: FunctionParamGroup
-  href: api/Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.html#Voice2Action_Runtime_PropertyExecutor_FunctionParamGroup__ctor_
-  commentId: Overload:Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.#ctor
+  href: api/Voice2Action.PropertyExecutor.FunctionParamGroup.html#Voice2Action_PropertyExecutor_FunctionParamGroup__ctor_
+  commentId: Overload:Voice2Action.PropertyExecutor.FunctionParamGroup.#ctor
   isSpec: "True"
-  fullName: Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.FunctionParamGroup
+  fullName: Voice2Action.PropertyExecutor.FunctionParamGroup.FunctionParamGroup
   nameWithType: PropertyExecutor.FunctionParamGroup.FunctionParamGroup
-- uid: Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.description
+- uid: Voice2Action.PropertyExecutor.FunctionParamGroup.description
   name: description
-  href: api/Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.html#Voice2Action_Runtime_PropertyExecutor_FunctionParamGroup_description
-  commentId: P:Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.description
-  fullName: Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.description
+  href: api/Voice2Action.PropertyExecutor.FunctionParamGroup.html#Voice2Action_PropertyExecutor_FunctionParamGroup_description
+  commentId: P:Voice2Action.PropertyExecutor.FunctionParamGroup.description
+  fullName: Voice2Action.PropertyExecutor.FunctionParamGroup.description
   nameWithType: PropertyExecutor.FunctionParamGroup.description
-- uid: Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.description*
+- uid: Voice2Action.PropertyExecutor.FunctionParamGroup.description*
   name: description
-  href: api/Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.html#Voice2Action_Runtime_PropertyExecutor_FunctionParamGroup_description_
-  commentId: Overload:Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.description
+  href: api/Voice2Action.PropertyExecutor.FunctionParamGroup.html#Voice2Action_PropertyExecutor_FunctionParamGroup_description_
+  commentId: Overload:Voice2Action.PropertyExecutor.FunctionParamGroup.description
   isSpec: "True"
-  fullName: Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.description
+  fullName: Voice2Action.PropertyExecutor.FunctionParamGroup.description
   nameWithType: PropertyExecutor.FunctionParamGroup.description
-- uid: Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.examples
+- uid: Voice2Action.PropertyExecutor.FunctionParamGroup.examples
   name: examples
-  href: api/Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.html#Voice2Action_Runtime_PropertyExecutor_FunctionParamGroup_examples
-  commentId: P:Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.examples
-  fullName: Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.examples
+  href: api/Voice2Action.PropertyExecutor.FunctionParamGroup.html#Voice2Action_PropertyExecutor_FunctionParamGroup_examples
+  commentId: P:Voice2Action.PropertyExecutor.FunctionParamGroup.examples
+  fullName: Voice2Action.PropertyExecutor.FunctionParamGroup.examples
   nameWithType: PropertyExecutor.FunctionParamGroup.examples
-- uid: Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.examples*
+- uid: Voice2Action.PropertyExecutor.FunctionParamGroup.examples*
   name: examples
-  href: api/Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.html#Voice2Action_Runtime_PropertyExecutor_FunctionParamGroup_examples_
-  commentId: Overload:Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.examples
+  href: api/Voice2Action.PropertyExecutor.FunctionParamGroup.html#Voice2Action_PropertyExecutor_FunctionParamGroup_examples_
+  commentId: Overload:Voice2Action.PropertyExecutor.FunctionParamGroup.examples
   isSpec: "True"
-  fullName: Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.examples
+  fullName: Voice2Action.PropertyExecutor.FunctionParamGroup.examples
   nameWithType: PropertyExecutor.FunctionParamGroup.examples
-- uid: Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.name
+- uid: Voice2Action.PropertyExecutor.FunctionParamGroup.name
   name: name
-  href: api/Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.html#Voice2Action_Runtime_PropertyExecutor_FunctionParamGroup_name
-  commentId: P:Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.name
-  fullName: Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.name
+  href: api/Voice2Action.PropertyExecutor.FunctionParamGroup.html#Voice2Action_PropertyExecutor_FunctionParamGroup_name
+  commentId: P:Voice2Action.PropertyExecutor.FunctionParamGroup.name
+  fullName: Voice2Action.PropertyExecutor.FunctionParamGroup.name
   nameWithType: PropertyExecutor.FunctionParamGroup.name
-- uid: Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.name*
+- uid: Voice2Action.PropertyExecutor.FunctionParamGroup.name*
   name: name
-  href: api/Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.html#Voice2Action_Runtime_PropertyExecutor_FunctionParamGroup_name_
-  commentId: Overload:Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.name
+  href: api/Voice2Action.PropertyExecutor.FunctionParamGroup.html#Voice2Action_PropertyExecutor_FunctionParamGroup_name_
+  commentId: Overload:Voice2Action.PropertyExecutor.FunctionParamGroup.name
   isSpec: "True"
-  fullName: Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.name
+  fullName: Voice2Action.PropertyExecutor.FunctionParamGroup.name
   nameWithType: PropertyExecutor.FunctionParamGroup.name
-- uid: Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.paramTypeJsons
+- uid: Voice2Action.PropertyExecutor.FunctionParamGroup.paramTypeJsons
   name: paramTypeJsons
-  href: api/Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.html#Voice2Action_Runtime_PropertyExecutor_FunctionParamGroup_paramTypeJsons
-  commentId: P:Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.paramTypeJsons
-  fullName: Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.paramTypeJsons
+  href: api/Voice2Action.PropertyExecutor.FunctionParamGroup.html#Voice2Action_PropertyExecutor_FunctionParamGroup_paramTypeJsons
+  commentId: P:Voice2Action.PropertyExecutor.FunctionParamGroup.paramTypeJsons
+  fullName: Voice2Action.PropertyExecutor.FunctionParamGroup.paramTypeJsons
   nameWithType: PropertyExecutor.FunctionParamGroup.paramTypeJsons
-- uid: Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.paramTypeJsons*
+- uid: Voice2Action.PropertyExecutor.FunctionParamGroup.paramTypeJsons*
   name: paramTypeJsons
-  href: api/Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.html#Voice2Action_Runtime_PropertyExecutor_FunctionParamGroup_paramTypeJsons_
-  commentId: Overload:Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.paramTypeJsons
+  href: api/Voice2Action.PropertyExecutor.FunctionParamGroup.html#Voice2Action_PropertyExecutor_FunctionParamGroup_paramTypeJsons_
+  commentId: Overload:Voice2Action.PropertyExecutor.FunctionParamGroup.paramTypeJsons
   isSpec: "True"
-  fullName: Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.paramTypeJsons
+  fullName: Voice2Action.PropertyExecutor.FunctionParamGroup.paramTypeJsons
   nameWithType: PropertyExecutor.FunctionParamGroup.paramTypeJsons
-- uid: Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.required
+- uid: Voice2Action.PropertyExecutor.FunctionParamGroup.required
   name: required
-  href: api/Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.html#Voice2Action_Runtime_PropertyExecutor_FunctionParamGroup_required
-  commentId: P:Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.required
-  fullName: Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.required
+  href: api/Voice2Action.PropertyExecutor.FunctionParamGroup.html#Voice2Action_PropertyExecutor_FunctionParamGroup_required
+  commentId: P:Voice2Action.PropertyExecutor.FunctionParamGroup.required
+  fullName: Voice2Action.PropertyExecutor.FunctionParamGroup.required
   nameWithType: PropertyExecutor.FunctionParamGroup.required
-- uid: Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.required*
+- uid: Voice2Action.PropertyExecutor.FunctionParamGroup.required*
   name: required
-  href: api/Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.html#Voice2Action_Runtime_PropertyExecutor_FunctionParamGroup_required_
-  commentId: Overload:Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.required
+  href: api/Voice2Action.PropertyExecutor.FunctionParamGroup.html#Voice2Action_PropertyExecutor_FunctionParamGroup_required_
+  commentId: Overload:Voice2Action.PropertyExecutor.FunctionParamGroup.required
   isSpec: "True"
-  fullName: Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.required
+  fullName: Voice2Action.PropertyExecutor.FunctionParamGroup.required
   nameWithType: PropertyExecutor.FunctionParamGroup.required
-- uid: Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.TryAddParamInfo(JObject@)
+- uid: Voice2Action.PropertyExecutor.FunctionParamGroup.TryAddParamInfo(JObject@)
   name: TryAddParamInfo(ref JObject)
-  href: api/Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.html#Voice2Action_Runtime_PropertyExecutor_FunctionParamGroup_TryAddParamInfo_JObject__
-  commentId: M:Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.TryAddParamInfo(JObject@)
+  href: api/Voice2Action.PropertyExecutor.FunctionParamGroup.html#Voice2Action_PropertyExecutor_FunctionParamGroup_TryAddParamInfo_JObject__
+  commentId: M:Voice2Action.PropertyExecutor.FunctionParamGroup.TryAddParamInfo(JObject@)
   name.vb: TryAddParamInfo(ByRef JObject)
-  fullName: Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.TryAddParamInfo(ref JObject)
-  fullName.vb: Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.TryAddParamInfo(ByRef JObject)
+  fullName: Voice2Action.PropertyExecutor.FunctionParamGroup.TryAddParamInfo(ref JObject)
+  fullName.vb: Voice2Action.PropertyExecutor.FunctionParamGroup.TryAddParamInfo(ByRef JObject)
   nameWithType: PropertyExecutor.FunctionParamGroup.TryAddParamInfo(ref JObject)
   nameWithType.vb: PropertyExecutor.FunctionParamGroup.TryAddParamInfo(ByRef JObject)
-- uid: Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.TryAddParamInfo*
+- uid: Voice2Action.PropertyExecutor.FunctionParamGroup.TryAddParamInfo*
   name: TryAddParamInfo
-  href: api/Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.html#Voice2Action_Runtime_PropertyExecutor_FunctionParamGroup_TryAddParamInfo_
-  commentId: Overload:Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.TryAddParamInfo
+  href: api/Voice2Action.PropertyExecutor.FunctionParamGroup.html#Voice2Action_PropertyExecutor_FunctionParamGroup_TryAddParamInfo_
+  commentId: Overload:Voice2Action.PropertyExecutor.FunctionParamGroup.TryAddParamInfo
   isSpec: "True"
-  fullName: Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.TryAddParamInfo
+  fullName: Voice2Action.PropertyExecutor.FunctionParamGroup.TryAddParamInfo
   nameWithType: PropertyExecutor.FunctionParamGroup.TryAddParamInfo
-- uid: Voice2Action.Runtime.PropertyExecutor.InitFunctionCalls(System.Type,System.Collections.Generic.List{System.String})
+- uid: Voice2Action.PropertyExecutor.InitFunctionCalls(System.Type,System.Collections.Generic.List{System.String})
   name: InitFunctionCalls(Type, List<String>)
-  href: api/Voice2Action.Runtime.PropertyExecutor.html#Voice2Action_Runtime_PropertyExecutor_InitFunctionCalls_System_Type_System_Collections_Generic_List_System_String__
-  commentId: M:Voice2Action.Runtime.PropertyExecutor.InitFunctionCalls(System.Type,System.Collections.Generic.List{System.String})
+  href: api/Voice2Action.PropertyExecutor.html#Voice2Action_PropertyExecutor_InitFunctionCalls_System_Type_System_Collections_Generic_List_System_String__
+  commentId: M:Voice2Action.PropertyExecutor.InitFunctionCalls(System.Type,System.Collections.Generic.List{System.String})
   name.vb: InitFunctionCalls(Type, List(Of String))
-  fullName: Voice2Action.Runtime.PropertyExecutor.InitFunctionCalls(System.Type, System.Collections.Generic.List<System.String>)
-  fullName.vb: Voice2Action.Runtime.PropertyExecutor.InitFunctionCalls(System.Type, System.Collections.Generic.List(Of System.String))
+  fullName: Voice2Action.PropertyExecutor.InitFunctionCalls(System.Type, System.Collections.Generic.List<System.String>)
+  fullName.vb: Voice2Action.PropertyExecutor.InitFunctionCalls(System.Type, System.Collections.Generic.List(Of System.String))
   nameWithType: PropertyExecutor.InitFunctionCalls(Type, List<String>)
   nameWithType.vb: PropertyExecutor.InitFunctionCalls(Type, List(Of String))
-- uid: Voice2Action.Runtime.PropertyExecutor.InitFunctionCalls*
+- uid: Voice2Action.PropertyExecutor.InitFunctionCalls*
   name: InitFunctionCalls
-  href: api/Voice2Action.Runtime.PropertyExecutor.html#Voice2Action_Runtime_PropertyExecutor_InitFunctionCalls_
-  commentId: Overload:Voice2Action.Runtime.PropertyExecutor.InitFunctionCalls
+  href: api/Voice2Action.PropertyExecutor.html#Voice2Action_PropertyExecutor_InitFunctionCalls_
+  commentId: Overload:Voice2Action.PropertyExecutor.InitFunctionCalls
   isSpec: "True"
-  fullName: Voice2Action.Runtime.PropertyExecutor.InitFunctionCalls
+  fullName: Voice2Action.PropertyExecutor.InitFunctionCalls
   nameWithType: PropertyExecutor.InitFunctionCalls
-- uid: Voice2Action.Runtime.PropertyExecutor.k_ExecutionInstruction
+- uid: Voice2Action.PropertyExecutor.k_ExecutionInstruction
   name: k_ExecutionInstruction
-  href: api/Voice2Action.Runtime.PropertyExecutor.html#Voice2Action_Runtime_PropertyExecutor_k_ExecutionInstruction
-  commentId: F:Voice2Action.Runtime.PropertyExecutor.k_ExecutionInstruction
-  fullName: Voice2Action.Runtime.PropertyExecutor.k_ExecutionInstruction
+  href: api/Voice2Action.PropertyExecutor.html#Voice2Action_PropertyExecutor_k_ExecutionInstruction
+  commentId: F:Voice2Action.PropertyExecutor.k_ExecutionInstruction
+  fullName: Voice2Action.PropertyExecutor.k_ExecutionInstruction
   nameWithType: PropertyExecutor.k_ExecutionInstruction
-- uid: Voice2Action.Runtime.PropertyExtractor
+- uid: Voice2Action.PropertyExtractor
   name: PropertyExtractor
-  href: api/Voice2Action.Runtime.PropertyExtractor.html
-  commentId: T:Voice2Action.Runtime.PropertyExtractor
-  fullName: Voice2Action.Runtime.PropertyExtractor
+  href: api/Voice2Action.PropertyExtractor.html
+  commentId: T:Voice2Action.PropertyExtractor
+  fullName: Voice2Action.PropertyExtractor
   nameWithType: PropertyExtractor
-- uid: Voice2Action.Runtime.PropertyExtractor.AddAtomicAction(System.String,System.Int32,System.String)
+- uid: Voice2Action.PropertyExtractor.AddAtomicAction(System.String,System.Int32,System.String)
   name: AddAtomicAction(String, Int32, String)
-  href: api/Voice2Action.Runtime.PropertyExtractor.html#Voice2Action_Runtime_PropertyExtractor_AddAtomicAction_System_String_System_Int32_System_String_
-  commentId: M:Voice2Action.Runtime.PropertyExtractor.AddAtomicAction(System.String,System.Int32,System.String)
-  fullName: Voice2Action.Runtime.PropertyExtractor.AddAtomicAction(System.String, System.Int32, System.String)
+  href: api/Voice2Action.PropertyExtractor.html#Voice2Action_PropertyExtractor_AddAtomicAction_System_String_System_Int32_System_String_
+  commentId: M:Voice2Action.PropertyExtractor.AddAtomicAction(System.String,System.Int32,System.String)
+  fullName: Voice2Action.PropertyExtractor.AddAtomicAction(System.String, System.Int32, System.String)
   nameWithType: PropertyExtractor.AddAtomicAction(String, Int32, String)
-- uid: Voice2Action.Runtime.PropertyExtractor.AddAtomicAction*
+- uid: Voice2Action.PropertyExtractor.AddAtomicAction*
   name: AddAtomicAction
-  href: api/Voice2Action.Runtime.PropertyExtractor.html#Voice2Action_Runtime_PropertyExtractor_AddAtomicAction_
-  commentId: Overload:Voice2Action.Runtime.PropertyExtractor.AddAtomicAction
+  href: api/Voice2Action.PropertyExtractor.html#Voice2Action_PropertyExtractor_AddAtomicAction_
+  commentId: Overload:Voice2Action.PropertyExtractor.AddAtomicAction
   isSpec: "True"
-  fullName: Voice2Action.Runtime.PropertyExtractor.AddAtomicAction
+  fullName: Voice2Action.PropertyExtractor.AddAtomicAction
   nameWithType: PropertyExtractor.AddAtomicAction
-- uid: Voice2Action.Runtime.PropertyExtractor.AddExtractionExamples(System.String,System.String,System.String)
+- uid: Voice2Action.PropertyExtractor.AddExtractionExamples(System.String,System.String,System.String)
   name: AddExtractionExamples(String, String, String)
-  href: api/Voice2Action.Runtime.PropertyExtractor.html#Voice2Action_Runtime_PropertyExtractor_AddExtractionExamples_System_String_System_String_System_String_
-  commentId: M:Voice2Action.Runtime.PropertyExtractor.AddExtractionExamples(System.String,System.String,System.String)
-  fullName: Voice2Action.Runtime.PropertyExtractor.AddExtractionExamples(System.String, System.String, System.String)
+  href: api/Voice2Action.PropertyExtractor.html#Voice2Action_PropertyExtractor_AddExtractionExamples_System_String_System_String_System_String_
+  commentId: M:Voice2Action.PropertyExtractor.AddExtractionExamples(System.String,System.String,System.String)
+  fullName: Voice2Action.PropertyExtractor.AddExtractionExamples(System.String, System.String, System.String)
   nameWithType: PropertyExtractor.AddExtractionExamples(String, String, String)
-- uid: Voice2Action.Runtime.PropertyExtractor.AddExtractionExamples*
+- uid: Voice2Action.PropertyExtractor.AddExtractionExamples*
   name: AddExtractionExamples
-  href: api/Voice2Action.Runtime.PropertyExtractor.html#Voice2Action_Runtime_PropertyExtractor_AddExtractionExamples_
-  commentId: Overload:Voice2Action.Runtime.PropertyExtractor.AddExtractionExamples
+  href: api/Voice2Action.PropertyExtractor.html#Voice2Action_PropertyExtractor_AddExtractionExamples_
+  commentId: Overload:Voice2Action.PropertyExtractor.AddExtractionExamples
   isSpec: "True"
-  fullName: Voice2Action.Runtime.PropertyExtractor.AddExtractionExamples
+  fullName: Voice2Action.PropertyExtractor.AddExtractionExamples
   nameWithType: PropertyExtractor.AddExtractionExamples
-- uid: Voice2Action.Runtime.PropertyExtractor.ExtractProperty(System.String,System.String)
+- uid: Voice2Action.PropertyExtractor.ExtractProperty(System.String,System.String)
   name: ExtractProperty(String, String)
-  href: api/Voice2Action.Runtime.PropertyExtractor.html#Voice2Action_Runtime_PropertyExtractor_ExtractProperty_System_String_System_String_
-  commentId: M:Voice2Action.Runtime.PropertyExtractor.ExtractProperty(System.String,System.String)
-  fullName: Voice2Action.Runtime.PropertyExtractor.ExtractProperty(System.String, System.String)
+  href: api/Voice2Action.PropertyExtractor.html#Voice2Action_PropertyExtractor_ExtractProperty_System_String_System_String_
+  commentId: M:Voice2Action.PropertyExtractor.ExtractProperty(System.String,System.String)
+  fullName: Voice2Action.PropertyExtractor.ExtractProperty(System.String, System.String)
   nameWithType: PropertyExtractor.ExtractProperty(String, String)
-- uid: Voice2Action.Runtime.PropertyExtractor.ExtractProperty*
+- uid: Voice2Action.PropertyExtractor.ExtractProperty*
   name: ExtractProperty
-  href: api/Voice2Action.Runtime.PropertyExtractor.html#Voice2Action_Runtime_PropertyExtractor_ExtractProperty_
-  commentId: Overload:Voice2Action.Runtime.PropertyExtractor.ExtractProperty
+  href: api/Voice2Action.PropertyExtractor.html#Voice2Action_PropertyExtractor_ExtractProperty_
+  commentId: Overload:Voice2Action.PropertyExtractor.ExtractProperty
   isSpec: "True"
-  fullName: Voice2Action.Runtime.PropertyExtractor.ExtractProperty
+  fullName: Voice2Action.PropertyExtractor.ExtractProperty
   nameWithType: PropertyExtractor.ExtractProperty
-- uid: Voice2Action.Runtime.PropertyExtractor.modificationGroup
+- uid: Voice2Action.PropertyExtractor.modificationGroup
   name: modificationGroup
-  href: api/Voice2Action.Runtime.PropertyExtractor.html#Voice2Action_Runtime_PropertyExtractor_modificationGroup
-  commentId: P:Voice2Action.Runtime.PropertyExtractor.modificationGroup
-  fullName: Voice2Action.Runtime.PropertyExtractor.modificationGroup
+  href: api/Voice2Action.PropertyExtractor.html#Voice2Action_PropertyExtractor_modificationGroup
+  commentId: P:Voice2Action.PropertyExtractor.modificationGroup
+  fullName: Voice2Action.PropertyExtractor.modificationGroup
   nameWithType: PropertyExtractor.modificationGroup
-- uid: Voice2Action.Runtime.PropertyExtractor.modificationGroup*
+- uid: Voice2Action.PropertyExtractor.modificationGroup*
   name: modificationGroup
-  href: api/Voice2Action.Runtime.PropertyExtractor.html#Voice2Action_Runtime_PropertyExtractor_modificationGroup_
-  commentId: Overload:Voice2Action.Runtime.PropertyExtractor.modificationGroup
+  href: api/Voice2Action.PropertyExtractor.html#Voice2Action_PropertyExtractor_modificationGroup_
+  commentId: Overload:Voice2Action.PropertyExtractor.modificationGroup
   isSpec: "True"
-  fullName: Voice2Action.Runtime.PropertyExtractor.modificationGroup
+  fullName: Voice2Action.PropertyExtractor.modificationGroup
   nameWithType: PropertyExtractor.modificationGroup
-- uid: Voice2Action.Runtime.PropertyExtractor.selectionGroup
+- uid: Voice2Action.PropertyExtractor.selectionGroup
   name: selectionGroup
-  href: api/Voice2Action.Runtime.PropertyExtractor.html#Voice2Action_Runtime_PropertyExtractor_selectionGroup
-  commentId: P:Voice2Action.Runtime.PropertyExtractor.selectionGroup
-  fullName: Voice2Action.Runtime.PropertyExtractor.selectionGroup
+  href: api/Voice2Action.PropertyExtractor.html#Voice2Action_PropertyExtractor_selectionGroup
+  commentId: P:Voice2Action.PropertyExtractor.selectionGroup
+  fullName: Voice2Action.PropertyExtractor.selectionGroup
   nameWithType: PropertyExtractor.selectionGroup
-- uid: Voice2Action.Runtime.PropertyExtractor.selectionGroup*
+- uid: Voice2Action.PropertyExtractor.selectionGroup*
   name: selectionGroup
-  href: api/Voice2Action.Runtime.PropertyExtractor.html#Voice2Action_Runtime_PropertyExtractor_selectionGroup_
-  commentId: Overload:Voice2Action.Runtime.PropertyExtractor.selectionGroup
+  href: api/Voice2Action.PropertyExtractor.html#Voice2Action_PropertyExtractor_selectionGroup_
+  commentId: Overload:Voice2Action.PropertyExtractor.selectionGroup
   isSpec: "True"
-  fullName: Voice2Action.Runtime.PropertyExtractor.selectionGroup
+  fullName: Voice2Action.PropertyExtractor.selectionGroup
   nameWithType: PropertyExtractor.selectionGroup
-- uid: Voice2Action.Runtime.SceneManager
+- uid: Voice2Action.SceneManager
   name: SceneManager
-  href: api/Voice2Action.Runtime.SceneManager.html
-  commentId: T:Voice2Action.Runtime.SceneManager
-  fullName: Voice2Action.Runtime.SceneManager
+  href: api/Voice2Action.SceneManager.html
+  commentId: T:Voice2Action.SceneManager
+  fullName: Voice2Action.SceneManager
   nameWithType: SceneManager
-- uid: Voice2Action.Runtime.SceneManager.activateInteractable
+- uid: Voice2Action.SceneManager.activateInteractable
   name: activateInteractable
-  href: api/Voice2Action.Runtime.SceneManager.html#Voice2Action_Runtime_SceneManager_activateInteractable
-  commentId: E:Voice2Action.Runtime.SceneManager.activateInteractable
-  fullName: Voice2Action.Runtime.SceneManager.activateInteractable
+  href: api/Voice2Action.SceneManager.html#Voice2Action_SceneManager_activateInteractable
+  commentId: E:Voice2Action.SceneManager.activateInteractable
+  fullName: Voice2Action.SceneManager.activateInteractable
   nameWithType: SceneManager.activateInteractable
-- uid: Voice2Action.Runtime.SceneManager.AddExpandingAndProxy(Voice2Action.Runtime.ShapeController)
+- uid: Voice2Action.SceneManager.AddExpandingAndProxy(Voice2Action.ShapeController)
   name: AddExpandingAndProxy(ShapeController)
-  href: api/Voice2Action.Runtime.SceneManager.html#Voice2Action_Runtime_SceneManager_AddExpandingAndProxy_Voice2Action_Runtime_ShapeController_
-  commentId: M:Voice2Action.Runtime.SceneManager.AddExpandingAndProxy(Voice2Action.Runtime.ShapeController)
-  fullName: Voice2Action.Runtime.SceneManager.AddExpandingAndProxy(Voice2Action.Runtime.ShapeController)
+  href: api/Voice2Action.SceneManager.html#Voice2Action_SceneManager_AddExpandingAndProxy_Voice2Action_ShapeController_
+  commentId: M:Voice2Action.SceneManager.AddExpandingAndProxy(Voice2Action.ShapeController)
+  fullName: Voice2Action.SceneManager.AddExpandingAndProxy(Voice2Action.ShapeController)
   nameWithType: SceneManager.AddExpandingAndProxy(ShapeController)
-- uid: Voice2Action.Runtime.SceneManager.AddExpandingAndProxy*
+- uid: Voice2Action.SceneManager.AddExpandingAndProxy*
   name: AddExpandingAndProxy
-  href: api/Voice2Action.Runtime.SceneManager.html#Voice2Action_Runtime_SceneManager_AddExpandingAndProxy_
-  commentId: Overload:Voice2Action.Runtime.SceneManager.AddExpandingAndProxy
+  href: api/Voice2Action.SceneManager.html#Voice2Action_SceneManager_AddExpandingAndProxy_
+  commentId: Overload:Voice2Action.SceneManager.AddExpandingAndProxy
   isSpec: "True"
-  fullName: Voice2Action.Runtime.SceneManager.AddExpandingAndProxy
+  fullName: Voice2Action.SceneManager.AddExpandingAndProxy
   nameWithType: SceneManager.AddExpandingAndProxy
-- uid: Voice2Action.Runtime.SceneManager.ClearProxies
+- uid: Voice2Action.SceneManager.ClearProxies
   name: ClearProxies()
-  href: api/Voice2Action.Runtime.SceneManager.html#Voice2Action_Runtime_SceneManager_ClearProxies
-  commentId: M:Voice2Action.Runtime.SceneManager.ClearProxies
-  fullName: Voice2Action.Runtime.SceneManager.ClearProxies()
+  href: api/Voice2Action.SceneManager.html#Voice2Action_SceneManager_ClearProxies
+  commentId: M:Voice2Action.SceneManager.ClearProxies
+  fullName: Voice2Action.SceneManager.ClearProxies()
   nameWithType: SceneManager.ClearProxies()
-- uid: Voice2Action.Runtime.SceneManager.ClearProxies*
+- uid: Voice2Action.SceneManager.ClearProxies*
   name: ClearProxies
-  href: api/Voice2Action.Runtime.SceneManager.html#Voice2Action_Runtime_SceneManager_ClearProxies_
-  commentId: Overload:Voice2Action.Runtime.SceneManager.ClearProxies
+  href: api/Voice2Action.SceneManager.html#Voice2Action_SceneManager_ClearProxies_
+  commentId: Overload:Voice2Action.SceneManager.ClearProxies
   isSpec: "True"
-  fullName: Voice2Action.Runtime.SceneManager.ClearProxies
+  fullName: Voice2Action.SceneManager.ClearProxies
   nameWithType: SceneManager.ClearProxies
-- uid: Voice2Action.Runtime.SceneManager.destroyObjectNotGrabbed
+- uid: Voice2Action.SceneManager.destroyObjectNotGrabbed
   name: destroyObjectNotGrabbed
-  href: api/Voice2Action.Runtime.SceneManager.html#Voice2Action_Runtime_SceneManager_destroyObjectNotGrabbed
-  commentId: E:Voice2Action.Runtime.SceneManager.destroyObjectNotGrabbed
-  fullName: Voice2Action.Runtime.SceneManager.destroyObjectNotGrabbed
+  href: api/Voice2Action.SceneManager.html#Voice2Action_SceneManager_destroyObjectNotGrabbed
+  commentId: E:Voice2Action.SceneManager.destroyObjectNotGrabbed
+  fullName: Voice2Action.SceneManager.destroyObjectNotGrabbed
   nameWithType: SceneManager.destroyObjectNotGrabbed
-- uid: Voice2Action.Runtime.SceneManager.expandPanel
+- uid: Voice2Action.SceneManager.expandPanel
   name: expandPanel
-  href: api/Voice2Action.Runtime.SceneManager.html#Voice2Action_Runtime_SceneManager_expandPanel
-  commentId: P:Voice2Action.Runtime.SceneManager.expandPanel
-  fullName: Voice2Action.Runtime.SceneManager.expandPanel
+  href: api/Voice2Action.SceneManager.html#Voice2Action_SceneManager_expandPanel
+  commentId: P:Voice2Action.SceneManager.expandPanel
+  fullName: Voice2Action.SceneManager.expandPanel
   nameWithType: SceneManager.expandPanel
-- uid: Voice2Action.Runtime.SceneManager.expandPanel*
+- uid: Voice2Action.SceneManager.expandPanel*
   name: expandPanel
-  href: api/Voice2Action.Runtime.SceneManager.html#Voice2Action_Runtime_SceneManager_expandPanel_
-  commentId: Overload:Voice2Action.Runtime.SceneManager.expandPanel
+  href: api/Voice2Action.SceneManager.html#Voice2Action_SceneManager_expandPanel_
+  commentId: Overload:Voice2Action.SceneManager.expandPanel
   isSpec: "True"
-  fullName: Voice2Action.Runtime.SceneManager.expandPanel
+  fullName: Voice2Action.SceneManager.expandPanel
   nameWithType: SceneManager.expandPanel
-- uid: Voice2Action.Runtime.SceneManager.k_MaxExpandNum
+- uid: Voice2Action.SceneManager.k_MaxExpandNum
   name: k_MaxExpandNum
-  href: api/Voice2Action.Runtime.SceneManager.html#Voice2Action_Runtime_SceneManager_k_MaxExpandNum
-  commentId: F:Voice2Action.Runtime.SceneManager.k_MaxExpandNum
-  fullName: Voice2Action.Runtime.SceneManager.k_MaxExpandNum
+  href: api/Voice2Action.SceneManager.html#Voice2Action_SceneManager_k_MaxExpandNum
+  commentId: F:Voice2Action.SceneManager.k_MaxExpandNum
+  fullName: Voice2Action.SceneManager.k_MaxExpandNum
   nameWithType: SceneManager.k_MaxExpandNum
-- uid: Voice2Action.Runtime.SceneManager.NotifyActivated(Transform)
+- uid: Voice2Action.SceneManager.NotifyActivated(Transform)
   name: NotifyActivated(Transform)
-  href: api/Voice2Action.Runtime.SceneManager.html#Voice2Action_Runtime_SceneManager_NotifyActivated_Transform_
-  commentId: M:Voice2Action.Runtime.SceneManager.NotifyActivated(Transform)
-  fullName: Voice2Action.Runtime.SceneManager.NotifyActivated(Transform)
+  href: api/Voice2Action.SceneManager.html#Voice2Action_SceneManager_NotifyActivated_Transform_
+  commentId: M:Voice2Action.SceneManager.NotifyActivated(Transform)
+  fullName: Voice2Action.SceneManager.NotifyActivated(Transform)
   nameWithType: SceneManager.NotifyActivated(Transform)
-- uid: Voice2Action.Runtime.SceneManager.NotifyActivated*
+- uid: Voice2Action.SceneManager.NotifyActivated*
   name: NotifyActivated
-  href: api/Voice2Action.Runtime.SceneManager.html#Voice2Action_Runtime_SceneManager_NotifyActivated_
-  commentId: Overload:Voice2Action.Runtime.SceneManager.NotifyActivated
+  href: api/Voice2Action.SceneManager.html#Voice2Action_SceneManager_NotifyActivated_
+  commentId: Overload:Voice2Action.SceneManager.NotifyActivated
   isSpec: "True"
-  fullName: Voice2Action.Runtime.SceneManager.NotifyActivated
+  fullName: Voice2Action.SceneManager.NotifyActivated
   nameWithType: SceneManager.NotifyActivated
-- uid: Voice2Action.Runtime.SceneManager.NotifyProxySelected(Transform)
+- uid: Voice2Action.SceneManager.NotifyProxySelected(Transform)
   name: NotifyProxySelected(Transform)
-  href: api/Voice2Action.Runtime.SceneManager.html#Voice2Action_Runtime_SceneManager_NotifyProxySelected_Transform_
-  commentId: M:Voice2Action.Runtime.SceneManager.NotifyProxySelected(Transform)
-  fullName: Voice2Action.Runtime.SceneManager.NotifyProxySelected(Transform)
+  href: api/Voice2Action.SceneManager.html#Voice2Action_SceneManager_NotifyProxySelected_Transform_
+  commentId: M:Voice2Action.SceneManager.NotifyProxySelected(Transform)
+  fullName: Voice2Action.SceneManager.NotifyProxySelected(Transform)
   nameWithType: SceneManager.NotifyProxySelected(Transform)
-- uid: Voice2Action.Runtime.SceneManager.NotifyProxySelected*
+- uid: Voice2Action.SceneManager.NotifyProxySelected*
   name: NotifyProxySelected
-  href: api/Voice2Action.Runtime.SceneManager.html#Voice2Action_Runtime_SceneManager_NotifyProxySelected_
-  commentId: Overload:Voice2Action.Runtime.SceneManager.NotifyProxySelected
+  href: api/Voice2Action.SceneManager.html#Voice2Action_SceneManager_NotifyProxySelected_
+  commentId: Overload:Voice2Action.SceneManager.NotifyProxySelected
   isSpec: "True"
-  fullName: Voice2Action.Runtime.SceneManager.NotifyProxySelected
+  fullName: Voice2Action.SceneManager.NotifyProxySelected
   nameWithType: SceneManager.NotifyProxySelected
-- uid: Voice2Action.Runtime.SceneManager.xrOriginCamera
+- uid: Voice2Action.SceneManager.xrOriginCamera
   name: xrOriginCamera
-  href: api/Voice2Action.Runtime.SceneManager.html#Voice2Action_Runtime_SceneManager_xrOriginCamera
-  commentId: P:Voice2Action.Runtime.SceneManager.xrOriginCamera
-  fullName: Voice2Action.Runtime.SceneManager.xrOriginCamera
+  href: api/Voice2Action.SceneManager.html#Voice2Action_SceneManager_xrOriginCamera
+  commentId: P:Voice2Action.SceneManager.xrOriginCamera
+  fullName: Voice2Action.SceneManager.xrOriginCamera
   nameWithType: SceneManager.xrOriginCamera
-- uid: Voice2Action.Runtime.SceneManager.xrOriginCamera*
+- uid: Voice2Action.SceneManager.xrOriginCamera*
   name: xrOriginCamera
-  href: api/Voice2Action.Runtime.SceneManager.html#Voice2Action_Runtime_SceneManager_xrOriginCamera_
-  commentId: Overload:Voice2Action.Runtime.SceneManager.xrOriginCamera
+  href: api/Voice2Action.SceneManager.html#Voice2Action_SceneManager_xrOriginCamera_
+  commentId: Overload:Voice2Action.SceneManager.xrOriginCamera
   isSpec: "True"
-  fullName: Voice2Action.Runtime.SceneManager.xrOriginCamera
+  fullName: Voice2Action.SceneManager.xrOriginCamera
   nameWithType: SceneManager.xrOriginCamera
-- uid: Voice2Action.Runtime.ShapeController
+- uid: Voice2Action.ShapeController
   name: ShapeController
-  href: api/Voice2Action.Runtime.ShapeController.html
-  commentId: T:Voice2Action.Runtime.ShapeController
-  fullName: Voice2Action.Runtime.ShapeController
+  href: api/Voice2Action.ShapeController.html
+  commentId: T:Voice2Action.ShapeController
+  fullName: Voice2Action.ShapeController
   nameWithType: ShapeController
-- uid: Voice2Action.Runtime.ShapeController.AddTransparency(System.Single)
+- uid: Voice2Action.ShapeController.AddTransparency(System.Single)
   name: AddTransparency(Single)
-  href: api/Voice2Action.Runtime.ShapeController.html#Voice2Action_Runtime_ShapeController_AddTransparency_System_Single_
-  commentId: M:Voice2Action.Runtime.ShapeController.AddTransparency(System.Single)
-  fullName: Voice2Action.Runtime.ShapeController.AddTransparency(System.Single)
+  href: api/Voice2Action.ShapeController.html#Voice2Action_ShapeController_AddTransparency_System_Single_
+  commentId: M:Voice2Action.ShapeController.AddTransparency(System.Single)
+  fullName: Voice2Action.ShapeController.AddTransparency(System.Single)
   nameWithType: ShapeController.AddTransparency(Single)
-- uid: Voice2Action.Runtime.ShapeController.AddTransparency*
+- uid: Voice2Action.ShapeController.AddTransparency*
   name: AddTransparency
-  href: api/Voice2Action.Runtime.ShapeController.html#Voice2Action_Runtime_ShapeController_AddTransparency_
-  commentId: Overload:Voice2Action.Runtime.ShapeController.AddTransparency
+  href: api/Voice2Action.ShapeController.html#Voice2Action_ShapeController_AddTransparency_
+  commentId: Overload:Voice2Action.ShapeController.AddTransparency
   isSpec: "True"
-  fullName: Voice2Action.Runtime.ShapeController.AddTransparency
+  fullName: Voice2Action.ShapeController.AddTransparency
   nameWithType: ShapeController.AddTransparency
-- uid: Voice2Action.Runtime.ShapeController.GetDirection(System.Collections.Generic.List{System.Single})
+- uid: Voice2Action.ShapeController.GetDirection(System.Collections.Generic.List{System.Single})
   name: GetDirection(List<Single>)
-  href: api/Voice2Action.Runtime.ShapeController.html#Voice2Action_Runtime_ShapeController_GetDirection_System_Collections_Generic_List_System_Single__
-  commentId: M:Voice2Action.Runtime.ShapeController.GetDirection(System.Collections.Generic.List{System.Single})
+  href: api/Voice2Action.ShapeController.html#Voice2Action_ShapeController_GetDirection_System_Collections_Generic_List_System_Single__
+  commentId: M:Voice2Action.ShapeController.GetDirection(System.Collections.Generic.List{System.Single})
   name.vb: GetDirection(List(Of Single))
-  fullName: Voice2Action.Runtime.ShapeController.GetDirection(System.Collections.Generic.List<System.Single>)
-  fullName.vb: Voice2Action.Runtime.ShapeController.GetDirection(System.Collections.Generic.List(Of System.Single))
+  fullName: Voice2Action.ShapeController.GetDirection(System.Collections.Generic.List<System.Single>)
+  fullName.vb: Voice2Action.ShapeController.GetDirection(System.Collections.Generic.List(Of System.Single))
   nameWithType: ShapeController.GetDirection(List<Single>)
   nameWithType.vb: ShapeController.GetDirection(List(Of Single))
-- uid: Voice2Action.Runtime.ShapeController.GetDirection*
+- uid: Voice2Action.ShapeController.GetDirection*
   name: GetDirection
-  href: api/Voice2Action.Runtime.ShapeController.html#Voice2Action_Runtime_ShapeController_GetDirection_
-  commentId: Overload:Voice2Action.Runtime.ShapeController.GetDirection
+  href: api/Voice2Action.ShapeController.html#Voice2Action_ShapeController_GetDirection_
+  commentId: Overload:Voice2Action.ShapeController.GetDirection
   isSpec: "True"
-  fullName: Voice2Action.Runtime.ShapeController.GetDirection
+  fullName: Voice2Action.ShapeController.GetDirection
   nameWithType: ShapeController.GetDirection
-- uid: Voice2Action.Runtime.ShapeController.GetDistance(System.Single,System.Single)
+- uid: Voice2Action.ShapeController.GetDistance(System.Single,System.Single)
   name: GetDistance(Single, Single)
-  href: api/Voice2Action.Runtime.ShapeController.html#Voice2Action_Runtime_ShapeController_GetDistance_System_Single_System_Single_
-  commentId: M:Voice2Action.Runtime.ShapeController.GetDistance(System.Single,System.Single)
-  fullName: Voice2Action.Runtime.ShapeController.GetDistance(System.Single, System.Single)
+  href: api/Voice2Action.ShapeController.html#Voice2Action_ShapeController_GetDistance_System_Single_System_Single_
+  commentId: M:Voice2Action.ShapeController.GetDistance(System.Single,System.Single)
+  fullName: Voice2Action.ShapeController.GetDistance(System.Single, System.Single)
   nameWithType: ShapeController.GetDistance(Single, Single)
-- uid: Voice2Action.Runtime.ShapeController.GetDistance*
+- uid: Voice2Action.ShapeController.GetDistance*
   name: GetDistance
-  href: api/Voice2Action.Runtime.ShapeController.html#Voice2Action_Runtime_ShapeController_GetDistance_
-  commentId: Overload:Voice2Action.Runtime.ShapeController.GetDistance
+  href: api/Voice2Action.ShapeController.html#Voice2Action_ShapeController_GetDistance_
+  commentId: Overload:Voice2Action.ShapeController.GetDistance
   isSpec: "True"
-  fullName: Voice2Action.Runtime.ShapeController.GetDistance
+  fullName: Voice2Action.ShapeController.GetDistance
   nameWithType: ShapeController.GetDistance
-- uid: Voice2Action.Runtime.ShapeController.GetShape(System.String)
+- uid: Voice2Action.ShapeController.GetShape(System.String)
   name: GetShape(String)
-  href: api/Voice2Action.Runtime.ShapeController.html#Voice2Action_Runtime_ShapeController_GetShape_System_String_
-  commentId: M:Voice2Action.Runtime.ShapeController.GetShape(System.String)
-  fullName: Voice2Action.Runtime.ShapeController.GetShape(System.String)
+  href: api/Voice2Action.ShapeController.html#Voice2Action_ShapeController_GetShape_System_String_
+  commentId: M:Voice2Action.ShapeController.GetShape(System.String)
+  fullName: Voice2Action.ShapeController.GetShape(System.String)
   nameWithType: ShapeController.GetShape(String)
-- uid: Voice2Action.Runtime.ShapeController.GetShape*
+- uid: Voice2Action.ShapeController.GetShape*
   name: GetShape
-  href: api/Voice2Action.Runtime.ShapeController.html#Voice2Action_Runtime_ShapeController_GetShape_
-  commentId: Overload:Voice2Action.Runtime.ShapeController.GetShape
+  href: api/Voice2Action.ShapeController.html#Voice2Action_ShapeController_GetShape_
+  commentId: Overload:Voice2Action.ShapeController.GetShape
   isSpec: "True"
-  fullName: Voice2Action.Runtime.ShapeController.GetShape
+  fullName: Voice2Action.ShapeController.GetShape
   nameWithType: ShapeController.GetShape
-- uid: Voice2Action.Runtime.ShapeController.GetShapeInfo
+- uid: Voice2Action.ShapeController.GetShapeInfo
   name: GetShapeInfo()
-  href: api/Voice2Action.Runtime.ShapeController.html#Voice2Action_Runtime_ShapeController_GetShapeInfo
-  commentId: M:Voice2Action.Runtime.ShapeController.GetShapeInfo
-  fullName: Voice2Action.Runtime.ShapeController.GetShapeInfo()
+  href: api/Voice2Action.ShapeController.html#Voice2Action_ShapeController_GetShapeInfo
+  commentId: M:Voice2Action.ShapeController.GetShapeInfo
+  fullName: Voice2Action.ShapeController.GetShapeInfo()
   nameWithType: ShapeController.GetShapeInfo()
-- uid: Voice2Action.Runtime.ShapeController.GetShapeInfo*
+- uid: Voice2Action.ShapeController.GetShapeInfo*
   name: GetShapeInfo
-  href: api/Voice2Action.Runtime.ShapeController.html#Voice2Action_Runtime_ShapeController_GetShapeInfo_
-  commentId: Overload:Voice2Action.Runtime.ShapeController.GetShapeInfo
+  href: api/Voice2Action.ShapeController.html#Voice2Action_ShapeController_GetShapeInfo_
+  commentId: Overload:Voice2Action.ShapeController.GetShapeInfo
   isSpec: "True"
-  fullName: Voice2Action.Runtime.ShapeController.GetShapeInfo
+  fullName: Voice2Action.ShapeController.GetShapeInfo
   nameWithType: ShapeController.GetShapeInfo
-- uid: Voice2Action.Runtime.ShapeController.GetSuperlative(Voice2Action.Runtime.ShapeController,System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32})
+- uid: Voice2Action.ShapeController.GetSuperlative(Voice2Action.ShapeController,System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32})
   name: GetSuperlative(ShapeController, List<Int32>, List<Int32>)
-  href: api/Voice2Action.Runtime.ShapeController.html#Voice2Action_Runtime_ShapeController_GetSuperlative_Voice2Action_Runtime_ShapeController_System_Collections_Generic_List_System_Int32__System_Collections_Generic_List_System_Int32__
-  commentId: M:Voice2Action.Runtime.ShapeController.GetSuperlative(Voice2Action.Runtime.ShapeController,System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32})
+  href: api/Voice2Action.ShapeController.html#Voice2Action_ShapeController_GetSuperlative_Voice2Action_ShapeController_System_Collections_Generic_List_System_Int32__System_Collections_Generic_List_System_Int32__
+  commentId: M:Voice2Action.ShapeController.GetSuperlative(Voice2Action.ShapeController,System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32})
   name.vb: GetSuperlative(ShapeController, List(Of Int32), List(Of Int32))
-  fullName: Voice2Action.Runtime.ShapeController.GetSuperlative(Voice2Action.Runtime.ShapeController, System.Collections.Generic.List<System.Int32>, System.Collections.Generic.List<System.Int32>)
-  fullName.vb: Voice2Action.Runtime.ShapeController.GetSuperlative(Voice2Action.Runtime.ShapeController, System.Collections.Generic.List(Of System.Int32), System.Collections.Generic.List(Of System.Int32))
+  fullName: Voice2Action.ShapeController.GetSuperlative(Voice2Action.ShapeController, System.Collections.Generic.List<System.Int32>, System.Collections.Generic.List<System.Int32>)
+  fullName.vb: Voice2Action.ShapeController.GetSuperlative(Voice2Action.ShapeController, System.Collections.Generic.List(Of System.Int32), System.Collections.Generic.List(Of System.Int32))
   nameWithType: ShapeController.GetSuperlative(ShapeController, List<Int32>, List<Int32>)
   nameWithType.vb: ShapeController.GetSuperlative(ShapeController, List(Of Int32), List(Of Int32))
-- uid: Voice2Action.Runtime.ShapeController.GetSuperlative*
+- uid: Voice2Action.ShapeController.GetSuperlative*
   name: GetSuperlative
-  href: api/Voice2Action.Runtime.ShapeController.html#Voice2Action_Runtime_ShapeController_GetSuperlative_
-  commentId: Overload:Voice2Action.Runtime.ShapeController.GetSuperlative
+  href: api/Voice2Action.ShapeController.html#Voice2Action_ShapeController_GetSuperlative_
+  commentId: Overload:Voice2Action.ShapeController.GetSuperlative
   isSpec: "True"
-  fullName: Voice2Action.Runtime.ShapeController.GetSuperlative
+  fullName: Voice2Action.ShapeController.GetSuperlative
   nameWithType: ShapeController.GetSuperlative
-- uid: Voice2Action.Runtime.ShapeController.grabInteractable
+- uid: Voice2Action.ShapeController.grabInteractable
   name: grabInteractable
-  href: api/Voice2Action.Runtime.ShapeController.html#Voice2Action_Runtime_ShapeController_grabInteractable
-  commentId: P:Voice2Action.Runtime.ShapeController.grabInteractable
-  fullName: Voice2Action.Runtime.ShapeController.grabInteractable
+  href: api/Voice2Action.ShapeController.html#Voice2Action_ShapeController_grabInteractable
+  commentId: P:Voice2Action.ShapeController.grabInteractable
+  fullName: Voice2Action.ShapeController.grabInteractable
   nameWithType: ShapeController.grabInteractable
-- uid: Voice2Action.Runtime.ShapeController.grabInteractable*
+- uid: Voice2Action.ShapeController.grabInteractable*
   name: grabInteractable
-  href: api/Voice2Action.Runtime.ShapeController.html#Voice2Action_Runtime_ShapeController_grabInteractable_
-  commentId: Overload:Voice2Action.Runtime.ShapeController.grabInteractable
+  href: api/Voice2Action.ShapeController.html#Voice2Action_ShapeController_grabInteractable_
+  commentId: Overload:Voice2Action.ShapeController.grabInteractable
   isSpec: "True"
-  fullName: Voice2Action.Runtime.ShapeController.grabInteractable
+  fullName: Voice2Action.ShapeController.grabInteractable
   nameWithType: ShapeController.grabInteractable
-- uid: Voice2Action.Runtime.ShapeController.InitMyShape
+- uid: Voice2Action.ShapeController.InitMyShape
   name: InitMyShape()
-  href: api/Voice2Action.Runtime.ShapeController.html#Voice2Action_Runtime_ShapeController_InitMyShape
-  commentId: M:Voice2Action.Runtime.ShapeController.InitMyShape
-  fullName: Voice2Action.Runtime.ShapeController.InitMyShape()
+  href: api/Voice2Action.ShapeController.html#Voice2Action_ShapeController_InitMyShape
+  commentId: M:Voice2Action.ShapeController.InitMyShape
+  fullName: Voice2Action.ShapeController.InitMyShape()
   nameWithType: ShapeController.InitMyShape()
-- uid: Voice2Action.Runtime.ShapeController.InitMyShape*
+- uid: Voice2Action.ShapeController.InitMyShape*
   name: InitMyShape
-  href: api/Voice2Action.Runtime.ShapeController.html#Voice2Action_Runtime_ShapeController_InitMyShape_
-  commentId: Overload:Voice2Action.Runtime.ShapeController.InitMyShape
+  href: api/Voice2Action.ShapeController.html#Voice2Action_ShapeController_InitMyShape_
+  commentId: Overload:Voice2Action.ShapeController.InitMyShape
   isSpec: "True"
-  fullName: Voice2Action.Runtime.ShapeController.InitMyShape
+  fullName: Voice2Action.ShapeController.InitMyShape
   nameWithType: ShapeController.InitMyShape
-- uid: Voice2Action.Runtime.ShapeController.InitShape
+- uid: Voice2Action.ShapeController.InitShape
   name: InitShape()
-  href: api/Voice2Action.Runtime.ShapeController.html#Voice2Action_Runtime_ShapeController_InitShape
-  commentId: M:Voice2Action.Runtime.ShapeController.InitShape
-  fullName: Voice2Action.Runtime.ShapeController.InitShape()
+  href: api/Voice2Action.ShapeController.html#Voice2Action_ShapeController_InitShape
+  commentId: M:Voice2Action.ShapeController.InitShape
+  fullName: Voice2Action.ShapeController.InitShape()
   nameWithType: ShapeController.InitShape()
-- uid: Voice2Action.Runtime.ShapeController.InitShape*
+- uid: Voice2Action.ShapeController.InitShape*
   name: InitShape
-  href: api/Voice2Action.Runtime.ShapeController.html#Voice2Action_Runtime_ShapeController_InitShape_
-  commentId: Overload:Voice2Action.Runtime.ShapeController.InitShape
+  href: api/Voice2Action.ShapeController.html#Voice2Action_ShapeController_InitShape_
+  commentId: Overload:Voice2Action.ShapeController.InitShape
   isSpec: "True"
-  fullName: Voice2Action.Runtime.ShapeController.InitShape
+  fullName: Voice2Action.ShapeController.InitShape
   nameWithType: ShapeController.InitShape
-- uid: Voice2Action.Runtime.ShapeController.interactableTarget
+- uid: Voice2Action.ShapeController.interactableTarget
   name: interactableTarget
-  href: api/Voice2Action.Runtime.ShapeController.html#Voice2Action_Runtime_ShapeController_interactableTarget
-  commentId: P:Voice2Action.Runtime.ShapeController.interactableTarget
-  fullName: Voice2Action.Runtime.ShapeController.interactableTarget
+  href: api/Voice2Action.ShapeController.html#Voice2Action_ShapeController_interactableTarget
+  commentId: P:Voice2Action.ShapeController.interactableTarget
+  fullName: Voice2Action.ShapeController.interactableTarget
   nameWithType: ShapeController.interactableTarget
-- uid: Voice2Action.Runtime.ShapeController.interactableTarget*
+- uid: Voice2Action.ShapeController.interactableTarget*
   name: interactableTarget
-  href: api/Voice2Action.Runtime.ShapeController.html#Voice2Action_Runtime_ShapeController_interactableTarget_
-  commentId: Overload:Voice2Action.Runtime.ShapeController.interactableTarget
+  href: api/Voice2Action.ShapeController.html#Voice2Action_ShapeController_interactableTarget_
+  commentId: Overload:Voice2Action.ShapeController.interactableTarget
   isSpec: "True"
-  fullName: Voice2Action.Runtime.ShapeController.interactableTarget
+  fullName: Voice2Action.ShapeController.interactableTarget
   nameWithType: ShapeController.interactableTarget
-- uid: Voice2Action.Runtime.ShapeController.ModifyPosition(System.Single)
+- uid: Voice2Action.ShapeController.ModifyPosition(System.Single)
   name: ModifyPosition(Single)
-  href: api/Voice2Action.Runtime.ShapeController.html#Voice2Action_Runtime_ShapeController_ModifyPosition_System_Single_
-  commentId: M:Voice2Action.Runtime.ShapeController.ModifyPosition(System.Single)
-  fullName: Voice2Action.Runtime.ShapeController.ModifyPosition(System.Single)
+  href: api/Voice2Action.ShapeController.html#Voice2Action_ShapeController_ModifyPosition_System_Single_
+  commentId: M:Voice2Action.ShapeController.ModifyPosition(System.Single)
+  fullName: Voice2Action.ShapeController.ModifyPosition(System.Single)
   nameWithType: ShapeController.ModifyPosition(Single)
-- uid: Voice2Action.Runtime.ShapeController.ModifyPosition*
+- uid: Voice2Action.ShapeController.ModifyPosition*
   name: ModifyPosition
-  href: api/Voice2Action.Runtime.ShapeController.html#Voice2Action_Runtime_ShapeController_ModifyPosition_
-  commentId: Overload:Voice2Action.Runtime.ShapeController.ModifyPosition
+  href: api/Voice2Action.ShapeController.html#Voice2Action_ShapeController_ModifyPosition_
+  commentId: Overload:Voice2Action.ShapeController.ModifyPosition
   isSpec: "True"
-  fullName: Voice2Action.Runtime.ShapeController.ModifyPosition
+  fullName: Voice2Action.ShapeController.ModifyPosition
   nameWithType: ShapeController.ModifyPosition
-- uid: Voice2Action.Runtime.ShapeController.ModifyScale(System.Collections.Generic.List{System.Single})
+- uid: Voice2Action.ShapeController.ModifyScale(System.Collections.Generic.List{System.Single})
   name: ModifyScale(List<Single>)
-  href: api/Voice2Action.Runtime.ShapeController.html#Voice2Action_Runtime_ShapeController_ModifyScale_System_Collections_Generic_List_System_Single__
-  commentId: M:Voice2Action.Runtime.ShapeController.ModifyScale(System.Collections.Generic.List{System.Single})
+  href: api/Voice2Action.ShapeController.html#Voice2Action_ShapeController_ModifyScale_System_Collections_Generic_List_System_Single__
+  commentId: M:Voice2Action.ShapeController.ModifyScale(System.Collections.Generic.List{System.Single})
   name.vb: ModifyScale(List(Of Single))
-  fullName: Voice2Action.Runtime.ShapeController.ModifyScale(System.Collections.Generic.List<System.Single>)
-  fullName.vb: Voice2Action.Runtime.ShapeController.ModifyScale(System.Collections.Generic.List(Of System.Single))
+  fullName: Voice2Action.ShapeController.ModifyScale(System.Collections.Generic.List<System.Single>)
+  fullName.vb: Voice2Action.ShapeController.ModifyScale(System.Collections.Generic.List(Of System.Single))
   nameWithType: ShapeController.ModifyScale(List<Single>)
   nameWithType.vb: ShapeController.ModifyScale(List(Of Single))
-- uid: Voice2Action.Runtime.ShapeController.ModifyScale*
+- uid: Voice2Action.ShapeController.ModifyScale*
   name: ModifyScale
-  href: api/Voice2Action.Runtime.ShapeController.html#Voice2Action_Runtime_ShapeController_ModifyScale_
-  commentId: Overload:Voice2Action.Runtime.ShapeController.ModifyScale
+  href: api/Voice2Action.ShapeController.html#Voice2Action_ShapeController_ModifyScale_
+  commentId: Overload:Voice2Action.ShapeController.ModifyScale
   isSpec: "True"
-  fullName: Voice2Action.Runtime.ShapeController.ModifyScale
+  fullName: Voice2Action.ShapeController.ModifyScale
   nameWithType: ShapeController.ModifyScale
-- uid: Voice2Action.Runtime.ShapeController.player
+- uid: Voice2Action.ShapeController.player
   name: player
-  href: api/Voice2Action.Runtime.ShapeController.html#Voice2Action_Runtime_ShapeController_player
-  commentId: P:Voice2Action.Runtime.ShapeController.player
-  fullName: Voice2Action.Runtime.ShapeController.player
+  href: api/Voice2Action.ShapeController.html#Voice2Action_ShapeController_player
+  commentId: P:Voice2Action.ShapeController.player
+  fullName: Voice2Action.ShapeController.player
   nameWithType: ShapeController.player
-- uid: Voice2Action.Runtime.ShapeController.player*
+- uid: Voice2Action.ShapeController.player*
   name: player
-  href: api/Voice2Action.Runtime.ShapeController.html#Voice2Action_Runtime_ShapeController_player_
-  commentId: Overload:Voice2Action.Runtime.ShapeController.player
+  href: api/Voice2Action.ShapeController.html#Voice2Action_ShapeController_player_
+  commentId: Overload:Voice2Action.ShapeController.player
   isSpec: "True"
-  fullName: Voice2Action.Runtime.ShapeController.player
+  fullName: Voice2Action.ShapeController.player
   nameWithType: ShapeController.player
-- uid: Voice2Action.Runtime.ShapeController.PropertyMethodAttribute
+- uid: Voice2Action.ShapeController.PropertyMethodAttribute
   name: ShapeController.PropertyMethodAttribute
-  href: api/Voice2Action.Runtime.ShapeController.PropertyMethodAttribute.html
-  commentId: T:Voice2Action.Runtime.ShapeController.PropertyMethodAttribute
-  fullName: Voice2Action.Runtime.ShapeController.PropertyMethodAttribute
+  href: api/Voice2Action.ShapeController.PropertyMethodAttribute.html
+  commentId: T:Voice2Action.ShapeController.PropertyMethodAttribute
+  fullName: Voice2Action.ShapeController.PropertyMethodAttribute
   nameWithType: ShapeController.PropertyMethodAttribute
-- uid: Voice2Action.Runtime.ShapeController.PropertyMethodAttribute.#ctor(System.String)
+- uid: Voice2Action.ShapeController.PropertyMethodAttribute.#ctor(System.String)
   name: PropertyMethodAttribute(String)
-  href: api/Voice2Action.Runtime.ShapeController.PropertyMethodAttribute.html#Voice2Action_Runtime_ShapeController_PropertyMethodAttribute__ctor_System_String_
-  commentId: M:Voice2Action.Runtime.ShapeController.PropertyMethodAttribute.#ctor(System.String)
-  fullName: Voice2Action.Runtime.ShapeController.PropertyMethodAttribute.PropertyMethodAttribute(System.String)
+  href: api/Voice2Action.ShapeController.PropertyMethodAttribute.html#Voice2Action_ShapeController_PropertyMethodAttribute__ctor_System_String_
+  commentId: M:Voice2Action.ShapeController.PropertyMethodAttribute.#ctor(System.String)
+  fullName: Voice2Action.ShapeController.PropertyMethodAttribute.PropertyMethodAttribute(System.String)
   nameWithType: ShapeController.PropertyMethodAttribute.PropertyMethodAttribute(String)
-- uid: Voice2Action.Runtime.ShapeController.PropertyMethodAttribute.#ctor*
+- uid: Voice2Action.ShapeController.PropertyMethodAttribute.#ctor*
   name: PropertyMethodAttribute
-  href: api/Voice2Action.Runtime.ShapeController.PropertyMethodAttribute.html#Voice2Action_Runtime_ShapeController_PropertyMethodAttribute__ctor_
-  commentId: Overload:Voice2Action.Runtime.ShapeController.PropertyMethodAttribute.#ctor
+  href: api/Voice2Action.ShapeController.PropertyMethodAttribute.html#Voice2Action_ShapeController_PropertyMethodAttribute__ctor_
+  commentId: Overload:Voice2Action.ShapeController.PropertyMethodAttribute.#ctor
   isSpec: "True"
-  fullName: Voice2Action.Runtime.ShapeController.PropertyMethodAttribute.PropertyMethodAttribute
+  fullName: Voice2Action.ShapeController.PropertyMethodAttribute.PropertyMethodAttribute
   nameWithType: ShapeController.PropertyMethodAttribute.PropertyMethodAttribute
-- uid: Voice2Action.Runtime.ShapeController.PropertyMethodAttribute.property
+- uid: Voice2Action.ShapeController.PropertyMethodAttribute.property
   name: property
-  href: api/Voice2Action.Runtime.ShapeController.PropertyMethodAttribute.html#Voice2Action_Runtime_ShapeController_PropertyMethodAttribute_property
-  commentId: P:Voice2Action.Runtime.ShapeController.PropertyMethodAttribute.property
-  fullName: Voice2Action.Runtime.ShapeController.PropertyMethodAttribute.property
+  href: api/Voice2Action.ShapeController.PropertyMethodAttribute.html#Voice2Action_ShapeController_PropertyMethodAttribute_property
+  commentId: P:Voice2Action.ShapeController.PropertyMethodAttribute.property
+  fullName: Voice2Action.ShapeController.PropertyMethodAttribute.property
   nameWithType: ShapeController.PropertyMethodAttribute.property
-- uid: Voice2Action.Runtime.ShapeController.PropertyMethodAttribute.property*
+- uid: Voice2Action.ShapeController.PropertyMethodAttribute.property*
   name: property
-  href: api/Voice2Action.Runtime.ShapeController.PropertyMethodAttribute.html#Voice2Action_Runtime_ShapeController_PropertyMethodAttribute_property_
-  commentId: Overload:Voice2Action.Runtime.ShapeController.PropertyMethodAttribute.property
+  href: api/Voice2Action.ShapeController.PropertyMethodAttribute.html#Voice2Action_ShapeController_PropertyMethodAttribute_property_
+  commentId: Overload:Voice2Action.ShapeController.PropertyMethodAttribute.property
   isSpec: "True"
-  fullName: Voice2Action.Runtime.ShapeController.PropertyMethodAttribute.property
+  fullName: Voice2Action.ShapeController.PropertyMethodAttribute.property
   nameWithType: ShapeController.PropertyMethodAttribute.property
-- uid: Voice2Action.Runtime.ShapeController.PropertyParameterAttribute
+- uid: Voice2Action.ShapeController.PropertyParameterAttribute
   name: ShapeController.PropertyParameterAttribute
-  href: api/Voice2Action.Runtime.ShapeController.PropertyParameterAttribute.html
-  commentId: T:Voice2Action.Runtime.ShapeController.PropertyParameterAttribute
-  fullName: Voice2Action.Runtime.ShapeController.PropertyParameterAttribute
+  href: api/Voice2Action.ShapeController.PropertyParameterAttribute.html
+  commentId: T:Voice2Action.ShapeController.PropertyParameterAttribute
+  fullName: Voice2Action.ShapeController.PropertyParameterAttribute
   nameWithType: ShapeController.PropertyParameterAttribute
-- uid: Voice2Action.Runtime.ShapeController.PropertyParameterAttribute.#ctor(System.String)
+- uid: Voice2Action.ShapeController.PropertyParameterAttribute.#ctor(System.String)
   name: PropertyParameterAttribute(String)
-  href: api/Voice2Action.Runtime.ShapeController.PropertyParameterAttribute.html#Voice2Action_Runtime_ShapeController_PropertyParameterAttribute__ctor_System_String_
-  commentId: M:Voice2Action.Runtime.ShapeController.PropertyParameterAttribute.#ctor(System.String)
-  fullName: Voice2Action.Runtime.ShapeController.PropertyParameterAttribute.PropertyParameterAttribute(System.String)
+  href: api/Voice2Action.ShapeController.PropertyParameterAttribute.html#Voice2Action_ShapeController_PropertyParameterAttribute__ctor_System_String_
+  commentId: M:Voice2Action.ShapeController.PropertyParameterAttribute.#ctor(System.String)
+  fullName: Voice2Action.ShapeController.PropertyParameterAttribute.PropertyParameterAttribute(System.String)
   nameWithType: ShapeController.PropertyParameterAttribute.PropertyParameterAttribute(String)
-- uid: Voice2Action.Runtime.ShapeController.PropertyParameterAttribute.#ctor*
+- uid: Voice2Action.ShapeController.PropertyParameterAttribute.#ctor*
   name: PropertyParameterAttribute
-  href: api/Voice2Action.Runtime.ShapeController.PropertyParameterAttribute.html#Voice2Action_Runtime_ShapeController_PropertyParameterAttribute__ctor_
-  commentId: Overload:Voice2Action.Runtime.ShapeController.PropertyParameterAttribute.#ctor
+  href: api/Voice2Action.ShapeController.PropertyParameterAttribute.html#Voice2Action_ShapeController_PropertyParameterAttribute__ctor_
+  commentId: Overload:Voice2Action.ShapeController.PropertyParameterAttribute.#ctor
   isSpec: "True"
-  fullName: Voice2Action.Runtime.ShapeController.PropertyParameterAttribute.PropertyParameterAttribute
+  fullName: Voice2Action.ShapeController.PropertyParameterAttribute.PropertyParameterAttribute
   nameWithType: ShapeController.PropertyParameterAttribute.PropertyParameterAttribute
-- uid: Voice2Action.Runtime.ShapeController.PropertyParameterAttribute.property
+- uid: Voice2Action.ShapeController.PropertyParameterAttribute.property
   name: property
-  href: api/Voice2Action.Runtime.ShapeController.PropertyParameterAttribute.html#Voice2Action_Runtime_ShapeController_PropertyParameterAttribute_property
-  commentId: P:Voice2Action.Runtime.ShapeController.PropertyParameterAttribute.property
-  fullName: Voice2Action.Runtime.ShapeController.PropertyParameterAttribute.property
+  href: api/Voice2Action.ShapeController.PropertyParameterAttribute.html#Voice2Action_ShapeController_PropertyParameterAttribute_property
+  commentId: P:Voice2Action.ShapeController.PropertyParameterAttribute.property
+  fullName: Voice2Action.ShapeController.PropertyParameterAttribute.property
   nameWithType: ShapeController.PropertyParameterAttribute.property
-- uid: Voice2Action.Runtime.ShapeController.PropertyParameterAttribute.property*
+- uid: Voice2Action.ShapeController.PropertyParameterAttribute.property*
   name: property
-  href: api/Voice2Action.Runtime.ShapeController.PropertyParameterAttribute.html#Voice2Action_Runtime_ShapeController_PropertyParameterAttribute_property_
-  commentId: Overload:Voice2Action.Runtime.ShapeController.PropertyParameterAttribute.property
+  href: api/Voice2Action.ShapeController.PropertyParameterAttribute.html#Voice2Action_ShapeController_PropertyParameterAttribute_property_
+  commentId: Overload:Voice2Action.ShapeController.PropertyParameterAttribute.property
   isSpec: "True"
-  fullName: Voice2Action.Runtime.ShapeController.PropertyParameterAttribute.property
+  fullName: Voice2Action.ShapeController.PropertyParameterAttribute.property
   nameWithType: ShapeController.PropertyParameterAttribute.property
-- uid: Voice2Action.Runtime.ShapeController.renderers
+- uid: Voice2Action.ShapeController.renderers
   name: renderers
-  href: api/Voice2Action.Runtime.ShapeController.html#Voice2Action_Runtime_ShapeController_renderers
-  commentId: P:Voice2Action.Runtime.ShapeController.renderers
-  fullName: Voice2Action.Runtime.ShapeController.renderers
+  href: api/Voice2Action.ShapeController.html#Voice2Action_ShapeController_renderers
+  commentId: P:Voice2Action.ShapeController.renderers
+  fullName: Voice2Action.ShapeController.renderers
   nameWithType: ShapeController.renderers
-- uid: Voice2Action.Runtime.ShapeController.renderers*
+- uid: Voice2Action.ShapeController.renderers*
   name: renderers
-  href: api/Voice2Action.Runtime.ShapeController.html#Voice2Action_Runtime_ShapeController_renderers_
-  commentId: Overload:Voice2Action.Runtime.ShapeController.renderers
+  href: api/Voice2Action.ShapeController.html#Voice2Action_ShapeController_renderers_
+  commentId: Overload:Voice2Action.ShapeController.renderers
   isSpec: "True"
-  fullName: Voice2Action.Runtime.ShapeController.renderers
+  fullName: Voice2Action.ShapeController.renderers
   nameWithType: ShapeController.renderers
-- uid: Voice2Action.Runtime.ShapeController.shape
+- uid: Voice2Action.ShapeController.shape
   name: shape
-  href: api/Voice2Action.Runtime.ShapeController.html#Voice2Action_Runtime_ShapeController_shape
-  commentId: P:Voice2Action.Runtime.ShapeController.shape
-  fullName: Voice2Action.Runtime.ShapeController.shape
+  href: api/Voice2Action.ShapeController.html#Voice2Action_ShapeController_shape
+  commentId: P:Voice2Action.ShapeController.shape
+  fullName: Voice2Action.ShapeController.shape
   nameWithType: ShapeController.shape
-- uid: Voice2Action.Runtime.ShapeController.shape*
+- uid: Voice2Action.ShapeController.shape*
   name: shape
-  href: api/Voice2Action.Runtime.ShapeController.html#Voice2Action_Runtime_ShapeController_shape_
-  commentId: Overload:Voice2Action.Runtime.ShapeController.shape
+  href: api/Voice2Action.ShapeController.html#Voice2Action_ShapeController_shape_
+  commentId: Overload:Voice2Action.ShapeController.shape
   isSpec: "True"
-  fullName: Voice2Action.Runtime.ShapeController.shape
+  fullName: Voice2Action.ShapeController.shape
   nameWithType: ShapeController.shape
-- uid: Voice2Action.Runtime.ShapeController.shapeCollider
+- uid: Voice2Action.ShapeController.shapeCollider
   name: shapeCollider
-  href: api/Voice2Action.Runtime.ShapeController.html#Voice2Action_Runtime_ShapeController_shapeCollider
-  commentId: P:Voice2Action.Runtime.ShapeController.shapeCollider
-  fullName: Voice2Action.Runtime.ShapeController.shapeCollider
+  href: api/Voice2Action.ShapeController.html#Voice2Action_ShapeController_shapeCollider
+  commentId: P:Voice2Action.ShapeController.shapeCollider
+  fullName: Voice2Action.ShapeController.shapeCollider
   nameWithType: ShapeController.shapeCollider
-- uid: Voice2Action.Runtime.ShapeController.shapeCollider*
+- uid: Voice2Action.ShapeController.shapeCollider*
   name: shapeCollider
-  href: api/Voice2Action.Runtime.ShapeController.html#Voice2Action_Runtime_ShapeController_shapeCollider_
-  commentId: Overload:Voice2Action.Runtime.ShapeController.shapeCollider
+  href: api/Voice2Action.ShapeController.html#Voice2Action_ShapeController_shapeCollider_
+  commentId: Overload:Voice2Action.ShapeController.shapeCollider
   isSpec: "True"
-  fullName: Voice2Action.Runtime.ShapeController.shapeCollider
+  fullName: Voice2Action.ShapeController.shapeCollider
   nameWithType: ShapeController.shapeCollider
-- uid: Voice2Action.Runtime.Utils
+- uid: Voice2Action.Utils
   name: Utils
-  href: api/Voice2Action.Runtime.Utils.html
-  commentId: T:Voice2Action.Runtime.Utils
-  fullName: Voice2Action.Runtime.Utils
+  href: api/Voice2Action.Utils.html
+  commentId: T:Voice2Action.Utils
+  fullName: Voice2Action.Utils
   nameWithType: Utils
-- uid: Voice2Action.Runtime.Utils.FewShotGroup
+- uid: Voice2Action.Utils.FewShotGroup
   name: Utils.FewShotGroup
-  href: api/Voice2Action.Runtime.Utils.FewShotGroup.html
-  commentId: T:Voice2Action.Runtime.Utils.FewShotGroup
-  fullName: Voice2Action.Runtime.Utils.FewShotGroup
+  href: api/Voice2Action.Utils.FewShotGroup.html
+  commentId: T:Voice2Action.Utils.FewShotGroup
+  fullName: Voice2Action.Utils.FewShotGroup
   nameWithType: Utils.FewShotGroup
-- uid: Voice2Action.Runtime.Utils.FewShotGroup.#ctor(System.String,System.Collections.Generic.List{System.ValueTuple{System.Int32,System.String}},System.Collections.Generic.List{System.String},System.Collections.Generic.List{Voice2Action.Runtime.Utils.FewShotPair})
+- uid: Voice2Action.Utils.FewShotGroup.#ctor(System.String,System.Collections.Generic.List{System.ValueTuple{System.Int32,System.String}},System.Collections.Generic.List{System.String},System.Collections.Generic.List{Voice2Action.Utils.FewShotPair})
   name: FewShotGroup(String, List<(Int32, String)>, List<String>, List<Utils.FewShotPair>)
-  href: api/Voice2Action.Runtime.Utils.FewShotGroup.html#Voice2Action_Runtime_Utils_FewShotGroup__ctor_System_String_System_Collections_Generic_List_System_ValueTuple_System_Int32_System_String___System_Collections_Generic_List_System_String__System_Collections_Generic_List_Voice2Action_Runtime_Utils_FewShotPair__
-  commentId: M:Voice2Action.Runtime.Utils.FewShotGroup.#ctor(System.String,System.Collections.Generic.List{System.ValueTuple{System.Int32,System.String}},System.Collections.Generic.List{System.String},System.Collections.Generic.List{Voice2Action.Runtime.Utils.FewShotPair})
+  href: api/Voice2Action.Utils.FewShotGroup.html#Voice2Action_Utils_FewShotGroup__ctor_System_String_System_Collections_Generic_List_System_ValueTuple_System_Int32_System_String___System_Collections_Generic_List_System_String__System_Collections_Generic_List_Voice2Action_Utils_FewShotPair__
+  commentId: M:Voice2Action.Utils.FewShotGroup.#ctor(System.String,System.Collections.Generic.List{System.ValueTuple{System.Int32,System.String}},System.Collections.Generic.List{System.String},System.Collections.Generic.List{Voice2Action.Utils.FewShotPair})
   name.vb: FewShotGroup(String, List(Of (Int32, String)(Of Int32, String)), List(Of String), List(Of Utils.FewShotPair))
-  fullName: Voice2Action.Runtime.Utils.FewShotGroup.FewShotGroup(System.String, System.Collections.Generic.List<System.ValueTuple<System.Int32, System.String>>, System.Collections.Generic.List<System.String>, System.Collections.Generic.List<Voice2Action.Runtime.Utils.FewShotPair>)
-  fullName.vb: Voice2Action.Runtime.Utils.FewShotGroup.FewShotGroup(System.String, System.Collections.Generic.List(Of System.ValueTuple(Of System.Int32, System.String)), System.Collections.Generic.List(Of System.String), System.Collections.Generic.List(Of Voice2Action.Runtime.Utils.FewShotPair))
+  fullName: Voice2Action.Utils.FewShotGroup.FewShotGroup(System.String, System.Collections.Generic.List<System.ValueTuple<System.Int32, System.String>>, System.Collections.Generic.List<System.String>, System.Collections.Generic.List<Voice2Action.Utils.FewShotPair>)
+  fullName.vb: Voice2Action.Utils.FewShotGroup.FewShotGroup(System.String, System.Collections.Generic.List(Of System.ValueTuple(Of System.Int32, System.String)), System.Collections.Generic.List(Of System.String), System.Collections.Generic.List(Of Voice2Action.Utils.FewShotPair))
   nameWithType: Utils.FewShotGroup.FewShotGroup(String, List<(Int32, String)>, List<String>, List<Utils.FewShotPair>)
   nameWithType.vb: Utils.FewShotGroup.FewShotGroup(String, List(Of (Int32, String)(Of Int32, String)), List(Of String), List(Of Utils.FewShotPair))
-- uid: Voice2Action.Runtime.Utils.FewShotGroup.#ctor*
+- uid: Voice2Action.Utils.FewShotGroup.#ctor*
   name: FewShotGroup
-  href: api/Voice2Action.Runtime.Utils.FewShotGroup.html#Voice2Action_Runtime_Utils_FewShotGroup__ctor_
-  commentId: Overload:Voice2Action.Runtime.Utils.FewShotGroup.#ctor
+  href: api/Voice2Action.Utils.FewShotGroup.html#Voice2Action_Utils_FewShotGroup__ctor_
+  commentId: Overload:Voice2Action.Utils.FewShotGroup.#ctor
   isSpec: "True"
-  fullName: Voice2Action.Runtime.Utils.FewShotGroup.FewShotGroup
+  fullName: Voice2Action.Utils.FewShotGroup.FewShotGroup
   nameWithType: Utils.FewShotGroup.FewShotGroup
-- uid: Voice2Action.Runtime.Utils.FewShotGroup.fewShotPairs
+- uid: Voice2Action.Utils.FewShotGroup.fewShotPairs
   name: fewShotPairs
-  href: api/Voice2Action.Runtime.Utils.FewShotGroup.html#Voice2Action_Runtime_Utils_FewShotGroup_fewShotPairs
-  commentId: P:Voice2Action.Runtime.Utils.FewShotGroup.fewShotPairs
-  fullName: Voice2Action.Runtime.Utils.FewShotGroup.fewShotPairs
+  href: api/Voice2Action.Utils.FewShotGroup.html#Voice2Action_Utils_FewShotGroup_fewShotPairs
+  commentId: P:Voice2Action.Utils.FewShotGroup.fewShotPairs
+  fullName: Voice2Action.Utils.FewShotGroup.fewShotPairs
   nameWithType: Utils.FewShotGroup.fewShotPairs
-- uid: Voice2Action.Runtime.Utils.FewShotGroup.fewShotPairs*
+- uid: Voice2Action.Utils.FewShotGroup.fewShotPairs*
   name: fewShotPairs
-  href: api/Voice2Action.Runtime.Utils.FewShotGroup.html#Voice2Action_Runtime_Utils_FewShotGroup_fewShotPairs_
-  commentId: Overload:Voice2Action.Runtime.Utils.FewShotGroup.fewShotPairs
+  href: api/Voice2Action.Utils.FewShotGroup.html#Voice2Action_Utils_FewShotGroup_fewShotPairs_
+  commentId: Overload:Voice2Action.Utils.FewShotGroup.fewShotPairs
   isSpec: "True"
-  fullName: Voice2Action.Runtime.Utils.FewShotGroup.fewShotPairs
+  fullName: Voice2Action.Utils.FewShotGroup.fewShotPairs
   nameWithType: Utils.FewShotGroup.fewShotPairs
-- uid: Voice2Action.Runtime.Utils.FewShotGroup.GetOrderedProperties
+- uid: Voice2Action.Utils.FewShotGroup.GetOrderedProperties
   name: GetOrderedProperties()
-  href: api/Voice2Action.Runtime.Utils.FewShotGroup.html#Voice2Action_Runtime_Utils_FewShotGroup_GetOrderedProperties
-  commentId: M:Voice2Action.Runtime.Utils.FewShotGroup.GetOrderedProperties
-  fullName: Voice2Action.Runtime.Utils.FewShotGroup.GetOrderedProperties()
+  href: api/Voice2Action.Utils.FewShotGroup.html#Voice2Action_Utils_FewShotGroup_GetOrderedProperties
+  commentId: M:Voice2Action.Utils.FewShotGroup.GetOrderedProperties
+  fullName: Voice2Action.Utils.FewShotGroup.GetOrderedProperties()
   nameWithType: Utils.FewShotGroup.GetOrderedProperties()
-- uid: Voice2Action.Runtime.Utils.FewShotGroup.GetOrderedProperties*
+- uid: Voice2Action.Utils.FewShotGroup.GetOrderedProperties*
   name: GetOrderedProperties
-  href: api/Voice2Action.Runtime.Utils.FewShotGroup.html#Voice2Action_Runtime_Utils_FewShotGroup_GetOrderedProperties_
-  commentId: Overload:Voice2Action.Runtime.Utils.FewShotGroup.GetOrderedProperties
+  href: api/Voice2Action.Utils.FewShotGroup.html#Voice2Action_Utils_FewShotGroup_GetOrderedProperties_
+  commentId: Overload:Voice2Action.Utils.FewShotGroup.GetOrderedProperties
   isSpec: "True"
-  fullName: Voice2Action.Runtime.Utils.FewShotGroup.GetOrderedProperties
+  fullName: Voice2Action.Utils.FewShotGroup.GetOrderedProperties
   nameWithType: Utils.FewShotGroup.GetOrderedProperties
-- uid: Voice2Action.Runtime.Utils.FewShotGroup.GetPrompt(System.String)
+- uid: Voice2Action.Utils.FewShotGroup.GetPrompt(System.String)
   name: GetPrompt(String)
-  href: api/Voice2Action.Runtime.Utils.FewShotGroup.html#Voice2Action_Runtime_Utils_FewShotGroup_GetPrompt_System_String_
-  commentId: M:Voice2Action.Runtime.Utils.FewShotGroup.GetPrompt(System.String)
-  fullName: Voice2Action.Runtime.Utils.FewShotGroup.GetPrompt(System.String)
+  href: api/Voice2Action.Utils.FewShotGroup.html#Voice2Action_Utils_FewShotGroup_GetPrompt_System_String_
+  commentId: M:Voice2Action.Utils.FewShotGroup.GetPrompt(System.String)
+  fullName: Voice2Action.Utils.FewShotGroup.GetPrompt(System.String)
   nameWithType: Utils.FewShotGroup.GetPrompt(String)
-- uid: Voice2Action.Runtime.Utils.FewShotGroup.GetPrompt*
+- uid: Voice2Action.Utils.FewShotGroup.GetPrompt*
   name: GetPrompt
-  href: api/Voice2Action.Runtime.Utils.FewShotGroup.html#Voice2Action_Runtime_Utils_FewShotGroup_GetPrompt_
-  commentId: Overload:Voice2Action.Runtime.Utils.FewShotGroup.GetPrompt
+  href: api/Voice2Action.Utils.FewShotGroup.html#Voice2Action_Utils_FewShotGroup_GetPrompt_
+  commentId: Overload:Voice2Action.Utils.FewShotGroup.GetPrompt
   isSpec: "True"
-  fullName: Voice2Action.Runtime.Utils.FewShotGroup.GetPrompt
+  fullName: Voice2Action.Utils.FewShotGroup.GetPrompt
   nameWithType: Utils.FewShotGroup.GetPrompt
-- uid: Voice2Action.Runtime.Utils.FewShotGroup.indicators
+- uid: Voice2Action.Utils.FewShotGroup.indicators
   name: indicators
-  href: api/Voice2Action.Runtime.Utils.FewShotGroup.html#Voice2Action_Runtime_Utils_FewShotGroup_indicators
-  commentId: P:Voice2Action.Runtime.Utils.FewShotGroup.indicators
-  fullName: Voice2Action.Runtime.Utils.FewShotGroup.indicators
+  href: api/Voice2Action.Utils.FewShotGroup.html#Voice2Action_Utils_FewShotGroup_indicators
+  commentId: P:Voice2Action.Utils.FewShotGroup.indicators
+  fullName: Voice2Action.Utils.FewShotGroup.indicators
   nameWithType: Utils.FewShotGroup.indicators
-- uid: Voice2Action.Runtime.Utils.FewShotGroup.indicators*
+- uid: Voice2Action.Utils.FewShotGroup.indicators*
   name: indicators
-  href: api/Voice2Action.Runtime.Utils.FewShotGroup.html#Voice2Action_Runtime_Utils_FewShotGroup_indicators_
-  commentId: Overload:Voice2Action.Runtime.Utils.FewShotGroup.indicators
+  href: api/Voice2Action.Utils.FewShotGroup.html#Voice2Action_Utils_FewShotGroup_indicators_
+  commentId: Overload:Voice2Action.Utils.FewShotGroup.indicators
   isSpec: "True"
-  fullName: Voice2Action.Runtime.Utils.FewShotGroup.indicators
+  fullName: Voice2Action.Utils.FewShotGroup.indicators
   nameWithType: Utils.FewShotGroup.indicators
-- uid: Voice2Action.Runtime.Utils.FewShotGroup.instruction
+- uid: Voice2Action.Utils.FewShotGroup.instruction
   name: instruction
-  href: api/Voice2Action.Runtime.Utils.FewShotGroup.html#Voice2Action_Runtime_Utils_FewShotGroup_instruction
-  commentId: P:Voice2Action.Runtime.Utils.FewShotGroup.instruction
-  fullName: Voice2Action.Runtime.Utils.FewShotGroup.instruction
+  href: api/Voice2Action.Utils.FewShotGroup.html#Voice2Action_Utils_FewShotGroup_instruction
+  commentId: P:Voice2Action.Utils.FewShotGroup.instruction
+  fullName: Voice2Action.Utils.FewShotGroup.instruction
   nameWithType: Utils.FewShotGroup.instruction
-- uid: Voice2Action.Runtime.Utils.FewShotGroup.instruction*
+- uid: Voice2Action.Utils.FewShotGroup.instruction*
   name: instruction
-  href: api/Voice2Action.Runtime.Utils.FewShotGroup.html#Voice2Action_Runtime_Utils_FewShotGroup_instruction_
-  commentId: Overload:Voice2Action.Runtime.Utils.FewShotGroup.instruction
+  href: api/Voice2Action.Utils.FewShotGroup.html#Voice2Action_Utils_FewShotGroup_instruction_
+  commentId: Overload:Voice2Action.Utils.FewShotGroup.instruction
   isSpec: "True"
-  fullName: Voice2Action.Runtime.Utils.FewShotGroup.instruction
+  fullName: Voice2Action.Utils.FewShotGroup.instruction
   nameWithType: Utils.FewShotGroup.instruction
-- uid: Voice2Action.Runtime.Utils.FewShotGroup.orders
+- uid: Voice2Action.Utils.FewShotGroup.orders
   name: orders
-  href: api/Voice2Action.Runtime.Utils.FewShotGroup.html#Voice2Action_Runtime_Utils_FewShotGroup_orders
-  commentId: P:Voice2Action.Runtime.Utils.FewShotGroup.orders
-  fullName: Voice2Action.Runtime.Utils.FewShotGroup.orders
+  href: api/Voice2Action.Utils.FewShotGroup.html#Voice2Action_Utils_FewShotGroup_orders
+  commentId: P:Voice2Action.Utils.FewShotGroup.orders
+  fullName: Voice2Action.Utils.FewShotGroup.orders
   nameWithType: Utils.FewShotGroup.orders
-- uid: Voice2Action.Runtime.Utils.FewShotGroup.orders*
+- uid: Voice2Action.Utils.FewShotGroup.orders*
   name: orders
-  href: api/Voice2Action.Runtime.Utils.FewShotGroup.html#Voice2Action_Runtime_Utils_FewShotGroup_orders_
-  commentId: Overload:Voice2Action.Runtime.Utils.FewShotGroup.orders
+  href: api/Voice2Action.Utils.FewShotGroup.html#Voice2Action_Utils_FewShotGroup_orders_
+  commentId: Overload:Voice2Action.Utils.FewShotGroup.orders
   isSpec: "True"
-  fullName: Voice2Action.Runtime.Utils.FewShotGroup.orders
+  fullName: Voice2Action.Utils.FewShotGroup.orders
   nameWithType: Utils.FewShotGroup.orders
-- uid: Voice2Action.Runtime.Utils.FewShotGroup.properties
+- uid: Voice2Action.Utils.FewShotGroup.properties
   name: properties
-  href: api/Voice2Action.Runtime.Utils.FewShotGroup.html#Voice2Action_Runtime_Utils_FewShotGroup_properties
-  commentId: P:Voice2Action.Runtime.Utils.FewShotGroup.properties
-  fullName: Voice2Action.Runtime.Utils.FewShotGroup.properties
+  href: api/Voice2Action.Utils.FewShotGroup.html#Voice2Action_Utils_FewShotGroup_properties
+  commentId: P:Voice2Action.Utils.FewShotGroup.properties
+  fullName: Voice2Action.Utils.FewShotGroup.properties
   nameWithType: Utils.FewShotGroup.properties
-- uid: Voice2Action.Runtime.Utils.FewShotGroup.properties*
+- uid: Voice2Action.Utils.FewShotGroup.properties*
   name: properties
-  href: api/Voice2Action.Runtime.Utils.FewShotGroup.html#Voice2Action_Runtime_Utils_FewShotGroup_properties_
-  commentId: Overload:Voice2Action.Runtime.Utils.FewShotGroup.properties
+  href: api/Voice2Action.Utils.FewShotGroup.html#Voice2Action_Utils_FewShotGroup_properties_
+  commentId: Overload:Voice2Action.Utils.FewShotGroup.properties
   isSpec: "True"
-  fullName: Voice2Action.Runtime.Utils.FewShotGroup.properties
+  fullName: Voice2Action.Utils.FewShotGroup.properties
   nameWithType: Utils.FewShotGroup.properties
-- uid: Voice2Action.Runtime.Utils.FewShotPair
+- uid: Voice2Action.Utils.FewShotPair
   name: Utils.FewShotPair
-  href: api/Voice2Action.Runtime.Utils.FewShotPair.html
-  commentId: T:Voice2Action.Runtime.Utils.FewShotPair
-  fullName: Voice2Action.Runtime.Utils.FewShotPair
+  href: api/Voice2Action.Utils.FewShotPair.html
+  commentId: T:Voice2Action.Utils.FewShotPair
+  fullName: Voice2Action.Utils.FewShotPair
   nameWithType: Utils.FewShotPair
-- uid: Voice2Action.Runtime.Utils.FewShotPair.#ctor(System.String,System.String)
+- uid: Voice2Action.Utils.FewShotPair.#ctor(System.String,System.String)
   name: FewShotPair(String, String)
-  href: api/Voice2Action.Runtime.Utils.FewShotPair.html#Voice2Action_Runtime_Utils_FewShotPair__ctor_System_String_System_String_
-  commentId: M:Voice2Action.Runtime.Utils.FewShotPair.#ctor(System.String,System.String)
-  fullName: Voice2Action.Runtime.Utils.FewShotPair.FewShotPair(System.String, System.String)
+  href: api/Voice2Action.Utils.FewShotPair.html#Voice2Action_Utils_FewShotPair__ctor_System_String_System_String_
+  commentId: M:Voice2Action.Utils.FewShotPair.#ctor(System.String,System.String)
+  fullName: Voice2Action.Utils.FewShotPair.FewShotPair(System.String, System.String)
   nameWithType: Utils.FewShotPair.FewShotPair(String, String)
-- uid: Voice2Action.Runtime.Utils.FewShotPair.#ctor*
+- uid: Voice2Action.Utils.FewShotPair.#ctor*
   name: FewShotPair
-  href: api/Voice2Action.Runtime.Utils.FewShotPair.html#Voice2Action_Runtime_Utils_FewShotPair__ctor_
-  commentId: Overload:Voice2Action.Runtime.Utils.FewShotPair.#ctor
+  href: api/Voice2Action.Utils.FewShotPair.html#Voice2Action_Utils_FewShotPair__ctor_
+  commentId: Overload:Voice2Action.Utils.FewShotPair.#ctor
   isSpec: "True"
-  fullName: Voice2Action.Runtime.Utils.FewShotPair.FewShotPair
+  fullName: Voice2Action.Utils.FewShotPair.FewShotPair
   nameWithType: Utils.FewShotPair.FewShotPair
-- uid: Voice2Action.Runtime.Utils.FewShotPair.input
+- uid: Voice2Action.Utils.FewShotPair.input
   name: input
-  href: api/Voice2Action.Runtime.Utils.FewShotPair.html#Voice2Action_Runtime_Utils_FewShotPair_input
-  commentId: P:Voice2Action.Runtime.Utils.FewShotPair.input
-  fullName: Voice2Action.Runtime.Utils.FewShotPair.input
+  href: api/Voice2Action.Utils.FewShotPair.html#Voice2Action_Utils_FewShotPair_input
+  commentId: P:Voice2Action.Utils.FewShotPair.input
+  fullName: Voice2Action.Utils.FewShotPair.input
   nameWithType: Utils.FewShotPair.input
-- uid: Voice2Action.Runtime.Utils.FewShotPair.input*
+- uid: Voice2Action.Utils.FewShotPair.input*
   name: input
-  href: api/Voice2Action.Runtime.Utils.FewShotPair.html#Voice2Action_Runtime_Utils_FewShotPair_input_
-  commentId: Overload:Voice2Action.Runtime.Utils.FewShotPair.input
+  href: api/Voice2Action.Utils.FewShotPair.html#Voice2Action_Utils_FewShotPair_input_
+  commentId: Overload:Voice2Action.Utils.FewShotPair.input
   isSpec: "True"
-  fullName: Voice2Action.Runtime.Utils.FewShotPair.input
+  fullName: Voice2Action.Utils.FewShotPair.input
   nameWithType: Utils.FewShotPair.input
-- uid: Voice2Action.Runtime.Utils.FewShotPair.output
+- uid: Voice2Action.Utils.FewShotPair.output
   name: output
-  href: api/Voice2Action.Runtime.Utils.FewShotPair.html#Voice2Action_Runtime_Utils_FewShotPair_output
-  commentId: P:Voice2Action.Runtime.Utils.FewShotPair.output
-  fullName: Voice2Action.Runtime.Utils.FewShotPair.output
+  href: api/Voice2Action.Utils.FewShotPair.html#Voice2Action_Utils_FewShotPair_output
+  commentId: P:Voice2Action.Utils.FewShotPair.output
+  fullName: Voice2Action.Utils.FewShotPair.output
   nameWithType: Utils.FewShotPair.output
-- uid: Voice2Action.Runtime.Utils.FewShotPair.output*
+- uid: Voice2Action.Utils.FewShotPair.output*
   name: output
-  href: api/Voice2Action.Runtime.Utils.FewShotPair.html#Voice2Action_Runtime_Utils_FewShotPair_output_
-  commentId: Overload:Voice2Action.Runtime.Utils.FewShotPair.output
+  href: api/Voice2Action.Utils.FewShotPair.html#Voice2Action_Utils_FewShotPair_output_
+  commentId: Overload:Voice2Action.Utils.FewShotPair.output
   isSpec: "True"
-  fullName: Voice2Action.Runtime.Utils.FewShotPair.output
+  fullName: Voice2Action.Utils.FewShotPair.output
   nameWithType: Utils.FewShotPair.output
-- uid: Voice2Action.Runtime.Utils.k_ChatModel
+- uid: Voice2Action.Utils.k_ChatModel
   name: k_ChatModel
-  href: api/Voice2Action.Runtime.Utils.html#Voice2Action_Runtime_Utils_k_ChatModel
-  commentId: F:Voice2Action.Runtime.Utils.k_ChatModel
-  fullName: Voice2Action.Runtime.Utils.k_ChatModel
+  href: api/Voice2Action.Utils.html#Voice2Action_Utils_k_ChatModel
+  commentId: F:Voice2Action.Utils.k_ChatModel
+  fullName: Voice2Action.Utils.k_ChatModel
   nameWithType: Utils.k_ChatModel
-- uid: Voice2Action.Runtime.Utils.k_CompletionTemperature
+- uid: Voice2Action.Utils.k_CompletionTemperature
   name: k_CompletionTemperature
-  href: api/Voice2Action.Runtime.Utils.html#Voice2Action_Runtime_Utils_k_CompletionTemperature
-  commentId: F:Voice2Action.Runtime.Utils.k_CompletionTemperature
-  fullName: Voice2Action.Runtime.Utils.k_CompletionTemperature
+  href: api/Voice2Action.Utils.html#Voice2Action_Utils_k_CompletionTemperature
+  commentId: F:Voice2Action.Utils.k_CompletionTemperature
+  fullName: Voice2Action.Utils.k_CompletionTemperature
   nameWithType: Utils.k_CompletionTemperature
-- uid: Voice2Action.Runtime.Utils.k_EmbeddingDim
+- uid: Voice2Action.Utils.k_EmbeddingDim
   name: k_EmbeddingDim
-  href: api/Voice2Action.Runtime.Utils.html#Voice2Action_Runtime_Utils_k_EmbeddingDim
-  commentId: F:Voice2Action.Runtime.Utils.k_EmbeddingDim
-  fullName: Voice2Action.Runtime.Utils.k_EmbeddingDim
+  href: api/Voice2Action.Utils.html#Voice2Action_Utils_k_EmbeddingDim
+  commentId: F:Voice2Action.Utils.k_EmbeddingDim
+  fullName: Voice2Action.Utils.k_EmbeddingDim
   nameWithType: Utils.k_EmbeddingDim
-- uid: Voice2Action.Runtime.Utils.k_EmbeddingModel
+- uid: Voice2Action.Utils.k_EmbeddingModel
   name: k_EmbeddingModel
-  href: api/Voice2Action.Runtime.Utils.html#Voice2Action_Runtime_Utils_k_EmbeddingModel
-  commentId: F:Voice2Action.Runtime.Utils.k_EmbeddingModel
-  fullName: Voice2Action.Runtime.Utils.k_EmbeddingModel
+  href: api/Voice2Action.Utils.html#Voice2Action_Utils_k_EmbeddingModel
+  commentId: F:Voice2Action.Utils.k_EmbeddingModel
+  fullName: Voice2Action.Utils.k_EmbeddingModel
   nameWithType: Utils.k_EmbeddingModel
-- uid: Voice2Action.Runtime.Utils.k_FailureResponse
+- uid: Voice2Action.Utils.k_FailureResponse
   name: k_FailureResponse
-  href: api/Voice2Action.Runtime.Utils.html#Voice2Action_Runtime_Utils_k_FailureResponse
-  commentId: F:Voice2Action.Runtime.Utils.k_FailureResponse
-  fullName: Voice2Action.Runtime.Utils.k_FailureResponse
+  href: api/Voice2Action.Utils.html#Voice2Action_Utils_k_FailureResponse
+  commentId: F:Voice2Action.Utils.k_FailureResponse
+  fullName: Voice2Action.Utils.k_FailureResponse
   nameWithType: Utils.k_FailureResponse
-- uid: Voice2Action.Runtime.Utils.k_MinConfidenceToProceed
+- uid: Voice2Action.Utils.k_MinConfidenceToProceed
   name: k_MinConfidenceToProceed
-  href: api/Voice2Action.Runtime.Utils.html#Voice2Action_Runtime_Utils_k_MinConfidenceToProceed
-  commentId: F:Voice2Action.Runtime.Utils.k_MinConfidenceToProceed
-  fullName: Voice2Action.Runtime.Utils.k_MinConfidenceToProceed
+  href: api/Voice2Action.Utils.html#Voice2Action_Utils_k_MinConfidenceToProceed
+  commentId: F:Voice2Action.Utils.k_MinConfidenceToProceed
+  fullName: Voice2Action.Utils.k_MinConfidenceToProceed
   nameWithType: Utils.k_MinConfidenceToProceed
-- uid: Voice2Action.Runtime.Utils.openAIClient
+- uid: Voice2Action.Utils.openAIClient
   name: openAIClient
-  href: api/Voice2Action.Runtime.Utils.html#Voice2Action_Runtime_Utils_openAIClient
-  commentId: P:Voice2Action.Runtime.Utils.openAIClient
-  fullName: Voice2Action.Runtime.Utils.openAIClient
+  href: api/Voice2Action.Utils.html#Voice2Action_Utils_openAIClient
+  commentId: P:Voice2Action.Utils.openAIClient
+  fullName: Voice2Action.Utils.openAIClient
   nameWithType: Utils.openAIClient
-- uid: Voice2Action.Runtime.Utils.openAIClient*
+- uid: Voice2Action.Utils.openAIClient*
   name: openAIClient
-  href: api/Voice2Action.Runtime.Utils.html#Voice2Action_Runtime_Utils_openAIClient_
-  commentId: Overload:Voice2Action.Runtime.Utils.openAIClient
+  href: api/Voice2Action.Utils.html#Voice2Action_Utils_openAIClient_
+  commentId: Overload:Voice2Action.Utils.openAIClient
   isSpec: "True"
-  fullName: Voice2Action.Runtime.Utils.openAIClient
+  fullName: Voice2Action.Utils.openAIClient
   nameWithType: Utils.openAIClient
-- uid: Voice2Action.Runtime.VoiceIntentController
+- uid: Voice2Action.VoiceIntentController
   name: VoiceIntentController
-  href: api/Voice2Action.Runtime.VoiceIntentController.html
-  commentId: T:Voice2Action.Runtime.VoiceIntentController
-  fullName: Voice2Action.Runtime.VoiceIntentController
+  href: api/Voice2Action.VoiceIntentController.html
+  commentId: T:Voice2Action.VoiceIntentController
+  fullName: Voice2Action.VoiceIntentController
   nameWithType: VoiceIntentController
-- uid: Voice2Action.Runtime.VoiceIntentController.CallCompletion(System.String,System.String)
+- uid: Voice2Action.VoiceIntentController.CallCompletion(System.String,System.String)
   name: CallCompletion(String, String)
-  href: api/Voice2Action.Runtime.VoiceIntentController.html#Voice2Action_Runtime_VoiceIntentController_CallCompletion_System_String_System_String_
-  commentId: M:Voice2Action.Runtime.VoiceIntentController.CallCompletion(System.String,System.String)
-  fullName: Voice2Action.Runtime.VoiceIntentController.CallCompletion(System.String, System.String)
+  href: api/Voice2Action.VoiceIntentController.html#Voice2Action_VoiceIntentController_CallCompletion_System_String_System_String_
+  commentId: M:Voice2Action.VoiceIntentController.CallCompletion(System.String,System.String)
+  fullName: Voice2Action.VoiceIntentController.CallCompletion(System.String, System.String)
   nameWithType: VoiceIntentController.CallCompletion(String, String)
-- uid: Voice2Action.Runtime.VoiceIntentController.CallCompletion*
+- uid: Voice2Action.VoiceIntentController.CallCompletion*
   name: CallCompletion
-  href: api/Voice2Action.Runtime.VoiceIntentController.html#Voice2Action_Runtime_VoiceIntentController_CallCompletion_
-  commentId: Overload:Voice2Action.Runtime.VoiceIntentController.CallCompletion
+  href: api/Voice2Action.VoiceIntentController.html#Voice2Action_VoiceIntentController_CallCompletion_
+  commentId: Overload:Voice2Action.VoiceIntentController.CallCompletion
   isSpec: "True"
-  fullName: Voice2Action.Runtime.VoiceIntentController.CallCompletion
+  fullName: Voice2Action.VoiceIntentController.CallCompletion
   nameWithType: VoiceIntentController.CallCompletion
-- uid: Voice2Action.Runtime.VoiceIntentController.CallCompletionWithTools(System.String,System.Collections.Generic.List{Tool})
+- uid: Voice2Action.VoiceIntentController.CallCompletionWithTools(System.String,System.Collections.Generic.List{Tool})
   name: CallCompletionWithTools(String, List<Tool>)
-  href: api/Voice2Action.Runtime.VoiceIntentController.html#Voice2Action_Runtime_VoiceIntentController_CallCompletionWithTools_System_String_System_Collections_Generic_List_Tool__
-  commentId: M:Voice2Action.Runtime.VoiceIntentController.CallCompletionWithTools(System.String,System.Collections.Generic.List{Tool})
+  href: api/Voice2Action.VoiceIntentController.html#Voice2Action_VoiceIntentController_CallCompletionWithTools_System_String_System_Collections_Generic_List_Tool__
+  commentId: M:Voice2Action.VoiceIntentController.CallCompletionWithTools(System.String,System.Collections.Generic.List{Tool})
   name.vb: CallCompletionWithTools(String, List(Of Tool))
-  fullName: Voice2Action.Runtime.VoiceIntentController.CallCompletionWithTools(System.String, System.Collections.Generic.List<Tool>)
-  fullName.vb: Voice2Action.Runtime.VoiceIntentController.CallCompletionWithTools(System.String, System.Collections.Generic.List(Of Tool))
+  fullName: Voice2Action.VoiceIntentController.CallCompletionWithTools(System.String, System.Collections.Generic.List<Tool>)
+  fullName.vb: Voice2Action.VoiceIntentController.CallCompletionWithTools(System.String, System.Collections.Generic.List(Of Tool))
   nameWithType: VoiceIntentController.CallCompletionWithTools(String, List<Tool>)
   nameWithType.vb: VoiceIntentController.CallCompletionWithTools(String, List(Of Tool))
-- uid: Voice2Action.Runtime.VoiceIntentController.CallCompletionWithTools*
+- uid: Voice2Action.VoiceIntentController.CallCompletionWithTools*
   name: CallCompletionWithTools
-  href: api/Voice2Action.Runtime.VoiceIntentController.html#Voice2Action_Runtime_VoiceIntentController_CallCompletionWithTools_
-  commentId: Overload:Voice2Action.Runtime.VoiceIntentController.CallCompletionWithTools
+  href: api/Voice2Action.VoiceIntentController.html#Voice2Action_VoiceIntentController_CallCompletionWithTools_
+  commentId: Overload:Voice2Action.VoiceIntentController.CallCompletionWithTools
   isSpec: "True"
-  fullName: Voice2Action.Runtime.VoiceIntentController.CallCompletionWithTools
+  fullName: Voice2Action.VoiceIntentController.CallCompletionWithTools
   nameWithType: VoiceIntentController.CallCompletionWithTools
-- uid: Voice2Action.Runtime.VoiceIntentController.CallEmbedding(System.String)
+- uid: Voice2Action.VoiceIntentController.CallEmbedding(System.String)
   name: CallEmbedding(String)
-  href: api/Voice2Action.Runtime.VoiceIntentController.html#Voice2Action_Runtime_VoiceIntentController_CallEmbedding_System_String_
-  commentId: M:Voice2Action.Runtime.VoiceIntentController.CallEmbedding(System.String)
-  fullName: Voice2Action.Runtime.VoiceIntentController.CallEmbedding(System.String)
+  href: api/Voice2Action.VoiceIntentController.html#Voice2Action_VoiceIntentController_CallEmbedding_System_String_
+  commentId: M:Voice2Action.VoiceIntentController.CallEmbedding(System.String)
+  fullName: Voice2Action.VoiceIntentController.CallEmbedding(System.String)
   nameWithType: VoiceIntentController.CallEmbedding(String)
-- uid: Voice2Action.Runtime.VoiceIntentController.CallEmbedding*
+- uid: Voice2Action.VoiceIntentController.CallEmbedding*
   name: CallEmbedding
-  href: api/Voice2Action.Runtime.VoiceIntentController.html#Voice2Action_Runtime_VoiceIntentController_CallEmbedding_
-  commentId: Overload:Voice2Action.Runtime.VoiceIntentController.CallEmbedding
+  href: api/Voice2Action.VoiceIntentController.html#Voice2Action_VoiceIntentController_CallEmbedding_
+  commentId: Overload:Voice2Action.VoiceIntentController.CallEmbedding
   isSpec: "True"
-  fullName: Voice2Action.Runtime.VoiceIntentController.CallEmbedding
+  fullName: Voice2Action.VoiceIntentController.CallEmbedding
   nameWithType: VoiceIntentController.CallEmbedding
-- uid: Voice2Action.Runtime.VoiceIntentController.interactable
+- uid: Voice2Action.VoiceIntentController.interactable
   name: interactable
-  href: api/Voice2Action.Runtime.VoiceIntentController.html#Voice2Action_Runtime_VoiceIntentController_interactable
-  commentId: P:Voice2Action.Runtime.VoiceIntentController.interactable
-  fullName: Voice2Action.Runtime.VoiceIntentController.interactable
+  href: api/Voice2Action.VoiceIntentController.html#Voice2Action_VoiceIntentController_interactable
+  commentId: P:Voice2Action.VoiceIntentController.interactable
+  fullName: Voice2Action.VoiceIntentController.interactable
   nameWithType: VoiceIntentController.interactable
-- uid: Voice2Action.Runtime.VoiceIntentController.interactable*
+- uid: Voice2Action.VoiceIntentController.interactable*
   name: interactable
-  href: api/Voice2Action.Runtime.VoiceIntentController.html#Voice2Action_Runtime_VoiceIntentController_interactable_
-  commentId: Overload:Voice2Action.Runtime.VoiceIntentController.interactable
+  href: api/Voice2Action.VoiceIntentController.html#Voice2Action_VoiceIntentController_interactable_
+  commentId: Overload:Voice2Action.VoiceIntentController.interactable
   isSpec: "True"
-  fullName: Voice2Action.Runtime.VoiceIntentController.interactable
+  fullName: Voice2Action.VoiceIntentController.interactable
   nameWithType: VoiceIntentController.interactable
-- uid: Voice2Action.Runtime.VoiceIntentController.myEmbeddings
+- uid: Voice2Action.VoiceIntentController.myEmbeddings
   name: myEmbeddings
-  href: api/Voice2Action.Runtime.VoiceIntentController.html#Voice2Action_Runtime_VoiceIntentController_myEmbeddings
-  commentId: P:Voice2Action.Runtime.VoiceIntentController.myEmbeddings
-  fullName: Voice2Action.Runtime.VoiceIntentController.myEmbeddings
+  href: api/Voice2Action.VoiceIntentController.html#Voice2Action_VoiceIntentController_myEmbeddings
+  commentId: P:Voice2Action.VoiceIntentController.myEmbeddings
+  fullName: Voice2Action.VoiceIntentController.myEmbeddings
   nameWithType: VoiceIntentController.myEmbeddings
-- uid: Voice2Action.Runtime.VoiceIntentController.myEmbeddings*
+- uid: Voice2Action.VoiceIntentController.myEmbeddings*
   name: myEmbeddings
-  href: api/Voice2Action.Runtime.VoiceIntentController.html#Voice2Action_Runtime_VoiceIntentController_myEmbeddings_
-  commentId: Overload:Voice2Action.Runtime.VoiceIntentController.myEmbeddings
+  href: api/Voice2Action.VoiceIntentController.html#Voice2Action_VoiceIntentController_myEmbeddings_
+  commentId: Overload:Voice2Action.VoiceIntentController.myEmbeddings
   isSpec: "True"
-  fullName: Voice2Action.Runtime.VoiceIntentController.myEmbeddings
+  fullName: Voice2Action.VoiceIntentController.myEmbeddings
   nameWithType: VoiceIntentController.myEmbeddings
-- uid: Voice2Action.Runtime.VoiceIntentController.myInteractable
+- uid: Voice2Action.VoiceIntentController.myInteractable
   name: myInteractable
-  href: api/Voice2Action.Runtime.VoiceIntentController.html#Voice2Action_Runtime_VoiceIntentController_myInteractable
-  commentId: P:Voice2Action.Runtime.VoiceIntentController.myInteractable
-  fullName: Voice2Action.Runtime.VoiceIntentController.myInteractable
+  href: api/Voice2Action.VoiceIntentController.html#Voice2Action_VoiceIntentController_myInteractable
+  commentId: P:Voice2Action.VoiceIntentController.myInteractable
+  fullName: Voice2Action.VoiceIntentController.myInteractable
   nameWithType: VoiceIntentController.myInteractable
-- uid: Voice2Action.Runtime.VoiceIntentController.myInteractable*
+- uid: Voice2Action.VoiceIntentController.myInteractable*
   name: myInteractable
-  href: api/Voice2Action.Runtime.VoiceIntentController.html#Voice2Action_Runtime_VoiceIntentController_myInteractable_
-  commentId: Overload:Voice2Action.Runtime.VoiceIntentController.myInteractable
+  href: api/Voice2Action.VoiceIntentController.html#Voice2Action_VoiceIntentController_myInteractable_
+  commentId: Overload:Voice2Action.VoiceIntentController.myInteractable
   isSpec: "True"
-  fullName: Voice2Action.Runtime.VoiceIntentController.myInteractable
+  fullName: Voice2Action.VoiceIntentController.myInteractable
   nameWithType: VoiceIntentController.myInteractable
-- uid: Voice2Action.Runtime.VoiceIntentController.myShapeController
+- uid: Voice2Action.VoiceIntentController.myShapeController
   name: myShapeController
-  href: api/Voice2Action.Runtime.VoiceIntentController.html#Voice2Action_Runtime_VoiceIntentController_myShapeController
-  commentId: P:Voice2Action.Runtime.VoiceIntentController.myShapeController
-  fullName: Voice2Action.Runtime.VoiceIntentController.myShapeController
+  href: api/Voice2Action.VoiceIntentController.html#Voice2Action_VoiceIntentController_myShapeController
+  commentId: P:Voice2Action.VoiceIntentController.myShapeController
+  fullName: Voice2Action.VoiceIntentController.myShapeController
   nameWithType: VoiceIntentController.myShapeController
-- uid: Voice2Action.Runtime.VoiceIntentController.myShapeController*
+- uid: Voice2Action.VoiceIntentController.myShapeController*
   name: myShapeController
-  href: api/Voice2Action.Runtime.VoiceIntentController.html#Voice2Action_Runtime_VoiceIntentController_myShapeController_
-  commentId: Overload:Voice2Action.Runtime.VoiceIntentController.myShapeController
+  href: api/Voice2Action.VoiceIntentController.html#Voice2Action_VoiceIntentController_myShapeController_
+  commentId: Overload:Voice2Action.VoiceIntentController.myShapeController
   isSpec: "True"
-  fullName: Voice2Action.Runtime.VoiceIntentController.myShapeController
+  fullName: Voice2Action.VoiceIntentController.myShapeController
   nameWithType: VoiceIntentController.myShapeController
-- uid: Voice2Action.Runtime.VoiceIntentController.UpdateMessageDisplay(System.String,GameObject)
+- uid: Voice2Action.VoiceIntentController.UpdateMessageDisplay(System.String,GameObject)
   name: UpdateMessageDisplay(String, GameObject)
-  href: api/Voice2Action.Runtime.VoiceIntentController.html#Voice2Action_Runtime_VoiceIntentController_UpdateMessageDisplay_System_String_GameObject_
-  commentId: M:Voice2Action.Runtime.VoiceIntentController.UpdateMessageDisplay(System.String,GameObject)
-  fullName: Voice2Action.Runtime.VoiceIntentController.UpdateMessageDisplay(System.String, GameObject)
+  href: api/Voice2Action.VoiceIntentController.html#Voice2Action_VoiceIntentController_UpdateMessageDisplay_System_String_GameObject_
+  commentId: M:Voice2Action.VoiceIntentController.UpdateMessageDisplay(System.String,GameObject)
+  fullName: Voice2Action.VoiceIntentController.UpdateMessageDisplay(System.String, GameObject)
   nameWithType: VoiceIntentController.UpdateMessageDisplay(String, GameObject)
-- uid: Voice2Action.Runtime.VoiceIntentController.UpdateMessageDisplay*
+- uid: Voice2Action.VoiceIntentController.UpdateMessageDisplay*
   name: UpdateMessageDisplay
-  href: api/Voice2Action.Runtime.VoiceIntentController.html#Voice2Action_Runtime_VoiceIntentController_UpdateMessageDisplay_
-  commentId: Overload:Voice2Action.Runtime.VoiceIntentController.UpdateMessageDisplay
+  href: api/Voice2Action.VoiceIntentController.html#Voice2Action_VoiceIntentController_UpdateMessageDisplay_
+  commentId: Overload:Voice2Action.VoiceIntentController.UpdateMessageDisplay
   isSpec: "True"
-  fullName: Voice2Action.Runtime.VoiceIntentController.UpdateMessageDisplay
+  fullName: Voice2Action.VoiceIntentController.UpdateMessageDisplay
   nameWithType: VoiceIntentController.UpdateMessageDisplay

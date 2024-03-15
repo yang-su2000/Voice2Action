@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Struct Utils.FewShotGroup
+    <title>Struct PropertyExecutor.FunctionCallGroup
    | Voice2Action </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Struct Utils.FewShotGroup
+    <meta name="title" content="Struct PropertyExecutor.FunctionCallGroup
    | Voice2Action ">
     <meta name="generator" content="docfx 2.59.4.0">
     
@@ -78,12 +78,12 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Voice2Action.Runtime.Utils.FewShotGroup">
+            <article class="content wrap" id="_content" data-uid="Voice2Action.PropertyExecutor.FunctionCallGroup">
   
   
-  <h1 id="Voice2Action_Runtime_Utils_FewShotGroup" data-uid="Voice2Action.Runtime.Utils.FewShotGroup" class="text-break">Struct Utils.FewShotGroup
+  <h1 id="Voice2Action_PropertyExecutor_FunctionCallGroup" data-uid="Voice2Action.PropertyExecutor.FunctionCallGroup" class="text-break">Struct PropertyExecutor.FunctionCallGroup
   </h1>
-  <div class="markdown level0 summary"><p>A group containing essential prompting elements for few-shot prompting.</p>
+  <div class="markdown level0 summary"><p>A group containing essential elements for executing a property function.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritedMembers">
@@ -107,22 +107,22 @@
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
     </div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Voice2Action.Runtime.html">Voice2Action.Runtime</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Voice2Action.html">Voice2Action</a></h6>
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
-  <h5 id="Voice2Action_Runtime_Utils_FewShotGroup_syntax">Syntax</h5>
+  <h5 id="Voice2Action_PropertyExecutor_FunctionCallGroup_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[Serializable]
-public struct FewShotGroup</code></pre>
+public struct FunctionCallGroup</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
-  <a id="Voice2Action_Runtime_Utils_FewShotGroup__ctor_" data-uid="Voice2Action.Runtime.Utils.FewShotGroup.#ctor*"></a>
-  <h4 id="Voice2Action_Runtime_Utils_FewShotGroup__ctor_System_String_System_Collections_Generic_List_System_ValueTuple_System_Int32_System_String___System_Collections_Generic_List_System_String__System_Collections_Generic_List_Voice2Action_Runtime_Utils_FewShotPair__" data-uid="Voice2Action.Runtime.Utils.FewShotGroup.#ctor(System.String,System.Collections.Generic.List{System.ValueTuple{System.Int32,System.String}},System.Collections.Generic.List{System.String},System.Collections.Generic.List{Voice2Action.Runtime.Utils.FewShotPair})">FewShotGroup(String, List&lt;(Int32, String)&gt;, List&lt;String&gt;, List&lt;Utils.FewShotPair&gt;)</h4>
+  <a id="Voice2Action_PropertyExecutor_FunctionCallGroup__ctor_" data-uid="Voice2Action.PropertyExecutor.FunctionCallGroup.#ctor*"></a>
+  <h4 id="Voice2Action_PropertyExecutor_FunctionCallGroup__ctor_System_String_System_String_System_Collections_Generic_List_Voice2Action_PropertyExecutor_FunctionParamGroup__" data-uid="Voice2Action.PropertyExecutor.FunctionCallGroup.#ctor(System.String,System.String,System.Collections.Generic.List{Voice2Action.PropertyExecutor.FunctionParamGroup})">FunctionCallGroup(String, String, List&lt;PropertyExecutor.FunctionParamGroup&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FewShotGroup(string instruction, List&lt;(int, string)&gt; orderedProperties, List&lt;string&gt; indicators = null, List&lt;Utils.FewShotPair&gt; fewShotPairs = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public FunctionCallGroup(string functionName, string functionDescription, List&lt;PropertyExecutor.FunctionParamGroup&gt; functionParams = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -136,87 +136,33 @@ public struct FewShotGroup</code></pre>
     <tbody>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><span class="parametername">instruction</span></td>
-        <td><p>Specific task or instruction you want the model to perform. This string must contains &quot;{}&quot; for properties insertion if it is provided.</p>
+        <td><span class="parametername">functionName</span></td>
+        <td><p>Function name, i.e. MyFunctionName(...)</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-2">(T1, T2)</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;&gt;</td>
-        <td><span class="parametername">orderedProperties</span></td>
-        <td><p>(Order, Property) pairs you want the model to extract their input from, lower ordered properties are extracted first.</p>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">functionDescription</span></td>
+        <td><p>Function description, a summarization of its functionality. </p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;</td>
-        <td><span class="parametername">indicators</span></td>
-        <td><p>Optional, type or format of the output, or constraints of what the model should not do.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Voice2Action.Runtime.Utils.FewShotPair.html">Utils.FewShotPair</a>&gt;</td>
-        <td><span class="parametername">fewShotPairs</span></td>
-        <td><p>Optional, list of few-shot example (input, output) pair provided to the model.</p>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Voice2Action.PropertyExecutor.FunctionParamGroup.html">PropertyExecutor.FunctionParamGroup</a>&gt;</td>
+        <td><span class="parametername">functionParams</span></td>
+        <td><p>Optional, function parameters, nested with all of their information.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <h3 id="properties">Properties
   </h3>
-  <a id="Voice2Action_Runtime_Utils_FewShotGroup_fewShotPairs_" data-uid="Voice2Action.Runtime.Utils.FewShotGroup.fewShotPairs*"></a>
-  <h4 id="Voice2Action_Runtime_Utils_FewShotGroup_fewShotPairs" data-uid="Voice2Action.Runtime.Utils.FewShotGroup.fewShotPairs">fewShotPairs</h4>
+  <a id="Voice2Action_PropertyExecutor_FunctionCallGroup_description_" data-uid="Voice2Action.PropertyExecutor.FunctionCallGroup.description*"></a>
+  <h4 id="Voice2Action_PropertyExecutor_FunctionCallGroup_description" data-uid="Voice2Action.PropertyExecutor.FunctionCallGroup.description">description</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public List&lt;Utils.FewShotPair&gt; fewShotPairs { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Voice2Action.Runtime.Utils.FewShotPair.html">Utils.FewShotPair</a>&gt;</td>
-        <td><p>Optional, list of few-shot example (input, output) pair provided to the model as illustration to how it should respond.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Voice2Action_Runtime_Utils_FewShotGroup_indicators_" data-uid="Voice2Action.Runtime.Utils.FewShotGroup.indicators*"></a>
-  <h4 id="Voice2Action_Runtime_Utils_FewShotGroup_indicators" data-uid="Voice2Action.Runtime.Utils.FewShotGroup.indicators">indicators</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public List&lt;string&gt; indicators { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;</td>
-        <td><p>Optional, type or format of the output, or constraints of what the model should not do.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Voice2Action_Runtime_Utils_FewShotGroup_instruction_" data-uid="Voice2Action.Runtime.Utils.FewShotGroup.instruction*"></a>
-  <h4 id="Voice2Action_Runtime_Utils_FewShotGroup_instruction" data-uid="Voice2Action.Runtime.Utils.FewShotGroup.instruction">instruction</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string instruction { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string description { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -229,18 +175,18 @@ public struct FewShotGroup</code></pre>
     <tbody>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><p>Specific task or instruction you want the model to perform.</p>
+        <td><p>Function description.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <a id="Voice2Action_Runtime_Utils_FewShotGroup_orders_" data-uid="Voice2Action.Runtime.Utils.FewShotGroup.orders*"></a>
-  <h4 id="Voice2Action_Runtime_Utils_FewShotGroup_orders" data-uid="Voice2Action.Runtime.Utils.FewShotGroup.orders">orders</h4>
+  <a id="Voice2Action_PropertyExecutor_FunctionCallGroup_name_" data-uid="Voice2Action.PropertyExecutor.FunctionCallGroup.name*"></a>
+  <h4 id="Voice2Action_PropertyExecutor_FunctionCallGroup_name" data-uid="Voice2Action.PropertyExecutor.FunctionCallGroup.name">name</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public List&lt;int&gt; orders { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string name { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -252,19 +198,19 @@ public struct FewShotGroup</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a>&gt;</td>
-        <td><p>Extraction order of the properties, lower ordered properties are extracted first.</p>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><p>Function name.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <a id="Voice2Action_Runtime_Utils_FewShotGroup_properties_" data-uid="Voice2Action.Runtime.Utils.FewShotGroup.properties*"></a>
-  <h4 id="Voice2Action_Runtime_Utils_FewShotGroup_properties" data-uid="Voice2Action.Runtime.Utils.FewShotGroup.properties">properties</h4>
+  <a id="Voice2Action_PropertyExecutor_FunctionCallGroup_paramGroups_" data-uid="Voice2Action.PropertyExecutor.FunctionCallGroup.paramGroups*"></a>
+  <h4 id="Voice2Action_PropertyExecutor_FunctionCallGroup_paramGroups" data-uid="Voice2Action.PropertyExecutor.FunctionCallGroup.paramGroups">paramGroups</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public List&lt;string&gt; properties { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public List&lt;PropertyExecutor.FunctionParamGroup&gt; paramGroups { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -276,47 +222,22 @@ public struct FewShotGroup</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;</td>
-        <td><p>Properties you want the model to extract from.</p>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Voice2Action.PropertyExecutor.FunctionParamGroup.html">PropertyExecutor.FunctionParamGroup</a>&gt;</td>
+        <td><p>Optional, function parameters.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <h3 id="methods">Methods
   </h3>
-  <a id="Voice2Action_Runtime_Utils_FewShotGroup_GetOrderedProperties_" data-uid="Voice2Action.Runtime.Utils.FewShotGroup.GetOrderedProperties*"></a>
-  <h4 id="Voice2Action_Runtime_Utils_FewShotGroup_GetOrderedProperties" data-uid="Voice2Action.Runtime.Utils.FewShotGroup.GetOrderedProperties">GetOrderedProperties()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete]
-public List&lt;string&gt; GetOrderedProperties()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;</td>
-        <td><p>List of ordered properties.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Voice2Action_Runtime_Utils_FewShotGroup_GetPrompt_" data-uid="Voice2Action.Runtime.Utils.FewShotGroup.GetPrompt*"></a>
-  <h4 id="Voice2Action_Runtime_Utils_FewShotGroup_GetPrompt_System_String_" data-uid="Voice2Action.Runtime.Utils.FewShotGroup.GetPrompt(System.String)">GetPrompt(String)</h4>
-  <div class="markdown level1 summary"><p>Get the full prompt to perform information extraction on the given userInput.</p>
+  <a id="Voice2Action_PropertyExecutor_FunctionCallGroup_AddParamsRequirement_" data-uid="Voice2Action.PropertyExecutor.FunctionCallGroup.AddParamsRequirement*"></a>
+  <h4 id="Voice2Action_PropertyExecutor_FunctionCallGroup_AddParamsRequirement_JObject__" data-uid="Voice2Action.PropertyExecutor.FunctionCallGroup.AddParamsRequirement(JObject@)">AddParamsRequirement(ref JObject)</h4>
+  <div class="markdown level1 summary"><p>Add the &quot;required&quot; key in the given JsonSchema.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string GetPrompt(string userInput)</code></pre>
+    <pre><code class="lang-csharp hljs">public void AddParamsRequirement(ref JObject funcObject)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -329,9 +250,41 @@ public List&lt;string&gt; GetOrderedProperties()</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><span class="parametername">userInput</span></td>
-        <td><p>The given user input instruction.</p>
+        <td><span class="xref">JObject</span></td>
+        <td><span class="parametername">funcObject</span></td>
+        <td><p>The JsonSchema of the current property function, will be updated upon execution of this method.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Voice2Action_PropertyExecutor_FunctionCallGroup_PrettyPrintFunctionCall_" data-uid="Voice2Action.PropertyExecutor.FunctionCallGroup.PrettyPrintFunctionCall*"></a>
+  <h4 id="Voice2Action_PropertyExecutor_FunctionCallGroup_PrettyPrintFunctionCall_System_Reflection_MethodInfo_System_Object___" data-uid="Voice2Action.PropertyExecutor.FunctionCallGroup.PrettyPrintFunctionCall(System.Reflection.MethodInfo,System.Object[])">PrettyPrintFunctionCall(MethodInfo, Object[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string PrettyPrintFunctionCall(MethodInfo methodInfo, object[] inputs)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.reflection.methodinfo">MethodInfo</a></td>
+        <td><span class="parametername">methodInfo</span></td>
+        <td><p>Information of current property function through reflection.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a>[]</td>
+        <td><span class="parametername">inputs</span></td>
+        <td><p>Function arguments.</p>
 </td>
       </tr>
     </tbody>
@@ -347,7 +300,7 @@ public List&lt;string&gt; GetOrderedProperties()</code></pre>
     <tbody>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><p>The generated full prompt.</p>
+        <td><p>A string as if the function is called, i.e. &quot;MyFunctionName(MyArgType1 MyArg1, MyArgType2 MyArg2, ...)&quot;</p>
 </td>
       </tr>
     </tbody>

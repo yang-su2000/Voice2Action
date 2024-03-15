@@ -24,11 +24,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Voice2Action.Runtime.Embeddings.yml",
+      "source_relative_path": "api/Voice2Action.Embeddings.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Voice2Action.Runtime.Embeddings.html",
-          "hash": "uUSIlXlqy4M6MLv9s8fZnKOnSbsOtB5F1nXicS9K51g="
+          "relative_path": "api/Voice2Action.Embeddings.html",
+          "hash": "OMdriDmxG2w/ZyxEtilMzuuFMd5jsiGUcWmolxQ2y6Y="
         }
       },
       "is_incremental": false,
@@ -36,11 +36,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Voice2Action.Runtime.InteractableTarget.yml",
+      "source_relative_path": "api/Voice2Action.InteractableTarget.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Voice2Action.Runtime.InteractableTarget.html",
-          "hash": "slN3PgLPBYhS5twodJb+9UfAiLWbFdYH8A6+g7MEEhQ="
+          "relative_path": "api/Voice2Action.InteractableTarget.html",
+          "hash": "0uz+6MQ0EPbVWC2D5moM6ars2jA7LLjirzFUj3v2azg="
         }
       },
       "is_incremental": false,
@@ -48,11 +48,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Voice2Action.Runtime.PropertyClassifier.yml",
+      "source_relative_path": "api/Voice2Action.PropertyClassifier.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Voice2Action.Runtime.PropertyClassifier.html",
-          "hash": "7jCNZxVXMlPS5kTqSfJmOOo4Edgp5k8c60HQkqXh3iE="
+          "relative_path": "api/Voice2Action.PropertyClassifier.html",
+          "hash": "Z20Q6jqiO1QIPnNayp8D5v9K9+NL8A1VXC+wEQLTooE="
         }
       },
       "is_incremental": false,
@@ -60,11 +60,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.yml",
+      "source_relative_path": "api/Voice2Action.PropertyExecutor.FunctionCallGroup.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Voice2Action.Runtime.PropertyExecutor.FunctionCallGroup.html",
-          "hash": "EPcBAdebTgnoweUoczEbO0FTPstOZmCbyRMisDRvyvw="
+          "relative_path": "api/Voice2Action.PropertyExecutor.FunctionCallGroup.html",
+          "hash": "aLV39dEc6TtmtAwvv4uotqLQQ+bA5h6nbcTECwtJmvg="
         }
       },
       "is_incremental": false,
@@ -72,11 +72,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.yml",
+      "source_relative_path": "api/Voice2Action.PropertyExecutor.FunctionParamGroup.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Voice2Action.Runtime.PropertyExecutor.FunctionParamGroup.html",
-          "hash": "3AODtL4MARRVgsfmN4ZhKFmzi9JwSy7p9p7L4vBH8e4="
+          "relative_path": "api/Voice2Action.PropertyExecutor.FunctionParamGroup.html",
+          "hash": "ru9FAbvFv7hrL8QDircfaXRSzShmff061yMQfaKnh0U="
         }
       },
       "is_incremental": false,
@@ -84,11 +84,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Voice2Action.Runtime.PropertyExecutor.yml",
+      "source_relative_path": "api/Voice2Action.PropertyExecutor.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Voice2Action.Runtime.PropertyExecutor.html",
-          "hash": "xufIIJVLJuJIcBN6D42Ltg6ojYk1MiAfl6/iWQH01+o="
+          "relative_path": "api/Voice2Action.PropertyExecutor.html",
+          "hash": "sKEYwsZb1Hu0uwUEIuSlZr1Iz3WkoZ+RemSIy/++Jz0="
         }
       },
       "is_incremental": false,
@@ -96,11 +96,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Voice2Action.Runtime.PropertyExtractor.yml",
+      "source_relative_path": "api/Voice2Action.PropertyExtractor.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Voice2Action.Runtime.PropertyExtractor.html",
-          "hash": "6oH0RULvVWkmZYYvFj1X+PFKxnvZl/qBNe9WZrzOREE="
+          "relative_path": "api/Voice2Action.PropertyExtractor.html",
+          "hash": "5kF5ttInJ3JVwKQSIHLkG4VDyiuTcSKMgjnJzLaBqIY="
         }
       },
       "is_incremental": false,
@@ -108,11 +108,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Voice2Action.Runtime.SceneManager.yml",
+      "source_relative_path": "api/Voice2Action.SceneManager.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Voice2Action.Runtime.SceneManager.html",
-          "hash": "waLKkgiMfEiRuvq/F3offaCHiurrL9pz7OZxDhxVpks="
+          "relative_path": "api/Voice2Action.SceneManager.html",
+          "hash": "pMN6EnGX1bFLaPg3C8R0KVBvn0UM7Ed0dODryFt1z00="
         }
       },
       "is_incremental": false,
@@ -120,11 +120,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Voice2Action.Runtime.ShapeController.PropertyMethodAttribute.yml",
+      "source_relative_path": "api/Voice2Action.ShapeController.PropertyMethodAttribute.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Voice2Action.Runtime.ShapeController.PropertyMethodAttribute.html",
-          "hash": "Ok/N095xkUL5BUI+LCx3JDkkJ5gGVp5IxJBl3ac/lbc="
+          "relative_path": "api/Voice2Action.ShapeController.PropertyMethodAttribute.html",
+          "hash": "jTS0nHL6U0usZpLoV0mnAw7ET7Il0lqvEKWP629jnpc="
         }
       },
       "is_incremental": false,
@@ -132,11 +132,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Voice2Action.Runtime.ShapeController.PropertyParameterAttribute.yml",
+      "source_relative_path": "api/Voice2Action.ShapeController.PropertyParameterAttribute.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Voice2Action.Runtime.ShapeController.PropertyParameterAttribute.html",
-          "hash": "1q8fzMQLX9WIchlfN+6fFWm2MjMtf/jmwmNnEkHeyKw="
+          "relative_path": "api/Voice2Action.ShapeController.PropertyParameterAttribute.html",
+          "hash": "xvh6HbgI63Nbt4AYfW2rLAWCS0DFcjtT7k18U232yr4="
         }
       },
       "is_incremental": false,
@@ -144,11 +144,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Voice2Action.Runtime.ShapeController.yml",
+      "source_relative_path": "api/Voice2Action.ShapeController.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Voice2Action.Runtime.ShapeController.html",
-          "hash": "rRzbmKYjUV62O9J1MmQOc6r5liES7rREwWyQHiKSqS4="
+          "relative_path": "api/Voice2Action.ShapeController.html",
+          "hash": "a4ltw8DbQ1MQVG0GVlC4Ie7OcTXxRXfJ+IjciGF/V2o="
         }
       },
       "is_incremental": false,
@@ -156,11 +156,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Voice2Action.Runtime.Utils.FewShotGroup.yml",
+      "source_relative_path": "api/Voice2Action.Utils.FewShotGroup.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Voice2Action.Runtime.Utils.FewShotGroup.html",
-          "hash": "/Rj3hW+5csz8w70D0qV1ii8+nU4nvwwBCJIsWgmea3Q="
+          "relative_path": "api/Voice2Action.Utils.FewShotGroup.html",
+          "hash": "xeGF++4/4av8/zJUXPqH/FAFNw+azFIVi9r41+AjvPI="
         }
       },
       "is_incremental": false,
@@ -168,11 +168,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Voice2Action.Runtime.Utils.FewShotPair.yml",
+      "source_relative_path": "api/Voice2Action.Utils.FewShotPair.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Voice2Action.Runtime.Utils.FewShotPair.html",
-          "hash": "IwLJnoF6yZ8qMieiZDhoDAnEvWZvh1hZ5Pqv13LOTvg="
+          "relative_path": "api/Voice2Action.Utils.FewShotPair.html",
+          "hash": "Qr4rBOh2NMDjOZekeUf5XNUQpCUigY0H29R0+rzAMlA="
         }
       },
       "is_incremental": false,
@@ -180,11 +180,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Voice2Action.Runtime.Utils.yml",
+      "source_relative_path": "api/Voice2Action.Utils.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Voice2Action.Runtime.Utils.html",
-          "hash": "E1SPR/msBy5CZLVBF6ubDpsFIR+grnvX0j33DMuW+zs="
+          "relative_path": "api/Voice2Action.Utils.html",
+          "hash": "1oEk4cqWvrZrZ1Mnzv00yV7TDTQRP7XNR2AGFb3elNQ="
         }
       },
       "is_incremental": false,
@@ -192,11 +192,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Voice2Action.Runtime.VoiceIntentController.yml",
+      "source_relative_path": "api/Voice2Action.VoiceIntentController.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Voice2Action.Runtime.VoiceIntentController.html",
-          "hash": "y/Om+E0Xy0KGSagsgeaNrIbh7VsTWMthf54vWV7lXHI="
+          "relative_path": "api/Voice2Action.VoiceIntentController.html",
+          "hash": "2reQyAMnbp54u/fpn1DEj7z+NaFCIyHcrxgvuAnSdAw="
         }
       },
       "is_incremental": false,
@@ -204,11 +204,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Voice2Action.Runtime.yml",
+      "source_relative_path": "api/Voice2Action.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Voice2Action.Runtime.html",
-          "hash": "MUZZWeYEAyOYF9zmJROLxPC0Hd/RhDAjgz3ywSxf250="
+          "relative_path": "api/Voice2Action.html",
+          "hash": "vjnSKID9YGJ0VdjJyFmQAuZlKNUzbh4Nqh2HkLzF9Wc="
         }
       },
       "is_incremental": false,
@@ -220,7 +220,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "CwIRc2m9KSnSiyJMuHwDIWExg8R0dq7vxmnFCKSMaRc="
+          "hash": "TpHqYYJLaFCz3qxktgyBwnTbAI3q9efvoAQSUrBcWsU="
         }
       },
       "is_incremental": false,
@@ -503,7 +503,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "1hygnsyyZ9Z9bPST0N0tQZCItPMa5FY6qp7Nm4uYOnU="
+          "hash": "kSSH9ofM0L9sTtZX8Qa6ux8JMydC072KbOedB//V+uk="
         }
       },
       "is_incremental": false,
