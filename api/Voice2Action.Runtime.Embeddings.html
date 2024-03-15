@@ -78,10 +78,10 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Voice2Action.Embeddings">
+            <article class="content wrap" id="_content" data-uid="Voice2Action.Runtime.Embeddings">
   
   
-  <h1 id="Voice2Action_Embeddings" data-uid="Voice2Action.Embeddings" class="text-break">Class Embeddings
+  <h1 id="Voice2Action_Runtime_Embeddings" data-uid="Voice2Action.Runtime.Embeddings" class="text-break">Class Embeddings
   </h1>
   <div class="markdown level0 summary"><p>Storage class for all property mappings and initialization of all required components of Voice2Action (except function calling). <br>
 Fields in this class should be updated as soon as the scene starts, and they are used when function calling with similarity match is attached. <br>
@@ -98,18 +98,18 @@ recognize the user&apos;s instruction by fetching this attribute during reflecti
     <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
     <div class="level1"><span class="xref">Embeddings</span></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Voice2Action.html">Voice2Action</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Voice2Action.Runtime.html">Voice2Action.Runtime</a></h6>
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
-  <h5 id="Voice2Action_Embeddings_syntax">Syntax</h5>
+  <h5 id="Voice2Action_Runtime_Embeddings_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class Embeddings : MonoBehaviour</code></pre>
   </div>
-  <h5 id="Voice2Action_Embeddings_remarks"><strong>Remarks</strong></h5>
+  <h5 id="Voice2Action_Runtime_Embeddings_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>This class is expected to be actual embedding vector matches in future package version, right now it is an under-optimized version by explicit rankings.</p>
 </div>
   <h3 id="fields">Fields
   </h3>
-  <h4 id="Voice2Action_Embeddings_k_DefaultShape" data-uid="Voice2Action.Embeddings.k_DefaultShape">k_DefaultShape</h4>
+  <h4 id="Voice2Action_Runtime_Embeddings_k_DefaultShape" data-uid="Voice2Action.Runtime.Embeddings.k_DefaultShape">k_DefaultShape</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -132,10 +132,33 @@ recognize the user&apos;s instruction by fetching this attribute during reflecti
       </tr>
     </tbody>
   </table>
+  <h4 id="Voice2Action_Runtime_Embeddings_m_EmbeddingDataDir" data-uid="Voice2Action.Runtime.Embeddings.m_EmbeddingDataDir">m_EmbeddingDataDir</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string m_EmbeddingDataDir</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><p>User specified directory name to store embedding data of the current Unity Scene.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="properties">Properties
   </h3>
-  <a id="Voice2Action_Embeddings_shapeMap_" data-uid="Voice2Action.Embeddings.shapeMap*"></a>
-  <h4 id="Voice2Action_Embeddings_shapeMap" data-uid="Voice2Action.Embeddings.shapeMap">shapeMap</h4>
+  <a id="Voice2Action_Runtime_Embeddings_shapeMap_" data-uid="Voice2Action.Runtime.Embeddings.shapeMap*"></a>
+  <h4 id="Voice2Action_Runtime_Embeddings_shapeMap" data-uid="Voice2Action.Runtime.Embeddings.shapeMap">shapeMap</h4>
   <div class="markdown level1 summary"><p>Stores object types, used for reflection in PropertyExecutor atomic functions. <br>
 When the scene starts, all object types under the &quot;Parent Interactable&quot; hierarchy of the VoiceIntentController class should be loaded. <br>
 e.g. User: &quot;make the car bigger&quot; -&gt; &quot;car&quot; object type is matched. <br></p>
@@ -161,14 +184,111 @@ e.g. User: &quot;make the car bigger&quot; -&gt; &quot;car&quot; object type is 
       </tr>
     </tbody>
   </table>
-  <h5 id="Voice2Action_Embeddings_shapeMap_remarks">Remarks</h5>
+  <h5 id="Voice2Action_Runtime_Embeddings_shapeMap_remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>This functionality is expected to be implemented with vision model, so the system can recognize object types by their visual appearance. <br>
 We will add that in future package version.</p>
 </div>
   <h3 id="methods">Methods
   </h3>
-  <a id="Voice2Action_Embeddings_InitInteractable_" data-uid="Voice2Action.Embeddings.InitInteractable*"></a>
-  <h4 id="Voice2Action_Embeddings_InitInteractable_GameObject_System_Type_" data-uid="Voice2Action.Embeddings.InitInteractable(GameObject,System.Type)">InitInteractable(GameObject, Type)</h4>
+  <a id="Voice2Action_Runtime_Embeddings_GetEmbedding_" data-uid="Voice2Action.Runtime.Embeddings.GetEmbedding*"></a>
+  <h4 id="Voice2Action_Runtime_Embeddings_GetEmbedding_System_String_System_String_" data-uid="Voice2Action.Runtime.Embeddings.GetEmbedding(System.String,System.String)">GetEmbedding(String, String)</h4>
+  <div class="markdown level1 summary"><p>Get closest embedding match by retrieval.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;(string, double)&gt; GetEmbedding(string userInput, string propertyMapName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">userInput</span></td>
+        <td><p>Input user message.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">propertyMapName</span></td>
+        <td><p>The string name of the propertyMap, i.e. &quot;shapeMap&quot;.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-2">(T1, T2)</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Double</a>&gt;&gt;</td>
+        <td><p>A tuple of (one key from the given property map, its corresponding cos-similarity score to userInput).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Voice2Action_Runtime_Embeddings_InitEmbeddings_" data-uid="Voice2Action.Runtime.Embeddings.InitEmbeddings*"></a>
+  <h4 id="Voice2Action_Runtime_Embeddings_InitEmbeddings_System_Type_System_Collections_Generic_List_System_String__" data-uid="Voice2Action.Runtime.Embeddings.InitEmbeddings(System.Type,System.Collections.Generic.List{System.String})">InitEmbeddings(Type, List&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"><p>[Deprecated] Initialize all embedding data of the given property functions.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task InitEmbeddings(Type myShapeControllerType, List&lt;string&gt; propertyFunctionNames)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></td>
+        <td><span class="parametername">myShapeControllerType</span></td>
+        <td><p>Type of user-defined ShapeController, used to check existence of atomic property functions.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;</td>
+        <td><span class="parametername">propertyFunctionNames</span></td>
+        <td><p>Names of property functions.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Voice2Action_Runtime_Embeddings_InitInteractable_" data-uid="Voice2Action.Runtime.Embeddings.InitInteractable*"></a>
+  <h4 id="Voice2Action_Runtime_Embeddings_InitInteractable_GameObject_System_Type_" data-uid="Voice2Action.Runtime.Embeddings.InitInteractable(GameObject,System.Type)">InitInteractable(GameObject, Type)</h4>
   <div class="markdown level1 summary"><p>Initializes the default components of the given parent interactable in the scene. <br>
 By default, this class initialize all object types under the given parent interactable by checking each children&apos;s object name. <br>
 Hence, the default behavior is that each children object is expected to contain all objects with the same type (shape). <br>
@@ -203,8 +323,8 @@ User can choose to not use this, however, by doing it differently in InitMyInter
       </tr>
     </tbody>
   </table>
-  <a id="Voice2Action_Embeddings_InitMyInteractable_" data-uid="Voice2Action.Embeddings.InitMyInteractable*"></a>
-  <h4 id="Voice2Action_Embeddings_InitMyInteractable_GameObject_GameObject_System_Type_" data-uid="Voice2Action.Embeddings.InitMyInteractable(GameObject,GameObject,System.Type)">InitMyInteractable(GameObject, GameObject, Type)</h4>
+  <a id="Voice2Action_Runtime_Embeddings_InitMyInteractable_" data-uid="Voice2Action.Runtime.Embeddings.InitMyInteractable*"></a>
+  <h4 id="Voice2Action_Runtime_Embeddings_InitMyInteractable_GameObject_GameObject_System_Type_" data-uid="Voice2Action.Runtime.Embeddings.InitMyInteractable(GameObject,GameObject,System.Type)">InitMyInteractable(GameObject, GameObject, Type)</h4>
   <div class="markdown level1 summary"><p>Initializes user-defined components of the given parent interactable in the scene.<br>
 The function is intentionally left blank so the user can override it, see CityDemo.Scripts.MyEmbeddings for its example usage. <br></p>
 </div>
@@ -243,8 +363,8 @@ The function is intentionally left blank so the user can override it, see CityDe
       </tr>
     </tbody>
   </table>
-  <a id="Voice2Action_Embeddings_InitProperty_" data-uid="Voice2Action.Embeddings.InitProperty*"></a>
-  <h4 id="Voice2Action_Embeddings_InitProperty_Voice2Action_PropertyClassifier_Voice2Action_PropertyExtractor_Voice2Action_PropertyExecutor_" data-uid="Voice2Action.Embeddings.InitProperty(Voice2Action.PropertyClassifier,Voice2Action.PropertyExtractor,Voice2Action.PropertyExecutor)">InitProperty(PropertyClassifier, PropertyExtractor, PropertyExecutor)</h4>
+  <a id="Voice2Action_Runtime_Embeddings_InitProperty_" data-uid="Voice2Action.Runtime.Embeddings.InitProperty*"></a>
+  <h4 id="Voice2Action_Runtime_Embeddings_InitProperty_Voice2Action_Runtime_PropertyClassifier_Voice2Action_Runtime_PropertyExtractor_Voice2Action_Runtime_PropertyExecutor_" data-uid="Voice2Action.Runtime.Embeddings.InitProperty(Voice2Action.Runtime.PropertyClassifier,Voice2Action.Runtime.PropertyExtractor,Voice2Action.Runtime.PropertyExecutor)">InitProperty(PropertyClassifier, PropertyExtractor, PropertyExecutor)</h4>
   <div class="markdown level1 summary"><p>The entry point for initializing all property LLMs (large language models). <br>
 This class is intentionally left blank so user can override it, see CityDemo.Scripts.MyEmbeddings for its example usage. <br></p>
 </div>
@@ -264,22 +384,70 @@ This class is intentionally left blank so user can override it, see CityDemo.Scr
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Voice2Action.PropertyClassifier.html">PropertyClassifier</a></td>
+        <td><a class="xref" href="Voice2Action.Runtime.PropertyClassifier.html">PropertyClassifier</a></td>
         <td><span class="parametername">classifier</span></td>
         <td><p>The &quot;LLM for Classification&quot;.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="Voice2Action.PropertyExtractor.html">PropertyExtractor</a></td>
+        <td><a class="xref" href="Voice2Action.Runtime.PropertyExtractor.html">PropertyExtractor</a></td>
         <td><span class="parametername">extractor</span></td>
         <td><p>The &quot;LLM for Extraction&quot;.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="Voice2Action.PropertyExecutor.html">PropertyExecutor</a></td>
+        <td><a class="xref" href="Voice2Action.Runtime.PropertyExecutor.html">PropertyExecutor</a></td>
         <td><span class="parametername">executor</span></td>
         <td><p>The &quot;LLM for Execution&quot;.</p>
 </td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Voice2Action_Runtime_Embeddings_ProcessEmbeddingData_" data-uid="Voice2Action.Runtime.Embeddings.ProcessEmbeddingData*"></a>
+  <h4 id="Voice2Action_Runtime_Embeddings_ProcessEmbeddingData_System_Collections_Generic_Dictionary_System_String_System_Object__System_String_" data-uid="Voice2Action.Runtime.Embeddings.ProcessEmbeddingData(System.Collections.Generic.Dictionary{System.String,System.Object},System.String)">ProcessEmbeddingData(Dictionary&lt;String, Object&gt;, String)</h4>
+  <div class="markdown level1 summary"><p>Loads and saves embedding data for the given propertyMap and its name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;bool&gt; ProcessEmbeddingData(Dictionary&lt;string, object&gt; propertyMap, string propertyMapName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a>&gt;</td>
+        <td><span class="parametername">propertyMap</span></td>
+        <td><p>A propertyMap instance, i.e. shapeMap.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">propertyMapName</span></td>
+        <td><p>The string name of the propertyMap, i.e. &quot;shapeMap&quot;.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;</td>
+        <td></td>
       </tr>
     </tbody>
   </table>

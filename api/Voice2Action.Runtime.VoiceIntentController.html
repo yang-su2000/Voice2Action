@@ -78,10 +78,10 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Voice2Action.VoiceIntentController">
+            <article class="content wrap" id="_content" data-uid="Voice2Action.Runtime.VoiceIntentController">
   
   
-  <h1 id="Voice2Action_VoiceIntentController" data-uid="Voice2Action.VoiceIntentController" class="text-break">Class VoiceIntentController
+  <h1 id="Voice2Action_Runtime_VoiceIntentController" data-uid="Voice2Action.Runtime.VoiceIntentController" class="text-break">Class VoiceIntentController
   </h1>
   <div class="markdown level0 summary"><p>The main class of Voice2Action, contains all core required components for the system. <br>
 This class is not inheritable, instead, the user wants to inherit each individual components for customizable behaviors. <br>
@@ -94,16 +94,16 @@ The &quot;LLM for Pre-Processing&quot; step in Voice2Action is omitted here by a
     <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
     <div class="level1"><span class="xref">VoiceIntentController</span></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Voice2Action.html">Voice2Action</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Voice2Action.Runtime.html">Voice2Action.Runtime</a></h6>
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
-  <h5 id="Voice2Action_VoiceIntentController_syntax">Syntax</h5>
+  <h5 id="Voice2Action_Runtime_VoiceIntentController_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class VoiceIntentController : MonoBehaviour</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  <a id="Voice2Action_VoiceIntentController_interactable_" data-uid="Voice2Action.VoiceIntentController.interactable*"></a>
-  <h4 id="Voice2Action_VoiceIntentController_interactable" data-uid="Voice2Action.VoiceIntentController.interactable">interactable</h4>
+  <a id="Voice2Action_Runtime_VoiceIntentController_interactable_" data-uid="Voice2Action.Runtime.VoiceIntentController.interactable*"></a>
+  <h4 id="Voice2Action_Runtime_VoiceIntentController_interactable" data-uid="Voice2Action.Runtime.VoiceIntentController.interactable">interactable</h4>
   <div class="markdown level1 summary"><p>Contains default game objects that the user want to interact with using Voice2Action. <br>
 To take effect, the user wants to attach it to the actual parent interactable in the Unity hierarchy before the game starts.</p>
 </div>
@@ -128,8 +128,8 @@ To take effect, the user wants to attach it to the actual parent interactable in
       </tr>
     </tbody>
   </table>
-  <a id="Voice2Action_VoiceIntentController_myEmbeddings_" data-uid="Voice2Action.VoiceIntentController.myEmbeddings*"></a>
-  <h4 id="Voice2Action_VoiceIntentController_myEmbeddings" data-uid="Voice2Action.VoiceIntentController.myEmbeddings">myEmbeddings</h4>
+  <a id="Voice2Action_Runtime_VoiceIntentController_myEmbeddings_" data-uid="Voice2Action.Runtime.VoiceIntentController.myEmbeddings*"></a>
+  <h4 id="Voice2Action_Runtime_VoiceIntentController_myEmbeddings" data-uid="Voice2Action.Runtime.VoiceIntentController.myEmbeddings">myEmbeddings</h4>
   <div class="markdown level1 summary"><p>Contains user-defined fields and attributes for all atomic functions. Also used for customizable behavior in scene initialization.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -147,14 +147,14 @@ To take effect, the user wants to attach it to the actual parent interactable in
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Voice2Action.Embeddings.html">Embeddings</a></td>
+        <td><a class="xref" href="Voice2Action.Runtime.Embeddings.html">Embeddings</a></td>
         <td><p>The instance of user-defined Embeddings.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <a id="Voice2Action_VoiceIntentController_myInteractable_" data-uid="Voice2Action.VoiceIntentController.myInteractable*"></a>
-  <h4 id="Voice2Action_VoiceIntentController_myInteractable" data-uid="Voice2Action.VoiceIntentController.myInteractable">myInteractable</h4>
+  <a id="Voice2Action_Runtime_VoiceIntentController_myInteractable_" data-uid="Voice2Action.Runtime.VoiceIntentController.myInteractable*"></a>
+  <h4 id="Voice2Action_Runtime_VoiceIntentController_myInteractable" data-uid="Voice2Action.Runtime.VoiceIntentController.myInteractable">myInteractable</h4>
   <div class="markdown level1 summary"><p>Contains user-defined game objects that the user want to interact with using Voice2Action. <br>
 e.g. In CityDemo, this is defined as the parent for all &quot;Address&quot; game objects. <br>
 To take effect, the user wants to attach it to the actual parent interactable in the Unity hierarchy before the game starts. <br>
@@ -181,8 +181,8 @@ To scale, the user can also put sub-parents under it and call them respectively 
       </tr>
     </tbody>
   </table>
-  <a id="Voice2Action_VoiceIntentController_myShapeController_" data-uid="Voice2Action.VoiceIntentController.myShapeController*"></a>
-  <h4 id="Voice2Action_VoiceIntentController_myShapeController" data-uid="Voice2Action.VoiceIntentController.myShapeController">myShapeController</h4>
+  <a id="Voice2Action_Runtime_VoiceIntentController_myShapeController_" data-uid="Voice2Action.Runtime.VoiceIntentController.myShapeController*"></a>
+  <h4 id="Voice2Action_Runtime_VoiceIntentController_myShapeController" data-uid="Voice2Action.Runtime.VoiceIntentController.myShapeController">myShapeController</h4>
   <div class="markdown level1 summary"><p>Contains user-defined interactable properties and actual implementations of all atomic functions.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -200,7 +200,7 @@ To scale, the user can also put sub-parents under it and call them respectively 
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Voice2Action.ShapeController.html">ShapeController</a></td>
+        <td><a class="xref" href="Voice2Action.Runtime.ShapeController.html">ShapeController</a></td>
         <td><p>The instance of user-defined ShapeController.</p>
 </td>
       </tr>
@@ -208,8 +208,8 @@ To scale, the user can also put sub-parents under it and call them respectively 
   </table>
   <h3 id="methods">Methods
   </h3>
-  <a id="Voice2Action_VoiceIntentController_CallCompletion_" data-uid="Voice2Action.VoiceIntentController.CallCompletion*"></a>
-  <h4 id="Voice2Action_VoiceIntentController_CallCompletion_System_String_System_String_" data-uid="Voice2Action.VoiceIntentController.CallCompletion(System.String,System.String)">CallCompletion(String, String)</h4>
+  <a id="Voice2Action_Runtime_VoiceIntentController_CallCompletion_" data-uid="Voice2Action.Runtime.VoiceIntentController.CallCompletion*"></a>
+  <h4 id="Voice2Action_Runtime_VoiceIntentController_CallCompletion_System_String_System_String_" data-uid="Voice2Action.Runtime.VoiceIntentController.CallCompletion(System.String,System.String)">CallCompletion(String, String)</h4>
   <div class="markdown level1 summary"><p>Utility function to perform chat completion with the OpenAI API.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -251,14 +251,14 @@ To scale, the user can also put sub-parents under it and call them respectively 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;</td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;</td>
         <td><p>Response to input instructions.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <a id="Voice2Action_VoiceIntentController_CallCompletionWithTools_" data-uid="Voice2Action.VoiceIntentController.CallCompletionWithTools*"></a>
-  <h4 id="Voice2Action_VoiceIntentController_CallCompletionWithTools_System_String_System_Collections_Generic_List_Tool__" data-uid="Voice2Action.VoiceIntentController.CallCompletionWithTools(System.String,System.Collections.Generic.List{Tool})">CallCompletionWithTools(String, List&lt;Tool&gt;)</h4>
+  <a id="Voice2Action_Runtime_VoiceIntentController_CallCompletionWithTools_" data-uid="Voice2Action.Runtime.VoiceIntentController.CallCompletionWithTools*"></a>
+  <h4 id="Voice2Action_Runtime_VoiceIntentController_CallCompletionWithTools_System_String_System_Collections_Generic_List_Tool__" data-uid="Voice2Action.Runtime.VoiceIntentController.CallCompletionWithTools(System.String,System.Collections.Generic.List{Tool})">CallCompletionWithTools(String, List&lt;Tool&gt;)</h4>
   <div class="markdown level1 summary"><p>Utility function to perform function execution with the OpenAI API.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -300,14 +300,57 @@ To scale, the user can also put sub-parents under it and call them respectively 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;</td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;</td>
         <td><p>Json-formatted function call arguments.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <a id="Voice2Action_VoiceIntentController_UpdateMessageDisplay_" data-uid="Voice2Action.VoiceIntentController.UpdateMessageDisplay*"></a>
-  <h4 id="Voice2Action_VoiceIntentController_UpdateMessageDisplay_System_String_GameObject_" data-uid="Voice2Action.VoiceIntentController.UpdateMessageDisplay(System.String,GameObject)">UpdateMessageDisplay(String, GameObject)</h4>
+  <a id="Voice2Action_Runtime_VoiceIntentController_CallEmbedding_" data-uid="Voice2Action.Runtime.VoiceIntentController.CallEmbedding*"></a>
+  <h4 id="Voice2Action_Runtime_VoiceIntentController_CallEmbedding_System_String_" data-uid="Voice2Action.Runtime.VoiceIntentController.CallEmbedding(System.String)">CallEmbedding(String)</h4>
+  <div class="markdown level1 summary"><p>Utility function to perform text embedding retrieval with the OpenAI API.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;IReadOnlyList&lt;double&gt;&gt; CallEmbedding(string userInput)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">userInput</span></td>
+        <td><p>Input user message</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Double</a>&gt;&gt;</td>
+        <td><p>A list of double values.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Voice2Action_Runtime_VoiceIntentController_UpdateMessageDisplay_" data-uid="Voice2Action.Runtime.VoiceIntentController.UpdateMessageDisplay*"></a>
+  <h4 id="Voice2Action_Runtime_VoiceIntentController_UpdateMessageDisplay_System_String_GameObject_" data-uid="Voice2Action.Runtime.VoiceIntentController.UpdateMessageDisplay(System.String,GameObject)">UpdateMessageDisplay(String, GameObject)</h4>
   <div class="markdown level1 summary"><p>Update the scroll view information.</p>
 </div>
   <div class="markdown level1 conceptual"></div>

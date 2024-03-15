@@ -78,10 +78,10 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Voice2Action.Utils">
+            <article class="content wrap" id="_content" data-uid="Voice2Action.Runtime.Utils">
   
   
-  <h1 id="Voice2Action_Utils" data-uid="Voice2Action.Utils" class="text-break">Class Utils
+  <h1 id="Voice2Action_Runtime_Utils" data-uid="Voice2Action.Runtime.Utils" class="text-break">Class Utils
   </h1>
   <div class="markdown level0 summary"><p>Stores all singleton fields, global constants, and utility functions.</p>
 </div>
@@ -115,15 +115,38 @@
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
     </div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Voice2Action.html">Voice2Action</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Voice2Action.Runtime.html">Voice2Action.Runtime</a></h6>
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
-  <h5 id="Voice2Action_Utils_syntax">Syntax</h5>
+  <h5 id="Voice2Action_Runtime_Utils_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static class Utils</code></pre>
   </div>
   <h3 id="fields">Fields
   </h3>
-  <h4 id="Voice2Action_Utils_k_CompletionTemperature" data-uid="Voice2Action.Utils.k_CompletionTemperature">k_CompletionTemperature</h4>
+  <h4 id="Voice2Action_Runtime_Utils_k_ChatModel" data-uid="Voice2Action.Runtime.Utils.k_ChatModel">k_ChatModel</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Model k_ChatModel</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Model</span></td>
+        <td><p>The chat model type used in Voice2Action.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 id="Voice2Action_Runtime_Utils_k_CompletionTemperature" data-uid="Voice2Action.Runtime.Utils.k_CompletionTemperature">k_CompletionTemperature</h4>
   <div class="markdown level1 summary"><p>Temperature parameter of the OpenAI CompletionAPI, lower means that the output is more deterministic.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -147,12 +170,57 @@
       </tr>
     </tbody>
   </table>
-  <h5 id="Voice2Action_Utils_k_CompletionTemperature_remarks">Remarks</h5>
+  <h5 id="Voice2Action_Runtime_Utils_k_CompletionTemperature_remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>This is highly correlated to the functionality of Voice2Action, we recommend not to change it.</p>
 </div>
-  <h4 id="Voice2Action_Utils_k_FailureResponse" data-uid="Voice2Action.Utils.k_FailureResponse">k_FailureResponse</h4>
-  <div class="markdown level1 summary"><p>A string to denote model failure state</p>
-</div>
+  <h4 id="Voice2Action_Runtime_Utils_k_EmbeddingDim" data-uid="Voice2Action.Runtime.Utils.k_EmbeddingDim">k_EmbeddingDim</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int k_EmbeddingDim = 512</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><p>The embedding model dimension used in Voice2Action.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 id="Voice2Action_Runtime_Utils_k_EmbeddingModel" data-uid="Voice2Action.Runtime.Utils.k_EmbeddingModel">k_EmbeddingModel</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Model k_EmbeddingModel</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Model</span></td>
+        <td><p>The embedding model type used in Voice2Action.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 id="Voice2Action_Runtime_Utils_k_FailureResponse" data-uid="Voice2Action.Runtime.Utils.k_FailureResponse">k_FailureResponse</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -169,14 +237,13 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><p>&quot;N/A&quot;</p>
+        <td><p>A string to denote model failure state</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h4 id="Voice2Action_Utils_k_MinConfidenceToProceed" data-uid="Voice2Action.Utils.k_MinConfidenceToProceed">k_MinConfidenceToProceed</h4>
-  <div class="markdown level1 summary"><p>TODO: we will add similarity match implementation in future package version. <br>
-Confidence of the system to accept matching in the Embedding class. <br>
+  <h4 id="Voice2Action_Runtime_Utils_k_MinConfidenceToProceed" data-uid="Voice2Action.Runtime.Utils.k_MinConfidenceToProceed">k_MinConfidenceToProceed</h4>
+  <div class="markdown level1 summary"><p>Confidence of the system to accept matching in the Embedding class. <br>
 This is used to determine if there is a match in the property mappings. If the system does not have enough confidence, it rejects the mapping. <br>
 User can make this bigger if they want a stricter match, or make this lower if they want a looser match. <br>
 e.g. User: &quot;change the box to orange&quot; -&gt; &quot;yellow&quot; is matched with {k_MinConfidenceToProceed}% confidence. <br></p>
@@ -184,7 +251,7 @@ e.g. User: &quot;change the box to orange&quot; -&gt; &quot;yellow&quot; is matc
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public const int k_MinConfidenceToProceed = 50</code></pre>
+    <pre><code class="lang-csharp hljs">public const double k_MinConfidenceToProceed = 0.1</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -196,39 +263,16 @@ e.g. User: &quot;change the box to orange&quot; -&gt; &quot;yellow&quot; is matc
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td><p>Range [0, 100].</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h4 id="Voice2Action_Utils_s_OpenAIModel" data-uid="Voice2Action.Utils.s_OpenAIModel">s_OpenAIModel</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static readonly Model s_OpenAIModel</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Model</span></td>
-        <td><p>The base model type used in Voice2Action.</p>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Double</a></td>
+        <td><p>Range [0d, 1d].</p>
 </td>
       </tr>
     </tbody>
   </table>
   <h3 id="properties">Properties
   </h3>
-  <a id="Voice2Action_Utils_openAIClient_" data-uid="Voice2Action.Utils.openAIClient*"></a>
-  <h4 id="Voice2Action_Utils_openAIClient" data-uid="Voice2Action.Utils.openAIClient">openAIClient</h4>
+  <a id="Voice2Action_Runtime_Utils_openAIClient_" data-uid="Voice2Action.Runtime.Utils.openAIClient*"></a>
+  <h4 id="Voice2Action_Runtime_Utils_openAIClient" data-uid="Voice2Action.Runtime.Utils.openAIClient">openAIClient</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>

@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class PropertyExtractor
+    <title>Class PropertyClassifier
    | Voice2Action </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class PropertyExtractor
+    <meta name="title" content="Class PropertyClassifier
    | Voice2Action ">
     <meta name="generator" content="docfx 2.59.4.0">
     
@@ -78,36 +78,61 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Voice2Action.PropertyExtractor">
+            <article class="content wrap" id="_content" data-uid="Voice2Action.Runtime.PropertyClassifier">
   
   
-  <h1 id="Voice2Action_PropertyExtractor" data-uid="Voice2Action.PropertyExtractor" class="text-break">Class PropertyExtractor
+  <h1 id="Voice2Action_Runtime_PropertyClassifier" data-uid="Voice2Action.Runtime.PropertyClassifier" class="text-break">Class PropertyClassifier
   </h1>
-  <div class="markdown level0 summary"><p>A minimal implementation of the &quot;LLM for Extraction&quot; step in Voice2Action. <br>
+  <div class="markdown level0 summary"><p>A minimal implementation of the &quot;LLM for Classification&quot; step in Voice2Action. <br>
 This implementation is not optimized and only used for inference. <br>
-We will add atomic action property generation, alignment training via order ranking and environment feedback of the model in future package version. <br></p>
+We will add action class generation and alignment training via order ranking of the model in future package version. <br></p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
-    <div class="level1"><span class="xref">PropertyExtractor</span></div>
+    <div class="level1"><span class="xref">PropertyClassifier</span></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Voice2Action.html">Voice2Action</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Voice2Action.Runtime.html">Voice2Action.Runtime</a></h6>
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
-  <h5 id="Voice2Action_PropertyExtractor_syntax">Syntax</h5>
+  <h5 id="Voice2Action_Runtime_PropertyClassifier_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class PropertyExtractor : MonoBehaviour</code></pre>
+    <pre><code class="lang-csharp hljs">public class PropertyClassifier : MonoBehaviour</code></pre>
   </div>
+  <h3 id="fields">Fields
+  </h3>
+  <h4 id="Voice2Action_Runtime_PropertyClassifier_k_ClassificationInstruction" data-uid="Voice2Action.Runtime.PropertyClassifier.k_ClassificationInstruction">k_ClassificationInstruction</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string k_ClassificationInstruction = &quot;You classify user input into exactly one category from the given categories. No explanation.&quot;</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><p>System instruction for the classification model.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="properties">Properties
   </h3>
-  <a id="Voice2Action_PropertyExtractor_modificationGroup_" data-uid="Voice2Action.PropertyExtractor.modificationGroup*"></a>
-  <h4 id="Voice2Action_PropertyExtractor_modificationGroup" data-uid="Voice2Action.PropertyExtractor.modificationGroup">modificationGroup</h4>
+  <a id="Voice2Action_Runtime_PropertyClassifier_classificationGroup_" data-uid="Voice2Action.Runtime.PropertyClassifier.classificationGroup*"></a>
+  <h4 id="Voice2Action_Runtime_PropertyClassifier_classificationGroup" data-uid="Voice2Action.Runtime.PropertyClassifier.classificationGroup">classificationGroup</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Utils.FewShotGroup modificationGroup { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public Utils.FewShotGroup classificationGroup { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -119,55 +144,19 @@ We will add atomic action property generation, alignment training via order rank
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Voice2Action.Utils.FewShotGroup.html">Utils.FewShotGroup</a></td>
-        <td><p>Contains the available atomic action properties to interact with for modification and their example usage.</p>
+        <td><a class="xref" href="Voice2Action.Runtime.Utils.FewShotGroup.html">Utils.FewShotGroup</a></td>
+        <td><p>Contains the available action classes to interact with for classification and their example usage.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Voice2Action_PropertyExtractor_modificationGroup_examples">Examples</h5>
-  <p>Extract actions {&quot;ModifyColor&quot;, &quot;ModifyScale&quot;, &quot;ModifyPosition&quot;} from the input, separate by comma. <br>
+  <h5 id="Voice2Action_Runtime_PropertyClassifier_classificationGroup_examples">Examples</h5>
+  <p>Extract actions &quot;select, modify&quot; from the input, separate by comma. <br>
 If some actions do not exist, do not print anything. <br>
 Input: <br>
-{more input examples} <br>
+{input examples} <br>
 Output: <br>
-{more output examples} <br>
-... {add some more if there&apos;s budget} <br>
-Input: <br>
-{userInput} <br>
-Output: <br></p>
-
-  <a id="Voice2Action_PropertyExtractor_selectionGroup_" data-uid="Voice2Action.PropertyExtractor.selectionGroup*"></a>
-  <h4 id="Voice2Action_PropertyExtractor_selectionGroup" data-uid="Voice2Action.PropertyExtractor.selectionGroup">selectionGroup</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Utils.FewShotGroup selectionGroup { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Voice2Action.Utils.FewShotGroup.html">Utils.FewShotGroup</a></td>
-        <td><p>Contains the available atomic action properties to interact with for selection and their example usage.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Voice2Action_PropertyExtractor_selectionGroup_examples">Examples</h5>
-  <p>Extract actions {&quot;GetShape&quot;, &quot;GetColor&quot;, &quot;GetDirection&quot;, &quot;GetDistance&quot;, &quot;GetSuperlative&quot;} from the input, separate by comma. <br>
-If some actions do not exist, do not print anything. <br>
-Input: <br>
-{more input examples} <br>
-Output: <br>
-{more output examples} <br>
+{output examples} <br>
 ... {add some more if there&apos;s budget} <br>
 Input: <br>
 {userInput} <br>
@@ -175,15 +164,15 @@ Output: <br></p>
 
   <h3 id="methods">Methods
   </h3>
-  <a id="Voice2Action_PropertyExtractor_AddAtomicAction_" data-uid="Voice2Action.PropertyExtractor.AddAtomicAction*"></a>
-  <h4 id="Voice2Action_PropertyExtractor_AddAtomicAction_System_String_System_Int32_System_String_" data-uid="Voice2Action.PropertyExtractor.AddAtomicAction(System.String,System.Int32,System.String)">AddAtomicAction(String, Int32, String)</h4>
-  <div class="markdown level1 summary"><p>Add new atomic action property to the extractor, used for customized properties. <br>
-The user may also want to AddExtractExamples(...) to ensure accurate results. <br></p>
+  <a id="Voice2Action_Runtime_PropertyClassifier_AddAction_" data-uid="Voice2Action.Runtime.PropertyClassifier.AddAction*"></a>
+  <h4 id="Voice2Action_Runtime_PropertyClassifier_AddAction_System_Int32_System_String_" data-uid="Voice2Action.Runtime.PropertyClassifier.AddAction(System.Int32,System.String)">AddAction(Int32, String)</h4>
+  <div class="markdown level1 summary"><p>Add new action class to the classifier, used for customized actions. <br>
+The user may also want to AddClassificationExamples(...) to ensure accurate results.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void AddAtomicAction(string action, int order, string newAtomicAction)</code></pre>
+    <pre><code class="lang-csharp hljs">public void AddAction(int order, string newAction)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -196,33 +185,27 @@ The user may also want to AddExtractExamples(...) to ensure accurate results. <b
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><span class="parametername">action</span></td>
-        <td><p>The action that newAtomicAction belongs to.</p>
-</td>
-      </tr>
-      <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
         <td><span class="parametername">order</span></td>
-        <td><p>Order of extraction of the new atomic action.</p>
+        <td><p>Order of extraction of the new action.</p>
 </td>
       </tr>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><span class="parametername">newAtomicAction</span></td>
-        <td><p>The new atomic action.</p>
+        <td><span class="parametername">newAction</span></td>
+        <td><p>New action to add.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <a id="Voice2Action_PropertyExtractor_AddExtractionExamples_" data-uid="Voice2Action.PropertyExtractor.AddExtractionExamples*"></a>
-  <h4 id="Voice2Action_PropertyExtractor_AddExtractionExamples_System_String_System_String_System_String_" data-uid="Voice2Action.PropertyExtractor.AddExtractionExamples(System.String,System.String,System.String)">AddExtractionExamples(String, String, String)</h4>
-  <div class="markdown level1 summary"><p>Add new extraction examples to the system, used when user adds customized atomic actions. <br></p>
+  <a id="Voice2Action_Runtime_PropertyClassifier_AddClassificationExamples_" data-uid="Voice2Action.Runtime.PropertyClassifier.AddClassificationExamples*"></a>
+  <h4 id="Voice2Action_Runtime_PropertyClassifier_AddClassificationExamples_System_String_System_String_" data-uid="Voice2Action.Runtime.PropertyClassifier.AddClassificationExamples(System.String,System.String)">AddClassificationExamples(String, String)</h4>
+  <div class="markdown level1 summary"><p>Add new classification examples to the system, used when user adds customized actions.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void AddExtractionExamples(string action, string input, string output)</code></pre>
+    <pre><code class="lang-csharp hljs">public void AddClassificationExamples(string input, string output)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -234,12 +217,6 @@ The user may also want to AddExtractExamples(...) to ensure accurate results. <b
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><span class="parametername">action</span></td>
-        <td><p>The action that the extraction example belongs to.</p>
-</td>
-      </tr>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
         <td><span class="parametername">input</span></td>
@@ -254,14 +231,14 @@ The user may also want to AddExtractExamples(...) to ensure accurate results. <b
       </tr>
     </tbody>
   </table>
-  <a id="Voice2Action_PropertyExtractor_ExtractProperty_" data-uid="Voice2Action.PropertyExtractor.ExtractProperty*"></a>
-  <h4 id="Voice2Action_PropertyExtractor_ExtractProperty_System_String_System_String_" data-uid="Voice2Action.PropertyExtractor.ExtractProperty(System.String,System.String)">ExtractProperty(String, String)</h4>
-  <div class="markdown level1 summary"><p>Extract property mappings in user instruction that corresponds to each defined atomic action class.</p>
+  <a id="Voice2Action_Runtime_PropertyClassifier_ClassifyProperty_" data-uid="Voice2Action.Runtime.PropertyClassifier.ClassifyProperty*"></a>
+  <h4 id="Voice2Action_Runtime_PropertyClassifier_ClassifyProperty_System_String_" data-uid="Voice2Action.Runtime.PropertyClassifier.ClassifyProperty(System.String)">ClassifyProperty(String)</h4>
+  <div class="markdown level1 summary"><p>Classify and extract phrases in user instruction that corresponds to each defined action class. <br></p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;OrderedDictionary&gt; ExtractProperty(string action, string userInput)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;Dictionary&lt;string, string&gt;&gt; ClassifyProperty(string userInput)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -273,12 +250,6 @@ The user may also want to AddExtractExamples(...) to ensure accurate results. <b
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><span class="parametername">action</span></td>
-        <td><p>The action class that the userInput belongs to.</p>
-</td>
-      </tr>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
         <td><span class="parametername">userInput</span></td>
@@ -297,10 +268,58 @@ The user may also want to AddExtractExamples(...) to ensure accurate results. <b
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">OrderedDictionary</span>&gt;</td>
-        <td><p>Ordered dictionary of pairs (targetProperty, targetFeatures) in their execution order. <br>
-{targetProperty} are like &quot;shape&quot;, &quot;distance&quot;, &quot;direction&quot;, etc. <br>
-{targetFeatures} are like &quot;cube&quot;, &quot;5 meters&quot;, &quot;on my left&quot;, etc. <br></p>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;&gt;</td>
+        <td><p>A dictionary of pairs (targetClass, targetPhrases) <br>
+{targetClass} are like &quot;select&quot;, &quot;modify&quot;, etc. <br>
+{targetPhrases} are like &quot;select the tallest building&quot;, &quot;make it super short&quot;, etc. <br></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Voice2Action_Runtime_PropertyClassifier_GetClassificationPrompt_" data-uid="Voice2Action.Runtime.PropertyClassifier.GetClassificationPrompt*"></a>
+  <h4 id="Voice2Action_Runtime_PropertyClassifier_GetClassificationPrompt_System_String_System_Collections_Generic_List_System_String__" data-uid="Voice2Action.Runtime.PropertyClassifier.GetClassificationPrompt(System.String,System.Collections.Generic.List{System.String})">GetClassificationPrompt(String, List&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string GetClassificationPrompt(string userInput, List&lt;string&gt; targets)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">userInput</span></td>
+        <td><p>Original user input instruction.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>&gt;</td>
+        <td><span class="parametername">targets</span></td>
+        <td><p>Classes to classify user input into.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><p>Formatted classification input.</p>
 </td>
       </tr>
     </tbody>
