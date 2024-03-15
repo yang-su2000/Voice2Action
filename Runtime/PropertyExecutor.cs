@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 using OpenAI;
 using UnityEngine;
 
-namespace Voice2Action
+namespace Voice2Action.Runtime
 {
     /// <summary>
     /// A minimal implementation of the "LLM for Execution" step in Voice2Action. <br/>
@@ -543,17 +543,28 @@ namespace Voice2Action
                         Debug.LogWarning($"fieldValue with name {fieldInfo.Name} must be of type {typeof(Dictionary<string, object>)} for dynamic casting");
                         continue;
                     }
-                    var classificationInput =
-                        PropertyClassifier.GetClassificationPrompt(userInput, new List<string>(fieldDict.Keys));
-                    Debug.Log($"{functionName} classificationInput: {classificationInput}");
-                    var classificationOutput = await VoiceIntentController.CallCompletion(classificationInput,
-                        PropertyClassifier.k_ClassificationInstruction);
-                    Debug.Log($"{functionName} classificationOutput: {classificationOutput}");
+                    // pre-load and save embedding data for current propertyMap (fieldDict)
+                    bool isEmbeddingProcessed = await embeddings.ProcessEmbeddingData(fieldDict, propertyName);
+                    if (!isEmbeddingProcessed)
+                    {
+                        Debug.LogWarning($"failed to process propertyMap embedding with name {propertyName}");
+                        continue;
+                    }
+                    // [Deprecated]
+                    // var classificationInput =
+                    //     PropertyClassifier.GetClassificationPrompt(userInput, new List<string>(fieldDict.Keys));
+                    // Debug.Log($"{functionName} classificationInput: {classificationInput}");
+                    // var classificationOutput = await VoiceIntentController.CallCompletion(classificationInput,
+                    //     PropertyClassifier.k_ClassificationInstruction);
+                    // Debug.Log($"{functionName} classificationOutput: {classificationOutput}");
+                    var (classificationOutput, similarity) = await embeddings.GetEmbedding(userInput, propertyName);
+                    Debug.Log($"{functionName} classificationOutput: {classificationOutput}, confidence: {similarity}");
                     // handle model failure in classification
                     if (classificationOutput == Utils.k_FailureResponse) continue;
+                    if (similarity < Utils.k_MinConfidenceToProceed) continue;
                     if (!fieldDict.TryGetValue(classificationOutput, out object propertyValue))
                     {
-                        // TODO: improve this if the model fails to classify the input
+                        // this should never happen now as we use embedding matches
                         Debug.LogWarning($"model fails to classify {userInput} into one of {fieldDict.Keys}");
                         continue;
                     }

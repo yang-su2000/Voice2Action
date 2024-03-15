@@ -4,7 +4,7 @@ using OpenAI;
 using OpenAI.Models;
 using UnityEngine;
 
-namespace Voice2Action
+namespace Voice2Action.Runtime
 {
     /// <summary>
     /// Stores all singleton fields, global constants, and utility functions.
@@ -14,8 +14,8 @@ namespace Voice2Action
         /// <value>The entry for all OpenAI API requests.</value>
         public static OpenAIClient openAIClient { get; set; }
 
-        /// <value>The base model type used in Voice2Action.</value>
-        public static readonly Model s_OpenAIModel = Model.GPT3_5_Turbo;
+        /// <value>The chat model type used in Voice2Action.</value>
+        public static readonly Model k_ChatModel = Model.GPT3_5_Turbo;
         
         /// <summary>
         /// Temperature parameter of the OpenAI CompletionAPI, lower means that the output is more deterministic.
@@ -25,21 +25,23 @@ namespace Voice2Action
         /// </remarks>
         /// <value>Range [0f, 1f].</value>
         public const float k_CompletionTemperature = 0.0f;
+
+        /// <value>The embedding model type used in Voice2Action.</value>
+        public static readonly Model k_EmbeddingModel = Model.Embedding_3_Small;
+        
+        /// <value>The embedding model dimension used in Voice2Action.</value>
+        public const int k_EmbeddingDim = 512;
         
         /// <summary>
-        /// TODO: we will add similarity match implementation in future package version. <br/>
         /// Confidence of the system to accept matching in the Embedding class. <br/>
         /// This is used to determine if there is a match in the property mappings. If the system does not have enough confidence, it rejects the mapping. <br/>
         /// User can make this bigger if they want a stricter match, or make this lower if they want a looser match. <br/>
         /// e.g. User: "change the box to orange" -> "yellow" is matched with {k_MinConfidenceToProceed}% confidence. <br/>
         /// </summary>
-        /// <value>Range [0, 100].</value>
-        public const int k_MinConfidenceToProceed = 50;
-
-        /// <summary>
-        /// A string to denote model failure state
-        /// </summary>
-        /// <value>"N/A"</value>
+        /// <value>Range [0d, 1d].</value>
+        public const double k_MinConfidenceToProceed = 0.1d;
+        
+        /// <value>A string to denote model failure state</value>
         public const string k_FailureResponse = "N/A";
         
         /// <summary>
