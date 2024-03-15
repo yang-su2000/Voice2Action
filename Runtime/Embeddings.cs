@@ -23,7 +23,7 @@ namespace Voice2Action.Runtime
     public class Embeddings: MonoBehaviour
     {
         /// <value>User specified directory name to store embedding data of the current Unity Scene.</value>
-        public string m_EmbeddingDataDir;
+        [SerializeField] protected string m_EmbeddingDataDir = "";
         
         private Dictionary<string, Dictionary<string, IReadOnlyList<double>>> m_EmbeddingMap = new();
         
