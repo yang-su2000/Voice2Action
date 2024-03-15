@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Voice2Action.Runtime;
 
 namespace Voice2Action.Samples.CityDemo.Scripts
 {
