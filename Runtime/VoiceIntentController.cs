@@ -9,7 +9,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Voice2Action.Runtime
+namespace Voice2Action
 {
     /// <summary>
     /// The main class of Voice2Action, contains all core required components for the system. <br/>

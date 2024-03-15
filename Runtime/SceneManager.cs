@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine.Assertions;
 using UnityEngine.XR.Interaction.Toolkit;
 
-namespace Voice2Action.Runtime
+namespace Voice2Action
 {
     /// <summary>
     /// The main class of Expand, contains all core required components for the system. <br/>

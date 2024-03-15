@@ -4,7 +4,7 @@ using System.Collections.Specialized;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Voice2Action.Runtime
+namespace Voice2Action
 {
     /// <summary>
     /// A minimal implementation of the "LLM for Extraction" step in Voice2Action. <br/>

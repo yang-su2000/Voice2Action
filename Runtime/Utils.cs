@@ -4,7 +4,7 @@ using OpenAI;
 using OpenAI.Models;
 using UnityEngine;
 
-namespace Voice2Action.Runtime
+namespace Voice2Action
 {
     /// <summary>
     /// Stores all singleton fields, global constants, and utility functions.
