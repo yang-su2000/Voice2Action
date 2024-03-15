@@ -85,12 +85,12 @@
 		{
 			"displayName": "Starter Assets",
 			"description": "Contains essential prefabs and tutorial scenes of the Voice2Action system",
-			"path": "Samples~/Starter Assets"
+			"path": "Samples/Starter Assets"
 		},
 		{
 			"displayName": "City Demo",
 			"description": "This is a City Demo with customized MyEmbeddings and MyShapeController",
-			"path": "Samples~/CityDemo"
+			"path": "Samples/CityDemo"
 		}
 	]
 }
