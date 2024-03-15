@@ -145,7 +145,6 @@ The Expand Panel is used to store the objects you've called that will be "expand
 - The user can customizably define their own classes and functions for broader interaction categories.
 - You want to write code that follows the instructions **exactly** as specified as follows - reflection is used for the system to perform its core functionality, and it would be quite hard to debug (although we provide extensive error prevention) if you did them wrong.
 - You can open "Samples/CityDemo" and play around with it to better understand the system.
-    - Make sure to follow step (6) in the tutorial for the UI to take effect
 
 ### Custom Actions
 
