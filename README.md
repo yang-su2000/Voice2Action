@@ -30,7 +30,7 @@ This package uses LLMs (Large Language Models) to analyze user instruction throu
 
 ## Paper of this Package: Voice2Action
 
-- [Full Paper](https://arxiv.org/abs/2310.00092)(Arxiv Preprint)
+- [Full Paper](https://arxiv.org/abs/2310.00092) at Arxiv
 - [Invited Talk](https://superagi.com/agi-leap-summit/) at [SuperAGI](https://github.com/TransformerOptimus/SuperAGI) Open Source Developer Conference
     - [Slides](https://docs.google.com/presentation/d/1nB0ITNqnGCjYhDXntcIfWOXTMKZqVVJ8l_gE9LOtU_w/edit?usp=sharing)
 
