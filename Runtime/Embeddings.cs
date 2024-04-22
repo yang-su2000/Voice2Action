@@ -160,7 +160,7 @@ namespace Voice2Action
                 }
             }
             m_EmbeddingMap[propertyMapName] = propertyMapData;
-            Debug.Log($"{propertyMapName} propertyMap is processed with {debugCount} embedding calls");
+            if (debugCount > 0) Debug.Log($"{propertyMapName} propertyMap is processed with {debugCount} embedding calls");
             return true;
         }
 
