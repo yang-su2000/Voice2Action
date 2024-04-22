@@ -10,9 +10,12 @@ This package uses LLMs (Large Language Models) to analyze user instruction throu
 
 ## Demo
 
-[Voice2Action v-0.0.1](https://drive.google.com/file/d/1vt0LqiVqYMkwFLfSo1ZvKmSYNohes_Mq/view?usp=sharing)
-
-[Voice2Action v-0.0.0](https://drive.google.com/file/d/159XWeBlK_tdkoEv76xrA5s78dy4UEPfS/view?usp=sharing)
+- Unreal Engine Implementation for [Palatial XR](https://www.palatialxr.com/)
+    - [Voice2Action](https://drive.google.com/file/d/1EwTCqu7iozDh2nMcsLoKnApDkJjJKr62/view?usp=sharing)
+- Unity Engine Implementation (this package)
+    - [Voice2Action v-0.0.2](https://drive.google.com/file/d/1-oX29FMBOSsyLyPjkCLYAjmq1VmbaXdR/view?usp=drive_link)
+    - [Voice2Action v-0.0.1](https://drive.google.com/file/d/1vt0LqiVqYMkwFLfSo1ZvKmSYNohes_Mq/view?usp=sharing)
+    - [Voice2Action v-0.0.0](https://drive.google.com/file/d/159XWeBlK_tdkoEv76xrA5s78dy4UEPfS/view?usp=sharing)
 
 ## Advantages
 
@@ -25,11 +28,11 @@ This package uses LLMs (Large Language Models) to analyze user instruction throu
     - While the current package is a minimal implementation of the full Voice2Action framework, all property classes can do their jobs in parallel without any intervention as they belongs to different manipulation categories.
     - More importantly, by adapting Unity (Unreal, or other game engine) functional impact analysis (including controlled experiments, parameterized testing, dependency analysis and [profiling](https://docs.unity3d.com/Manual/Profiler.html)), we are able to integrate the LLMs function calling and feedback ability into Unity runtime, while maintaining the parallelizability of each scripting and rendering components, hence this package is an initial attempt as a multi-agent collaboration framework for game engine code execution.
 
-## Paper - Voice2Action
+## Paper of this Package: Voice2Action
 
-- [Here](https://arxiv.org/abs/2310.00092).
-
-- [Google Slides](https://docs.google.com/presentation/d/1nB0ITNqnGCjYhDXntcIfWOXTMKZqVVJ8l_gE9LOtU_w/edit?usp=sharing)
+- [Full Paper](https://arxiv.org/abs/2310.00092) at Arxiv
+- [Invited Talk](https://superagi.com/agi-leap-summit/) at [SuperAGI](https://github.com/TransformerOptimus/SuperAGI) Open Source Developer Conference
+    - [Slides](https://docs.google.com/presentation/d/1nB0ITNqnGCjYhDXntcIfWOXTMKZqVVJ8l_gE9LOtU_w/edit?usp=sharing)
 
 **Abstract**
 
