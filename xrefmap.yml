@@ -26,6 +26,19 @@ references:
   isSpec: "True"
   fullName: Voice2Action.Embeddings.GetEmbedding
   nameWithType: Embeddings.GetEmbedding
+- uid: Voice2Action.Embeddings.GetTopKEmbedding(System.String,System.String,System.Int32)
+  name: GetTopKEmbedding(String, String, Int32)
+  href: api/Voice2Action.Embeddings.html#Voice2Action_Embeddings_GetTopKEmbedding_System_String_System_String_System_Int32_
+  commentId: M:Voice2Action.Embeddings.GetTopKEmbedding(System.String,System.String,System.Int32)
+  fullName: Voice2Action.Embeddings.GetTopKEmbedding(System.String, System.String, System.Int32)
+  nameWithType: Embeddings.GetTopKEmbedding(String, String, Int32)
+- uid: Voice2Action.Embeddings.GetTopKEmbedding*
+  name: GetTopKEmbedding
+  href: api/Voice2Action.Embeddings.html#Voice2Action_Embeddings_GetTopKEmbedding_
+  commentId: Overload:Voice2Action.Embeddings.GetTopKEmbedding
+  isSpec: "True"
+  fullName: Voice2Action.Embeddings.GetTopKEmbedding
+  nameWithType: Embeddings.GetTopKEmbedding
 - uid: Voice2Action.Embeddings.InitEmbeddings(System.Type,System.Collections.Generic.List{System.String})
   name: InitEmbeddings(Type, List<String>)
   href: api/Voice2Action.Embeddings.html#Voice2Action_Embeddings_InitEmbeddings_System_Type_System_Collections_Generic_List_System_String__
