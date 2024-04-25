@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -160,8 +161,28 @@ namespace Voice2Action
                 }
             }
             m_EmbeddingMap[propertyMapName] = propertyMapData;
-            if (debugCount > 0) Debug.Log($"{propertyMapName} propertyMap is processed with {debugCount} embedding calls");
+            Debug.Log($"{propertyMapName} propertyMap is processed with {debugCount} embedding calls");
             return true;
+        }
+        
+        /// <summary>
+        /// Utility function to get cos similarity of two vectors.
+        /// </summary>
+        /// <param name="vectorA">Vector A</param>
+        /// <param name="vectorB">Vector B</param>
+        /// <returns>Cos similarity score, in the range of [0, 1].</returns>
+        private double GetCosSimilarity(IReadOnlyList<double> vectorA, IReadOnlyList<double> vectorB)
+        {
+            double dotProduct = 0;
+            double normA = 0;
+            double normB = 0;
+            for (int i = 0; i < vectorA.Count; i++)
+            {
+                dotProduct += vectorA[i] * vectorB[i];
+                normA += Math.Pow(vectorA[i], 2);
+                normB += Math.Pow(vectorB[i], 2);
+            }
+            return dotProduct / (Math.Sqrt(normA) * Math.Sqrt(normB));
         }
 
         /// <summary>
@@ -172,19 +193,6 @@ namespace Voice2Action
         /// <returns>A tuple of (one key from the given property map, its corresponding cos-similarity score to userInput).</returns>
         public async Task<(string, double)> GetEmbedding(string userInput, string propertyMapName)
         {
-            double GetCosSimilarity(IReadOnlyList<double> vectorA, IReadOnlyList<double> vectorB)
-            {
-                double dotProduct = 0;
-                double normA = 0;
-                double normB = 0;
-                for (int i = 0; i < vectorA.Count; i++)
-                {
-                    dotProduct += vectorA[i] * vectorB[i];
-                    normA += Math.Pow(vectorA[i], 2);
-                    normB += Math.Pow(vectorB[i], 2);
-                }
-                return dotProduct / (Math.Sqrt(normA) * Math.Sqrt(normB));
-            }
             string retName = Utils.k_FailureResponse;
             double maxSimilarity = double.MinValue;
             // fetch target embeddings
@@ -206,6 +214,34 @@ namespace Voice2Action
                 }
             }
             return (retName, maxSimilarity);
+        }
+
+        /// <summary>
+        /// Get closest k embedding matches by retrieval in descending order.
+        /// </summary>
+        /// <param name="userInput">Input user message.</param>
+        /// <param name="propertyMapName">The string name of the propertyMap, i.e. "shapeMap".</param>
+        /// <param name="topK">The closest k embeddings.</param>
+        /// <returns>A tuple of (one key from the given property map, its corresponding cos-similarity score to userInput).</returns>
+        public async Task<List<(string, double)>> GetTopKEmbedding(string userInput, string propertyMapName, int topK)
+        {
+            // fetch target embeddings
+            if (!m_EmbeddingMap.TryGetValue(propertyMapName,
+                    out Dictionary<string, IReadOnlyList<double>> targetVectors))
+            {
+                Debug.LogWarning($"propertyMap with name {propertyMapName} does not exist");
+                return null;
+            }
+            // fetch query embedding
+            IReadOnlyList<double> queryVector = await VoiceIntentController.CallEmbedding(userInput);
+            List<(string, double)> ret = new List<(string, double)>();
+            foreach (var (targetName, targetVector) in targetVectors)
+            {
+                double similarity = GetCosSimilarity(queryVector, targetVector);
+                ret.Add((targetName, similarity));
+            }
+            ret = ret.OrderByDescending(tuple => tuple.Item2).Take(topK).ToList();
+            return ret;
         }
         
         /// <summary>
