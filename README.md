@@ -4,11 +4,22 @@
 
 - 2024-03-14 Update: v-0.0.2 is up with embedding-based retrieval system implemented!
 
-- 2024-05-03 Update: the extension of this work, ALICE (Aligning Language Models for Interactive Code Execution) can be found in this [Google Slide](https://docs.google.com/presentation/d/1Vu_EC45E6E3Mp4qcJCS1o8OCzTEnmqRfoa6K_Ef2onM/edit?usp=sharing)
-
 [Voice2Action Unity Package v-0.0.2](https://yang-su2000.github.io/Voice2Action/)
 
 This package uses LLMs (Large Language Models) to analyze user instruction through action and entity extraction, and divides the execution tasks into canonical interaction subsets with error prevention from the game engine feedback. It combines an "Expand" interaction technique to create an innovative selection and manipulation mechanism for enhanced user experiences.
+
+## ALICE (Aligning Language models for Interactive Code Execution) 
+
+**ALICE** is an ongoing large scale research work that extends Voice2Action to broader domains, you can find more about it in this [Google Slide](https://docs.google.com/presentation/d/1Vu_EC45E6E3Mp4qcJCS1o8OCzTEnmqRfoa6K_Ef2onM/edit?usp=sharing).
+
+- ALICE aims to build *actually usable* (i.e. low-cost, efficient) code generation system in large-scale interactive environments.
+- We are currently experimenting the physics engine environment due to its simulation and feedback loop flexibility.
+- ALICE is expected to expand to domains like gaming, robotics simulation, VR, autonomous driving, etc.
+- Borader Impact: ALICE can generate high-quality synthetic data with active human intervention, for training LLMs.
+
+**ALICE** is kindly supported by [Cornell ICPC](https://www.cs.cornell.edu/acm/) and [Millennium](https://www.mlp.com/) on building **efficient LLMs for code and data generation**.
+
+***We are actively looking for brilliant people to join the ALICE project, shoot me an email if you are interested!***
 
 ## Demo
 
