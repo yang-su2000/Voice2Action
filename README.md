@@ -14,7 +14,9 @@ This package uses LLMs (Large Language Models) to analyze user instruction throu
 
 - Unreal Engine Implementation for [Palatial XR](https://www.palatialxr.com/)
     - [Voice2Action](https://drive.google.com/file/d/1EwTCqu7iozDh2nMcsLoKnApDkJjJKr62/view?usp=sharing)
-- Unity Engine Implementation (this package)
+- Unity Engine Implementation (ALICE Pre-release)
+    - [ALICE](https://drive.google.com/file/d/1WQyXTJ0Mb6GPep-aIsmwMvYXEUKPvjHm/view?usp=sharing)
+- Unity Engine Implementation (Voice2Action)
     - [Voice2Action v-0.0.2](https://drive.google.com/file/d/1-oX29FMBOSsyLyPjkCLYAjmq1VmbaXdR/view?usp=drive_link)
     - [Voice2Action v-0.0.1](https://drive.google.com/file/d/1vt0LqiVqYMkwFLfSo1ZvKmSYNohes_Mq/view?usp=sharing)
     - [Voice2Action v-0.0.0](https://drive.google.com/file/d/159XWeBlK_tdkoEv76xrA5s78dy4UEPfS/view?usp=sharing)
