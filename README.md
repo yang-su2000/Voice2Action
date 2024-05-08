@@ -12,6 +12,7 @@ This package uses LLMs (Large Language Models) to analyze user instruction throu
 
 **ALICE** is an ongoing large scale research work that extends Voice2Action to broader domains, you can find more about it in this [Google Slide](https://docs.google.com/presentation/d/1Vu_EC45E6E3Mp4qcJCS1o8OCzTEnmqRfoa6K_Ef2onM/edit?usp=sharing).
 
+- [**Demo**](https://drive.google.com/file/d/1WQyXTJ0Mb6GPep-aIsmwMvYXEUKPvjHm/view?usp=drive_link) (3D Terrain Generation via. User Instruction)
 - ALICE aims to build *actually usable* (i.e. efficient, personalized) code generation system in large-scale interactive environments.
 - We are currently experimenting the physics engine environment due to its simulation and feedback loop flexibility.
 - ALICE is expected to expand to domains like gaming, robotics simulation, VR, autonomous driving, etc.
