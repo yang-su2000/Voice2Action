@@ -22,16 +22,23 @@ This package uses LLMs (Large Language Models) to analyze user instruction throu
 
 ***We are actively looking for brilliant people to join the ALICE project, shoot me an email if you are interested!***
 
-## Demo
+## Demos
 
-- Unreal Engine Implementation for [Palatial XR](https://www.palatialxr.com/)
-    - [Voice2Action](https://drive.google.com/file/d/1EwTCqu7iozDh2nMcsLoKnApDkJjJKr62/view?usp=sharing)
-- Unity Engine Implementation (ALICE Pre-release)
-    - [ALICE](https://drive.google.com/file/d/1WQyXTJ0Mb6GPep-aIsmwMvYXEUKPvjHm/view?usp=sharing)
-- Unity Engine Implementation (Voice2Action)
-    - [Voice2Action v-0.0.2](https://drive.google.com/file/d/1-oX29FMBOSsyLyPjkCLYAjmq1VmbaXdR/view?usp=drive_link)
-    - [Voice2Action v-0.0.1](https://drive.google.com/file/d/1vt0LqiVqYMkwFLfSo1ZvKmSYNohes_Mq/view?usp=sharing)
-    - [Voice2Action v-0.0.0](https://drive.google.com/file/d/159XWeBlK_tdkoEv76xrA5s78dy4UEPfS/view?usp=sharing)
+**ALICE**
+
+- Unity Engine Implementation for Terrain Manipulation
+    - [*generate a scene similar to the Great Rift Valley* & *create stonehenge surrounded by layers of stones*](https://drive.google.com/file/d/1WQyXTJ0Mb6GPep-aIsmwMvYXEUKPvjHm/view?usp=sharing)
+- Alignment Comparsion: *generate the Grand Canyon in Arizona, United States*
+    - [Before Alignment](https://drive.google.com/file/d/1BJ-wtHNtWX8j0jXvzO4pvxuAmo4XRFE-/view?usp=sharing)
+    - [After Alignment](https://drive.google.com/file/d/1v5a0e8n_yiYz1Nt40VkBjl_vahVzVOV5/view?usp=sharing)
+
+**Voice2Action**
+
+- Unreal Engine 5 Implementation for Room Styling in [Palatial XR](https://www.palatialxr.com/)
+    - [*generate computers on the tables*](https://drive.google.com/file/d/1EwTCqu7iozDh2nMcsLoKnApDkJjJKr62/view?usp=sharing)
+- Unity Engine Implementation for City Planning
+    - [*select buildings from 6 to 10 meters and make them orange*](https://drive.google.com/file/d/1-oX29FMBOSsyLyPjkCLYAjmq1VmbaXdR/view?usp=drive_link)
+    - [*(various) selection & modification*](https://drive.google.com/file/d/1vt0LqiVqYMkwFLfSo1ZvKmSYNohes_Mq/view?usp=sharing)
 
 ## Advantages
 
