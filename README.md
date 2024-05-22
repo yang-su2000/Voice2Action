@@ -20,6 +20,8 @@ This package uses LLMs (Large Language Models) to analyze user instruction throu
 
 ***We are actively looking for brilliant people to join the ALICE project, shoot me an email if you are interested!***
 
+We expect to open source ALICE in this Fall, stay tuned for more details!
+
 ## Demos
 
 **ALICE**
