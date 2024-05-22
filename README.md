@@ -10,13 +10,11 @@ This package uses LLMs (Large Language Models) to analyze user instruction throu
 
 ## ALICE (Aligning Language models for Interactive Code Execution) 
 
-**ALICE** is an ongoing large scale research work that extends Voice2Action to broader domains, you can find more about it in this [Google Slide](https://docs.google.com/presentation/d/1Vu_EC45E6E3Mp4qcJCS1o8OCzTEnmqRfoa6K_Ef2onM/edit?usp=sharing).
+**ALICE** is a large-scale ongoing project that extends Voice2Action to broader domains, you can find more about it at [alicellm.github.io](https://alicellm.github.io).
 
 - [**Demo**](https://drive.google.com/file/d/1WQyXTJ0Mb6GPep-aIsmwMvYXEUKPvjHm/view?usp=drive_link) (3D Terrain Generation via. User Instruction)
-- ALICE aims to build *actually usable* (i.e. efficient, personalized) code generation system in large-scale interactive environments.
-- We are currently experimenting the physics engine environment due to its simulation and feedback loop flexibility.
-- ALICE is expected to expand to domains like gaming, robotics simulation, VR, autonomous driving, etc.
-- Borader Impact: ALICE can generate high-quality synthetic data with active human intervention, for training LLMs.
+- ALICE is a *meta-agent collaboration system* that generates high-quality data through multi-turn interactions and feedback.
+- It produces data with traces from agent strategies like ReAct and Reflexion, which are scarce but offer potential for aligning advanced LLMs.
 
 **ALICE** is kindly supported by [Cornell ICPC](https://www.cs.cornell.edu/acm/) and [Millennium](https://www.mlp.com/) on building **efficient LLMs for code and data generation**.
 
