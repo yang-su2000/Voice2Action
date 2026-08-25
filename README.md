@@ -1,3 +1,5 @@
+
+
 # Voice2Action
 
 - 2024-02-14 Update: Our Unity package "Voice2Action" v-0.0.1 is open for beta testing!
@@ -45,7 +47,7 @@ This package uses LLMs (Large Language Models) to analyze user instruction throu
 - Efficiency: Extremely **Low Cost**
     - Based on our testing in the "Samples/CityDemo" with 2 ** (7+3) = 1024 function call combinations (with infinite argument combinations) and 100 * 32 = 3.2k user interaction (including multi-turn due to execution failure), our OpenAI API (with gpt-3.5-turbo) total cost ~= 5 USD, which converts to 0.16 cents per interaction!
 - Domain Adaptation: Highly **Customizable**
-    - User can customize their actions and properties by easily inheriting our Runtime scripts, see examples in the Advanced section for more details.
+    - User can customize their actions and properties by easily inheriting our Runtime scripts, see examples in the CityDemo scripts for more details.
     - We can also fine-tune our models based on domain-specific manipulation category requirements, stay tuned!
 - Scalability: Highly **Parallelizable**
     - While the current package is a minimal implementation of the full Voice2Action framework, all property classes can do their jobs in parallel without any intervention as they belongs to different manipulation categories.
